@@ -1,0 +1,12 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène ASXL1, en fonction de la feature consensus_sex
+#Résultat du test statistique Mann-Whitney U : U = 6.000, p-value = 1.000
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2688  Female        6.839193
+BA2844    Male        6.362275
+BA2589  Female        6.718375
+BA2174  Female        5.692956
+BA2746  Female        5.576753
+BA3297  Female        6.048565
+BA3275    Male        6.025373
+BA3353  Female        6.225453

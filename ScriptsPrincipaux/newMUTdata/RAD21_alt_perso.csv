@@ -1,0 +1,2 @@
+sampleID,gene,ref,alt,localisation,in_cosmic,variant_classification,sum_count_kmer_alt,nb_kmers_alt,mean_count_kmer_alt,sum_count_kmer_ref,nb_kmers_ref,mean_count_kmer_ref,ratio
+BA3318,RAD21,G,A,chr8:117864833-117864833,1,missense_variant,30180,29,1040.6896551724137,30918,29,1066.1379310344828,97.61304094702115
