@@ -333,6 +333,34 @@ def TrainLogReg(X_train, y_train, X_test, y_test, GridSearchBool):
     return acc, res
 
 
+#########################
+#  Réseau de neuronnes  #
+#########################
+
+from sklearn.preprocessing import LabelEncoder
+from tensorflow.keras.utils import to_categorical
+from tensorflow.keras import Input
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense, Dropout
+from tensorflow.keras.optimizers import Adam
+from sklearn.metrics import accuracy_score
+from sklearn.inspection import permutation_importance
+
+def TrainNN(X_train, y_train, X_test, y_test, epochs=50, batch_size=32):
+
+    # result = permutation_importance(model_predict, X_test, y_test_encoded, n_repeats=10, random_state=42, n_jobs=-1)
+    # importances = np.abs(result.importances_mean)
+    # indices = np.argsort(importances)[::-1]
+
+    # # Obtenir les features les plus importantes
+    # features = Genes + ["Âge"]
+    # res = ""
+    # for f in range(min(7, len(features))):  # Limiter à 7 features importantes
+    #     res += f"{f + 1}. feature {features[indices[f]]} ({importances[indices[f]]:.4f})\n"
+
+    return acc, res
+
+
 #####################################################################
 
 
@@ -351,7 +379,7 @@ DonneesUtilisees = ["0/1", "Abondances", "Expressions"]
 
 
 for i, feature in enumerate(Features):
-    ResTableau = pd.DataFrame({"Données utilisées":DonneesUtilisees, "SVM":["", "", ""], "Decision Tree":["", "", ""], "Random Forest":["", "", ""], "XGBoost":["", "", ""], "Régression Logistique":["", "", ""]})
+    ResTableau = pd.DataFrame({"Données utilisées":DonneesUtilisees, "SVM":["", "", ""], "Decision Tree":["", "", ""], "Random Forest":["", "", ""], "XGBoost":["", "", ""], "Régression Logistique":["", "", ""], "Réseau de Neurones":["", "", ""]})
     ResTableau.set_index("Données utilisées", inplace=True)
     # print(ResTableau)
     featureValuesPossible = np.unique(data_beat_aml[feature].tolist())
@@ -408,6 +436,8 @@ for i, feature in enumerate(Features):
         resXGB = f"acc = {accXGB:.3f}\navec {genesXGB.split()[2]} et {genesXGB.split()[6]}"
         accLogReg, genesLogReg = TrainLogReg(X_train, y_train, X_test, y_test, False)
         resLogReg = f"acc = {accLogReg:.3f}\navec {genesLogReg.split()[2]} et {genesLogReg.split()[6]}"
+        # accNN, genesNN = TrainNN(X_train, y_train, X_test, y_test)
+        # resNN = f"acc = {accNN:.3f}\navec {genesNN.split()[2]} et {genesNN.split()[6]}"
 
         output_file = f"Documents/ScriptsPrincipaux/3_Classification/DossierRes/output_{feature}.txt"
 
@@ -419,6 +449,7 @@ for i, feature in enumerate(Features):
         ResTableau.at[DonneesUtilisees[AbundBools.index(DataBool)], "Random Forest"] = resRF
         ResTableau.at[DonneesUtilisees[AbundBools.index(DataBool)], "XGBoost"] = resXGB
         ResTableau.at[DonneesUtilisees[AbundBools.index(DataBool)], "Régression Logistique"] = resLogReg
+        # ResTableau.at[DonneesUtilisees[AbundBools.index(DataBool)], "Réseau de Neurones"] = resNN
 
         with open(output_file, 'w') as fw:
             fw.write(f"Feature {feature} with values : {featureValues}\n")
