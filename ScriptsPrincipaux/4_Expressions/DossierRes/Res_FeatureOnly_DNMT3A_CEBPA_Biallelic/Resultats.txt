@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène DNMT3A en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 273.000, p-value = 0.007
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        6.907540
+BA2861    mono        6.611175
+BA2653    mono        5.464844
+BA2841      bi        5.457111
+BA2731      bi        5.422349
+BA2156      bi        6.796410
+BA2080    mono        5.869010
+BA2718      bi        7.875845
+BA3025      bi        7.310398
+BA2251      bi        7.549707
+BA2515    mono        5.180552
+BA2748      bi        6.791584
+BA2577      bi        6.705852
+BA2868      bi        7.188129
+BA2804    mono        5.825418
+BA2675    mono        6.348330
+BA2000    mono        5.828595
+BA2155      bi        6.541508
+BA2867    mono        6.137256
+BA2972      bi        6.614843
+BA2659    mono        5.059638
+BA2312    mono        6.017455
+BA2296      bi        6.577728
+BA2184      bi        7.446441
+BA3153    mono        6.358559
+BA2217      bi        7.208002
+BA3413      bi        6.838431
+BA3261      bi        6.479152
+BA3114    mono        4.617886
+BA3436    mono        6.938272
+BA3216    mono        5.884062
+BA3329    mono        6.393591
+BA3194    mono        6.777209
+BA3199    mono        7.061661
+BA3117      bi        6.535435
+BA3312      bi        6.580287
+BA3357    mono        7.005651
+BA3416    mono        6.969120

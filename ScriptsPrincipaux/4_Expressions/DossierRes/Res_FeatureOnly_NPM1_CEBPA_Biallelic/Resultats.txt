@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène NPM1 en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 255.000, p-value = 0.031
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        9.400075
+BA2861    mono        9.114605
+BA2653    mono        8.415566
+BA2841      bi        9.133421
+BA2731      bi        8.461858
+BA2156      bi        9.482382
+BA2080    mono        8.927488
+BA2718      bi        8.611512
+BA3025      bi        9.238947
+BA2251      bi        8.326713
+BA2515    mono        8.664074
+BA2748      bi        9.338839
+BA2577      bi        9.400075
+BA2868      bi        9.002557
+BA2804    mono        8.887974
+BA2675    mono        9.084943
+BA2000    mono        8.087011
+BA2155      bi        8.999068
+BA2867    mono        8.661261
+BA2972      bi        9.160132
+BA2659    mono        8.454530
+BA2312    mono        8.796353
+BA2296      bi        9.283973
+BA2184      bi        9.259259
+BA3153    mono        7.926997
+BA2217      bi        9.351768
+BA3413      bi        9.330277
+BA3261      bi        9.066675
+BA3114    mono        8.274569
+BA3436    mono        9.676798
+BA3216    mono        8.887974
+BA3329    mono        9.456161
+BA3194    mono        8.681063
+BA3199    mono        9.400075
+BA3117      bi        9.281557
+BA3312      bi        8.509180
+BA3357    mono        8.782909
+BA3416    mono        8.978290

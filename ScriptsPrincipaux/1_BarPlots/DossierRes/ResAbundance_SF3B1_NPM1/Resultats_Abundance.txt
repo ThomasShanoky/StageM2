@@ -1,0 +1,46 @@
+#Résultats bruts de l'abondance de mutation du gène SF3B1 selon la feature NPM1, normalisée par le gène de ménage TBP.
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.008250 avec le test Mann-Whitney U
+ Abundance   TotalKmers  NormalizedExpression     NPM1
+ 35.172414 7.093041e+09              4.958721 negative
+ 21.103448 7.200373e+09              2.930883 negative
+ 68.379310 1.169401e+10              5.847377 negative
+ 42.655172 1.050290e+10              4.061274 negative
+150.517241 7.001288e+09             21.498507 negative
+113.034483 9.666895e+09             11.692947 negative
+172.241379 1.142118e+10             15.080877 negative
+146.551724 8.864826e+09             16.531822 negative
+ 92.793103 9.577118e+09              9.689043 negative
+487.724138 1.077170e+10             45.278294 negative
+ 81.172414 8.107873e+09             10.011555 negative
+112.103448 6.623305e+09             16.925606 negative
+ 15.931034 8.684668e+09              1.834386 negative
+197.965517 1.061286e+10             18.653355 negative
+229.000000 1.254036e+10             18.261036 negative
+189.379310 1.071934e+10             17.667066 negative
+115.620690 5.449456e+09             21.216922 negative
+182.896552 6.648353e+09             27.510055 negative
+137.965517 8.251345e+09             16.720368 negative
+252.310345 9.656104e+09             26.129623 negative
+121.655172 8.168213e+09             14.893732 negative
+438.827586 1.293326e+10             33.930161 negative
+414.000000 1.333923e+10             31.036277 negative
+171.068966 6.703878e+09             25.517911 negative
+280.275862 8.954176e+09             31.301134 negative
+ 21.379310 5.743500e+09              3.722349 negative
+193.379310 8.448480e+09             22.889243 negative
+263.344828 6.588789e+09             39.968625 positive
+151.965517 5.220229e+09             29.110889 negative
+385.068966 1.249729e+10             30.812198 negative
+262.068966 8.504459e+09             30.815476 negative
+171.586207 8.115899e+09             21.141984 negative
+142.172414 1.291642e+10             11.007108 negative
+418.275862 1.458903e+10             28.670570 negative
+106.724138 4.588512e+09             23.258985 positive
+299.103448 8.031214e+09             37.242621 positive
+321.896552 9.330646e+09             34.498850 positive
+269.758621 8.793963e+09             30.675432 positive
+290.724138 9.451593e+09             30.759275 negative
+100.275862 8.651741e+09             11.590252 negative
+129.620690 9.990793e+09             12.974014 negative
+385.241379 7.373008e+09             52.250231 negative

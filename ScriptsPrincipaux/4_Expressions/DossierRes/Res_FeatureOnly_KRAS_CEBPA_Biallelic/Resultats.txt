@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 56.000, p-value = 0.000
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        5.141234
+BA2861    mono        5.884446
+BA2653    mono        6.543590
+BA2841      bi        6.237998
+BA2731      bi        6.231729
+BA2156      bi        5.211499
+BA2080    mono        6.708095
+BA2718      bi        5.151740
+BA3025      bi        5.522830
+BA2251      bi        5.195926
+BA2515    mono        6.630087
+BA2748      bi        4.752010
+BA2577      bi        5.077996
+BA2868      bi        5.712167
+BA2804    mono        6.773040
+BA2675    mono        6.267933
+BA2000    mono        5.904364
+BA2155      bi        6.502972
+BA2867    mono        7.014073
+BA2972      bi        5.381156
+BA2659    mono        5.972010
+BA2312    mono        6.144169
+BA2296      bi        5.307440
+BA2184      bi        4.902195
+BA3153    mono        7.103074
+BA2217      bi        5.026541
+BA3413      bi        4.939975
+BA3261      bi        5.532397
+BA3114    mono        6.690808
+BA3436    mono        5.101766
+BA3216    mono        6.394085
+BA3329    mono        6.389795
+BA3194    mono        5.571169
+BA3199    mono        5.917986
+BA3117      bi        5.154229
+BA3312      bi        5.397803
+BA3357    mono        5.231046
+BA3416    mono        5.157039

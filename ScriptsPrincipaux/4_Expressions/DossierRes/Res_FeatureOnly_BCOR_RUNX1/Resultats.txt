@@ -1,0 +1,90 @@
+#Boxplots d'expressions du gène BCOR en fonction de la feature RUNX1
+#Résultat du test statistique ANOVA : F = 603.127, p-value = 0.032
+#Tableau des résultats :
+Sample                                                                    Feature  ExpressionGene
+BA2707                         RUNX1 (p.A147Gfs*13; 42.3%)|RUNX1 (p.R162S; 46.5%)        4.519395
+BA2667                                                 RUNX1 (p.A142Gfs*4; 32.2%)        5.896464
+BA2357                                                     RUNX1 (p.R201Q; 33.9%)        5.766476
+BA2742                                               RUNX1 (p.X205_splice; 56.7%)        6.058712
+BA2316                                               RUNX1 (p.X205_splice; 44.3%)        5.737384
+BA2995 RUNX1 (p.P333Rfs*261; 48.9%)|RUNX1 (p.D332G; 51.1%)|RUNX1 (p.R162G; 47.3%)        6.668369
+BA2100                                                     RUNX1 (p.R201Q; 47.2%)        5.854210
+BA2953                                                     RUNX1 (p.R201Q; 51.8%)        5.841122
+BA2600                              RUNX1 (p.P430S; 60.0%)|RUNX1 (p.R166*; 41.2%)        5.482827
+BA2816                                                     RUNX1 (p.R201*; 33.3%)        5.247553
+BA2375                                                   RUNX1 (p.R166G; MAF 22%)        5.488344
+BA2737                                                     RUNX1 (Y414*; MAF 16%)        7.612452
+BA2405                                                     RUNX1 (p.Q262*; 72.4%)        4.767798
+BA2499                                                     RUNX1 (p.R320*; 46.2%)        6.867086
+BA2657                                               RUNX1 (p.S308Qfs*292; 42.4%)        5.761817
+BA2195                                                RUNX1 (p.S322Nfs*277; 9.7%)        6.208728
+BA2420                                                RUNX1 (p.H242Afs*14; 24.5%)        6.304646
+BA2122                                                     RUNX1 (p.R162K; 95.1%)        6.229897
+BA2081                                                     RUNX1 (p.R162K; 82.0%)        6.341457
+BA2044                         RUNX1 (p.Y377*; 11.5%)|RUNX1 (p.I114Afs*25; 33.0%)        5.797580
+BA2769                              RUNX1 (p.R320*; 24.2%)|RUNX1 (p.R207W; 20.0%)        5.172049
+BA2629                                                RUNX1 (p.R250Lfs*13; 50.0%)        7.790932
+BA2694                                               RUNX1 (p.E422Afs*173; 58.1%)        6.407376
+BA2538                                                RUNX1 (p.Q213Rfs*24; 85.5%)        5.471030
+BA2583                                                     RUNX1 (p.R162G; 80.6%)        5.826978
+BA2520                              RUNX1 (p.R204*; 45.5%)|RUNX1 (p.S141*; 45.1%)        5.662793
+BA2660                                                RUNX1 (p.R250Lfs*13; 46.7%)        5.854629
+BA2494                                               RUNX1 (p.A338Rfs*262; 22.2%)        6.823091
+BA2622                                               RUNX1 (p.A338Rfs*256; 73.3%)        5.457111
+BA2758                                               RUNX1 (p.A338Rfs*256; 71.0%)        5.853006
+BA2930                                               RUNX1 (p.A338Rfs*256; 76.9%)        5.626793
+BA2839                                                     RUNX1 (p.E223*; 64.8%)        7.503289
+BA2198                              RUNX1 (p.R166Q; 46.0%)|RUNX1 (p.R162K; 44.5%)        5.756810
+BA2760                                                     RUNX1 (p.D198N; 35.5%)        6.270162
+BA2955                                                RUNX1 (p.P240Qfs*22; 40.0%)        4.188676
+BA2867                                               RUNX1 (p.P383Afs*217; 46.0%)        6.909407
+BA2046                                               RUNX1 (N260fs*223+; MAF 26%)        6.095158
+BA3010                                                     RUNX1 (p.R320*; 40.9%)        7.265038
+BA2394                                                RUNX1 (c.319C>G; MAF 73.9%)        5.423464
+BA2950                                                 RUNX1 (p.L98Pfs*40; 46.8%)        4.990709
+BA2850                                               RUNX1 (p.E454Gfs*149; 21.4%)        5.296283
+BA2993                                             RUNX1 (p.E454Gfs*149; MAF 51%)        4.945953
+BA3322                                                    RUNX1 (p.E223*; MAF 1%)        6.198750
+BA2363                                                     RUNX1 (p.R320*; 44.9%)        5.687596
+BA2852                                                 RUNX1 (p.G165Dfs*2; 11.1%)        4.353544
+BA2866                                               RUNX1 (p.S322Ffs*278; 45.9%)        4.846678
+BA2798                                               RUNX1 (p.G408Vfs*193; 34.8%)        6.179899
+BA2883                                               RUNX1 (p.G408Vfs*193; 20.4%)        6.224197
+BA2801                                               RUNX1 (p.S322Nfs*277; 44.4%)        4.617537
+BA2663                                                     RUNX1 (p.R166*; 44.9%)        4.270419
+BA2989                                               RUNX1 (p.I366Vfs*231; 65.5%)        5.434393
+BA2721                                                   RUNX1 (p.A187T; MAF 42%)        5.917173
+BA2951                                                     RUNX1 (p.D198G; 66.7%)        5.780780
+BA2817                                                               RUNX1 (loss)        5.157767
+BA2472                                                 RUNX1 (p.L89Pfs*49; 15.8%)        6.901614
+BA2999                                                     RUNX1 (p.R166*; 41.5%)        7.066659
+BA2454                                                     RUNX1 (p.S322*; 51.4%)        7.288004
+BA3195                    RUNX1 (p.L98Pfs*40; 52.3%)|RUNX1 (p.N434Kfs*166; 32.4%)        5.781923
+BA2971                              RUNX1 (p.D198N; 47.6%)|RUNX1 (p.P113L; 42.7%)        6.312054
+BA3405                                                     RUNX1 (p.D198G; 94.2%)        5.515746
+BA3133                                               RUNX1 (p.X170_splice; 26.1%)        5.903120
+BA3435                                                RUNX1 (p.T246Hfs*15; 25.0%)        5.974408
+BA3174                                                     RUNX1 (p.R107H; 59.2%)        6.104086
+BA3109                                                RUNX1 (p.S100Lfs*38; 45.6%)        6.344577
+BA3452                                                RUNX1 (p.S100Lfs*38; 47.8%)        6.125525
+BA3210                                               RUNX1 (p.L429Pfs*171; 82.9%)        7.233106
+BA3384                                                    RUNX1 (p.P49T; MAF 69%)        6.603683
+BA3449                                                 RUNX1 (p.R76Pfs*62; 66.7%)        6.341457
+BA3149                                                RUNX1 (p.M267Ifs*44; 77.6%)        5.520611
+BA3345                                                     RUNX1 (p.S100F; 39.6%)        4.957133
+BA3308                                                     RUNX1 (p.R162S; 84.5%)        6.001347
+BA3185                         RUNX1 (p.H105Afs*33; 41.2%)|RUNX1 (p.T104R; 53.3%)        5.948369
+BA3381                                               RUNX1 (p.F259Sfs*338; 18.3%)        5.702575
+BA3290                                                    RUNX1 (p.D198N; MAF 6%)        5.928330
+BA3207                                               RUNX1 (p.F396Vfs*204; 55.4%)        6.364204
+BA3434                    RUNX1 (p.T196Dfs*17; 40.6%)|RUNX1 (p.X20_splice; 49.2%)        5.426012
+BA3175                                                     RUNX1 (p.D198N; 44.9%)        0.562030
+BA3228                                                     RUNX1 (p.R320*; 49.8%)        6.969120
+BA3199                                               RUNX1 (p.X269_splice; 48.1%)        6.205253
+BA3302                                                     RUNX1 (p.D198N; 47.7%)        5.796789
+BA3242                                                     RUNX1 (p.D198N; 47.3%)        5.815241
+BA3117                                                    RUNX1 (p.R166Q; VAF 6%)        6.044017
+BA3229                                                     RUNX1 (p.S322*; 49.8%)        6.142351
+BA3138                                                     RUNX1 (p.S322*; 17.2%)        4.716820
+BA3388                                                     RUNX1 (p.S322*; 17.2%)        4.771745
+BA3211                  RUNX1 (p.R346Pfs*254; 37.7%)|RUNX1 (p.X269_splice; 43.5%)        6.696349

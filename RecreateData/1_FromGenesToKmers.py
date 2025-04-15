@@ -5,14 +5,11 @@ import shutil
 
 
 
-# Genes = ["DNMT3A", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"]
-Genes = ["NPM1", "FLT3"]
+Genes = ["NPM1", "FLT3", "DNMT3A", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"]
 Genes.sort()
-# print(len(Genes))
+print(len(Genes))
 
 for gene in Genes:
-
-# gene = "NPM1"
 
     annotation_ref_file = "Documents/RecreateData/Homo_sapiens.GRCh37.87.gtf.gz"
     with gzip.open(annotation_ref_file, 'rt') as f:
@@ -125,6 +122,6 @@ for gene in Genes:
 
     for file in output_files:
         shutil.copy(file, "Elmer/scratch/users/tlouvet/Scripts/RecreateData/KmerToSearchRef/")
-        # directement sauvegardés dans le dossier sur le serveur de Montpellier
+        # directement sauvegardés dans le dossier sur le serveur Elmer
 
 

@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène RUNX1 en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 97.000, p-value = 0.015
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        6.173381
+BA2861    mono        6.189926
+BA2653    mono        7.680130
+BA2841      bi        6.046479
+BA2731      bi        6.173799
+BA2156      bi        6.549783
+BA2080    mono        6.466335
+BA2718      bi        6.846574
+BA3025      bi        6.293153
+BA2251      bi        6.155659
+BA2515    mono        6.488037
+BA2748      bi        6.580861
+BA2577      bi        6.624131
+BA2868      bi        6.463339
+BA2804    mono        6.752517
+BA2675    mono        8.074266
+BA2000    mono        7.771615
+BA2155      bi        6.891184
+BA2867    mono        7.903422
+BA2972      bi        6.646840
+BA2659    mono        7.521962
+BA2312    mono        7.236365
+BA2296      bi        6.682426
+BA2184      bi        6.850259
+BA3153    mono        5.626072
+BA2217      bi        6.394085
+BA3413      bi        7.175957
+BA3261      bi        6.364672
+BA3114    mono        6.543590
+BA3436    mono        8.843079
+BA3216    mono        8.076079
+BA3329    mono        6.645792
+BA3194    mono        6.922396
+BA3199    mono        7.416010
+BA3117      bi        6.923035
+BA3312      bi        6.597343
+BA3357    mono        6.529883
+BA3416    mono        6.703094

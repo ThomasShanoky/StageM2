@@ -333,34 +333,6 @@ def TrainLogReg(X_train, y_train, X_test, y_test, GridSearchBool):
     return acc, res
 
 
-#########################
-#  Réseau de neuronnes  #
-#########################
-
-from sklearn.preprocessing import LabelEncoder
-from tensorflow.keras.utils import to_categorical
-from tensorflow.keras import Input
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Dense, Dropout
-from tensorflow.keras.optimizers import Adam
-from sklearn.metrics import accuracy_score
-from sklearn.inspection import permutation_importance
-
-def TrainNN(X_train, y_train, X_test, y_test, epochs=50, batch_size=32):
-
-    # result = permutation_importance(model_predict, X_test, y_test_encoded, n_repeats=10, random_state=42, n_jobs=-1)
-    # importances = np.abs(result.importances_mean)
-    # indices = np.argsort(importances)[::-1]
-
-    # # Obtenir les features les plus importantes
-    # features = Genes + ["Âge"]
-    # res = ""
-    # for f in range(min(7, len(features))):  # Limiter à 7 features importantes
-    #     res += f"{f + 1}. feature {features[indices[f]]} ({importances[indices[f]]:.4f})\n"
-
-    return acc, res
-
-
 #####################################################################
 
 

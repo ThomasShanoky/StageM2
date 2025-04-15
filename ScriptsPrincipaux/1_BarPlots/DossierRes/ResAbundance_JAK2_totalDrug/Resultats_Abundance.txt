@@ -1,0 +1,23 @@
+#Résultats bruts de l'abondance de mutation du gène JAK2 selon la feature totalDrug, normalisée par le gène de ménage TBP.
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.047472 avec le test Mann-Whitney U
+ Abundance   TotalKmers  NormalizedExpression totalDrug
+ 10.965517 8.193431e+09              1.338330         y
+ 20.551724 6.827333e+09              3.010213         y
+ 19.241379 7.859985e+09              2.448017         y
+ 18.965517 8.484923e+09              2.235202         n
+ 15.448276 8.546911e+09              1.807469         y
+ 22.068966 6.229103e+09              3.542880         y
+ 14.275862 5.476180e+09              2.606901         y
+ 34.482759 1.011317e+10              3.409689         y
+ 12.689655 8.592370e+09              1.476852         n
+ 19.965517 8.752928e+09              2.281010         y
+ 38.034483 9.208330e+09              4.130443         y
+ 46.965517 1.050290e+10              4.471670         y
+ 28.482759 1.382345e+10              2.060467         n
+ 20.000000 8.965946e+09              2.230663         y
+ 13.896552 4.687717e+09              2.964461         y
+ 22.758621 8.731695e+09              2.606438         y
+ 58.758621 6.623305e+09              8.871496         y
+ 17.103448 7.495806e+09              2.281736         y
+ 85.310345 8.731930e+09              9.769930         y

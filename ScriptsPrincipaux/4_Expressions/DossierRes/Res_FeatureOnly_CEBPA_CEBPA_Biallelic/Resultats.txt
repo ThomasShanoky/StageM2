@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène CEBPA en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 320.000, p-value = 0.000
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        7.258878
+BA2861    mono        5.827812
+BA2653    mono       -0.955020
+BA2841      bi        4.936804
+BA2731      bi        4.661169
+BA2156      bi        7.076261
+BA2080    mono        5.705662
+BA2718      bi        6.295033
+BA3025      bi        6.537441
+BA2251      bi        4.823282
+BA2515    mono        5.343263
+BA2748      bi        6.096002
+BA2577      bi        6.461847
+BA2868      bi        5.979708
+BA2804    mono        5.334341
+BA2675    mono        4.325247
+BA2000    mono        4.566932
+BA2155      bi        5.988763
+BA2867    mono        5.090421
+BA2972      bi        5.691816
+BA2659    mono        3.549897
+BA2312    mono        3.024285
+BA2296      bi        5.926764
+BA2184      bi        6.442757
+BA3153    mono        2.267288
+BA2217      bi        6.005138
+BA3413      bi        6.440324
+BA3261      bi        6.144588
+BA3114    mono        2.769767
+BA3436    mono        5.912407
+BA3216    mono        3.382060
+BA3329    mono       -0.049936
+BA3194    mono        6.257620
+BA3199    mono        4.991809
+BA3117      bi        6.670584
+BA3312      bi        5.452689
+BA3357    mono        4.065285
+BA3416    mono        5.408508

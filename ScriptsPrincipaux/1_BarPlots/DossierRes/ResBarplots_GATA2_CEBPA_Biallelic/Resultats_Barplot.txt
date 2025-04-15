@@ -1,0 +1,13 @@
+Résultats de barplot pour GATA2 et CEBPA_Biallelic
+p-value = 0.01400 selon le test du χ²
+Résultats bruts : 
+  CEBPA_Biallelic  GATA2 muté  GATA2 non muté
+0              bi          17              12
+1            mono           7              15
+Liste des ID Sample par catégorie :
+GATA2 muté :
+bi : BA2156, BA3312, BA2972, BA3413, BA2972, BA2296, BA2577, BA2748, BA3025, BA2156, BA2155, BA3117, BA2217, BA2296, BA2731, BA2915, BA3025
+mono : BA3436, BA3416, BA3416, BA2080, BA2804, BA3199, BA3329
+GATA2 non muté :
+bi : BA2360, BA2841, BA2199, BA2974, BA2718, BA2251, BA2868, BA2184, BA2614, BA2576, BA3261, BA3088
+mono : BA2861, BA2653, BA2864, BA2515, BA2675, BA2000, BA2867, BA2659, BA2312, BA2652, BA3153, BA3114, BA3216, BA3194, BA3357

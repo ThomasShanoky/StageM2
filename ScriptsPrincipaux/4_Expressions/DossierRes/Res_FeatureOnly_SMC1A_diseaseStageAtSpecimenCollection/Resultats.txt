@@ -1,0 +1,647 @@
+#Boxplots d'expressions du gène SMC1A en fonction de la feature diseaseStageAtSpecimenCollection
+#Résultat du test statistique ANOVA : F = 9.869, p-value = 0.000
+#Tableau des résultats :
+Sample           Feature  ExpressionGene
+BA2452          Residual        7.418896
+BA2922           Relapse        6.189502
+BA2707           Relapse        6.055736
+BA2409 Initial Diagnosis        6.965673
+BA2480           Relapse        6.212735
+BA2496 Initial Diagnosis        6.811458
+BA3037 Initial Diagnosis        5.335032
+BA2236           Relapse        6.506985
+BA2865 Initial Diagnosis        6.648075
+BA2923          Residual        6.427638
+BA2003          Residual        4.868475
+BA2751 Initial Diagnosis        6.400255
+BA3395          Residual        6.897781
+BA2286 Initial Diagnosis        6.461847
+BA2488 Initial Diagnosis        6.932195
+BA3379 Initial Diagnosis        6.563269
+BA2887 Initial Diagnosis        6.582538
+BA2712 Initial Diagnosis        7.224594
+BA2858         Remission        6.923035
+BA2068 Initial Diagnosis        5.814425
+BA2104 Initial Diagnosis        6.255346
+BA3124 Initial Diagnosis        6.568904
+BA2921          Residual        5.290149
+BA2449 Initial Diagnosis        6.366490
+BA2360          Residual        6.703702
+BA2802          Residual        6.323608
+BA2235 Initial Diagnosis        6.736925
+BA3038 Initial Diagnosis        6.946889
+BA3006 Initial Diagnosis        6.805454
+BA2245          Residual        6.448021
+BA2667 Initial Diagnosis        6.595194
+BA2239 Initial Diagnosis        6.802992
+BA2782 Initial Diagnosis        6.541508
+BA2649 Initial Diagnosis        7.362524
+BA2592          Residual        6.545040
+BA2861 Initial Diagnosis        7.081484
+BA2134 Initial Diagnosis        6.478662
+BA2909 Initial Diagnosis        6.315858
+BA2429          Residual        6.324087
+BA2653 Initial Diagnosis        6.603683
+BA2947 Initial Diagnosis        5.843531
+BA2032          Residual        5.184405
+BA2162 Initial Diagnosis        6.135972
+BA2564 Initial Diagnosis        7.520821
+BA2597 Initial Diagnosis        5.719504
+BA3243 Initial Diagnosis        6.319473
+BA2106           Relapse        6.560655
+BA2939          Residual        5.932112
+BA2427           Relapse        5.747829
+BA2841           Relapse        5.774093
+BA2446 Initial Diagnosis        8.051153
+BA2025           Relapse        7.951050
+BA2645          Residual        4.461923
+BA2525 Initial Diagnosis        5.894403
+BA2876 Initial Diagnosis        5.197686
+BA2357 Initial Diagnosis        6.376443
+BA2546 Initial Diagnosis        6.785508
+BA2742 Initial Diagnosis        7.021254
+BA2316 Initial Diagnosis        6.926931
+BA2421          Residual        5.245073
+BA2087 Initial Diagnosis        6.112517
+BA2910           Relapse        6.071388
+BA2148 Initial Diagnosis        5.273594
+BA2329          Residual        6.729916
+BA2677          Residual        6.557640
+BA3178 Initial Diagnosis        6.811458
+BA2072 Initial Diagnosis        7.587599
+BA3029          Residual        5.600428
+BA2735          Residual        4.318143
+BA2733 Initial Diagnosis        6.291818
+BA2995 Initial Diagnosis        5.196991
+BA2069 Initial Diagnosis        7.563211
+BA2100          Residual        5.250747
+BA2953          Residual        6.411763
+BA2681 Initial Diagnosis        7.173585
+BA2248          Residual        5.347945
+BA2832 Initial Diagnosis        6.630588
+BA2308          Residual        5.651804
+BA2413          Residual        5.421982
+BA2701          Residual        5.137688
+BA2634          Residual        5.606934
+BA2937          Residual        6.913954
+BA2600 Initial Diagnosis        5.828970
+BA2019          Residual        7.468950
+BA2412          Residual        6.359518
+BA2334          Residual        5.706049
+BA2050          Residual        7.204657
+BA3230 Initial Diagnosis        7.572514
+BA2731 Initial Diagnosis        5.871393
+BA2418          Residual        5.843149
+BA2294 Initial Diagnosis        6.576701
+BA2816 Initial Diagnosis        6.137679
+BA2814 Initial Diagnosis        7.117386
+BA2631 Initial Diagnosis        6.444694
+BA2023 Initial Diagnosis        6.671731
+BA2375 Initial Diagnosis        6.776057
+BA2485 Initial Diagnosis        6.661190
+BA2455 Initial Diagnosis        6.227619
+BA2636 Initial Diagnosis        5.895604
+BA2325 Initial Diagnosis        6.816896
+BA2169          Residual        5.254979
+BA2156 Initial Diagnosis        6.680708
+BA2511 Initial Diagnosis        5.967846
+BA2168           Relapse        5.689866
+BA2505 Initial Diagnosis        5.466284
+BA2871 Initial Diagnosis        6.788651
+BA2655          Residual        6.830873
+BA2227 Initial Diagnosis        6.288654
+BA2812 Initial Diagnosis        6.772460
+BA2125 Initial Diagnosis        8.009529
+BA2603 Initial Diagnosis        5.337219
+BA2808 Initial Diagnosis        5.675831
+BA2282         Remission        6.141495
+BA2482 Initial Diagnosis        6.600510
+BA2822          Residual        6.391652
+BA2594 Initial Diagnosis        6.976628
+BA2747 Initial Diagnosis        5.846310
+BA2561 Initial Diagnosis        6.237084
+BA2094          Residual        6.700826
+BA2567 Initial Diagnosis        5.098923
+BA2906 Initial Diagnosis        7.266694
+BA2956 Initial Diagnosis        5.924325
+BA2474 Initial Diagnosis        6.746126
+BA2065           Relapse        7.097800
+BA2737 Initial Diagnosis        6.132490
+BA2463           Relapse        5.277945
+BA2110 Initial Diagnosis        6.810862
+BA2992 Initial Diagnosis        7.329669
+BA2220 Initial Diagnosis        7.473165
+BA2720          Residual        6.446131
+BA2063 Initial Diagnosis        5.285034
+BA2772 Initial Diagnosis        5.988763
+BA2935 Initial Diagnosis        6.153533
+BA2260 Initial Diagnosis        6.440324
+BA2787         Remission        5.818015
+BA2948 Initial Diagnosis        5.694879
+BA3296 Initial Diagnosis        6.485600
+BA2524 Initial Diagnosis        6.330028
+BA2811 Initial Diagnosis        6.884921
+BA2540 Initial Diagnosis        6.728768
+BA2928 Initial Diagnosis        8.172322
+BA2302 Initial Diagnosis        5.460372
+BA2651 Initial Diagnosis        5.711381
+BA2595          Residual        6.292251
+BA2619 Initial Diagnosis        7.157984
+BA3013 Initial Diagnosis        7.386670
+BA2405 Initial Diagnosis        5.910072
+BA2856 Initial Diagnosis        4.673540
+BA2377 Initial Diagnosis        6.592031
+BA2499 Initial Diagnosis        5.810077
+BA3023 Initial Diagnosis        6.339185
+BA2095 Initial Diagnosis        7.573656
+BA2275 Initial Diagnosis        7.295991
+BA2901 Initial Diagnosis        5.857340
+BA2221         Remission        6.548755
+BA2387 Initial Diagnosis        6.696930
+BA2657          Residual        6.487565
+BA2962 Initial Diagnosis        7.103806
+BA2195 Initial Diagnosis        6.330929
+BA2688 Initial Diagnosis        5.844688
+BA2420 Initial Diagnosis        6.644646
+BA2727          Residual        6.269725
+BA2756          Residual        6.573564
+BA2122         Remission        5.801464
+BA2053 Initial Diagnosis        5.319029
+BA2080          Residual        5.777666
+BA2415         Remission        6.382610
+BA2081 Initial Diagnosis        7.596945
+BA2354 Initial Diagnosis        6.552856
+BA3273 Initial Diagnosis        5.130881
+BA2893 Initial Diagnosis        6.544084
+BA2044 Initial Diagnosis        7.085217
+BA2489 Initial Diagnosis        5.686468
+BA2908 Initial Diagnosis        4.379677
+BA2054 Initial Diagnosis        7.127388
+BA2872 Initial Diagnosis        7.396354
+BA2526          Residual        4.928054
+BA3145          Residual        4.761452
+BA2041 Initial Diagnosis        7.251762
+BA2096         Remission        7.217909
+BA2464 Initial Diagnosis        6.622456
+BA2902 Initial Diagnosis        5.124205
+BA2541 Initial Diagnosis        6.733454
+BA2769          Residual        6.477153
+BA2843 Initial Diagnosis        5.191610
+BA2497 Initial Diagnosis        7.337051
+BA2718 Initial Diagnosis        6.548755
+BA2575 Initial Diagnosis        7.225431
+BA2593 Initial Diagnosis        5.576399
+BA2791 Initial Diagnosis        5.725563
+BA2620 Initial Diagnosis        6.336008
+BA2629 Initial Diagnosis        6.229897
+BA2870 Initial Diagnosis        7.436309
+BA2423          Residual        5.480233
+BA2682 Initial Diagnosis        6.453001
+BA2276 Initial Diagnosis        6.347830
+BA2348         Remission        6.027372
+BA2709 Initial Diagnosis        6.668369
+BA2789 Initial Diagnosis        7.189831
+BA2694          Residual        5.013589
+BA2722          Residual        7.952965
+BA2538 Initial Diagnosis        5.290823
+BA2583 Initial Diagnosis        6.427186
+BA2292         Remission        7.348375
+BA2806 Initial Diagnosis        6.031110
+BA2153          Residual        6.392103
+BA2674           Relapse        6.290919
+BA2809          Residual        6.106215
+BA3025          Residual        6.615362
+BA2523          Residual        7.408050
+BA3027          Residual        5.864178
+BA2441 Initial Diagnosis        6.651878
+BA2514 Initial Diagnosis        6.439836
+BA2695          Residual        5.801061
+BA2520 Initial Diagnosis        5.492150
+BA2479 Initial Diagnosis        5.872203
+BA2281 Initial Diagnosis        6.633834
+BA2932 Initial Diagnosis        6.588361
+BA2123 Initial Diagnosis        7.079949
+BA2844 Initial Diagnosis        6.488037
+BA2660 Initial Diagnosis        7.150786
+BA2836 Initial Diagnosis        5.495849
+BA2714 Initial Diagnosis        6.884307
+BA3317           Relapse        6.592569
+BA2440 Initial Diagnosis        6.424790
+BA2036 Initial Diagnosis        7.306760
+BA2828 Initial Diagnosis        6.081488
+BA2251          Residual        6.027372
+BA2952 Initial Diagnosis        7.622059
+BA2410 Initial Diagnosis        5.980544
+BA2139 Initial Diagnosis        6.853942
+BA2051 Initial Diagnosis        5.321988
+BA2532 Initial Diagnosis        5.703355
+BA2986          Residual        7.127388
+BA2494 Initial Diagnosis        5.727549
+BA2515          Residual        6.001347
+BA2748 Initial Diagnosis        7.368168
+BA2577           Relapse        7.708401
+BA2622 Initial Diagnosis        6.445175
+BA2758           Relapse        6.113809
+BA2930          Residual        6.512060
+BA2970 Initial Diagnosis        6.292688
+BA2839 Initial Diagnosis        5.376018
+BA2868 Initial Diagnosis        6.030245
+BA3011 Initial Diagnosis        5.585299
+BA2052 Initial Diagnosis        5.980544
+BA2510 Initial Diagnosis        6.019124
+BA2691 Initial Diagnosis        6.316324
+BA2374 Initial Diagnosis        7.933522
+BA2804 Initial Diagnosis        7.408050
+BA2670          Residual        5.585299
+BA2675 Initial Diagnosis        6.753097
+BA2031 Initial Diagnosis        7.728095
+BA2589          Residual        5.172412
+BA2198 Initial Diagnosis        7.081484
+BA2066 Initial Diagnosis        7.847345
+BA2344 Initial Diagnosis        7.209736
+BA2534          Residual        6.295033
+BA2459 Initial Diagnosis        6.156510
+BA2229 Initial Diagnosis        5.684167
+BA2559 Initial Diagnosis        6.388374
+BA2093 Initial Diagnosis        6.592031
+BA2000 Initial Diagnosis        8.374098
+BA2425 Initial Diagnosis        7.193125
+BA2905 Initial Diagnosis        5.485393
+BA2304 Initial Diagnosis        7.335298
+BA2976 Initial Diagnosis        6.819477
+BA2386 Initial Diagnosis        5.690280
+BA2879           Relapse        5.490636
+BA3400           Relapse        5.415727
+BA2035 Initial Diagnosis        6.515021
+BA2760 Initial Diagnosis        6.102773
+BA2201 Initial Diagnosis        7.166329
+BA2355 Initial Diagnosis        5.940600
+BA2113 Initial Diagnosis        8.505291
+BA2155           Relapse        6.382610
+BA2955 Initial Diagnosis        7.057219
+BA2502          Residual        7.402001
+BA2322 Initial Diagnosis        7.304963
+BA2020 Initial Diagnosis        7.647789
+BA2226 Initial Diagnosis        7.319378
+BA2376 Initial Diagnosis        6.634863
+BA2200           Relapse        7.041336
+BA2121 Initial Diagnosis        7.342780
+BA2944 Initial Diagnosis        6.736925
+BA2033 Initial Diagnosis        5.965056
+BA2867 Initial Diagnosis        5.969878
+BA2089 Initial Diagnosis        7.302256
+BA2034          Residual        6.500025
+BA2224 Initial Diagnosis        6.685937
+BA2470           Relapse        7.087412
+BA2046 Initial Diagnosis        5.657511
+BA2972 Initial Diagnosis        6.523755
+BA2978 Initial Diagnosis        7.321216
+BA2829          Residual        6.414654
+BA2579          Residual        6.478662
+BA2249          Residual        6.717237
+BA2851 Initial Diagnosis        7.076261
+BA2587 Initial Diagnosis        7.275551
+BA2461         Remission        6.667301
+BA2024 Initial Diagnosis        6.500544
+BA2623          Residual        6.929599
+BA2426 Initial Diagnosis        6.728768
+BA2271 Initial Diagnosis        6.777209
+BA3004 Initial Diagnosis        6.904231
+BA3010 Initial Diagnosis        6.830873
+BA2662 Initial Diagnosis        8.298209
+BA2280          Residual        6.984191
+BA2277          Residual        6.812039
+BA2658 Initial Diagnosis        6.511051
+BA2512 Initial Diagnosis        7.291628
+BA2394          Residual        6.027784
+BA2950          Residual        6.648621
+BA2981          Residual        6.758872
+BA2934         Remission        5.929177
+BA2539         Remission        6.951500
+BA2786          Residual        8.566016
+BA2256          Residual        7.034743
+BA2483          Residual        7.246478
+BA3002          Residual        7.323095
+BA2109 Initial Diagnosis        6.033223
+BA2242 Initial Diagnosis        5.912828
+BA2132 Initial Diagnosis        6.543071
+BA2618          Residual        6.703094
+BA2846 Initial Diagnosis        6.632258
+BA2521 Initial Diagnosis        7.213780
+BA2885 Initial Diagnosis        7.395406
+BA2639 Initial Diagnosis        7.799569
+BA2775 Initial Diagnosis        6.435903
+BA2402 Initial Diagnosis        6.840988
+BA2097 Initial Diagnosis        5.983861
+BA2399 Initial Diagnosis        6.530923
+BA2850          Residual        5.736634
+BA2993          Residual        5.676959
+BA3322         Remission        6.673398
+BA2174 Initial Diagnosis        7.343708
+BA2004          Residual        6.773604
+BA3001 Initial Diagnosis        6.751335
+BA2911 Initial Diagnosis        6.518138
+BA2311 Initial Diagnosis        6.909407
+BA3040 Initial Diagnosis        7.139940
+BA2724 Initial Diagnosis        5.910459
+BA2837          Residual        5.841122
+BA2821 Initial Diagnosis        7.433305
+BA2363          Residual        6.206135
+BA2233 Initial Diagnosis        6.012926
+BA2744 Initial Diagnosis        6.264750
+BA2501 Initial Diagnosis        6.594681
+BA2301 Initial Diagnosis        6.305100
+BA2880 Initial Diagnosis        6.809028
+BA2621 Initial Diagnosis        6.057766
+BA2852           Relapse        4.998120
+BA2133         Remission        5.869775
+BA2473         Remission        7.431382
+BA2866 Initial Diagnosis        6.706390
+BA2212 Initial Diagnosis        6.209643
+BA2477 Initial Diagnosis        7.673596
+BA2244         Remission        7.097104
+BA3089          Residual        6.157920
+BA2685 Initial Diagnosis        6.525313
+BA2273 Initial Diagnosis        6.101054
+BA2659          Residual        6.802399
+BA2124 Initial Diagnosis        6.427186
+BA2369          Residual        5.923539
+BA2400 Initial Diagnosis        7.228677
+BA2762 Initial Diagnosis        6.379758
+BA2312 Initial Diagnosis        6.141927
+BA2813 Initial Diagnosis        6.069300
+BA2211 Initial Diagnosis        7.082976
+BA2171 Initial Diagnosis        7.812499
+BA2746 Initial Diagnosis        7.029112
+BA2798 Initial Diagnosis        6.007221
+BA2883          Residual        5.653726
+BA2288          Residual        5.896033
+BA3407         Remission        6.558156
+BA2588 Initial Diagnosis        6.238855
+BA2296 Initial Diagnosis        6.902269
+BA2300 Initial Diagnosis        7.384596
+BA2903          Residual        5.353781
+BA2545 Initial Diagnosis        7.003555
+BA2840 Initial Diagnosis        6.580861
+BA2528 Initial Diagnosis        6.758872
+BA2646 Initial Diagnosis        6.396900
+BA2240          Residual        7.057219
+BA2926 Initial Diagnosis        7.108514
+BA2272 Initial Diagnosis        6.417539
+BA2306 Initial Diagnosis        6.624131
+BA2842          Residual        5.411349
+BA2855         Remission        5.628685
+BA2040         Remission        6.080691
+BA2765          Residual        6.805454
+BA2904          Residual        6.748989
+BA2726 Initial Diagnosis        6.832143
+BA2234 Initial Diagnosis        8.208181
+BA2022 Initial Diagnosis        7.301409
+BA2228          Residual        6.895111
+BA2037 Initial Diagnosis        6.669439
+BA2184 Initial Diagnosis        7.009913
+BA3009 Initial Diagnosis        7.126641
+BA2442 Initial Diagnosis        6.571951
+BA2882 Initial Diagnosis        6.394535
+BA2705          Residual        4.693646
+BA2379          Residual        5.090078
+BA2570 Initial Diagnosis        5.930390
+BA2764         Remission        5.974408
+BA2209           Relapse        5.176296
+BA2989          Residual        5.853006
+BA2261          Residual        6.571951
+BA2721 Initial Diagnosis        6.940184
+BA2728 Initial Diagnosis        7.436309
+BA2715          Residual        6.249128
+BA2116          Residual        6.001735
+BA2469          Residual        5.167087
+BA2269          Residual        5.101429
+BA2098 Initial Diagnosis        7.081484
+BA2951 Initial Diagnosis        6.740977
+BA2778 Initial Diagnosis        6.948816
+BA2163          Residual        6.598388
+BA3153 Initial Diagnosis        4.791366
+BA2817          Residual        5.808912
+BA2820 Initial Diagnosis        6.632258
+BA2704 Initial Diagnosis        7.741329
+BA2723           Relapse        5.526855
+BA2492          Residual        5.820762
+BA2088         Remission        6.979261
+BA3202         Remission        6.877881
+BA3139           Relapse        7.259767
+BA3285          Residual        7.131980
+BA2584 Initial Diagnosis        6.553365
+BA3079 Initial Diagnosis        5.915950
+BA2417          Residual        6.215848
+BA2361 Initial Diagnosis        6.535965
+BA2450          Residual        6.407852
+BA2994          Residual        6.468245
+BA2824          Residual        6.709781
+BA2079         Remission        6.250446
+BA3099           Relapse        7.127388
+BA2552           Relapse        6.352110
+BA2472 Initial Diagnosis        5.942217
+BA2047 Initial Diagnosis        7.280861
+BA2101 Initial Diagnosis        5.830114
+BA2082 Initial Diagnosis        5.680395
+BA2456 Initial Diagnosis        5.653358
+BA2175 Initial Diagnosis        7.090477
+BA2507 Initial Diagnosis        6.457997
+BA2563 Initial Diagnosis        6.518138
+BA3164           Relapse        6.731090
+BA3235          Residual        6.545538
+BA2984 Initial Diagnosis        6.705852
+BA2414 Initial Diagnosis        7.271107
+BA2697 Initial Diagnosis        6.325902
+BA2999          Residual        6.863463
+BA2644 Initial Diagnosis        6.408778
+BA2011 Initial Diagnosis        5.319763
+BA2217 Initial Diagnosis        6.987563
+BA2454 Initial Diagnosis        6.802399
+BA2776 Initial Diagnosis        7.878762
+BA2218           Relapse        5.413546
+BA2135 Initial Diagnosis        6.308875
+BA2914 Initial Diagnosis        7.420904
+BA2500 Initial Diagnosis        7.179997
+BA2406          Residual        6.629526
+BA2830           Relapse        6.305100
+BA2353          Residual        6.543071
+BA3108 Initial Diagnosis        7.296871
+BA2924           Relapse        5.181277
+BA3192          Residual        6.424314
+BA2303 Initial Diagnosis        7.018474
+BA2160 Initial Diagnosis        6.073057
+BA2590 Initial Diagnosis        6.950854
+BA3195 Initial Diagnosis        5.958490
+BA2516          Residual        6.776057
+BA3036 Initial Diagnosis        6.356703
+BA2971 Initial Diagnosis        5.287538
+BA3410 Initial Diagnosis        6.064688
+BA3118 Initial Diagnosis        6.341457
+BA3206 Initial Diagnosis        6.627898
+BA3217 Initial Diagnosis        6.656814
+BA3405 Initial Diagnosis        6.453001
+BA3306 Initial Diagnosis        5.437694
+BA3371          Residual        7.053627
+BA3413 Initial Diagnosis        6.673398
+BA3411 Initial Diagnosis        7.201524
+BA3133 Initial Diagnosis        6.873371
+BA3451 Initial Diagnosis        7.075564
+BA3286 Initial Diagnosis        7.799569
+BA3221         Remission        6.435427
+BA3212 Initial Diagnosis        7.243903
+BA3103 Initial Diagnosis        6.094720
+BA3271 Initial Diagnosis        7.581777
+BA3152 Initial Diagnosis        7.081484
+BA3095 Initial Diagnosis        6.432897
+BA3251 Initial Diagnosis        7.427218
+BA3362 Initial Diagnosis        7.553007
+BA3135 Initial Diagnosis        5.762180
+BA3408 Initial Diagnosis        5.869402
+BA3187           Relapse        6.499541
+BA3098 Initial Diagnosis        6.760024
+BA3435 Initial Diagnosis        6.412270
+BA3261 Initial Diagnosis        6.738011
+BA3203 Initial Diagnosis        5.285748
+BA3174          Residual        5.566680
+BA3299 Initial Diagnosis        6.374046
+BA3347 Initial Diagnosis        6.624662
+BA3126 Initial Diagnosis        6.580287
+BA3380          Residual        5.615495
+BA3114         Remission        6.225453
+BA3109          Residual        5.046216
+BA3452           Relapse        5.136921
+BA3418 Initial Diagnosis        5.037142
+BA3245 Initial Diagnosis        5.903120
+BA3085 Initial Diagnosis        6.001735
+BA3128          Residual        5.387675
+BA3423          Residual        6.303268
+BA3173          Residual        6.461362
+BA3171 Initial Diagnosis        6.182518
+BA3277 Initial Diagnosis        5.586462
+BA3210          Residual        5.895211
+BA3157 Initial Diagnosis        6.799312
+BA3433 Initial Diagnosis        4.996651
+BA3374 Initial Diagnosis        7.111456
+BA3403           Relapse        6.496993
+BA3222          Residual        6.740977
+BA3450 Initial Diagnosis        6.368839
+BA3167 Initial Diagnosis        5.896464
+BA3269 Initial Diagnosis        5.358886
+BA3110 Initial Diagnosis        5.682680
+BA3156 Initial Diagnosis        6.174237
+BA3226 Initial Diagnosis        6.948196
+BA3421 Initial Diagnosis        6.171214
+BA3232 Initial Diagnosis        7.520821
+BA3289 Initial Diagnosis        5.303464
+BA3430 Initial Diagnosis        6.502006
+BA3384 Initial Diagnosis        7.666140
+BA3427 Initial Diagnosis        6.234430
+BA3449 Initial Diagnosis        6.763595
+BA3163 Initial Diagnosis        7.420904
+BA3158 Initial Diagnosis        6.637078
+BA3436 Initial Diagnosis        6.923035
+BA3154 Initial Diagnosis        5.940600
+BA3162 Initial Diagnosis        5.606934
+BA3352 Initial Diagnosis        5.771822
+BA3084 Initial Diagnosis        7.339786
+BA3149 Initial Diagnosis        5.528401
+BA3169 Initial Diagnosis        5.982635
+BA3180 Initial Diagnosis        5.436219
+BA3255 Initial Diagnosis        6.377330
+BA3438 Initial Diagnosis        6.620862
+BA3345 Initial Diagnosis        6.207402
+BA3431 Initial Diagnosis        5.163895
+BA3181 Initial Diagnosis        6.573054
+BA3341 Initial Diagnosis        5.549139
+BA3191 Initial Diagnosis        6.414654
+BA3197 Initial Diagnosis        7.043446
+BA3448 Initial Diagnosis        7.313012
+BA3453 Initial Diagnosis        6.655181
+BA3406 Initial Diagnosis        5.912828
+BA3308          Residual        6.229458
+BA3186           Relapse        6.496993
+BA3334 Initial Diagnosis        6.310690
+BA3447 Initial Diagnosis        5.808912
+BA3116 Initial Diagnosis        6.153971
+BA3280 Initial Diagnosis        5.610641
+BA3185 Initial Diagnosis        5.222103
+BA3094 Initial Diagnosis        6.278728
+BA3318 Initial Diagnosis        6.151014
+BA3216 Initial Diagnosis        5.779656
+BA3332 Initial Diagnosis        7.211347
+BA3373 Initial Diagnosis        6.766563
+BA3319 Initial Diagnosis        6.493009
+BA3328 Initial Diagnosis        6.826735
+BA3240 Initial Diagnosis        6.606345
+BA3142 Initial Diagnosis        5.282933
+BA3333 Initial Diagnosis        5.700325
+BA3381 Initial Diagnosis        7.120404
+BA3290 Initial Diagnosis        6.317204
+BA3207 Initial Diagnosis        6.310228
+BA3305 Initial Diagnosis        5.794042
+BA3434 Initial Diagnosis        6.928986
+BA3189 Initial Diagnosis        6.447102
+BA3264 Initial Diagnosis        6.523755
+BA3329 Initial Diagnosis        6.455522
+BA3225 Initial Diagnosis        6.101902
+BA3183          Residual        6.529389
+BA3397 Initial Diagnosis        6.722381
+BA3311 Initial Diagnosis        6.143736
+BA3175          Residual        6.253547
+BA3422 Initial Diagnosis        5.341183
+BA3228          Residual        6.546665
+BA3213 Initial Diagnosis        6.659581
+BA3415 Initial Diagnosis        8.756957
+BA3270 Initial Diagnosis        6.785508
+BA3324 Initial Diagnosis        6.582017
+BA3335 Initial Diagnosis        5.460372
+BA3199 Initial Diagnosis        7.254403
+BA3326 Initial Diagnosis        6.366009
+BA3297 Initial Diagnosis        6.799312
+BA3227 Initial Diagnosis        7.280861
+BA3412 Initial Diagnosis        7.142213
+BA3293           Relapse        6.689216
+BA3250 Initial Diagnosis        7.179997
+BA3177 Initial Diagnosis        7.333391
+BA3315 Initial Diagnosis        7.003555
+BA3182 Initial Diagnosis        6.624662
+BA3369 Initial Diagnosis        6.809028
+BA3078 Initial Diagnosis        6.512060
+BA3386 Initial Diagnosis        7.203867
+BA3176 Initial Diagnosis        7.398294
+BA3258 Initial Diagnosis        7.162995
+BA3446           Relapse        6.779521
+BA3295 Initial Diagnosis        6.861450
+BA3136 Initial Diagnosis        6.587276
+BA3234 Initial Diagnosis        6.295033
+BA3087 Initial Diagnosis        6.915214
+BA3454 Initial Diagnosis        7.213008
+BA3302 Initial Diagnosis        6.686990
+BA3242          Residual        6.568904
+BA3117 Initial Diagnosis        6.819477
+BA3266 Initial Diagnosis        7.012713
+BA3268 Initial Diagnosis        7.014729
+BA3229 Initial Diagnosis        6.426241
+BA3138          Residual        5.708366
+BA3388          Residual        5.901178
+BA3353 Initial Diagnosis        6.670584
+BA3312 Initial Diagnosis        7.328803
+BA3119 Initial Diagnosis        7.091910
+BA3219 Initial Diagnosis        6.067617
+BA3351 Initial Diagnosis        7.136714
+BA3357 Initial Diagnosis        5.817263
+BA3208 Initial Diagnosis        6.490028
+BA3310 Initial Diagnosis        6.881622
+BA3200 Initial Diagnosis        6.426241
+BA3325          Residual        5.116044
+BA3146 Initial Diagnosis        6.529883
+BA3211 Initial Diagnosis        6.619251
+BA3130 Initial Diagnosis        6.379758
+BA3376 Initial Diagnosis        6.473760
+BA3137 Initial Diagnosis        6.716676
+BA3300 Initial Diagnosis        6.599491
+BA3375 Initial Diagnosis        7.495658
+BA3385 Initial Diagnosis        7.120404
+BA3416 Initial Diagnosis        6.690273
+BA3123 Initial Diagnosis        6.052796

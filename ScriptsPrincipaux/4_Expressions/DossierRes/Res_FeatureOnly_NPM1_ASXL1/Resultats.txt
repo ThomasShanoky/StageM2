@@ -1,0 +1,72 @@
+#Boxplots d'expressions du gène NPM1 en fonction de la feature ASXL1
+#Résultat du test statistique ANOVA : F = 832.572, p-value = 0.028
+#Tableau des résultats :
+Sample                                                Feature  ExpressionGene
+BA2707                            ASXL1 (p.G646Wfs*12; 27.9%)        9.122105
+BA2712                            ASXL1 (p.G646Wfs*12; 28.6%)        7.825499
+BA2134                           ASXL1 (p.A619fs*14; MAF 50%)        8.300380
+BA2162                                 ASXL1 (p.W583*; 47.9%)        8.855777
+BA2597                            ASXL1 (p.G645Vfs*58; 12.5%)        8.135475
+BA2681  ASXL1 (p.G645Vfs*58; 8.3%)|ASXL1 (p.C789Wfs*2; 30.5%)        9.525175
+BA3230                            ASXL1 (p.E635Rfs*15; 22.0%)        8.781082
+BA2023                            ASXL1 (p.G646Wfs*12; 27.3%)        8.331153
+BA2636                            ASXL1 (p.G645Vfs*58; 43.8%)        9.107139
+BA2377                             ASXL1 (p.D943Qfs*6; 38.5%)        8.743899
+BA2122      ASXL1 (p.Q512*; 56.3%)|ASXL1 (p.G645Vfs*58; 9.1%)        7.708401
+BA2489                            ASXL1 (p.G646Wfs*12; 31.2%)        9.156289
+BA3145                            ASXL1 (p.G645Vfs*58; 10.5%)        8.616958
+BA2620                             ASXL1 (p.R549Pfs*2; 42.0%)        8.616958
+BA2694                                 ASXL1 (p.E657*; 50.0%)        8.927488
+BA2538                            ASXL1 (p.G646Wfs*12; 25.0%)        8.404295
+BA2806                             ASXL1 (p.G645Vfs*58; 8.0%)        9.013069
+BA2153                              ASXL1 (p.Q588*; MAF 43% )        9.579092
+BA2674                               ASXL1 (p.Q588*; MAF 49%)        9.152456
+BA2520                            ASXL1 (p.D720Rfs*18; 14.1%)        9.081273
+BA2622                            ASXL1 (p.G646Wfs*12; 20.0%)        8.650061
+BA2758                            ASXL1 (p.G646Wfs*12; 21.1%)        8.011216
+BA2970                                 ASXL1 (p.W898*; 42.1%)        8.858967
+BA2510                                 ASXL1 (p.W960*; 48.8%)        9.016588
+BA2198                            ASXL1 (p.E635Rfs*15; 10.5%)        9.391184
+BA2066                                 ASXL1 (p.R693*; 19.8%)        8.280973
+BA2089                            ASXL1 (p.G645Wfs*12; 60.0%)        7.655133
+BA3010                            ASXL1 (p.G646Wfs*12; 39.4%)        9.006053
+BA2394                           ASXL1 (c.1940dup; MAF 37.9%)        8.212229
+BA2618                                 ASXL1 (p.Y425*; 46.8%)        8.611512
+BA2885                            ASXL1 (p.G645Vfs*58; 16.7%)        8.021425
+BA3322                              ASXL1 (p.S1028*; MAF 14%)        8.255544
+BA2212                            ASXL1 (p.G646Wfs*12; 39.3%)        9.334552
+BA2244                            ASXL1 (p.G645Vfs*58; 10.0%)        8.449666
+BA2685                            ASXL1 (p.G646Wfs*12; 28.0%)        9.395624
+BA2798                                 ASXL1 (p.Q428*; 43.9%)        9.676798
+BA2883                                 ASXL1 (p.Q428*; 43.4%)        9.055811
+BA2801                                 ASXL1 (p.R693*; 38.7%)        8.324498
+BA2903                            ASXL1 (p.G646Wfs*12; 50.0%)        6.473760
+BA2454                                 ASXL1 (p.R693*; 50.0%)        9.137210
+BA2135                            ASXL1 (p.G646Wfs*12; 32.6%)        9.530002
+BA2516                            ASXL1 (p.E635Dfs*22; 42.9%)        9.401775
+BA3405                            ASXL1 (p.G646Wfs*12; 30.1%)        7.612452
+BA3411                                 ASXL1 (p.L823*; 45.9%)        8.881482
+BA3408                            ASXL1 (p.G646Wfs*12; 12.8%)        8.423216
+BA3435                            ASXL1 (p.G646Wfs*12; 30.2%)        9.400075
+BA3261                            ASXL1 (p.A752Lfs*20; 43.9%)        9.066675
+BA3174                            ASXL1 (p.E635Rfs*15; 24.3%)        7.895631
+BA3210                            ASXL1 (p.G646Wfs*12; 36.4%)        8.243017
+BA3399                                 ASXL1 (p.E865*; 39.7%)        7.845671
+BA3149                            ASXL1 (p.E635Rfs*15; 16.4%)        7.821098
+BA3181                            ASXL1 (p.R634Kfs*24; 38.6%)        8.399605
+BA3308                            ASXL1 (p.G646Wfs*12; 34.3%)        9.386757
+BA3334                            ASXL1 (p.C687Yfs*30; 45.2%)        8.721461
+BA3185                            ASXL1 (p.G646Wfs*12; 33.3%)        8.537317
+BA3381                            ASXL1 (p.G646Wfs*12; 32.0%)        8.182179
+BA3290                            ASXL1 (p.G646Wfs*12; 36.6%)        8.253448
+BA3207                            ASXL1 (p.G646Wfs*12; 35.0%)        7.119658
+BA3199                         ASXL1 (p.K618_A619ins*; 43.5%)        9.400075
+BA3326                            ASXL1 (p.G646Wfs*12; 36.6%)        8.220366
+BA3260                            ASXL1 (p.G646Wfs*12; 36.2%)        7.428253
+BA3190                            ASXL1 (p.G646Wfs*12; 26.8%)        9.283973
+BA3087 ASXL1 (p.D821Efs*15; 26.7%)|ASXL1 (p.D821Wfs*6; 20.1%)        7.020525
+BA3229                            ASXL1 (p.G646Wfs*12; 37.6%)        8.846244
+BA3138                            ASXL1 (p.G646Wfs*12; 31.3%)        8.456969
+BA3388                            ASXL1 (p.G646Wfs*12; 37.2%)        8.592607
+BA3237                            ASXL1 (p.C594Mfs*25; 38.2%)        8.701128
+BA3123                            ASXL1 (p.T514Nfs*15; 34.3%)        9.385747

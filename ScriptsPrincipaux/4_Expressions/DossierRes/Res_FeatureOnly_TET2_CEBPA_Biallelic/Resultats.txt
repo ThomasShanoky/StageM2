@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène TET2 en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 112.500, p-value = 0.049
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        5.184405
+BA2861    mono        5.816486
+BA2653    mono        5.523185
+BA2841      bi        5.637825
+BA2731      bi        6.925594
+BA2156      bi        5.087589
+BA2080    mono        5.947964
+BA2718      bi        5.479095
+BA3025      bi        4.912645
+BA2251      bi        5.623454
+BA2515    mono        6.086219
+BA2748      bi        5.917586
+BA2577      bi        5.445330
+BA2868      bi        5.718758
+BA2804    mono        6.344121
+BA2675    mono        5.596998
+BA2000    mono        6.162297
+BA2155      bi        5.145431
+BA2867    mono        5.991127
+BA2972      bi        6.124733
+BA2659    mono        6.450426
+BA2312    mono        6.014989
+BA2296      bi        6.337806
+BA2184      bi        5.836404
+BA3153    mono        6.576136
+BA2217      bi        5.245408
+BA3413      bi        5.135852
+BA3261      bi        6.520210
+BA3114    mono        6.214105
+BA3436    mono        5.917586
+BA3216    mono        6.630087
+BA3329    mono        5.302674
+BA3194    mono        6.147594
+BA3199    mono        5.794042
+BA3117      bi        5.009006
+BA3312      bi        6.138090
+BA3357    mono        5.785415
+BA3416    mono        4.684509

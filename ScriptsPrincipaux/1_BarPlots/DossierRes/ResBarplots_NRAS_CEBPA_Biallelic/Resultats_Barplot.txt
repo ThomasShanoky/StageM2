@@ -1,0 +1,13 @@
+Résultats de barplot pour NRAS et CEBPA_Biallelic
+p-value = 0.00972 selon le test du χ²
+Résultats bruts : 
+  CEBPA_Biallelic  NRAS muté  NRAS non muté
+0              bi          5             23
+1            mono          0             21
+Liste des ID Sample par catégorie :
+NRAS muté :
+bi : BA2748, BA2748, BA3312, BA2748, BA2748
+mono : 
+NRAS non muté :
+bi : BA2360, BA2841, BA2731, BA2156, BA2199, BA2915, BA2974, BA2718, BA3025, BA2251, BA2577, BA2868, BA2155, BA2972, BA2296, BA2184, BA2614, BA2576, BA2217, BA3413, BA3261, BA3117, BA3088
+mono : BA2861, BA2653, BA2864, BA2080, BA2515, BA2804, BA2675, BA2000, BA2867, BA2659, BA2312, BA2652, BA3153, BA3114, BA3436, BA3216, BA3329, BA3194, BA3199, BA3357, BA3416

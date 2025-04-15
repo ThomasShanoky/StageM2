@@ -1,0 +1,54 @@
+#Résultats bruts de l'abondance de mutation du gène CEBPA selon la feature NPM1, normalisée par le gène de ménage TBP.
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.016570 avec le test Mann-Whitney U
+  Abundance   TotalKmers  NormalizedExpression     NPM1
+ 196.555556 7.283525e+09             26.986323 negative
+3151.391304 7.588827e+09            415.267249 negative
+ 543.826087 7.202073e+09             75.509663 negative
+  46.173913 5.188303e+09              8.899618 negative
+2345.478261 1.019272e+10            230.112985 negative
+  74.523810 8.097573e+09              9.203228 negative
+ 411.095238 1.186580e+10             34.645392 negative
+1734.739130 8.097573e+09            214.229522 negative
+  16.173913 1.186580e+10              1.363070 negative
+  11.862069 1.428796e+10              0.830214 negative
+  16.034483 1.382345e+10              1.159948 negative
+1868.750000 7.191314e+09            259.862099 negative
+1971.100000 7.654277e+09            257.516144 negative
+ 774.800000 1.134920e+10             68.269134 negative
+  60.517241 7.761540e+09              7.797066 negative
+  57.206897 7.990536e+09              7.159331 negative
+1552.000000 6.065940e+09            255.854827 negative
+2368.807692 7.132607e+09            332.109660 negative
+  31.000000 8.101218e+09              3.826585 negative
+1928.827586 8.933638e+09            215.906172 negative
+  66.272727 8.578251e+09              7.725669 negative
+  55.080000 8.292092e+09              6.642474 negative
+ 969.480000 1.255232e+10             77.235148 negative
+  16.413793 5.791858e+09              2.833942 negative
+  10.833333 1.056111e+10              1.025776 negative
+  13.166667 4.603824e+09              2.859942 negative
+  12.166667 7.132607e+09              1.705781 negative
+  25.166667 1.428796e+10              1.761390 negative
+  10.000000 1.015272e+10              0.984958 positive
+  11.500000 7.191314e+09              1.599151 negative
+  10.500000 9.689788e+09              1.083615 positive
+  19.750000 8.466130e+09              2.332825 negative
+  16.333333 7.004248e+09              2.331918 negative
+  15.000000 5.823718e+09              2.575674 positive
+  14.000000 7.654277e+09              1.829043 negative
+  61.333333 1.255232e+10              4.886216 negative
+  14.666667 1.382345e+10              1.060999 negative
+  11.666667 1.233472e+10              0.945840 negative
+  12.833333 1.134920e+10              1.130770 negative
+  11.666667 8.843945e+09              1.319170 positive
+  22.000000 8.908070e+09              2.469671 negative
+  12.833333 9.495128e+09              1.351570 negative
+ 269.000000 8.933638e+09             30.110913 negative
+ 446.833333 1.382345e+10             32.324304 negative
+ 264.782609 7.588827e+09             34.891112 negative
+ 329.652174 6.065940e+09             54.344781 negative
+ 537.760000 8.331447e+09             64.545809 negative
+  24.160000 7.588827e+09              3.183628 negative
+  44.409091 8.495132e+09              5.227593 negative
+ 217.727273 1.233472e+10             17.651585 negative

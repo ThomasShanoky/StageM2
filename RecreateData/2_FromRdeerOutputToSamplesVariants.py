@@ -6,7 +6,6 @@ import os
 # Seuil minimal de la somme des counts des kmers : en moyenne, chaque kmer doit être présent au moins 10 fois (compris)
 seuil = 10 
 
-# gene = "NPM1"
 Genes = ["NPM1", "FLT3", "DNMT3A", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"]
 Genes.sort()
 
@@ -73,7 +72,7 @@ for gene in Genes:
                                 ratio = np.nan
                             else:
                                 mean_count_kmer_ref = sum_count_kmer_ref / nb_kmers_ref
-                                ratio = 100*(sum_count_kmer_alt/nb_kmers_alt)/(sum_count_kmer_ref/nb_kmers_ref)
+                                ratio = 100*(sum_count_kmer_alt/nb_kmers_alt)/((sum_count_kmer_alt/nb_kmers_alt)+mean_count_kmer_ref)
                         else:
                             sum_count_kmer_ref = np.nan
                             nb_kmers_ref = np.nan

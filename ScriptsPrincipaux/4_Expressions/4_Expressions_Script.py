@@ -124,6 +124,11 @@ class GUI:
         self.save_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
         self.save_button.place(relx=0.03, rely=0.84)
 
+        #Bouton pour générer automatiquement tous les résultats significatifs
+        self.generate_all_button = tk.Button(self.window, text="Générer tous les résultats", command=self.DropAllSignificantResults)
+        self.generate_all_button.config(width=20, font=("DejaVu Serif", 12, "bold"), highlightbackground="#370028", bg="#87CEEB", fg="#000000")
+        self.generate_all_button.place(relx=0.03, rely=0.90)
+
         # Canvas pour afficher le graphe
         self.fig, self.ax = plt.subplots()
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
@@ -450,10 +455,12 @@ class GUI:
     
 
     def CreateFileRes(self, Tableau, stats_res_test, premiereLigne, fileName):
+        if not os.path.exists("Documents/ScriptsPrincipaux/4_Expressions/DossierRes"):
+            os.mkdir("Documents/ScriptsPrincipaux/4_Expressions/DossierRes")
 
-        output_brut_file = f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/{fileName}.txt"
-        if not(os.path.exists("Documents/ScriptsPrincipaux/4_Expressions/DossierRes/")):
-            os.mkdir("Documents/ScriptsPrincipaux/4_Expressions/DossierRes/")
+        output_brut_file = f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/Res_{fileName}/Resultats.txt"
+        if not(os.path.exists(f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/Res_{fileName}")):
+            os.mkdir(f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/Res_{fileName}")
 
         with open(output_brut_file, "w") as f:
             f.write(premiereLigne)
@@ -461,7 +468,7 @@ class GUI:
             f.write("#Tableau des résultats :\n")
             f.write(Tableau.to_string(index=False))
 
-        output_graph_file = f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/{fileName}.png"
+        output_graph_file = f"Documents/ScriptsPrincipaux/4_Expressions/DossierRes/Res_{fileName}/Plot.png"
         self.fig.savefig(output_graph_file)
 
         print(f"Les résultats bruts et le graphique ont été sauvegardés respectivement dans le fichier {output_brut_file} et dans le fichier {output_graph_file}")
@@ -543,6 +550,174 @@ class GUI:
             fileName = f"MutAndFeat_{gene}_{Mutation}_{feature}"
             self.CreateFileRes(inter_ind_pd, stats_res_test, premiereLigne, fileName)
 
+        return
+    
+
+    def DropAllSignificantResults(self):
+
+        alpha = 0.05
+
+        # 1ère fonctionnalité : Expression d'un gène selon une feature
+
+        # for gene in self.Genes:
+        #     for feature in self.usable_cat:
+        #         featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
+        #         featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]]
+        #         SamplesAndFeatures = self.getSamplesAndFeatures(feature, featureValues)
+        #         ind_expr = list(self.data_expressions.columns)[4:]
+        #         ind_expr = [ind[:6] for ind in ind_expr]
+        #         inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0])
+
+        #         for _, row in SamplesAndFeatures.iterrows():
+        #             Id = row["Sample"]
+        #             featureVal = row["Feature"]
+        #             if Id in ind_expr:
+        #                 Expression = self.data_expressions.loc[self.data_expressions['display_label'] == gene, Id + "R"].values[0]
+        #                 inter_ind_pd = inter_ind_pd._append({"Sample": Id, "Feature": featureVal, "ExpressionGene": Expression}, ignore_index=True)
+        #         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True)
+
+        #         if len(inter_ind_pd["Feature"].unique()) > 2:
+        #             #ANOVA
+        #             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
+        #             anova_result = stats.f_oneway(*groups)
+        #             p_val = anova_result.pvalue
+        #             stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.3f}"
+        #         elif len(inter_ind_pd["Feature"].unique()) == 2:
+        #             #Mann-Whitney U test
+        #             group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]
+        #             group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
+        #             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
+        #             p_val = mannwhitney_result.pvalue
+        #             stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.3f}"
+
+        #         if p_val < alpha:
+        #             # Créer le graphe
+        #             self.fig.clear()
+        #             self.ax = self.fig.add_subplot(111)
+        #             sns.boxplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, ax=self.ax)
+        #             sns.stripplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, color='black', alpha=0.5, jitter=True, ax=self.ax)
+        #             self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature}")
+        #             self.ax.set_ylabel("Expression du gène")
+        #             self.ax.set_xticklabels(self.ax.get_xticklabels(), rotation=45, horizontalalignment='right')
+        #             self.fig.tight_layout()
+                    
+        #             premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction de la feature {feature}\n"
+        #             fileName = f"FeatureOnly_{gene}_{feature}"
+        #             self.CreateFileRes(inter_ind_pd, stats_res_test, premiereLigne, fileName)
+
+
+        # # 2ème fonctionnalité : Expression d'un gène selon une mutation
+
+        # for gene in self.Genes:
+        #     dico_IndAndMut, dico_mut = self.getTypesOfMutationsAndInd(gene)
+
+        #     AllIndMutated = list(dico_IndAndMut.values())
+        #     AllIndMutated = [item for sublist in AllIndMutated for item in sublist]
+        #     IndToRemove = self.checkIfPatientsAreInExpressions(dico_IndAndMut)
+
+        #     if len(IndToRemove) > 0:
+        #         for ind in IndToRemove:
+        #             for mut in dico_IndAndMut.keys():
+        #                 if ind in dico_IndAndMut[mut]:
+        #                     dico_IndAndMut[mut].remove(ind)
+        #     dico_IndAndMut = self.filterDicoIndAndMut(dico_IndAndMut, self.minIndThreshold)
+        #     Tableau = self.getTable(gene, dico_IndAndMut)
+        #     NonMutatedInd = self.getNonMutatedInd(AllIndMutated)
+        #     NonMutatedInd = self.checkIfIndExpressionAreInIndex(NonMutatedInd)
+        #     Tableau = self.addNonMutatedIndExpression(Tableau, gene, NonMutatedInd)
+
+        #     if len(dico_IndAndMut) > 1:
+        #         # ANOVA
+        #         groups = [Tableau[Tableau["TypeMutation"] == mut]["ExpressionGene"] for mut in Tableau["TypeMutation"].unique()]
+        #         anova_result = stats.f_oneway(*groups)
+        #         p_val = anova_result.pvalue
+        #         stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.3f}"
+        #     elif len(dico_IndAndMut) == 1:  # une seule mutation : on ne compare qu'avec les non mutés
+        #         # Mann-Whitney U test
+        #         # mutés
+        #         group1 = Tableau[Tableau["TypeMutation"] == list(dico_IndAndMut.keys())[0]]["ExpressionGene"]
+        #         # non mutés
+        #         group2 = Tableau[Tableau["TypeMutation"] == "NonMut"]["ExpressionGene"]
+        #         mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
+        #         p_val = mannwhitney_result.pvalue
+        #         stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.3f}"
+
+        #     if p_val < alpha:
+        #         # Créer le graphe
+        #         self.fig.clear()
+        #         self.ax = self.fig.add_subplot(111)
+        #         sns.boxplot(x="TypeMutation", y="ExpressionGene", data=Tableau, ax=self.ax)
+        #         sns.stripplot(x="TypeMutation", y="ExpressionGene", data=Tableau, color='black', alpha=0.5, jitter=True, ax=self.ax)
+        #         self.ax.set_title(f"Expression du gène {gene} en fonction des types de mutations")
+        #         self.ax.set_ylabel("Expression du gène")
+
+        #         self.fig.tight_layout()
+
+        #         premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction des types de mutations\n"
+        #         fileName = f"MutOnly_{gene}"
+        #         self.CreateFileRes(Tableau, stats_res_test, premiereLigne, fileName)
+
+        
+        # 3ème fonctionnalité : Expression d'une mutation selon une feature
+        count = 0
+        for feature in self.usable_cat:
+            for gene in self.Genes:
+                self.dico_IndAndMut, self.dico_mut = self.getTypesOfMutationsAndInd(gene)
+                for mutation in self.format_mutations(self.dico_mut):
+                    Mutation = mutation.split(":")[0]
+                    if Mutation != "Toutes les mutations":
+                        PatientsRelatedToMut = self.dico_IndAndMut[Mutation]
+                        featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
+                        featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]]
+                        SamplesAndFeatures = self.getSamplesAndFeatures(feature, featureValues)
+                        inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0])
+
+                        for _, row in SamplesAndFeatures.iterrows():
+                            Id = row["Sample"]
+                            featureVal = row["Feature"]
+                            if Id in PatientsRelatedToMut and Id + "R" in self.data_expressions.columns:
+                                Expression = self.data_expressions.loc[self.data_expressions['display_label'] == gene, Id + "R"].values[0]
+                                inter_ind_pd = inter_ind_pd._append({"Sample": Id, "Feature": featureVal, "ExpressionGene": Expression}, ignore_index=True)
+                        inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True)
+
+                        if len(inter_ind_pd["Feature"].unique()) > 2:
+                            # ANOVA
+                            groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
+                            long = []
+                            for group in groups:
+                                long.append(len(group))
+                            if 0 in long or 1 in long or 2 in long:
+                                p_val = 1
+                            else:
+                                anova_result = stats.f_oneway(*groups)
+                                p_val = anova_result.pvalue
+                                stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.3f}"
+                        elif len(inter_ind_pd["Feature"].unique()) == 2:
+                            # Mann-Whitney U test
+                            group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]
+                            group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
+                            if len(group1) <= 2 or len(group2) <= 2:
+                                p_val = 1
+                            else:
+                                mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
+                                p_val = mannwhitney_result.pvalue
+                                stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.3f}"
+
+                        if p_val < alpha:
+                            count += 1
+                            # #Créer le graphe
+                            # self.fig.clear()
+                            # self.ax = self.fig.add_subplot(111)
+                            # sns.boxplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, ax=self.ax)
+                            # sns.stripplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, color='black', alpha=0.5, jitter=True, ax=self.ax)
+                            # self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature} pour la mutation {Mutation}")
+                            # self.ax.set_ylabel("Expression du gène")
+                            # self.ax.set_xticklabels(self.ax.get_xticklabels(), rotation=45, horizontalalignment='right')
+                            # self.fig.tight_layout()
+                            # premiereLigne = f"#Boxplots d'expressions de la mutation {Mutation} ({self.dico_mut[Mutation][1]}>{self.dico_mut[Mutation][2]} aux positions {self.dico_mut[Mutation][0]}) du gène {gene}, en fonction de la feature {feature}\n"
+                            # fileName = f"MutAndFeat_{gene}_{Mutation}_{feature}"
+                            # self.CreateFileRes(inter_ind_pd, stats_res_test, premiereLigne, fileName)
+        print(count)
         return
 
 

@@ -1,0 +1,86 @@
+#Résultats bruts de l'abondance de mutation du gène IDH2 selon la feature specimenType, normalisée par le gène de ménage TBP.
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.035324 avec le test Mann-Whitney U
+ Abundance   TotalKmers  NormalizedExpression         specimenType
+387.965517 6.544644e+09             59.279853     Peripheral Blood
+236.275862 8.054348e+09             29.335193     Peripheral Blood
+221.103448 4.867079e+09             45.428369     Peripheral Blood
+ 99.413793 9.114391e+09             10.907343 Bone Marrow Aspirate
+189.724138 5.476180e+09             34.645342     Peripheral Blood
+278.310345 8.776193e+09             31.711966     Peripheral Blood
+335.448276 7.211399e+09             46.516393 Bone Marrow Aspirate
+312.103448 9.651607e+09             32.336942     Peripheral Blood
+398.344828 1.071946e+10             37.160919 Bone Marrow Aspirate
+175.793103 8.305332e+09             21.166295 Bone Marrow Aspirate
+623.413793 9.376138e+09             66.489404 Bone Marrow Aspirate
+359.137931 7.814987e+09             45.955027 Bone Marrow Aspirate
+244.965517 7.068893e+09             34.654014 Bone Marrow Aspirate
+981.551724 1.098682e+10             89.339052 Bone Marrow Aspirate
+174.068966 1.086433e+10             16.022058 Bone Marrow Aspirate
+ 73.827586 8.193431e+09              9.010582     Peripheral Blood
+490.793103 9.344986e+09             52.519406 Bone Marrow Aspirate
+291.517241 6.109573e+09             47.714832     Peripheral Blood
+433.517241 6.639299e+09             65.295636 Bone Marrow Aspirate
+ 14.620690 6.827333e+09              2.141494 Bone Marrow Aspirate
+472.827586 7.871317e+09             60.069693     Peripheral Blood
+245.896552 1.153765e+10             21.312532 Bone Marrow Aspirate
+380.000000 6.424575e+09             59.147885 Bone Marrow Aspirate
+553.655172 9.429462e+09             58.715456 Bone Marrow Aspirate
+741.000000 9.854434e+09             75.194579 Bone Marrow Aspirate
+138.000000 7.857823e+09             17.562116     Peripheral Blood
+911.620690 8.486836e+09            107.415843 Bone Marrow Aspirate
+224.103448 6.779597e+09             33.055573 Bone Marrow Aspirate
+316.344828 5.952865e+09             53.141611 Bone Marrow Aspirate
+271.241379 6.498495e+09             41.739106     Peripheral Blood
+423.793103 7.400454e+09             57.265821     Peripheral Blood
+189.000000 7.967963e+09             23.719989     Peripheral Blood
+549.586207 6.513379e+09             84.378049     Peripheral Blood
+195.517241 6.261959e+09             31.223017     Peripheral Blood
+414.689655 1.058903e+10             39.162208 Bone Marrow Aspirate
+452.413793 7.283525e+09             62.114676 Bone Marrow Aspirate
+303.896552 8.914914e+09             34.088555 Bone Marrow Aspirate
+ 24.586207 5.843420e+09              4.207503     Peripheral Blood
+163.275862 6.543111e+09             24.953856     Peripheral Blood
+172.448276 6.970849e+09             24.738488     Peripheral Blood
+546.689655 7.309448e+09             74.792194 Bone Marrow Aspirate
+500.275862 1.000280e+10             50.013596     Peripheral Blood
+294.724138 8.864156e+09             33.248978 Bone Marrow Aspirate
+565.551724 8.577040e+09             65.937869 Bone Marrow Aspirate
+ 87.103448 7.811765e+09             11.150291     Peripheral Blood
+202.379310 6.410103e+09             31.571926     Peripheral Blood
+512.931034 7.137673e+09             71.862505 Bone Marrow Aspirate
+439.034483 6.765093e+09             64.897033 Bone Marrow Aspirate
+284.931034 6.623609e+09             43.017492     Peripheral Blood
+532.413793 7.477301e+09             71.204007 Bone Marrow Aspirate
+258.931034 8.091267e+09             32.001296     Peripheral Blood
+220.344828 7.843750e+09             28.091770 Bone Marrow Aspirate
+589.862069 8.764152e+09             67.303953 Bone Marrow Aspirate
+320.517241 1.089831e+10             29.409813     Peripheral Blood
+339.482759 8.903126e+09             38.130737 Bone Marrow Aspirate
+850.379310 9.072297e+09             93.733631 Bone Marrow Aspirate
+129.137931 8.443222e+09             15.294865 Bone Marrow Aspirate
+576.275862 8.084013e+09             71.285868     Peripheral Blood
+465.413793 8.947256e+09             52.017492 Bone Marrow Aspirate
+185.896552 1.215136e+10             15.298411 Bone Marrow Aspirate
+418.862069 8.965946e+09             46.716998 Bone Marrow Aspirate
+308.482759 8.025251e+09             38.439017 Bone Marrow Aspirate
+415.724138 9.361311e+09             44.408753 Bone Marrow Aspirate
+461.482759 8.628494e+09             53.483580 Bone Marrow Aspirate
+ 23.517241 9.354307e+09              2.514055     Peripheral Blood
+502.862069 8.840811e+09             56.879633 Bone Marrow Aspirate
+418.172414 1.153613e+10             36.248949 Bone Marrow Aspirate
+434.551724 8.578251e+09             50.657382 Bone Marrow Aspirate
+ 14.068966 1.195007e+10              1.177313 Bone Marrow Aspirate
+126.827586 9.623216e+09             13.179335 Bone Marrow Aspirate
+567.689655 1.031085e+10             55.057522 Bone Marrow Aspirate
+659.896552 1.182336e+10             55.812958     Peripheral Blood
+555.965517 8.901402e+09             62.458198 Bone Marrow Aspirate
+423.931034 1.150527e+10             36.846669 Bone Marrow Aspirate
+416.241379 9.476463e+09             43.923705 Bone Marrow Aspirate
+556.482759 9.840911e+09             56.547889 Bone Marrow Aspirate
+529.310345 8.243534e+09             64.209155 Bone Marrow Aspirate
+547.931034 8.566528e+09             63.961857 Bone Marrow Aspirate
+453.344828 1.111997e+10             40.768515     Peripheral Blood
+245.241379 8.273834e+09             29.640598     Peripheral Blood
+ 10.689655 6.463916e+09              1.653743 Bone Marrow Aspirate
+ 71.379310 1.255232e+10              5.686545 Bone Marrow Aspirate

@@ -95,6 +95,11 @@ class GUI:
         self.significance_label.config(font=("DejaVu Serif", 13), bg="#191830", fg="#b7d9ec")
         self.significance_label.place(relx=0.03, rely=0.75)
 
+        #Bouton pour générer automatiquement tous les résultats significatifs
+        self.generate_all_button = tk.Button(self.window, text="Générer tous les résultats", command=self.DropAllSignificantResults)
+        self.generate_all_button.config(width=20, font=("DejaVu Serif", 12, "bold"), highlightbackground="#370028", bg="#191830", fg="#b7d9ec")
+        self.generate_all_button.place(relx=0.03, rely=0.85)
+
         self.window.protocol("WM_DELETE_WINDOW", self.on_closing)
         self.window.mainloop()
 
@@ -151,8 +156,10 @@ class GUI:
 
     def Chi2Test(self, number_for_plot, number_for_plot_nonMut):
         table = np.array([number_for_plot, number_for_plot_nonMut])
-        print(table)
         table = 100 * table / np.sum(table)
+
+        if 0 in np.sum(table, axis=1):
+            return 1, 0
 
         _, p, _, expected = stats.chi2_contingency(table)
         residus = (table - expected) / np.sqrt(expected)
@@ -173,10 +180,14 @@ class GUI:
     
 
     def CreateFileResFeat(self, ind_beataml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut):
-        output_file = f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/Resultats_Barplot.txt"
 
         if not os.path.exists("Documents/ScriptsPrincipaux/1_BarPlots/DossierRes"):
             os.mkdir("Documents/ScriptsPrincipaux/1_BarPlots/DossierRes")
+
+        output_file = f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResBarplots_{gene}_{feature}/Resultats_Barplot.txt"
+
+        if not os.path.exists(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResBarplots_{gene}_{feature}"):
+            os.mkdir(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResBarplots_{gene}_{feature}")
 
         with open(output_file, 'w') as f:
             f.write(f"Résultats de barplot pour {gene} et {feature}\n")
@@ -213,21 +224,18 @@ class GUI:
                     ids = [ind for ind in ind_geneNonMut if self.data_beat_aml.loc[ind_beataml.index(ind), feature] == cat]
                 f.write(f"{cat} : {', '.join(ids)}\n")
 
-        self.fig.savefig(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/Barplot_{gene}_{feature}.png")
+        self.fig.savefig(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResBarplots_{gene}_{feature}/Barplot_plot.png")
 
-        print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_{gene}_{feature}.png")
+        print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_plot.png")
 
         return
     
 
-    def plot_graph_without_abundance(self, cat_name, number_for_plot, number_for_plot_nonMut):
+    def plot_graph_without_abundance(self, cat_name, number_for_plot, number_for_plot_nonMut, gene, feature):
         bar_width = 0.35
 
         r1 = np.arange(len(cat_name))
         r2 = [x + bar_width for x in r1]
-
-        gene = self.gene_var.get()
-        feature = self.feature_var.get()
 
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
@@ -297,7 +305,7 @@ class GUI:
         geneMutAndCat = [geneMutAndCat[i] for i in range(len(geneMutAndCat)) if i not in L_ind]
         geneNonMutAndCat = [geneNonMutAndCat[i] for i in range(len(geneNonMutAndCat)) if i not in L_ind]
 
-        self.plot_graph_without_abundance(gene_cat, geneMutAndCat, geneNonMutAndCat)
+        self.plot_graph_without_abundance(gene_cat, geneMutAndCat, geneNonMutAndCat, gene, feature)
 
         if len(CatSupprimees) > 0:
             messagebox.showwarning("Attention", f"Les catégories suivantes ont été supprimées car elles étaient vides: {', '.join(CatSupprimees)}")
@@ -315,39 +323,59 @@ class GUI:
             self.CreateFileResFeat(ind_beataml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut)
 
         return
+
     
+    def NormalizationByTotKmers(self, ind_list, data_abundance):
 
-    def NormalizationByHousekeepingGene(self, ind_list, data_abundance):
-
-        HousekeepingGenes = ["TBP", "ABL1", "PPIA"]
-        # files = ["Documents/ScriptsPrincipaux/GeneMenage/query_results_TBP.tsv", "Documents/ScriptsPrincipaux/GeneMenage/query_results_ABL1.tsv", "Documents/ScriptsPrincipaux/GeneMenage/query_results_PPIA.tsv"]
-
-        files = [f"Documents/ScriptsPrincipaux/GeneMenage/query_results_{gene}.tsv" for gene in HousekeepingGenes]
+        tot_kmers_file = "Documents/ScriptsPrincipaux/TotalKmersPerSample.csv"
+        tot_kmers = pd.read_csv(tot_kmers_file, sep=",")
+        tot_kmers.set_index("Sample", inplace=True)
 
         NormalizedExpression = pd.DataFrame({
-            'ID Sample': ind_list,
+            'ID Sample':ind_list,
             'Abundance': data_abundance,
         })
-        
-        for i, file in enumerate(files):
-            ExpressionsKmers = pd.read_csv(file, sep="\t")
-            ExpressionsKmers = ExpressionsKmers.drop(columns=["seq_name"])
-            ExpressionsKmers.columns = [col[:6] for col in ExpressionsKmers.columns]
-            ExpressionsKmers = ExpressionsKmers.mean()
-            ExpressionsKmers = ExpressionsKmers.loc[ind_list]
-            ExpressionsKmers = ExpressionsKmers.values
 
-            NormalizedExpression[f"HousekeepingGene_{HousekeepingGenes[i]}"] = ExpressionsKmers
-
-        NormalizedExpression["HousekeepingMean"] = [0 for _ in range(NormalizedExpression.shape[0])]
         for index, row in NormalizedExpression.iterrows():
-            NormalizedExpression.at[index, "HousekeepingMean"] = np.mean([row["HousekeepingGene_" + gene] for gene in HousekeepingGenes]) #moyenne arithmétique des gènes de ménage
-
-        NormalizedExpression["NormalizedExpression"] = NormalizedExpression["Abundance"] / NormalizedExpression["HousekeepingMean"]
+            sample = row["ID Sample"]
+            tot_kmers_value = tot_kmers.loc[sample]["TotalKmers"]
+            NormalizedExpression.at[index, "TotalKmers"] = tot_kmers_value
+            NormalizedExpression.at[index, "NormalizedExpression"] = row["Abundance"] * 10**(9) / tot_kmers_value
         
-        NormalizedExpression.set_index("ID Sample", inplace=True)
-
         return NormalizedExpression
+    
+
+    # def NormalizationByHousekeepingGene(self, ind_list, data_abundance):
+
+    #     HousekeepingGenes = ["TBP", "ABL1", "PPIA"]
+    #     # files = ["Documents/ScriptsPrincipaux/GeneMenage/query_results_TBP.tsv", "Documents/ScriptsPrincipaux/GeneMenage/query_results_ABL1.tsv", "Documents/ScriptsPrincipaux/GeneMenage/query_results_PPIA.tsv"]
+
+    #     files = [f"Documents/ScriptsPrincipaux/GeneMenage/query_results_{gene}.tsv" for gene in HousekeepingGenes]
+
+    #     NormalizedExpression = pd.DataFrame({
+    #         'ID Sample': ind_list,
+    #         'Abundance': data_abundance,
+    #     })
+        
+    #     for i, file in enumerate(files):
+    #         ExpressionsKmers = pd.read_csv(file, sep="\t")
+    #         ExpressionsKmers = ExpressionsKmers.drop(columns=["seq_name"])
+    #         ExpressionsKmers.columns = [col[:6] for col in ExpressionsKmers.columns]
+    #         ExpressionsKmers = ExpressionsKmers.mean()
+    #         ExpressionsKmers = ExpressionsKmers.loc[ind_list]
+    #         ExpressionsKmers = ExpressionsKmers.values
+
+    #         NormalizedExpression[f"HousekeepingGene_{HousekeepingGenes[i]}"] = ExpressionsKmers
+
+    #     NormalizedExpression["HousekeepingMean"] = [0 for _ in range(NormalizedExpression.shape[0])]
+    #     for index, row in NormalizedExpression.iterrows():
+    #         NormalizedExpression.at[index, "HousekeepingMean"] = np.mean([row["HousekeepingGene_" + gene] for gene in HousekeepingGenes]) #moyenne arithmétique des gènes de ménage
+
+    #     NormalizedExpression["NormalizedExpression"] = NormalizedExpression["Abundance"] / NormalizedExpression["HousekeepingMean"]
+        
+    #     NormalizedExpression.set_index("ID Sample", inplace=True)
+
+    #     return NormalizedExpression
     
 
     def getFeatForPlotAbundance(self, NormalizedExpression, feature, ind_beataml):
@@ -362,29 +390,42 @@ class GUI:
 
     def MannWhitneyUTest(self, Df, feature):
         cat_name = np.unique(list(Df[feature]))
-        if self.AbondanceVar.get():
-            group1 = Df[Df[feature] == cat_name[0]]["NormalizedExpression"].values
-            group2 = Df[Df[feature] == cat_name[1]]["NormalizedExpression"].values
-        elif self.DistributionVar.get():
-            group1 = Df[Df[feature] == cat_name[0]]["%ratio"].values
-            group2 = Df[Df[feature] == cat_name[1]]["%ratio"].values
+        # if self.AbondanceVar.get():
+        group1 = Df[Df[feature] == cat_name[0]]["NormalizedExpression"].values
+        group2 = Df[Df[feature] == cat_name[1]]["NormalizedExpression"].values
 
-        _, p = stats.mannwhitneyu(group1, group2)
+        if len(group1) > 2 and len(group2) > 2:
+            # print([len(group1), len(group2)])
 
-        return p
+        # elif self.DistributionVar.get():
+            # group1 = Df[Df[feature] == cat_name[0]]["%ratio"].values
+            # group2 = Df[Df[feature] == cat_name[1]]["%ratio"].values
+
+            _, p = stats.mannwhitneyu(group1, group2)
+            return p
+        
+        else:
+            return 1
     
 
     def ANOVATest(self, Df, feature):
-        if self.AbondanceVar.get():
-            _, p = stats.f_oneway(*[Df[Df[feature] == cat]["NormalizedExpression"].values for cat in Df[feature].unique()])
-        elif self.DistributionVar.get():
-            _, p = stats.f_oneway(*[Df[Df[feature] == cat]["%ratio"].values for cat in Df[feature].unique()])
+        # if self.AbondanceVar.get():
+        groups = [Df[Df[feature] == cat]["NormalizedExpression"].values for cat in Df[feature].unique()]
+
+        long = []
+        for group in groups:
+            long.append(len(group))
+
+        if 0 in long or 1 in long or 2 in long:
+            return 1
+
+        _, p = stats.f_oneway(*groups)
+        # elif self.DistributionVar.get():
+            # _, p = stats.f_oneway(*[Df[Df[feature] == cat]["%ratio"].values for cat in Df[feature].unique()])
         return p
     
 
-    def plot_graph_with_abundance(self, NormalizedExpressionAndFeat):
-        gene = self.gene_var.get()
-        feature = self.feature_var.get()
+    def plot_graph_with_abundance(self, NormalizedExpressionAndFeat, gene, feature):
 
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
@@ -404,22 +445,25 @@ class GUI:
     
 
     def CreateFileResAbund(self, NormalizedExpressionAndFeat, p, gene, feature):
-        output_file = f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/Resultats_Abundance.txt"
-
         if not os.path.exists("Documents/ScriptsPrincipaux/1_BarPlots/DossierRes"):
             os.mkdir("Documents/ScriptsPrincipaux/1_BarPlots/DossierRes")
 
-        if len(np.unique(NormalizedExpressionAndFeat[self.feature_var.get()])) == 2:
+        output_file = f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResAbundance_{gene}_{feature}/Resultats_Abundance.txt"
+
+        if not os.path.exists(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResAbundance_{gene}_{feature}"):
+            os.mkdir(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResAbundance_{gene}_{feature}")
+
+        if len(np.unique(NormalizedExpressionAndFeat[feature])) == 2:
             Test = "Mann-Whitney U"
-        elif len(np.unique(NormalizedExpressionAndFeat[self.feature_var.get()])) > 2:
+        elif len(np.unique(NormalizedExpressionAndFeat[feature])) > 2:
             Test = "ANOVA"
         
         with open(output_file, 'w') as f:
-            f.write(f"#Résultats bruts de l'abondance de mutation du gène {self.gene_var.get()} selon la feature {self.feature_var.get()}, normalisée par le gène de ménage TBP.\n")
+            f.write(f"#Résultats bruts de l'abondance de mutation du gène {gene} selon la feature {feature}, normalisée par le gène de ménage TBP.\n")
             f.write(f"#Test d'hypothèse de différence significative entre les moyennes des groupes\n#p-value = {p:.6f} avec le test {Test}\n")
             f.write(NormalizedExpressionAndFeat.to_string(index=False))
 
-        self.fig.savefig(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/Abundance_{gene}_{feature}.png")
+        self.fig.savefig(f"Documents/ScriptsPrincipaux/1_BarPlots/DossierRes/ResAbundance_{gene}_{feature}/Abundance_plot.png")
 
         print(f"Les résultats bruts ont été sauvegardés dans le fichier {output_file}")
 
@@ -440,8 +484,9 @@ class GUI:
         ind_geneMut = [name[:6] for name in ind_geneMut]
         data_abundance = data_gene_mut["mean_count_kmer_alt"].values
 
-        NormalizedExpression = self.NormalizationByHousekeepingGene(ind_geneMut, data_abundance)
-
+        NormalizedExpression = self.NormalizationByTotKmers(ind_geneMut, data_abundance)
+        # print(NormalizedExpression)
+        # NormalizedExpression = self.NormalizationByHousekeepingGene(ind_geneMut, data_abundance)
 
         samples = self.data_beat_aml[["dbgap_dnaseq_sample", "dbgap_rnaseq_sample"]]
         ind_beataml = []
@@ -453,11 +498,12 @@ class GUI:
                 sample_id = sample["dbgap_dnaseq_sample"][:6]
             ind_beataml.append(sample_id)
 
+        NormalizedExpression.set_index("ID Sample", inplace=True)
         NormalizedExpressionAndFeat = self.getFeatForPlotAbundance(NormalizedExpression, feature, ind_beataml)
-        print(NormalizedExpressionAndFeat)
+        # print(NormalizedExpressionAndFeat)
         NormalizedExpressionAndFeat = NormalizedExpressionAndFeat[~NormalizedExpressionAndFeat[feature].isin(["Unknown", "UNKNOWN", "unknown", "nan"])]
 
-        self.plot_graph_with_abundance(NormalizedExpressionAndFeat)
+        self.plot_graph_with_abundance(NormalizedExpressionAndFeat, gene, feature)
 
         if len(NormalizedExpressionAndFeat[feature].unique()) == 2:
             test = "Mann-Whitney U"
@@ -478,6 +524,99 @@ class GUI:
             self.significance_label.config(text="La différence n'est pas significative")      
 
         return
+
+
+    def DropAllSignificantResults(self):
+
+        alpha = 0.05
+
+        # 1ère fonctionalité : distribution des mutations selon les features
+
+        for gene in self.Genes:
+            for feature in self.usable_cat:
+                data_gene_mut = pd.read_csv(f"Documents/ScriptsPrincipaux/newMUTdata/{gene}_alt_perso.csv", sep=",")
+                ind_geneMut = data_gene_mut["sampleID"].values
+                ind_geneMut = [name[:6] for name in ind_geneMut]
+
+                ind_geneNonMut = []
+                samples = self.data_beat_aml[["dbgap_dnaseq_sample", "dbgap_rnaseq_sample"]]
+                ind_beataml = []
+
+                for _, sample in samples.iterrows():
+                    if pd.isna(sample["dbgap_dnaseq_sample"]):
+                        sample_id = sample["dbgap_rnaseq_sample"][:6]
+                    else:
+                        sample_id = sample["dbgap_dnaseq_sample"][:6]
+                    ind_beataml.append(sample_id)
+                
+                for ind in ind_beataml:
+                    if ind not in ind_geneMut:
+                        ind_geneNonMut.append(ind)
+                
+                ind_geneNonMut_new = []
+
+                if feature in ["TP53", "RUNX1", "ASXL1"]:
+                    gene_cat = ["Positive", "Negative Or Nan"]
+                    geneMutAndCat = self.get_number_for_bar_spe(gene_cat, ind_beataml, ind_geneMut, feature)
+                    geneNonMutAndCat = self.get_number_for_bar_spe(gene_cat, ind_beataml, ind_geneNonMut, feature)
+                else:
+                    gene_cat = np.unique(list((self.data_beat_aml[feature])))
+                    gene_cat = [cat for cat in gene_cat if not (pd.isna(cat)) or cat != 'nan']
+                    geneMutAndCat = self.get_number_for_bar(gene_cat, ind_beataml, ind_geneMut, feature)
+                    geneNonMutAndCat = self.get_number_for_bar(gene_cat, ind_beataml, ind_geneNonMut, feature)
+
+                L_ind = self.rearrangeZeros(geneMutAndCat, geneNonMutAndCat)
+                CatSupprimees = [gene_cat[i] for i in L_ind]
+                gene_cat = [gene_cat[i] for i in range(len(gene_cat)) if i not in L_ind]
+                geneMutAndCat = [geneMutAndCat[i] for i in range(len(geneMutAndCat)) if i not in L_ind]
+                geneNonMutAndCat = [geneNonMutAndCat[i] for i in range(len(geneNonMutAndCat)) if i not in L_ind]
+
+                p, residus = self.Chi2Test(geneMutAndCat, geneNonMutAndCat)
+
+                if p < alpha:
+                    self.plot_graph_without_abundance(gene_cat, geneMutAndCat, geneNonMutAndCat, gene, feature)
+                    print(f"Gène {gene} : feature {feature} : p-value = {p:.5f}")
+                    self.CreateFileResFeat(ind_beataml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut)
+
+
+        # 2ème fonctionalité : distribution de l'abondance des mutations selon les features
+
+        for gene in self.Genes:
+            for feature in self.usable_cat:
+
+                data_gene_mut = pd.read_csv(f"Documents/ScriptsPrincipaux/newMUTdata/{gene}_alt_perso.csv", sep=",")
+                ind_geneMut = data_gene_mut["sampleID"].values
+                ind_geneMut = [name[:6] for name in ind_geneMut]
+                data_abundance = data_gene_mut["mean_count_kmer_alt"].values
+
+                NormalizedExpression = self.NormalizationByTotKmers(ind_geneMut, data_abundance)
+                # NormalizedExpression = self.NormalizationByHousekeepingGene(ind_geneMut, data_abundance)
+
+                samples = self.data_beat_aml[["dbgap_dnaseq_sample", "dbgap_rnaseq_sample"]]
+                ind_beataml = []
+
+                for _, sample in samples.iterrows():
+                    if pd.isna(sample["dbgap_dnaseq_sample"]):
+                        sample_id = sample["dbgap_rnaseq_sample"][:6]
+                    else:
+                        sample_id = sample["dbgap_dnaseq_sample"][:6]
+                    ind_beataml.append(sample_id)
+
+                NormalizedExpression.set_index("ID Sample", inplace=True)
+                NormalizedExpressionAndFeat = self.getFeatForPlotAbundance(NormalizedExpression, feature, ind_beataml)
+                NormalizedExpressionAndFeat = NormalizedExpressionAndFeat[~NormalizedExpressionAndFeat[feature].isin(["Unknown", "UNKNOWN", "unknown", "nan"])]
+
+                if len(NormalizedExpressionAndFeat[feature].unique()) == 2:
+                    p = self.MannWhitneyUTest(NormalizedExpressionAndFeat, feature)
+                elif len(NormalizedExpressionAndFeat[feature].unique()) > 2:
+                    p = self.ANOVATest(NormalizedExpressionAndFeat, feature)
+
+                if p < alpha:
+                    self.plot_graph_with_abundance(NormalizedExpressionAndFeat, gene, feature)
+                    print(f"Gène {gene} : feature {feature} : p-value = {p:.5f}")
+                    self.CreateFileResAbund(NormalizedExpressionAndFeat, p, gene, feature)
+
+        return 
 
 
 

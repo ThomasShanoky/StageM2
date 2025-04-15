@@ -1,0 +1,672 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature mostRecentTreatmentType
+#Résultat du test statistique ANOVA : F = 2.049, p-value = 0.039
+#Tableau des résultats :
+Sample                                Feature  ExpressionGene
+BA2452                  Standard Chemotherapy        7.280861
+BA2922 Targeted Therapy - Kinase Inhibitor(s)        6.953448
+BA2707                  Standard Chemotherapy        6.272023
+BA2409                 Bone Marrow Transplant        4.089534
+BA2480                  Standard Chemotherapy        8.449666
+BA2496                  Standard Chemotherapy        4.221367
+BA3037                 Bone Marrow Transplant        9.226880
+BA2236                  Standard Chemotherapy        8.584578
+BA2172                                   NONE        7.726723
+BA2865                 Bone Marrow Transplant       10.054337
+BA2923             Supportive/Palliative Care       -0.905814
+BA2003                  Standard Chemotherapy        7.377710
+BA2751                                   NONE        6.910700
+BA3395                  Standard Chemotherapy        7.455713
+BA2286                  Standard Chemotherapy        6.840988
+BA2488                  Standard Chemotherapy        8.168401
+BA3379                 Bone Marrow Transplant        6.110395
+BA2887                  Standard Chemotherapy        5.059290
+BA2712                                   NONE        2.262757
+BA2858                  Standard Chemotherapy        4.246175
+BA2068                  Standard Chemotherapy        8.957777
+BA2104                                   NONE        0.732935
+BA3124                 Bone Marrow Transplant        5.772210
+BA2921             Supportive/Palliative Care        7.414970
+BA2449                  Standard Chemotherapy        5.213276
+BA2360                  Standard Chemotherapy        8.589926
+BA2802                  Standard Chemotherapy        7.409002
+BA2235                  Standard Chemotherapy        6.832143
+BA3038                 Bone Marrow Transplant        6.412270
+BA3006                 Bone Marrow Transplant        7.999155
+BA2245                  Standard Chemotherapy        7.663696
+BA2667                                   NONE        6.501525
+BA2239                  Standard Chemotherapy        4.896968
+BA2782                                   NONE        5.978906
+BA2649                  Standard Chemotherapy        7.157984
+BA2592 Targeted Therapy - Kinase Inhibitor(s)        5.871393
+BA2861                 Bone Marrow Transplant        7.448397
+BA2134                  Standard Chemotherapy        5.663611
+BA2909                  Standard Chemotherapy        7.516301
+BA2429                  Standard Chemotherapy        6.138537
+BA2653                  Standard Chemotherapy        8.677217
+BA2947                  Standard Chemotherapy        8.597136
+BA2032 Targeted Therapy - Kinase Inhibitor(s)        9.911433
+BA2162                  Standard Chemotherapy        9.317517
+BA2564                  Standard Chemotherapy        4.705238
+BA2597                  Standard Chemotherapy        9.366509
+BA3243               Targeted Therapy - Other        9.589095
+BA2106                  Standard Chemotherapy        7.012009
+BA2939                  Standard Chemotherapy        8.228556
+BA2427                  Standard Chemotherapy        4.339033
+BA2841             Supportive/Palliative Care        5.940990
+BA2446             Supportive/Palliative Care        2.318122
+BA2025             Supportive/Palliative Care        2.320431
+BA2645                 Bone Marrow Transplant        9.640088
+BA2525                  Standard Chemotherapy        5.248654
+BA2876                  Standard Chemotherapy        5.797580
+BA2357                 Bone Marrow Transplant        5.505720
+BA2546                  Standard Chemotherapy        3.011238
+BA2742                                   NONE        3.667979
+BA2316                                   NONE        3.224954
+BA2421                  Standard Chemotherapy        2.450651
+BA2087                 Bone Marrow Transplant        2.555851
+BA2910 Targeted Therapy - Kinase Inhibitor(s)       10.205324
+BA2148                  Standard Chemotherapy        8.160596
+BA2329                  Standard Chemotherapy        7.224594
+BA2677                  Standard Chemotherapy        7.257903
+BA3178                  Standard Chemotherapy       -0.106093
+BA2072                  Standard Chemotherapy        5.145431
+BA3029 Targeted Therapy - Kinase Inhibitor(s)        8.927488
+BA2735 Targeted Therapy - Kinase Inhibitor(s)        8.435176
+BA2733                  Standard Chemotherapy        5.321260
+BA2995                  Standard Chemotherapy        1.871475
+BA2069                  Standard Chemotherapy        1.067565
+BA2100 Targeted Therapy - Kinase Inhibitor(s)        6.690273
+BA2953 Targeted Therapy - Kinase Inhibitor(s)        5.742812
+BA2681                  Standard Chemotherapy        7.587599
+BA2248 Targeted Therapy - Kinase Inhibitor(s)        6.885539
+BA2832                  Standard Chemotherapy        8.692496
+BA2308                  Standard Chemotherapy        7.877320
+BA2413                  Standard Chemotherapy        7.290774
+BA2701                 Bone Marrow Transplant        5.762564
+BA2634                  Standard Chemotherapy        6.612759
+BA2937                 Bone Marrow Transplant        8.406646
+BA2600                 Bone Marrow Transplant        6.599491
+BA2019                  Standard Chemotherapy        9.645280
+BA2412                  Standard Chemotherapy        6.570415
+BA2334 Targeted Therapy - Kinase Inhibitor(s)        7.645112
+BA2050 Targeted Therapy - Kinase Inhibitor(s)        7.305918
+BA3230                  Standard Chemotherapy        7.229515
+BA2481                  Standard Chemotherapy        6.266526
+BA2731                 Bone Marrow Transplant        4.762161
+BA2418                  Standard Chemotherapy        7.777132
+BA2294                  Standard Chemotherapy        7.909508
+BA2816                 Bone Marrow Transplant        1.632441
+BA2814                 Bone Marrow Transplant        5.886440
+BA2631                  Standard Chemotherapy        8.076079
+BA2023                 Bone Marrow Transplant       -0.126037
+BA2375                  Standard Chemotherapy        7.682732
+BA2485                  Standard Chemotherapy        9.306580
+BA2455             Supportive/Palliative Care        4.250745
+BA2636                  Standard Chemotherapy        9.222877
+BA2325                  Standard Chemotherapy        4.526956
+BA2169                  Standard Chemotherapy        7.062348
+BA2156                 Bone Marrow Transplant        8.226503
+BA2511                  Standard Chemotherapy        7.611230
+BA2168                  Standard Chemotherapy        7.276367
+BA2505                  Standard Chemotherapy        7.274627
+BA2860                  Standard Chemotherapy        8.552900
+BA2655                  Standard Chemotherapy        5.947964
+BA2227                  Standard Chemotherapy        7.500030
+BA2812                                   NONE        2.685304
+BA2125                  Standard Chemotherapy        6.273807
+BA2603                 Bone Marrow Transplant        7.931877
+BA2808                 Bone Marrow Transplant        8.474158
+BA2282                 Bone Marrow Transplant        2.396038
+BA2482                  Standard Chemotherapy        8.456969
+BA2822             Supportive/Palliative Care        6.108293
+BA2594                  Standard Chemotherapy        4.348713
+BA2747                  Standard Chemotherapy        8.012847
+BA2561                  Standard Chemotherapy        0.106733
+BA2094                  Standard Chemotherapy       -1.900201
+BA2567                                    DLI        3.876518
+BA2906                 Bone Marrow Transplant        2.278256
+BA2956                  Standard Chemotherapy        3.230736
+BA2474                  Standard Chemotherapy        8.004431
+BA2065                  Standard Chemotherapy        8.154775
+BA2737             Supportive/Palliative Care        0.583389
+BA2463             Supportive/Palliative Care        2.179295
+BA2110                  Standard Chemotherapy        4.926300
+BA2992                  Standard Chemotherapy        3.784918
+BA2220 Targeted Therapy - Kinase Inhibitor(s)        9.160132
+BA2720 Targeted Therapy - Kinase Inhibitor(s)        7.555262
+BA2063                  Standard Chemotherapy        3.029355
+BA2772                  Standard Chemotherapy        8.799425
+BA2935 Targeted Therapy - Kinase Inhibitor(s)        6.059930
+BA2260                  Standard Chemotherapy        4.493462
+BA2787                  Standard Chemotherapy        3.121035
+BA2676                 Bone Marrow Transplant        5.780780
+BA2948                  Standard Chemotherapy        8.353583
+BA3296                 Bone Marrow Transplant        3.531931
+BA2524                 Bone Marrow Transplant        4.830239
+BA2811                  Standard Chemotherapy        8.476631
+BA2540                  Standard Chemotherapy        4.688368
+BA2928                 Bone Marrow Transplant        4.177533
+BA2302                  Standard Chemotherapy        7.192258
+BA2792                 Bone Marrow Transplant        7.177617
+BA2651                 Bone Marrow Transplant        6.924329
+BA2595               Targeted Therapy - Other        5.889614
+BA2619                  Standard Chemotherapy        9.491793
+BA3013             Supportive/Palliative Care        5.879657
+BA2405 Targeted Therapy - Kinase Inhibitor(s)        7.405106
+BA2856                  Standard Chemotherapy        8.638945
+BA2377                 Bone Marrow Transplant        2.368431
+BA2499                  Standard Chemotherapy        7.850325
+BA3023                  Standard Chemotherapy        7.816870
+BA2095                  Standard Chemotherapy        8.052884
+BA2275                  Standard Chemotherapy        6.357576
+BA2901                  Standard Chemotherapy        6.081927
+BA2221                  Standard Chemotherapy        2.520080
+BA2387                 Bone Marrow Transplant        7.774440
+BA2657                  Standard Chemotherapy        9.242989
+BA2962                 Bone Marrow Transplant        6.616496
+BA2195                  Standard Chemotherapy        8.313480
+BA2688                 Bone Marrow Transplant        7.560949
+BA2420                  Standard Chemotherapy        6.083622
+BA2727                  Standard Chemotherapy        8.298209
+BA2756                  Standard Chemotherapy        5.808147
+BA2122                  Standard Chemotherapy        4.824311
+BA2053                  Standard Chemotherapy        7.028414
+BA2080                  Standard Chemotherapy        5.899996
+BA2415                 Bone Marrow Transplant        3.411403
+BA2081                  Standard Chemotherapy        5.761817
+BA2354                 Bone Marrow Transplant        5.887224
+BA3273                 Bone Marrow Transplant        1.716335
+BA2893                  Standard Chemotherapy        8.079712
+BA2044                 Bone Marrow Transplant        4.909504
+BA2309                  Standard Chemotherapy        8.014572
+BA2489                 Bone Marrow Transplant        5.300961
+BA2908                  Standard Chemotherapy        8.341517
+BA2054                 Bone Marrow Transplant        5.698769
+BA2872                  Standard Chemotherapy        6.135059
+BA2526             Supportive/Palliative Care        8.346814
+BA3145               Targeted Therapy - Other        8.208181
+BA2041                 Bone Marrow Transplant        7.085982
+BA2096                 Bone Marrow Transplant        6.334655
+BA2464                  Standard Chemotherapy        7.315791
+BA2902                  Standard Chemotherapy        7.504361
+BA2541                  Standard Chemotherapy        7.652770
+BA2143                  Standard Chemotherapy        6.083190
+BA2769                  Standard Chemotherapy        7.337051
+BA2843                  Standard Chemotherapy        5.513828
+BA2497                  Standard Chemotherapy       -0.200352
+BA2718                 Bone Marrow Transplant        9.719842
+BA2575                  Standard Chemotherapy        5.359658
+BA2593                  Standard Chemotherapy        6.505982
+BA2791                  Standard Chemotherapy        7.224594
+BA2620                 Bone Marrow Transplant        6.639665
+BA2629                  Standard Chemotherapy        6.510567
+BA2870                  Standard Chemotherapy        1.068949
+BA2423               Targeted Therapy - Other        3.544980
+BA2682                  Standard Chemotherapy        7.535110
+BA2276                  Standard Chemotherapy        6.885539
+BA2348                 Bone Marrow Transplant        4.470991
+BA2709                  Standard Chemotherapy        4.714072
+BA2789                 Bone Marrow Transplant        8.855777
+BA2694               Targeted Therapy - Other        7.016137
+BA2722                  Standard Chemotherapy        7.497947
+BA2538               Targeted Therapy - Other        6.040210
+BA2583               Targeted Therapy - Other        5.535340
+BA2292               Targeted Therapy - Other        7.060210
+BA2806                 Bone Marrow Transplant        7.967445
+BA2153                  Standard Chemotherapy        5.798345
+BA2674                  Standard Chemotherapy        6.639665
+BA2809                  Standard Chemotherapy        6.555022
+BA3025                 Bone Marrow Transplant        9.539699
+BA2523                  Standard Chemotherapy        6.522198
+BA3027                  Standard Chemotherapy        4.296397
+BA2441                  Standard Chemotherapy        7.282684
+BA2514 Targeted Therapy - Kinase Inhibitor(s)        5.727549
+BA2695 Targeted Therapy - Kinase Inhibitor(s)        6.213169
+BA2520 Targeted Therapy - Kinase Inhibitor(s)        2.912421
+BA2479                  Standard Chemotherapy        4.794167
+BA2281                  Standard Chemotherapy        7.822617
+BA2932                  Standard Chemotherapy        7.630415
+BA2123                  Standard Chemotherapy        7.501052
+BA2844                  Standard Chemotherapy        4.959194
+BA2660             Supportive/Palliative Care        7.343708
+BA2836                  Standard Chemotherapy        6.939541
+BA2714                  Standard Chemotherapy        7.068077
+BA3317                  Standard Chemotherapy        8.176256
+BA2440                                   NONE        5.982208
+BA2036                  Standard Chemotherapy        9.974672
+BA2828                  Standard Chemotherapy        7.708401
+BA2251                  Standard Chemotherapy       10.366009
+BA2952                  Standard Chemotherapy        6.434938
+BA2410                  Standard Chemotherapy        7.931877
+BA2139                 Bone Marrow Transplant        1.769173
+BA2051                 Bone Marrow Transplant        4.759378
+BA2532                  Standard Chemotherapy        7.835544
+BA2986                  Standard Chemotherapy        5.503152
+BA2494                  Standard Chemotherapy        9.899103
+BA2515                  Standard Chemotherapy        4.950867
+BA2748                 Bone Marrow Transplant        7.632785
+BA2577                 Bone Marrow Transplant        7.031964
+BA2622                  Standard Chemotherapy        4.993898
+BA2758                  Standard Chemotherapy        4.263239
+BA2930                  Standard Chemotherapy        5.539797
+BA2970             Supportive/Palliative Care        5.951938
+BA2839                                   NONE        6.504949
+BA2868                  Standard Chemotherapy        9.187287
+BA3011                  Standard Chemotherapy        7.331640
+BA2052             Supportive/Palliative Care        4.399951
+BA2510                 Bone Marrow Transplant        0.277265
+BA2691                                   NONE        2.916656
+BA2374               Targeted Therapy - Other        6.503483
+BA2804               Targeted Therapy - Other        5.141616
+BA2670                                  Other        5.720235
+BA2675                 Bone Marrow Transplant        8.263965
+BA2031                 Bone Marrow Transplant        4.024523
+BA2589               Targeted Therapy - Other        9.259259
+BA2198                  Standard Chemotherapy        6.446131
+BA2066                 Bone Marrow Transplant        4.445553
+BA2344             Supportive/Palliative Care        7.587599
+BA2534             Supportive/Palliative Care        9.271569
+BA2459                  Standard Chemotherapy        6.768984
+BA2229                 Bone Marrow Transplant        6.601569
+BA2559                 Bone Marrow Transplant        6.888677
+BA2093                  Standard Chemotherapy        9.382342
+BA2000                 Bone Marrow Transplant        7.131215
+BA2425                 Bone Marrow Transplant        9.811315
+BA2905               Targeted Therapy - Other        7.506472
+BA2304                 Bone Marrow Transplant       -0.015069
+BA2976                  Standard Chemotherapy        6.378790
+BA2386                  Standard Chemotherapy        9.449871
+BA2879                  Standard Chemotherapy        6.691924
+BA3400                  Standard Chemotherapy        8.333379
+BA2035 Targeted Therapy - Kinase Inhibitor(s)        9.133421
+BA2760                  Standard Chemotherapy        5.616689
+BA2201                 Bone Marrow Transplant        6.367924
+BA2355               Targeted Therapy - Other        5.322335
+BA2113                  Standard Chemotherapy        6.401706
+BA2155             Supportive/Palliative Care       10.332336
+BA2955 Targeted Therapy - Kinase Inhibitor(s)        3.417084
+BA2502                                  Other        5.810831
+BA2322                  Standard Chemotherapy        7.089743
+BA2020                 Bone Marrow Transplant        7.534054
+BA2226                  Standard Chemotherapy        7.246478
+BA2376                  Standard Chemotherapy        3.415613
+BA2200                  Standard Chemotherapy        8.360387
+BA2121                  Standard Chemotherapy        5.705301
+BA2944                 Bone Marrow Transplant        8.145134
+BA2033                  Standard Chemotherapy        6.267057
+BA2867                  Standard Chemotherapy        6.478662
+BA2089                  Standard Chemotherapy        3.085371
+BA2034                  Standard Chemotherapy        7.784012
+BA2224                  Standard Chemotherapy        7.335298
+BA2470                  Standard Chemotherapy        7.757804
+BA2046                  Standard Chemotherapy        7.134335
+BA2972                 Bone Marrow Transplant        6.639156
+BA2978                 Bone Marrow Transplant        5.221734
+BA2829 Targeted Therapy - Kinase Inhibitor(s)        7.559772
+BA2579 Targeted Therapy - Kinase Inhibitor(s)        3.941796
+BA2249 Targeted Therapy - Kinase Inhibitor(s)        7.230366
+BA2851                  Standard Chemotherapy        6.590418
+BA2587                 Bone Marrow Transplant        5.152071
+BA2461                 Bone Marrow Transplant        4.042292
+BA2024                  Standard Chemotherapy        5.516919
+BA2623                  Standard Chemotherapy        6.633834
+BA2426                  Standard Chemotherapy        6.737459
+BA2271                            Intrathecal        5.032549
+BA3004                  Standard Chemotherapy        8.190122
+BA3010                  Standard Chemotherapy        5.949149
+BA2662                 Bone Marrow Transplant        5.131240
+BA2280 Targeted Therapy - Kinase Inhibitor(s)        7.745365
+BA2277 Targeted Therapy - Kinase Inhibitor(s)        7.173585
+BA2658                 Bone Marrow Transplant        3.012381
+BA2512               Targeted Therapy - Other        2.273110
+BA2394                  Standard Chemotherapy       10.374559
+BA2950               Targeted Therapy - Other        6.083190
+BA2934                  Standard Chemotherapy        3.230736
+BA2539                  Standard Chemotherapy        4.344585
+BA2786                  Standard Chemotherapy        4.916854
+BA2256                  Standard Chemotherapy        7.395406
+BA2483             Supportive/Palliative Care        7.943141
+BA3002             Supportive/Palliative Care        7.085217
+BA2109                  Standard Chemotherapy        5.253853
+BA2242 Targeted Therapy - Kinase Inhibitor(s)        8.198116
+BA2132                  Standard Chemotherapy        8.133665
+BA2618               Targeted Therapy - Other        5.744334
+BA2846             Supportive/Palliative Care        6.977313
+BA2521                  Standard Chemotherapy        7.668596
+BA2885                  Standard Chemotherapy        0.499201
+BA2639                 Bone Marrow Transplant        7.231266
+BA2775                  Standard Chemotherapy        8.753967
+BA2402                                   NONE        7.414970
+BA2097                  Standard Chemotherapy        6.658455
+BA2399                  Standard Chemotherapy        7.906540
+BA2850                 Bone Marrow Transplant        7.306760
+BA2993                 Bone Marrow Transplant        7.771615
+BA3322                  Standard Chemotherapy        4.345699
+BA2174                 Bone Marrow Transplant        6.391652
+BA2004                  Standard Chemotherapy        7.106127
+BA3001                  Standard Chemotherapy        9.114605
+BA2911 Targeted Therapy - Kinase Inhibitor(s)        7.954528
+BA2311             Supportive/Palliative Care        4.443345
+BA3040                  Standard Chemotherapy        6.939541
+BA2724                  Standard Chemotherapy        5.711006
+BA2837               Targeted Therapy - Other        7.376752
+BA2821                  Standard Chemotherapy        5.091813
+BA2363             Supportive/Palliative Care        7.420904
+BA2233                  Standard Chemotherapy        7.005651
+BA2744             Supportive/Palliative Care        8.999068
+BA2501                  Standard Chemotherapy        7.164698
+BA2301                  Standard Chemotherapy        4.783613
+BA2880                                   NONE        4.917210
+BA2621                                   NONE        4.850562
+BA2852                  Standard Chemotherapy        5.708722
+BA2133                  Standard Chemotherapy        5.824299
+BA2473                  Standard Chemotherapy        7.369105
+BA2866                 Bone Marrow Transplant        6.195633
+BA2212                  Standard Chemotherapy        5.489155
+BA2477                 Bone Marrow Transplant        7.052926
+BA2244                 Bone Marrow Transplant        5.804508
+BA3089                 Bone Marrow Transplant        8.049349
+BA2685                  Standard Chemotherapy        7.281720
+BA2273                  Standard Chemotherapy        7.995737
+BA2659                  Standard Chemotherapy        6.844669
+BA2124                  Standard Chemotherapy        7.655133
+BA2369                  Standard Chemotherapy        6.595692
+BA2400                  Standard Chemotherapy        7.143838
+BA2762                 Bone Marrow Transplant        7.082279
+BA2312                  Standard Chemotherapy        7.251762
+BA2813                 Bone Marrow Transplant        7.196432
+BA2211                  Standard Chemotherapy        9.021902
+BA2171                  Standard Chemotherapy        7.294317
+BA2746                  Standard Chemotherapy        4.797680
+BA2798                  Standard Chemotherapy        7.964221
+BA2883                  Standard Chemotherapy        8.317876
+BA2288                                   NONE        4.720032
+BA2801                  Standard Chemotherapy        6.069718
+BA3407                  Standard Chemotherapy        4.819028
+BA3030 Targeted Therapy - Kinase Inhibitor(s)        5.406642
+BA2588                  Standard Chemotherapy        8.072457
+BA2296                  Standard Chemotherapy        6.474269
+BA2300                                   NONE        5.798746
+BA2903               Targeted Therapy - Other        5.635518
+BA2545                 Bone Marrow Transplant        4.923808
+BA2840                  Standard Chemotherapy        9.595771
+BA2528                  Standard Chemotherapy        6.551802
+BA2646                  Standard Chemotherapy        7.492562
+BA2240 Targeted Therapy - Kinase Inhibitor(s)        7.728095
+BA2926             Supportive/Palliative Care        6.585177
+BA2272                 Bone Marrow Transplant        5.950763
+BA2306                  Standard Chemotherapy        5.044443
+BA2842                  Standard Chemotherapy        4.408029
+BA2855                  Standard Chemotherapy        4.360159
+BA2040                  Standard Chemotherapy        3.265992
+BA2765                  Standard Chemotherapy        6.087073
+BA2904                  Standard Chemotherapy       10.175300
+BA2726             Supportive/Palliative Care       -0.238630
+BA2234                  Standard Chemotherapy        1.051640
+BA2022                  Standard Chemotherapy        7.703303
+BA2228               Targeted Therapy - Other        5.231743
+BA2037 Targeted Therapy - Kinase Inhibitor(s)        8.247179
+BA2184                 Bone Marrow Transplant        8.420837
+BA3009                 Bone Marrow Transplant        7.236365
+BA2442                  Standard Chemotherapy        7.741329
+BA2882                  Standard Chemotherapy        3.779593
+BA2656                                   NONE        8.158653
+BA2705                  Standard Chemotherapy        7.821098
+BA2379                 Bone Marrow Transplant        5.862101
+BA2663                  Standard Chemotherapy        4.208734
+BA2570                  Standard Chemotherapy        5.805728
+BA2764                  Standard Chemotherapy        5.042101
+BA2209                 Bone Marrow Transplant        5.446039
+BA2989                  Standard Chemotherapy        8.208181
+BA2261             Supportive/Palliative Care        7.865198
+BA2721               Targeted Therapy - Other        6.261181
+BA2728                  Standard Chemotherapy        7.285258
+BA2715             Supportive/Palliative Care        6.918549
+BA2116             Supportive/Palliative Care        6.942944
+BA2469                 Bone Marrow Transplant        5.740113
+BA2269                            Intrathecal        4.620364
+BA2098                 Bone Marrow Transplant        3.750766
+BA2951                                   NONE        8.469225
+BA2778 Targeted Therapy - Kinase Inhibitor(s)        2.427321
+BA2163                 Bone Marrow Transplant        7.425196
+BA3153                 Bone Marrow Transplant        8.083356
+BA2817               Targeted Therapy - Other        1.830428
+BA2820                  Standard Chemotherapy        5.642403
+BA2704                  Standard Chemotherapy        8.111045
+BA2723                  Standard Chemotherapy        5.699160
+BA2492                  Standard Chemotherapy        3.311090
+BA2088                  Standard Chemotherapy        4.653330
+BA3202                  Standard Chemotherapy        4.494549
+BA3139                  Standard Chemotherapy        7.811011
+BA3285                  Standard Chemotherapy        9.616030
+BA2584                 Bone Marrow Transplant        2.243494
+BA3079                  Standard Chemotherapy        6.610066
+BA2417                  Standard Chemotherapy        3.061139
+BA2361                 Bone Marrow Transplant        4.693285
+BA2450                  Standard Chemotherapy        8.381007
+BA2994                  Standard Chemotherapy        8.220366
+BA2824                  Standard Chemotherapy        8.750984
+BA2079                  Standard Chemotherapy        3.856010
+BA3099                  Standard Chemotherapy        7.757804
+BA2552                  Standard Chemotherapy        7.651483
+BA2472                  Standard Chemotherapy        5.324112
+BA2047                  Standard Chemotherapy        7.778460
+BA2101                  Standard Chemotherapy        4.651209
+BA2082                                   NONE        3.907287
+BA2456                  Standard Chemotherapy        2.297910
+BA2175                  Standard Chemotherapy        6.382610
+BA2507                  Standard Chemotherapy        6.805454
+BA2563                 Bone Marrow Transplant        7.980674
+BA3164 Targeted Therapy - Kinase Inhibitor(s)        8.555514
+BA3235 Targeted Therapy - Kinase Inhibitor(s)        4.246551
+BA2984                  Standard Chemotherapy        8.007801
+BA2414                 Bone Marrow Transplant        6.957516
+BA2697                 Bone Marrow Transplant        4.590818
+BA2999                  Standard Chemotherapy        6.900967
+BA2644                 Bone Marrow Transplant        6.781949
+BA2011                 Bone Marrow Transplant        6.379758
+BA2217                  Standard Chemotherapy        8.486566
+BA2454                  Standard Chemotherapy       10.598116
+BA2776             Supportive/Palliative Care        8.247179
+BA2218                  Standard Chemotherapy        8.423216
+BA2135                  Standard Chemotherapy        5.364387
+BA2914                  Standard Chemotherapy        7.920459
+BA2500                  Standard Chemotherapy        6.701940
+BA2406                  Standard Chemotherapy        3.725606
+BA2830 Targeted Therapy - Kinase Inhibitor(s)        6.920501
+BA2353 Targeted Therapy - Kinase Inhibitor(s)        6.918549
+BA3108               Targeted Therapy - Other        8.206161
+BA2924                  Standard Chemotherapy        7.506472
+BA3192                  Standard Chemotherapy        6.973186
+BA2303                 Bone Marrow Transplant        5.349737
+BA2160                  Standard Chemotherapy        8.328931
+BA2590 Targeted Therapy - Kinase Inhibitor(s)        7.197382
+BA3195 Targeted Therapy - Kinase Inhibitor(s)        7.022003
+BA2516                  Standard Chemotherapy        6.447102
+BA3036                  Standard Chemotherapy        8.344566
+BA2971                 Bone Marrow Transplant        8.500931
+BA3410             Supportive/Palliative Care        6.107037
+BA3118                  Standard Chemotherapy        5.989179
+BA3206                  Standard Chemotherapy        6.341901
+BA3217                 Bone Marrow Transplant        7.894015
+BA3405                 Bone Marrow Transplant        6.634863
+BA3306                 Bone Marrow Transplant        7.512996
+BA3371                 Bone Marrow Transplant        5.363658
+BA3413                 Bone Marrow Transplant        7.632785
+BA3411                  Standard Chemotherapy        5.036421
+BA3133                  Standard Chemotherapy        8.971424
+BA3451                  Standard Chemotherapy        3.325013
+BA3286                  Standard Chemotherapy        5.842348
+BA3221                  Standard Chemotherapy        2.718150
+BA3212                  Standard Chemotherapy       10.101963
+BA3103                  Standard Chemotherapy        5.060692
+BA3271                  Standard Chemotherapy        6.052796
+BA3152                  Standard Chemotherapy        3.249911
+BA3095 Targeted Therapy - Kinase Inhibitor(s)        8.099893
+BA3251                  Standard Chemotherapy        7.039190
+BA3362                  Standard Chemotherapy        0.433071
+BA3135                  Standard Chemotherapy        7.088999
+BA3408             Supportive/Palliative Care        3.385547
+BA3187                  Standard Chemotherapy        5.114332
+BA3098                 Bone Marrow Transplant        7.029781
+BA3435                  Standard Chemotherapy        7.936582
+BA3261                 Bone Marrow Transplant        4.689067
+BA3203                 Bone Marrow Transplant        6.523755
+BA3174                  Standard Chemotherapy        4.594386
+BA3299                 Bone Marrow Transplant        5.267104
+BA3347                  Standard Chemotherapy        1.497725
+BA3126                 Bone Marrow Transplant        2.644021
+BA3380                                   NONE        7.188129
+BA3114                  Standard Chemotherapy        7.183986
+BA3109                  Standard Chemotherapy        5.953951
+BA3452                  Standard Chemotherapy        7.324895
+BA3418                  Standard Chemotherapy        7.288004
+BA3245 Targeted Therapy - Kinase Inhibitor(s)        6.848390
+BA3085                  Standard Chemotherapy        7.115177
+BA3128                  Standard Chemotherapy        7.308615
+BA3423                  Standard Chemotherapy        7.760597
+BA3173                  Standard Chemotherapy        6.072216
+BA3171                 Bone Marrow Transplant        7.376752
+BA3277                  Standard Chemotherapy        7.217909
+BA3210                  Standard Chemotherapy        6.491521
+BA3157                 Bone Marrow Transplant        6.680708
+BA3433                 Bone Marrow Transplant        8.300380
+BA3374                  Standard Chemotherapy       -0.177809
+BA3403                  Standard Chemotherapy        1.970966
+BA3222                  Standard Chemotherapy        0.578561
+BA3450                                   NONE        6.777209
+BA3167                  Standard Chemotherapy        0.719255
+BA3269                  Standard Chemotherapy        6.768984
+BA3110                                   NONE        2.871981
+BA3156                  Standard Chemotherapy        7.837049
+BA3226                                   NONE        8.147056
+BA3421 Targeted Therapy - Kinase Inhibitor(s)        6.544570
+BA3232               Targeted Therapy - Other        8.154775
+BA3289                 Bone Marrow Transplant        4.994947
+BA3430                                   NONE        3.645218
+BA3399                                   NONE        6.400749
+BA3384                 Bone Marrow Transplant        7.686527
+BA3427                                   NONE        7.884947
+BA3449                  Standard Chemotherapy        8.796353
+BA3163                  Standard Chemotherapy        2.073819
+BA3436                 Bone Marrow Transplant       10.454050
+BA3154                                   NONE        0.601633
+BA3162                  Standard Chemotherapy        6.466335
+BA3352                  Standard Chemotherapy        7.014729
+BA3084                 Bone Marrow Transplant        4.770311
+BA3149                  Standard Chemotherapy        3.283309
+BA3169                                   NONE        3.004265
+BA3180                 Bone Marrow Transplant        7.026980
+BA3255                  Standard Chemotherapy        7.818323
+BA3438                  Standard Chemotherapy        1.595418
+BA3345                  Standard Chemotherapy        2.113889
+BA3431                                   NONE        6.162702
+BA3181                 Bone Marrow Transplant        5.219247
+BA3341               Targeted Therapy - Other        7.603953
+BA3191 Targeted Therapy - Kinase Inhibitor(s)        7.067365
+BA3197                                   NONE       10.013961
+BA3448                 Bone Marrow Transplant        7.763347
+BA3453 Targeted Therapy - Kinase Inhibitor(s)        6.943586
+BA3406                  Standard Chemotherapy        7.624378
+BA3308 Targeted Therapy - Kinase Inhibitor(s)        7.417029
+BA3186                 Bone Marrow Transplant        9.905383
+BA3334               Targeted Therapy - Other        4.221754
+BA3447                                   NONE        4.599724
+BA3116                  Standard Chemotherapy        3.248339
+BA3280                  Standard Chemotherapy        7.632785
+BA3185                  Standard Chemotherapy        2.283404
+BA3094                 Bone Marrow Transplant       -1.960120
+BA3318                                   NONE        6.326824
+BA3216                                   NONE        6.472791
+BA3332                  Standard Chemotherapy        7.367240
+BA3214                                   NONE        7.992469
+BA3141                                   NONE        8.843079
+BA3373                                   NONE        8.437581
+BA3319                  Standard Chemotherapy        5.978522
+BA3328                 Bone Marrow Transplant        9.141008
+BA3240                  Standard Chemotherapy        8.917518
+BA3142                                  Other        8.686769
+BA3339                                   NONE        1.349585
+BA3333                                   NONE        7.375774
+BA3381                  Standard Chemotherapy        5.088706
+BA3290                  Standard Chemotherapy        8.190122
+BA3207                            Intrathecal        3.024285
+BA3305                  Standard Chemotherapy        6.508548
+BA3434                  Standard Chemotherapy        4.822922
+BA3189 Targeted Therapy - Kinase Inhibitor(s)        6.867086
+BA3264                  Standard Chemotherapy        7.179997
+BA3329                  Standard Chemotherapy        9.236654
+BA3417                                   NONE        0.207476
+BA3367                                   NONE        5.720235
+BA3225                  Standard Chemotherapy        3.929058
+BA3183                 Bone Marrow Transplant        6.736925
+BA3397                                   NONE        3.036204
+BA3311                  Standard Chemotherapy        6.350192
+BA3175                  Standard Chemotherapy        5.071641
+BA3422                  Standard Chemotherapy        9.655715
+BA3228                  Standard Chemotherapy        7.821098
+BA3213                  Standard Chemotherapy        5.653358
+BA3415                                   NONE        5.829718
+BA3270                  Standard Chemotherapy        6.347374
+BA3324                  Standard Chemotherapy        6.872120
+BA3194                                   NONE        8.296042
+BA3335                  Standard Chemotherapy        9.238947
+BA3199                  Standard Chemotherapy        7.057960
+BA3326                  Standard Chemotherapy        2.885846
+BA3297                  Standard Chemotherapy        7.826881
+BA3227                 Bone Marrow Transplant        9.609294
+BA3394                                   NONE        7.535110
+BA3412                  Standard Chemotherapy        0.439987
+BA3293                 Bone Marrow Transplant        9.068452
+BA3250                  Standard Chemotherapy        5.429664
+BA3177                                   NONE        5.139762
+BA3315                  Standard Chemotherapy        3.909012
+BA3182                  Standard Chemotherapy        5.555108
+BA3260                                   NONE        4.663987
+BA3369                                   NONE        4.807111
+BA3078                  Standard Chemotherapy        5.754155
+BA3386 Targeted Therapy - Kinase Inhibitor(s)        8.709809
+BA3445                                   NONE        6.612759
+BA3176                  Standard Chemotherapy        7.220421
+BA3258                 Bone Marrow Transplant        1.269941
+BA3446                 Bone Marrow Transplant        6.310690
+BA3295                 Bone Marrow Transplant        6.943586
+BA3283                                   NONE        6.573564
+BA3390                                   NONE        3.874798
+BA3275                                   NONE        8.573942
+BA3136                  Standard Chemotherapy        8.198116
+BA3190                                   NONE        6.806035
+BA3234                  Standard Chemotherapy        3.437568
+BA3087                 Bone Marrow Transplant        5.200131
+BA3454                                   NONE        7.547334
+BA3302 Targeted Therapy - Kinase Inhibitor(s)        7.652770
+BA3242 Targeted Therapy - Kinase Inhibitor(s)        7.210534
+BA3117                 Bone Marrow Transplant        7.190650
+BA3083                                   NONE        6.712126
+BA3266                                   NONE        7.756408
+BA3268               Targeted Therapy - Other        9.304857
+BA3229                  Standard Chemotherapy        7.941456
+BA3138                  Standard Chemotherapy        6.879719
+BA3388                  Standard Chemotherapy        7.444440
+BA3353                 Bone Marrow Transplant        7.180788
+BA3312                  Standard Chemotherapy        7.914270
+BA3119                  Standard Chemotherapy        9.459093
+BA3219                  Standard Chemotherapy        2.033952
+BA3351                  Standard Chemotherapy        5.838009
+BA3357               Targeted Therapy - Other        9.536509
+BA3208                  Standard Chemotherapy        7.352990
+BA3310                                   NONE        7.191457
+BA3200                  Standard Chemotherapy       10.315806
+BA3325 Targeted Therapy - Kinase Inhibitor(s)        7.573656
+BA3146                 Bone Marrow Transplant        8.287410
+BA3211               Targeted Therapy - Other        9.660959
+BA3237                                   NONE        9.175594
+BA3130                 Bone Marrow Transplant        0.009633
+BA3376               Targeted Therapy - Other        7.756408
+BA3137                  Standard Chemotherapy        7.663696
+BA3300                 Bone Marrow Transplant        7.647789
+BA3375                 Bone Marrow Transplant        8.109179
+BA3249                                   NONE        8.976649
+BA3385                 Bone Marrow Transplant        7.928681
+BA3416                  Standard Chemotherapy        8.950997
+BA3123                  Standard Chemotherapy        8.044146

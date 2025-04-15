@@ -1,0 +1,42 @@
+#Boxplots d'expressions du gène TP53 en fonction de la feature CEBPA_Biallelic
+#Résultat du test statistique Mann-Whitney U : U = 278.000, p-value = 0.005
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360      bi        8.047660
+BA2861    mono        7.217909
+BA2653    mono        6.649664
+BA2841      bi        5.645787
+BA2731      bi        5.437694
+BA2156      bi        7.781236
+BA2080    mono        5.369391
+BA2718      bi        7.565678
+BA3025      bi        7.490428
+BA2251      bi        7.822617
+BA2515    mono        5.158861
+BA2748      bi        7.407073
+BA2577      bi        7.477321
+BA2868      bi        6.993098
+BA2804    mono        6.345033
+BA2675    mono        7.102352
+BA2000    mono        7.171168
+BA2155      bi        6.810265
+BA2867    mono        5.444615
+BA2972      bi        6.652957
+BA2659    mono        6.222437
+BA2312    mono        5.951162
+BA2296      bi        7.145353
+BA2184      bi        7.341770
+BA3153    mono        4.741136
+BA2217      bi        7.746670
+BA3413      bi        7.303130
+BA3261      bi        7.014729
+BA3114    mono        5.616689
+BA3436    mono        7.511916
+BA3216    mono        5.772579
+BA3329    mono        6.369829
+BA3194    mono        7.324012
+BA3199    mono        7.136714
+BA3117      bi        7.353908
+BA3312      bi        7.118172
+BA3357    mono        6.874034
+BA3416    mono        7.483826
