@@ -1,2 +1,4 @@
 RecreateData/*.fa.gz
 ScriptsPrincipaux/BEATAMLdata/*.tsv
+*.pack
+.iso
