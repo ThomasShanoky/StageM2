@@ -1,0 +1,6 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène ASXL1, en fonction de la feature RUNX1
+#Résultat du test statistique Mann-Whitney U : U = 39494.500, p-value = 0.010
+#Tableau des résultats :
+Empty DataFrame
+Columns: [Sample, Feature, ExpressionGene]
+Index: []

@@ -1,0 +1,70 @@
+#Boxplots d'expressions de la mutation mut3 (T>C aux positions chr15:90631934-90631934) du gène IDH2, en fonction de la feature specimenType
+#Résultat du test statistique Mann-Whitney U : U = 693.500, p-value = 0.008
+#Tableau des résultats :
+Sample              Feature  ExpressionGene
+BA2858 Bone Marrow Aspirate        8.675379
+BA3124 Bone Marrow Aspirate        7.547334
+BA2782 Bone Marrow Aspirate        7.290774
+BA2429     Peripheral Blood        7.434268
+BA2597     Peripheral Blood        7.852051
+BA2357 Bone Marrow Aspirate        8.739106
+BA2485 Bone Marrow Aspirate        8.528867
+BA2595     Peripheral Blood        8.868577
+BA2962 Bone Marrow Aspirate        8.595293
+BA2195     Peripheral Blood        8.200122
+BA2688     Peripheral Blood        7.813859
+BA2309 Bone Marrow Aspirate        8.775016
+BA2489 Bone Marrow Aspirate        8.331153
+BA2789 Bone Marrow Aspirate        8.775016
+BA2694     Peripheral Blood        7.954528
+BA2538     Peripheral Blood        8.781082
+BA2836     Peripheral Blood        8.061478
+BA2589     Peripheral Blood        7.410088
+BA2198 Bone Marrow Aspirate        8.641716
+BA2905     Peripheral Blood        8.427988
+BA2355 Bone Marrow Aspirate        7.424155
+BA2502     Peripheral Blood        7.563211
+BA2020 Bone Marrow Aspirate        8.878246
+BA2024 Bone Marrow Aspirate        7.248182
+BA2662 Bone Marrow Aspirate        8.437581
+BA2618 Bone Marrow Aspirate        7.709614
+BA2846 Bone Marrow Aspirate        8.633417
+BA2775     Peripheral Blood        8.118538
+BA3001 Bone Marrow Aspirate        8.230612
+BA2311     Peripheral Blood        7.960973
+BA2133     Peripheral Blood        6.969754
+BA2473 Bone Marrow Aspirate        9.200813
+BA3089 Bone Marrow Aspirate        7.898831
+BA2659 Bone Marrow Aspirate        8.150910
+BA2369 Bone Marrow Aspirate        8.622424
+BA2171 Bone Marrow Aspirate        8.293879
+BA2817     Peripheral Blood        6.977949
+BA2704 Bone Marrow Aspirate        9.016588
+BA2361 Bone Marrow Aspirate        8.137476
+BA2984     Peripheral Blood        7.770154
+BA2697     Peripheral Blood        6.899687
+BA3108 Bone Marrow Aspirate        9.377939
+BA3195 Bone Marrow Aspirate        8.479108
+BA3217 Bone Marrow Aspirate        8.276700
+BA3271 Bone Marrow Aspirate        7.978943
+BA3251 Bone Marrow Aspirate        8.427988
+BA3135     Peripheral Blood        8.836768
+BA3261 Bone Marrow Aspirate        8.664074
+BA3299 Bone Marrow Aspirate        7.928681
+BA3245     Peripheral Blood        8.054570
+BA3277 Bone Marrow Aspirate        8.566016
+BA3210 Bone Marrow Aspirate        7.800943
+BA3269 Bone Marrow Aspirate        7.246478
+BA3180 Bone Marrow Aspirate        8.814877
+BA3308 Bone Marrow Aspirate        8.698245
+BA3328     Peripheral Blood        7.999155
+BA3305 Bone Marrow Aspirate        8.255544
+BA3183 Bone Marrow Aspirate        8.194113
+BA3297 Bone Marrow Aspirate        8.182179
+BA3227 Bone Marrow Aspirate        8.584578
+BA3258 Bone Marrow Aspirate        7.690235
+BA3446     Peripheral Blood        7.380621
+BA3275     Peripheral Blood        8.681063
+BA3083     Peripheral Blood        7.778460
+BA3266 Bone Marrow Aspirate        8.049349
+BA3310 Bone Marrow Aspirate        9.048609

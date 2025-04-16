@@ -1,0 +1,7 @@
+#Boxplots d'expressions de la mutation mut2 (CCTT>C aux positions chr19:33792381-33792381) du gène CEBPA, en fonction de la feature priorMalignancyRadiationTx
+#Résultat du test statistique Mann-Whitney U : U = 20921.000, p-value = 0.009
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2251       n        4.823282
+BA2972       n        5.691816
+BA2217       n        6.005138

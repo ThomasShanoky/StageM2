@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut1 (T>C aux positions chr3:128200691-128200691) du gène GATA2, en fonction de la feature isTransformed
+#Résultat du test statistique Mann-Whitney U : U = 6803.000, p-value = 0.001
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA3037   FALSE        9.226880
+BA3243   FALSE        9.589095
+BA2534   FALSE        9.271569
+BA3436   FALSE       10.454050
+BA3422   FALSE        9.655715

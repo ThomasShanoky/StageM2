@@ -659,7 +659,7 @@ class GUI:
 
         
         # 3ème fonctionnalité : Expression d'une mutation selon une feature
-        count = 0
+
         for feature in self.usable_cat:
             for gene in self.Genes:
                 self.dico_IndAndMut, self.dico_mut = self.getTypesOfMutationsAndInd(gene)
@@ -704,20 +704,19 @@ class GUI:
                                 stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.3f}"
 
                         if p_val < alpha:
-                            count += 1
-                            # #Créer le graphe
-                            # self.fig.clear()
-                            # self.ax = self.fig.add_subplot(111)
-                            # sns.boxplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, ax=self.ax)
-                            # sns.stripplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, color='black', alpha=0.5, jitter=True, ax=self.ax)
-                            # self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature} pour la mutation {Mutation}")
-                            # self.ax.set_ylabel("Expression du gène")
-                            # self.ax.set_xticklabels(self.ax.get_xticklabels(), rotation=45, horizontalalignment='right')
-                            # self.fig.tight_layout()
-                            # premiereLigne = f"#Boxplots d'expressions de la mutation {Mutation} ({self.dico_mut[Mutation][1]}>{self.dico_mut[Mutation][2]} aux positions {self.dico_mut[Mutation][0]}) du gène {gene}, en fonction de la feature {feature}\n"
-                            # fileName = f"MutAndFeat_{gene}_{Mutation}_{feature}"
-                            # self.CreateFileRes(inter_ind_pd, stats_res_test, premiereLigne, fileName)
-        print(count)
+                            #Créer le graphe
+                            self.fig.clear()
+                            self.ax = self.fig.add_subplot(111)
+                            sns.boxplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, ax=self.ax)
+                            sns.stripplot(x="Feature", y="ExpressionGene", data=inter_ind_pd, color='black', alpha=0.5, jitter=True, ax=self.ax)
+                            self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature} pour la mutation {Mutation}")
+                            self.ax.set_ylabel("Expression du gène")
+                            self.ax.set_xticklabels(self.ax.get_xticklabels(), rotation=45, horizontalalignment='right')
+                            self.fig.tight_layout()
+                            premiereLigne = f"#Boxplots d'expressions de la mutation {Mutation} ({self.dico_mut[Mutation][1]}>{self.dico_mut[Mutation][2]} aux positions {self.dico_mut[Mutation][0]}) du gène {gene}, en fonction de la feature {feature}\n"
+                            fileName = f"MutAndFeat_{gene}_{Mutation}_{feature}"
+                            self.CreateFileRes(inter_ind_pd, stats_res_test, premiereLigne, fileName)
+
         return
 
 

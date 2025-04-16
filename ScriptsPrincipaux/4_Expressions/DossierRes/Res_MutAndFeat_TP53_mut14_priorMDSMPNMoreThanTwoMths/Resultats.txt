@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut14 (C>T aux positions chr17:7578190-7578190) du gène TP53, en fonction de la feature priorMDSMPNMoreThanTwoMths
+#Résultat du test statistique Mann-Whitney U : U = 1379.500, p-value = 0.010
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA3395       n        6.096002
+BA2832       n        6.542553
+BA2308       n        6.134616
+BA3040       n        7.437299
+BA2273       n        5.752638
+BA3152       n        6.371248

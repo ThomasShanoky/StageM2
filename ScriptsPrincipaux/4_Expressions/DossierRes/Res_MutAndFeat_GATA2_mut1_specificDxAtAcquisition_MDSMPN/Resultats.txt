@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut1 (T>C aux positions chr3:128200691-128200691) du gène GATA2, en fonction de la feature specificDxAtAcquisition_MDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 756.000, p-value = 0.020
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA3037   False        9.226880
+BA3243   False        9.589095
+BA2534   False        9.271569
+BA3436   False       10.454050
+BA3422   False        9.655715

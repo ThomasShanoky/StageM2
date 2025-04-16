@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut7 (A>G aux positions chr3:128202767-128202767) du gène GATA2, en fonction de la feature priorMPN
+#Résultat du test statistique Mann-Whitney U : U = 2808.000, p-value = 0.044
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2844       n        4.959194
+BA2748       n        7.632785
+BA2577       n        7.031964
+BA2296       n        6.474269
+BA2728       n        7.285258

@@ -1,0 +1,8 @@
+#Boxplots d'expressions de la mutation mut31 (T>C aux positions chr4:106197552-106197552) du gène TET2, en fonction de la feature priorMDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 1842.000, p-value = 0.018
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2856       n        6.293153
+BA2386       n        6.532500
+BA2879       n        6.632258
+BA3400       n        6.396000

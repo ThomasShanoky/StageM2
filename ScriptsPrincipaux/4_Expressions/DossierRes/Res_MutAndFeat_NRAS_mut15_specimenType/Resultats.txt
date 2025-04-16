@@ -1,0 +1,21 @@
+#Boxplots d'expressions de la mutation mut15 (T>C aux positions chr1:115258747-115258747) du gène NRAS, en fonction de la feature specimenType
+#Résultat du test statistique Mann-Whitney U : U = 8.000, p-value = 0.019
+#Tableau des résultats :
+Sample              Feature  ExpressionGene
+BA2294 Bone Marrow Aspirate        7.424155
+BA2872 Bone Marrow Aspirate        6.680708
+BA2423     Peripheral Blood        7.766141
+BA2691     Peripheral Blood        7.056475
+BA2229     Peripheral Blood        7.729414
+BA2978     Peripheral Blood        6.928986
+BA2618 Bone Marrow Aspirate        6.684777
+BA2570     Peripheral Blood        7.179137
+BA2728 Bone Marrow Aspirate        6.788651
+BA3118     Peripheral Blood        8.476631
+BA3212     Peripheral Blood        7.427218
+BA3311     Peripheral Blood        6.817518
+BA3175     Peripheral Blood        7.406090
+BA3270 Bone Marrow Aspirate        6.730507
+BA3283     Peripheral Blood        8.044146
+BA3138     Peripheral Blood        7.419905
+BA3237     Peripheral Blood        6.735277

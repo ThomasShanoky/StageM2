@@ -1,0 +1,8 @@
+#Boxplots d'expressions de la mutation mut19 (G>C aux positions chr13:28609758-28609758) du gène FLT3, en fonction de la feature specimenType
+#Résultat du test statistique Mann-Whitney U : U = 56.000, p-value = 0.043
+#Tableau des résultats :
+Sample          Feature  ExpressionGene
+BA2714 Peripheral Blood        9.404539
+BA3229 Peripheral Blood        7.603953
+BA3138 Peripheral Blood        6.228564
+BA3388 Peripheral Blood        6.758872

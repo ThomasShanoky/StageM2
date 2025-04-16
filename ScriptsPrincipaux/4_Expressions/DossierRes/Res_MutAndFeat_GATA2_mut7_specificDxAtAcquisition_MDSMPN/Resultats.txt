@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut7 (A>G aux positions chr3:128202767-128202767) du gène GATA2, en fonction de la feature specificDxAtAcquisition_MDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 756.000, p-value = 0.020
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2844   False        4.959194
+BA2748   False        7.632785
+BA2577   False        7.031964
+BA2296   False        6.474269
+BA2728   False        7.285258

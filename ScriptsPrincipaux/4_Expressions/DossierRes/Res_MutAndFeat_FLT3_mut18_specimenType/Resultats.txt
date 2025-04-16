@@ -1,0 +1,21 @@
+#Boxplots d'expressions de la mutation mut18 (T>C aux positions chr13:28608473-28608473) du gène FLT3, en fonction de la feature specimenType
+#Résultat du test statistique Mann-Whitney U : U = 56.000, p-value = 0.043
+#Tableau des résultats :
+Sample              Feature  ExpressionGene
+BA2707     Peripheral Blood       10.228271
+BA2701     Peripheral Blood        8.184160
+BA2195     Peripheral Blood        6.651307
+BA2441     Peripheral Blood        9.334552
+BA2514 Bone Marrow Aspirate        7.752272
+BA2695     Peripheral Blood        6.975923
+BA2970 Bone Marrow Aspirate        6.561197
+BA2866 Bone Marrow Aspirate        7.225431
+BA2817     Peripheral Blood        9.547893
+BA2723     Peripheral Blood        6.861450
+BA2492 Bone Marrow Aspirate        7.384596
+BA2088 Bone Marrow Aspirate        4.700314
+BA3202 Bone Marrow Aspirate        5.222800
+BA3139     Peripheral Blood       12.525660
+BA3285     Peripheral Blood       12.221196
+BA3036     Peripheral Blood        8.686769
+BA3318 Bone Marrow Aspirate        8.910905

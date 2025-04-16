@@ -1,0 +1,11 @@
+#Boxplots d'expressions de la mutation mut4 (A>C aux positions chr2:198267359-198267359) du gène SF3B1, en fonction de la feature NPM1
+#Résultat du test statistique Mann-Whitney U : U = 128.000, p-value = 0.039
+#Tableau des résultats :
+Sample  Feature  ExpressionGene
+BA2649 negative        8.409000
+BA2348 negative        8.035502
+BA3030 negative        8.526304
+BA2728 negative        8.160596
+BA3290 negative        8.681063
+BA3302 negative        8.824221
+BA3242 negative        8.622424

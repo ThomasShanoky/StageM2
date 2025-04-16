@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut1 (T>C aux positions chr3:128200691-128200691) du gène GATA2, en fonction de la feature priorMDS
+#Résultat du test statistique Mann-Whitney U : U = 4343.000, p-value = 0.002
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA3037       n        9.226880
+BA3243       n        9.589095
+BA2534       n        9.271569
+BA3436       n       10.454050
+BA3422       n        9.655715

@@ -1,0 +1,32 @@
+#Boxplots d'expressions de la mutation mut30 (G>A aux positions chr21:36259324-36259324) du gène RUNX1, en fonction de la feature NPM1
+#Résultat du test statistique Mann-Whitney U : U = 128.000, p-value = 0.039
+#Tableau des résultats :
+Sample  Feature  ExpressionGene
+BA3029 positive        7.923642
+BA2735 positive        7.749512
+BA2860 negative        6.264300
+BA2282 negative        5.938987
+BA2651 negative        7.599310
+BA2095 negative        8.855777
+BA2893 positive        8.698245
+BA3145 negative        7.770154
+BA2718 negative        6.846574
+BA2276 negative        7.563211
+BA2344 negative        7.537348
+BA2534 negative        7.663696
+BA2559 negative        7.762007
+BA2905 negative        7.418896
+BA2521 positive        8.401948
+BA2685 negative        7.150786
+BA2124 positive        8.251094
+BA2379 negative        6.969120
+BA2715 negative        8.270317
+BA2116 negative        6.763595
+BA2552 positive        8.251355
+BA2999 negative        8.878246
+BA2135 negative        7.681345
+BA3126 negative        6.895111
+BA3169 positive        6.913264
+BA3177 negative        8.545088
+BA3375 positive        8.750984
+BA3385 positive        7.860877

@@ -1,0 +1,33 @@
+#Boxplots d'expressions de la mutation mut4 (A>G aux positions chr2:25457243-25457243) du gène DNMT3A, en fonction de la feature isTransformed
+#Résultat du test statistique Mann-Whitney U : U = 1.000, p-value = 0.007
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2452   FALSE        5.903534
+BA3124   FALSE        6.230338
+BA2245   FALSE        6.010056
+BA2742   FALSE        4.928412
+BA2316   FALSE        4.985812
+BA2474   FALSE        6.099370
+BA2065   FALSE        6.173799
+BA2676   FALSE        5.362940
+BA2901   FALSE        5.087589
+BA2221   FALSE        4.656880
+BA2523   FALSE        5.743958
+BA2139   FALSE        4.531977
+BA2829   FALSE        5.667403
+BA2249   FALSE        5.484681
+BA2662   FALSE        5.342556
+BA2746   FALSE        4.561451
+BA2588   FALSE        6.373095
+BA2079   FALSE        5.087589
+BA3099   FALSE        5.818396
+BA3195    TRUE        6.868388
+BA2971    TRUE        6.236642
+BA3371   FALSE        4.973175
+BA3421   FALSE        4.886422
+BA3453   FALSE        4.819726
+BA3240    TRUE        7.467841
+BA3270   FALSE        5.369391
+BA3293   FALSE        5.916376
+BA3454   FALSE        5.628285
+BA3266   FALSE        5.779253

@@ -1,0 +1,18 @@
+#Boxplots d'expressions de la mutation mut5 (C>CATG aux positions chr13:28592634-28592637) du gène FLT3, en fonction de la feature isRelapse
+#Résultat du test statistique Mann-Whitney U : U = 1.000, p-value = 0.011
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2427    TRUE        7.550843
+BA2631   FALSE        9.226880
+BA2561   FALSE        9.874743
+BA2094   FALSE       10.639379
+BA2682   FALSE        9.377939
+BA2952   FALSE        9.491793
+BA2930   FALSE        7.562070
+BA2066   FALSE        9.880796
+BA2879    TRUE        6.040210
+BA3400    TRUE        7.923642
+BA2456   FALSE        8.164493
+BA3447   FALSE        9.084943
+BA3333   FALSE       10.427027
+BA3136   FALSE       10.748760

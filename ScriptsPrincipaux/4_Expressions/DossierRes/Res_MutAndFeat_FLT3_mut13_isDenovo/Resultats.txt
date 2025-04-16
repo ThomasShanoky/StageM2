@@ -1,0 +1,12 @@
+#Boxplots d'expressions de la mutation mut13 (A>G aux positions chr13:28602329-28602329) du gène FLT3, en fonction de la feature isDenovo
+#Résultat du test statistique Mann-Whitney U : U = 0.000, p-value = 0.036
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2865    TRUE        9.619492
+BA3178    TRUE       10.081894
+BA2906   FALSE       10.714946
+BA2928    TRUE        9.629756
+BA2066    TRUE        9.880796
+BA2386    TRUE       10.040753
+BA3139   FALSE       12.525660
+BA3285   FALSE       12.221196

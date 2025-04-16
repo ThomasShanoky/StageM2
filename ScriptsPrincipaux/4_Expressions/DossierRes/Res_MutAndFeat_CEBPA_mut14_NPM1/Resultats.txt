@@ -1,0 +1,22 @@
+#Boxplots d'expressions de la mutation mut14 (T>TCGC aux positions chr19:33793007-33793010) du gène CEBPA, en fonction de la feature NPM1
+#Résultat du test statistique Mann-Whitney U : U = 51.000, p-value = 0.012
+#Tableau des résultats :
+Sample  Feature  ExpressionGene
+BA2360 negative        7.258878
+BA2156 negative        7.076261
+BA2561 negative        5.488344
+BA2094 negative        4.676372
+BA2718 negative        6.295033
+BA2410 positive        4.412039
+BA2155 negative        5.988763
+BA2277 positive        5.105947
+BA2184 negative        6.442757
+BA2656 positive        5.402602
+BA2417 negative        6.483642
+BA3413 negative        6.440324
+BA3435 negative        5.573030
+BA3347 positive        4.764239
+BA3194 negative        6.257620
+BA3199 negative        4.991809
+BA3117 negative        6.670584
+BA3312 negative        5.452689

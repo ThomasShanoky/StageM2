@@ -1,0 +1,20 @@
+#Boxplots d'expressions de la mutation mut27 (T>C aux positions chr4:106196834-106196834) du gène TET2, en fonction de la feature NPM1
+#Résultat du test statistique Mann-Whitney U : U = 4.000, p-value = 0.039
+#Tableau des résultats :
+Sample  Feature  ExpressionGene
+BA2134 negative        6.264750
+BA2087 negative        5.611374
+BA2329 negative        6.156981
+BA2677 negative        6.280079
+BA2937 negative        5.706798
+BA2420 negative        5.120271
+BA2769 negative        6.415106
+BA2276 negative        6.405499
+BA2905 negative        5.465210
+BA2662 positive        6.461362
+BA2744 positive        6.724663
+BA3095 negative        5.377849
+BA3412 negative        5.522830
+BA3177 negative        5.759875
+BA3083 positive        6.250446
+BA3325 negative        5.567405

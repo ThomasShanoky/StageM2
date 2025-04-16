@@ -1,0 +1,16 @@
+#Boxplots d'expressions de la mutation mut23 (T>C aux positions chr13:28626716-28626716) du gène FLT3, en fonction de la feature responseToInductionTx
+#Résultat du test statistique Mann-Whitney U : U = 33.000, p-value = 0.010
+#Tableau des résultats :
+Sample           Feature  ExpressionGene
+BA2737        Refractory       11.523813
+BA2792 Complete Response        7.496724
+BA2789 Complete Response        9.792460
+BA2226 Complete Response        7.884947
+BA2851        Refractory        9.141008
+BA2821        Refractory       10.160525
+BA3139        Refractory       12.525660
+BA3285        Refractory       12.221196
+BA3374 Complete Response        8.768973
+BA3403 Complete Response        5.735529
+BA3222 Complete Response        7.733326
+BA3353 Complete Response        9.210928

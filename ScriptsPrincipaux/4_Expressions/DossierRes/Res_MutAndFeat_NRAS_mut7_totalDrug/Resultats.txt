@@ -1,0 +1,9 @@
+#Boxplots d'expressions de la mutation mut7 (G>T aux positions chr1:115256529-115256529) du gène NRAS, en fonction de la feature totalDrug
+#Résultat du test statistique Mann-Whitney U : U = 15.000, p-value = 0.036
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2322       y        7.809564
+BA2244       y        6.985540
+BA3089       y        7.069561
+BA3258       y        6.992443
+BA3446       y        7.026248

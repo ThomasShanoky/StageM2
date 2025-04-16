@@ -1,0 +1,11 @@
+#Boxplots d'expressions de la mutation mut7 (C>A aux positions chr13:28592640-28592640) du gène FLT3, en fonction de la feature isRelapse
+#Résultat du test statistique Mann-Whitney U : U = 1.000, p-value = 0.011
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2455   FALSE        9.955415
+BA2906   FALSE       10.714946
+BA2054   FALSE        7.609891
+BA2691   FALSE        7.016137
+BA2031   FALSE        9.827177
+BA2249   FALSE        9.506014
+BA3362   FALSE       10.428478

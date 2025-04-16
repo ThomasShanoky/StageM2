@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut4 (T>C aux positions chr17:7577120-7577120) du gène TP53, en fonction de la feature priorMDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 1842.000, p-value = 0.018
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2822       n        6.131199
+BA2441       n        7.448397
+BA2715       n        4.544492
+BA2116       n        3.655889
+BA3139       n        6.544570
+BA3285       n        6.594681

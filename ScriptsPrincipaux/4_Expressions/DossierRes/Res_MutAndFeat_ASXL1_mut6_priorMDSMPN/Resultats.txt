@@ -1,0 +1,12 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène ASXL1, en fonction de la feature priorMDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 17364.500, p-value = 0.000
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2688       n        6.839193
+BA2844       n        6.362275
+BA2589       n        6.718375
+BA2174       n        5.692956
+BA2746       n        5.576753
+BA3297       n        6.048565
+BA3275       n        6.025373
+BA3353       n        6.225453

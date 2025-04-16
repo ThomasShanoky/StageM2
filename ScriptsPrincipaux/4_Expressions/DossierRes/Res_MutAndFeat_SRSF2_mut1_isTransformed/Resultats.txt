@@ -1,0 +1,27 @@
+#Boxplots d'expressions de la mutation mut1 (C>CGGCGGCTGTGGTGTGAGTCCGGGG aux positions chr17:74732935-74732959) du gène SRSF2, en fonction de la feature isTransformed
+#Résultat du test statistique Mann-Whitney U : U = 12.500, p-value = 0.042
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2707   FALSE        9.206964
+BA2357   FALSE        9.267456
+BA2995   FALSE        9.525175
+BA2676   FALSE        9.230892
+BA2872   FALSE        9.137210
+BA2497   FALSE        8.614232
+BA2276   FALSE        9.141008
+BA2789   FALSE        9.096003
+BA2052   FALSE        9.554357
+BA2311   FALSE        8.784124
+BA2621   FALSE        8.907609
+BA2473    TRUE        9.937970
+BA2685    TRUE        9.267456
+BA2369    TRUE        9.251104
+BA2209   FALSE        8.678218
+BA2361   FALSE        9.175594
+BA2590   FALSE        9.609294
+BA3135   FALSE        9.400075
+BA3185   FALSE        9.199065
+BA3305   FALSE        8.821100
+BA3329    TRUE        9.484060
+BA3234   FALSE        7.946359
+BA3310   FALSE        9.175594

@@ -1,0 +1,22 @@
+#Boxplots d'expressions de la mutation mut14 (T>TCGC aux positions chr19:33793007-33793010) du gène CEBPA, en fonction de la feature priorMalignancyRadiationTx
+#Résultat du test statistique Mann-Whitney U : U = 20921.000, p-value = 0.009
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2360       n        7.258878
+BA2156       n        7.076261
+BA2561       n        5.488344
+BA2094       n        4.676372
+BA2718       n        6.295033
+BA2410       n        4.412039
+BA2155       n        5.988763
+BA2277       n        5.105947
+BA2184       n        6.442757
+BA2656       n        5.402602
+BA2417       n        6.483642
+BA3413       n        6.440324
+BA3435       n        5.573030
+BA3347       n        4.764239
+BA3194       n        6.257620
+BA3199       n        4.991809
+BA3117       n        6.670584
+BA3312       n        5.452689

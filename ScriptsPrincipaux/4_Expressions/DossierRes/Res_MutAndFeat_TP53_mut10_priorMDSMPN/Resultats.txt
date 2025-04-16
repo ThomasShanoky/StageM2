@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut10 (T>C aux positions chr17:7577538-7577538) du gène TP53, en fonction de la feature priorMDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 1842.000, p-value = 0.018
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2939       n        5.425650
+BA2937       n        6.883643
+BA2275       n        5.909289
+BA2113       n        6.948816
+BA3410       n        4.947718
+BA3438       n        6.618673

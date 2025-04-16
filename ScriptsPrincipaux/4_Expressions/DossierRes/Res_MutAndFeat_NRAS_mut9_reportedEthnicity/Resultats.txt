@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut9 (T>G aux positions chr1:115256530-115256530) du gène NRAS, en fonction de la feature reportedEthnicity
+#Résultat du test statistique Mann-Whitney U : U = 0.000, p-value = 0.012
+#Tableau des résultats :
+Sample      Feature  ExpressionGene
+BA2802 NON-HISPANIC        7.456700
+BA2727 NON-HISPANIC        7.052926
+BA2441     HISPANIC        7.666140
+BA2882 NON-HISPANIC        7.103074
+BA2723     HISPANIC        7.887937
+BA2492     HISPANIC        7.904906
+BA3212 NON-HISPANIC        7.427218
+BA3191 NON-HISPANIC        7.004235
+BA3207 NON-HISPANIC        6.764187
+BA3315 NON-HISPANIC        7.555262
+BA3137 NON-HISPANIC        7.177617

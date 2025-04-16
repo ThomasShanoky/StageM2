@@ -1,0 +1,21 @@
+#Boxplots d'expressions de la mutation mut18 (T>C aux positions chr13:28608473-28608473) du gène FLT3, en fonction de la feature totalDrug
+#Résultat du test statistique Mann-Whitney U : U = 47.000, p-value = 0.015
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2707       y       10.228271
+BA2701       y        8.184160
+BA2195       y        6.651307
+BA2441       y        9.334552
+BA2514       y        7.752272
+BA2695       y        6.975923
+BA2970       y        6.561197
+BA2866       n        7.225431
+BA2817       y        9.547893
+BA2723       n        6.861450
+BA2492       y        7.384596
+BA2088       n        4.700314
+BA3202       n        5.222800
+BA3139       y       12.525660
+BA3285       y       12.221196
+BA3036       y        8.686769
+BA3318       y        8.910905

@@ -1,0 +1,25 @@
+#Boxplots d'expressions de la mutation mut21 (T>C aux positions chr13:28623587-28623587) du gène FLT3, en fonction de la feature responseToInductionTx
+#Résultat du test statistique Mann-Whitney U : U = 84.000, p-value = 0.045
+#Tableau des résultats :
+Sample           Feature  ExpressionGene
+BA2100        Refractory        6.787391
+BA2227        Refractory        9.905255
+BA2935        Refractory        8.452096
+BA2682        Refractory        9.377939
+BA2760 Complete Response        7.451671
+BA2944 Complete Response        8.484076
+BA2301 Complete Response        7.821098
+BA2296 Complete Response        7.529880
+BA2646 Complete Response        8.439989
+BA2272        Refractory        9.334552
+BA2098 Complete Response        7.895631
+BA3139        Refractory       12.525660
+BA3285        Refractory       12.221196
+BA3217 Complete Response       10.588003
+BA3451 Complete Response        7.914270
+BA3277 Complete Response        8.799425
+BA3142        Refractory        8.376397
+BA3207 Complete Response        8.950997
+BA3228        Refractory        8.827349
+BA3412        Refractory       10.124246
+BA3087        Refractory       10.569429

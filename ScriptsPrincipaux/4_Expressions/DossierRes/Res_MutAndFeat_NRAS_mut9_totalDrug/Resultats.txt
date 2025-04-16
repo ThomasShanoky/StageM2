@@ -1,0 +1,26 @@
+#Boxplots d'expressions de la mutation mut9 (T>G aux positions chr1:115256530-115256530) du gène NRAS, en fonction de la feature totalDrug
+#Résultat du test statistique Mann-Whitney U : U = 7.000, p-value = 0.003
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2802       y        7.456700
+BA2421       y        7.568961
+BA2655       n        7.677514
+BA2727       y        7.052926
+BA2709       y        7.766141
+BA2441       y        7.666140
+BA2051       n        8.519348
+BA2426       n        8.466765
+BA2724       y        8.077894
+BA2837       y        7.526579
+BA2882       y        7.103074
+BA2723       n        7.887937
+BA2492       y        7.904906
+BA3212       y        7.427218
+BA3156       n        8.051153
+BA3191       y        7.004235
+BA3207       y        6.764187
+BA3305       y        7.385603
+BA3326       y        7.800943
+BA3315       y        7.555262
+BA3295       y        6.937643
+BA3137       y        7.177617

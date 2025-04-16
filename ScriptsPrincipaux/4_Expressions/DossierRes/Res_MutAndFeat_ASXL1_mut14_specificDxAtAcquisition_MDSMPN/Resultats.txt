@@ -1,0 +1,18 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène ASXL1, en fonction de la feature specificDxAtAcquisition_MDSMPN
+#Résultat du test statistique Mann-Whitney U : U = 26527.000, p-value = 0.002
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751   False        6.057766
+BA2357   False        6.536955
+BA3178   False        5.513457
+BA2600   False        5.608414
+BA2455   False        5.555868
+BA2053   False        5.989179
+BA2276   False        5.936111
+BA2440   False        6.271580
+BA3010   False        5.823924
+BA2406   False        5.855422
+BA3167   False        5.847102
+BA3229   False        5.787742
+BA3138   False        5.714787
+BA3388   False        5.748612

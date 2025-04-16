@@ -1,0 +1,26 @@
+#Boxplots d'expressions de la mutation mut11 (G>C aux positions chr13:28592642-28592642) du gène FLT3, en fonction de la feature consensus_sex
+#Résultat du test statistique Mann-Whitney U : U = 28.000, p-value = 0.045
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2488  Female        8.793287
+BA2134    Male        6.925594
+BA3243    Male        9.758516
+BA2446  Female        8.641716
+BA2025  Female        8.887974
+BA2248    Male        8.698245
+BA2814    Male        9.255177
+BA2455    Male        9.955415
+BA2906    Male       10.714946
+BA2463  Female        9.852358
+BA2249    Male        9.506014
+BA2212    Male        8.901037
+BA2450  Female        7.863751
+BA2994  Female        8.349067
+BA2824  Female        8.968001
+BA3286  Female        8.865367
+BA3109  Female        6.251357
+BA3452  Female        9.048609
+BA3232  Female        8.349067
+BA3169  Female        7.618337
+BA3240  Female        8.868577
+BA3183    Male        8.914208
