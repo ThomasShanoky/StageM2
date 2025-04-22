@@ -47,9 +47,9 @@ class GUI:
         self.usable_cat = usable_cat
         self.index_list = index_list
 
-        self.window = tk.Tk()  # Création d'une fenêtre
+        self.window = tk.Tk()  # Fenêtre
         self.window.geometry("1100x675")
-        self.window.config(bg='#87CEEB')  # Fond bleu ciel
+        self.window.config(bg='#87CEEB')
         self.window.title("Analyse des Expressions Génétiques")
 
         # self.menu = tk.Menu(self.window)  # Création d'une barre de menu

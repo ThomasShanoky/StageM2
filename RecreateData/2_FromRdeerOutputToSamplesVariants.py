@@ -83,7 +83,9 @@ for gene in Genes:
 
         i += 1
 
+    TableMutants["sampleID"] = TableMutants["sampleID"].str[:6]
     TableMutants.to_csv(f"Documents/ScriptsPrincipaux/newMUTdata/{gene}_alt_perso.csv", index=False)
     # Sauvegardés dans le dossier des scripts principaux 
+
     print(f"{gene}")
     print(ResTheorEtPrat)

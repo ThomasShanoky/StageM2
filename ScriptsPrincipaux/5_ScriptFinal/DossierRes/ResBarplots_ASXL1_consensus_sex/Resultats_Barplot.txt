@@ -1,0 +1,8 @@
+Résultats de barplot pour ASXL1 et consensus_sex
+p-value = 0.95420 selon le test du χ²
+Résultats bruts : 
+  consensus_sex  ASXL1 muté  ASXL1 non muté
+0        Female          18             189
+1          Male          16             235
+Liste des ID Sample par catégorie :
+ASXL1 muté :
