@@ -3,7 +3,7 @@ import pandas as pd
 
 
 def getTypesOfMutationsAndInd(Genes, gene, data_mutation):
-    """Retourne un dictionnaire avec les types de mutations et les individus associés"""
+    """Retourne un dictionnaire avec les types de mutations et les échantillons associés"""
     
     geneMutations = data_mutation[Genes.index(gene)]
     dico_mut = {}
@@ -34,20 +34,20 @@ def format_mutations(dico_mut, dico_IndAndMut, minIndThreshold=4):
 
 
 def checkIfPatientsAreInExpressions(data_expressions, dico_IndAndMut):
-    """Retourne la liste d'individus à supprimer (qui ne sont pas dans les données d'expressions)"""
+    """Retourne la liste d'échantillons à supprimer (qui ne sont pas dans les données d'expressions)"""
     Ind = dico_IndAndMut.values()
     Ind = [item for sublist in Ind for item in sublist]
 
     IndToRemove = []
     for ind in Ind:
-        if ind+"R" not in data_expressions.columns:
+        if ind not in data_expressions.columns:
             IndToRemove.append(ind)
 
     return IndToRemove
 
 
 def filterDicoIndAndMut(dico_IndAndMut, minIndThreshold=4):
-    """Supprime les mutations qui n'ont pas assez d'individus associés"""
+    """Supprime les mutations qui n'ont pas assez d'échantillons associés"""
 
     mutToDel = []
     for mut in dico_IndAndMut:
@@ -65,15 +65,19 @@ def getTable(data_expressions, gene, dico_IndAndMut):
 
     for mut in dico_IndAndMut.keys():
         for Id in dico_IndAndMut[mut]:
-            Expression = data_expressions.loc[data_expressions['display_label'] == gene, Id + "R"].values[0]
+            Expression = data_expressions.loc[data_expressions['Gene'] == gene, Id].values[0]
+            if pd.isna(Id) or pd.isna(mut) or pd.isna(Expression):
+                print(f"ID: {Id}, Mutation: {mut}, Expression: {Expression}")
             Tableau = Tableau._append({"ID_sample": Id, "TypeMutation": mut, "ExpressionGene": Expression}, ignore_index=True)
+
+    # print(Tableau)
 
     return Tableau
 
 
 def getNonMutatedInd(data_expressions, AllIndMutated):
     NonMutatedInd = []
-    AllInd = list(data_expressions.columns[4:]) #Tous les individus présents dans le fichier d'expressions géniques
+    AllInd = list(data_expressions.columns[4:]) #Tous les échantillons présents dans le fichier d'expressions géniques
     AllInd = [ind[:6] for ind in AllInd]
     
     for ind in AllInd:
@@ -97,7 +101,7 @@ def checkIfIndExpressionAreInIndex(IndIndex, NonMutatedInd):
 def addNonMutatedIndExpression(data_expressions, Tableau, gene, nonMutatedInd):
 
     for ind in nonMutatedInd:
-        Expression = data_expressions.loc[data_expressions['display_label'] == gene, ind].values[0]
+        Expression = data_expressions.loc[data_expressions['Gene'] == gene, ind].values[0]
         Tableau = Tableau._append({"ID_sample": ind, "TypeMutation": "NonMut", "ExpressionGene": Expression}, ignore_index=True)
 
     return Tableau
