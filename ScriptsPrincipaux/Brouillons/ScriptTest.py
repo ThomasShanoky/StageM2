@@ -1,25 +1,61 @@
+import numpy as np
 import pandas as pd
+from pprint import pprint
 
 
 
-file = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_NormalizedExpression.tsv"
-output_file = "Documents/ScriptsPrincipaux/BEATAMLdata/TestExpressions.csv"
+##### Mettre l'ID sample directement dans le fichier BEATAML_Clinique.csv
 
-Genes = ["NPM1", "DNMT3A", "FLT3", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"] 
+# file = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv"
+# output_file = "Documents/ScriptsPrincipaux/BEATAMLdata/new_BEATAML_Cliniques.csv"
+
+# data = pd.read_csv(file, sep=",")
+
+# data.insert(3, "ID Sample", "")
+# # print(data.columns)
+
+# for index, row in data.iterrows():
+#     var1 = row["dbgap_dnaseq_sample"]
+#     var2 = row["dbgap_rnaseq_sample"]
+#     if var1 == "nan" or pd.isna(var1) or var1 == float('nan'):
+#         sample = var2[:6]
+#     else:
+#         sample = var1[:6]
+
+#     data.at[index, "ID Sample"] = sample
+# # print(data.head())
+
+# data.to_csv(output_file, sep=",", index=False)
+
+
+##### Reformater les métadonnées de Leucegene
+
+file = "Documents/ScriptsPrincipaux/Brouillons/GSE67040_series_matrix.txt"
+output_file = "Documents/ScriptsPrincipaux/Brouillons/Leucegene_data.csv"
+
+Categories = []
+Valeurs = []
 
 with open(file, 'r') as f:
-    for l, line in enumerate(f.readlines()):
+    for i, line in enumerate(f.readlines()):
         line_list = line.strip().split("\t")
-        if l == 0:
-            header = line_list[4:]
-            header = ["Gene"] + [sample[:6] for sample in header]
-            expressions_df = pd.DataFrame(columns=header)
+        if i == 0:
+            Cat = line_list[0][1:]
+            Categories.append(Cat)
+            Val = line_list[1:][0].split(" ")
+            Valeurs.append(Val)
         else:
-            gene = line_list[1]
-            if gene in Genes:
-                expressions = line_list[4:]
-                expressions_df.loc[gene] = [gene] + expressions
+            Cat = line_list[0][1:]
+            Categories.append(Cat)
+            Val = line_list[1:]
+            Valeurs.append(Val)
 
-# print(expressions_df)
-expressions_df.set_index("Gene", inplace=True)
-expressions_df.to_csv(output_file, sep=",", index=True)
+
+print(f"Nombre de catégories : {len(Categories)}")  # Devrait être 39
+print(f"Nombre de listes dans Valeurs : {len(Valeurs)}")  # Devrait être 39
+print(f"Longueur de chaque liste dans Valeurs : {[len(v) for v in Valeurs]}")  # Devrait être 452 pour chaque liste
+
+data = pd.DataFrame(Valeurs, index=Categories)
+data = data.T
+# print(data)
+data.to_csv(output_file, sep=",", index=False)

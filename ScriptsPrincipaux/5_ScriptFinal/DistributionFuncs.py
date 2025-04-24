@@ -6,29 +6,31 @@ import scipy.stats as stats
 
 
 def get_number_for_bar(data_beat_aml, cat_name, ind_beataml, ind_list, feature):
+    """Etant donné l'état du gène (muté ou non muté), renvoie en liste, le nombre d'échantillons pour chaque catégorie de la feature"""
     number_for_bar = [0 for _ in range(len(cat_name))]
     
     for ind in ind_list:
         index_ind = ind_beataml.index(ind)
-        OneCat = data_beat_aml.iloc[index_ind][feature]
+        OneCat = data_beat_aml.iloc[index_ind][feature] # On récupère la catégorie de la feature pour cet échantillon
 
         for i, cat in enumerate(cat_name):
             if OneCat == cat:
                 number_for_bar[i] += 1
+
     return number_for_bar
 
 
 def Chi2Test(number_for_plot, number_for_plot_nonMut):
-    table = np.array([number_for_plot, number_for_plot_nonMut])
-    table = 100 * table / np.sum(table)
+    """Effectue un test du chi2, renvoyant la p-value"""
+    table = np.array([number_for_plot, number_for_plot_nonMut]) #Table de contingence
 
-    if 0 in np.sum(table, axis=1):
+    if 0 in np.sum(table, axis=1): #si une ligne est remplie de 0, on ne peut pas faire le test du chi2, on fixe la p-value à 1 (non-significatif)
         return 1, 0
 
     _, p, _, expected = stats.chi2_contingency(table)
-    residus = (table - expected) / np.sqrt(expected)
+    # residus = (table - expected) / np.sqrt(expected)
 
-    return p, residus
+    return p
 
 
 def rearrangeZeros(number_for_plot, number_for_plot_nonMut):
@@ -44,14 +46,15 @@ def rearrangeZeros(number_for_plot, number_for_plot_nonMut):
 
 
 def CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut, fig):
+    """Créer le dossier résultats (avec le graphe + les résultats bruts)"""
 
     if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
         os.mkdir("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes")
 
-    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/ResBarplots_{gene}_{feature}/Resultats_Barplot.txt"
+    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}/Resultats_Barplot.txt"
 
-    if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/ResBarplots_{gene}_{feature}"):
-        os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/ResBarplots_{gene}_{feature}")
+    if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}"):
+        os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}")
 
     with open(output_file, 'w') as f:
         f.write(f"Résultats de barplot pour {gene} et {feature}\n")
@@ -68,21 +71,15 @@ def CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, numbe
         f.write("Liste des ID Sample par catégorie :\n")
         f.write(f"{gene} muté :\n")
         for cat in gene_cat:
-            ids = [ind for ind in ind_geneMut if data_beat_aml.loc[ind_beataml.index(ind), feature] == cat]
+            ids = [ind for ind in ind_geneMut if data_beat_aml.loc[ind, feature] == cat]
             f.write(f"{cat} : {', '.join(ids)}\n")
 
         f.write(f"{gene} non muté :\n")
         for i, cat in enumerate(gene_cat):
-            if feature in ["TP53", "RUNX1", "ASXL1"]:
-                if cat == "Positive":
-                    ids = [ind for ind in ind_geneNonMut if not pd.isna(data_beat_aml.loc[ind_beataml.index(ind), feature])]
-                else:
-                    ids = [ind for ind in ind_geneNonMut if pd.isna(data_beat_aml.loc[ind_beataml.index(ind), feature])]
-            else:
-                ids = [ind for ind in ind_geneNonMut if data_beat_aml.loc[ind_beataml.index(ind), feature] == cat]
+            ids = [ind for ind in ind_geneNonMut if data_beat_aml.loc[ind, feature] == cat]
             f.write(f"{cat} : {', '.join(ids)}\n")
 
-    fig.savefig(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/ResBarplots_{gene}_{feature}/Barplot_plot.png")
+    fig.savefig(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}/Barplot_plot.png")
 
     print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_plot.png")
 
@@ -90,6 +87,7 @@ def CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, numbe
 
 
 def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_for_plot_nonMut, gene, feature):
+    """Trace le graphe de la distribution des échantillons selon la mutation (ou non) du gène"""
     bar_width = 0.35
 
     r1 = np.arange(len(cat_name))

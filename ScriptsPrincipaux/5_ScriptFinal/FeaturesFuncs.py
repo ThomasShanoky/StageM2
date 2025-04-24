@@ -5,17 +5,12 @@ import os
 
 def getSamplesAndFeatures(data_beat_aml, feature, featureValues):
     samples = data_beat_aml[["dbgap_dnaseq_sample", "dbgap_rnaseq_sample", feature]]
-    samples = samples[samples[feature].isin(featureValues)]  # ne prendre que les lignes qui ont une valeur présente dans featureValues
-    ind_beataml = []
-    ind_feature = []
+    samples = samples[samples[feature].isin(featureValues)]  # ne prendre que les échantillons qui ont une valeur de feature présente dans featureValues
+    ind_beataml = data_beat_aml.index.tolist() #liste d'échantillons 
+    ind_feature = [] #liste des valeurs de la feature associée à l'échantillon dans ind_beataml au même indice
 
-    for _, sample in samples.iterrows():
-        if pd.isna(sample["dbgap_dnaseq_sample"]):
-            sample_id = sample["dbgap_rnaseq_sample"][:6]
-        else:
-            sample_id = sample["dbgap_dnaseq_sample"][:6]
-        ind_beataml.append(sample_id)
-        ind_feature.append(sample[feature])
+    for ind in ind_beataml:
+        ind_feature.append(data_beat_aml.loc[ind, feature])
 
     SamplesAndFeatures = pd.DataFrame({"Sample": ind_beataml, "Feature": ind_feature})
 
