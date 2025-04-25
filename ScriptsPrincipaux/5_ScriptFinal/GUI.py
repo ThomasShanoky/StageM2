@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from tqdm import tqdm
 from DistributionFuncs import *
 from AbundanceFuncs import *
 from FeaturesFuncs import *
@@ -56,6 +57,8 @@ class GUI:
         self.data_expressions = data_expressions_beataml #Expressions par défaut
         self.data_expressions_kmers = data_expressions_kmers
         self.tot_kmers_file = tot_kmers_file
+
+        self.SaveAll = False #Booléen pour sauvegarder tous les résultats significatifs
 
         # Fenêtre
         self.window = tk.Tk()
@@ -125,7 +128,7 @@ class GUI:
         # Bouton pour générer le graphe
         self.generate_button = tk.Button(self.window, text="Générer le graphe", command=self.generate_plot)
         self.generate_button.config(width=15, font=("DejaVu Serif", 20, "bold"), highlightbackground="#370028", bg="#87CEEB", fg="#000000")
-        self.generate_button.place(x=30, y=600)  
+        self.generate_button.place(x=30, y=530)  
 
         # Canvas pour afficher le graphe
         self.fig, self.ax = plt.subplots()
@@ -136,15 +139,20 @@ class GUI:
         self.SaveBool = tk.BooleanVar()
         self.save_button = tk.Checkbutton(self.window, text="Sauvegarder les résultats", variable=self.SaveBool)
         self.save_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.save_button.place(x=30, y=650)  
+        self.save_button.place(x=30, y=580)  
 
         # Labels pour afficher la p-value et la significativité
         self.p_value_label = tk.Label(self.window, text="")
         self.p_value_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.p_value_label.place(x=30, y=710)
+        self.p_value_label.place(x=30, y=620)
         self.significance_label = tk.Label(self.window, text="")
         self.significance_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.significance_label.place(x=30, y=750)  
+        self.significance_label.place(x=30, y=650)  
+
+        # Bouton pour sauvegarder tous les résultats significatifs
+        self.generate_all_button = tk.Button(self.window, text="Générer les résultats significatifs", command=self.generate_all_results)
+        self.generate_all_button.config(width=26, font=("DejaVu Serif", 14, "bold"), highlightbackground="#370028", bg="#87CEEB", fg="#000000")
+        self.generate_all_button.place(x=30, y=720)
 
         # Lancement de la boucle principale
         self.window.protocol("WM_DELETE_WINDOW", self.on_closing)
@@ -198,6 +206,7 @@ class GUI:
         
         gene = self.gene_var.get()
         feature = self.feature_var.get()
+        Mutation = self.mut_var.get()
 
         if gene not in self.Genes:
             messagebox.showwarning("Veuillez entrez un gène valide", f"Le gène \"{gene}\" n'est pas valide")
@@ -217,7 +226,14 @@ class GUI:
             self.generate_plot_mutations(gene)
             return
         if self.FeatAndMutVar.get():
-            self.generate_plot_feat_and_mut()
+            if Mutation == "Toutes les mutations":
+                messagebox.showwarning("Attention", "Veuillez sélectionner une seule mutation")
+                return
+            format_mutations(self.dico_mut, self.dico_IndAndMut)
+            if Mutation not in self.mut_dropdown['values']:
+                messagebox.showwarning("Attention", "Veuillez sélectionner une mutation valide")
+            Mutation = Mutation.split(":")[0]
+            self.generate_plot_feat_and_mut(gene, Mutation, feature)
             return
 
 
@@ -247,22 +263,24 @@ class GUI:
         geneMutAndCat = [geneMutAndCat[i] for i in range(len(geneMutAndCat)) if i not in L_ind]
         geneNonMutAndCat = [geneNonMutAndCat[i] for i in range(len(geneNonMutAndCat)) if i not in L_ind]
 
-        self.canvas, self.fig, self.ax = plot_graph_without_abundance(self.fig, self.canvas, gene_cat, geneMutAndCat, geneNonMutAndCat, gene, feature)
-
-        if len(CatSupprimees) > 0:
-            messagebox.showwarning("Attention", f"Les catégories suivantes ont été supprimées car elles étaient vides: {', '.join(CatSupprimees)}")
-
         p = Chi2Test(geneMutAndCat, geneNonMutAndCat)
         self.p_value_label.config(text=f"Test \u03C72 : p-value = {p:.5f}")
 
+        self.canvas, self.fig, self.ax = plot_graph_without_abundance(self.fig, self.canvas, gene_cat, geneMutAndCat, geneNonMutAndCat, gene, feature, p)
+
+        if len(CatSupprimees) > 0 and not(self.SaveAll): #on n'affiche pas le message si on a demandé de sauvegarder tous les résultats significatifs
+            messagebox.showwarning("Attention", f"Les catégories suivantes ont été supprimées car elles étaient vides: {', '.join(CatSupprimees)}")
+
         alpha = 0.05
         if p < alpha:
+            SaveSignificant = True
             self.significance_label.config(text="La différence est significative")
         else:
+            SaveSignificant = False
             self.significance_label.config(text="La différence n'est pas significative")
 
-        if self.SaveBool.get():
-            CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig)
+        if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
+            CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll)
 
         return
     
@@ -285,25 +303,36 @@ class GUI:
         NormalizedExpressionAndFeat = getFeatForPlotAbundance(data_beat_aml, NormalizedExpression, feature)
         NormalizedExpressionAndFeat = NormalizedExpressionAndFeat[~NormalizedExpressionAndFeat[feature].isin(["Unknown", "UNKNOWN", "unknown", "nan"])] # ~ = négation, on veut donc ici ENLEVER les valeurs de catégories de type "Unknown"
 
-        self.canvas, self.fig, self.ax = plot_graph_with_abundance(self.canvas, self.fig, NormalizedExpressionAndFeat, gene, feature)
+        if len(np.unique(list(NormalizedExpressionAndFeat[feature]))) == 1 and not(self.SaveAll): 
+            messagebox.showwarning("Attention", "Il n'y a pas assez de valeurs de features")
+            return 
+        if len(np.unique(list(NormalizedExpressionAndFeat[feature]))) == 1 and self.SaveAll:
+            return
 
         if len(NormalizedExpressionAndFeat[feature].unique()) == 2: #Comparaison de 2 moyennes
-            test = "Mann-Whitney U"
+            test = "Mann-Whitney"
             p = MannWhitneyUTest(NormalizedExpressionAndFeat, feature)
         elif len(NormalizedExpressionAndFeat[feature].unique()) > 2: # Comparaison de plusieurs moyennes
             test = "ANOVA"
             p = ANOVATest(NormalizedExpressionAndFeat, feature)
+        else:
+            test = "Pas assez de features"
+            p = 1
 
+        self.canvas, self.fig, self.ax = plot_graph_with_abundance(self.canvas, self.fig, NormalizedExpressionAndFeat, gene, feature, p)
+            
         self.p_value_label.config(text=f"Test {test} : p-value = {p:.5f}")
-
-        if self.SaveBool.get():
-            CreateFileResAbund(self.fig, NormalizedExpressionAndFeat, p, gene, feature)
 
         alpha = 0.05
         if p < alpha:
+            SaveSignificant = True
             self.significance_label.config(text="La différence est significative")
         else:
-            self.significance_label.config(text="La différence n'est pas significative")      
+            SaveSignificant = False
+            self.significance_label.config(text="La différence n'est pas significative")
+
+        if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
+            CreateFileResAbund(self.fig, NormalizedExpressionAndFeat, test, p, gene, feature, self.SaveAll)   
 
         return
     
@@ -342,13 +371,19 @@ class GUI:
             group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
-        else:
+            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+        elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de features", "Il n'y a pas assez de valeurs de features pour effectuer un test statistique")
+            stats_res_test = ""
+        else:
+            p_val = 1
+            stats_res_test = ""
 
         if p_val < 0.05:
+            SaveSignificant = True
             significance = "La différence est significative"
         else:
+            SaveSignificant = False
             significance = "La différence n'est pas significative"
 
         self.significance_label.config(text=stats_res_test+"\n"+significance)
@@ -360,13 +395,29 @@ class GUI:
         self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature}")
         self.ax.set_ylabel("Expression du gène")
         self.ax.tick_params(axis='x', rotation=45)
+
+        if p_val < 0.05:
+            if p_val < 0.0001:
+                stars = "****"
+            elif p_val < 0.001:
+                stars = "***"
+            elif p_val < 0.01:
+                stars = "**"
+            else:
+                stars = "*"
+
+            x1, x2 = 0, 1
+            y, h, col = inter_ind_pd["ExpressionGene"].max() + 1, 1, "black"
+            self.ax.plot([x1, x1, x2, x2], [y, y + h, y + h, y], lw=1.5, c=col)
+            self.ax.text((x1 + x2) * 0.5, y + h, stars, ha="center", va="bottom", color=col)
+
         self.fig.tight_layout()
         self.canvas.draw()
 
-        if self.SaveBool.get():
+        if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction de la feature {feature}\n"
             fileName = f"3_FeatureOnly_{gene}_{feature}"
-            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName)
+            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
 
         return
     
@@ -383,11 +434,12 @@ class GUI:
         IndToRemove = checkIfPatientsAreInExpressions(self.data_expressions, dico_IndAndMut)
 
         if len(IndToRemove) > 0:
-            messagebox.showwarning("Echantillons non trouvés", f"Les échantillons suivants n'ont pas d'expressions de gène associées :\n{IndToRemove}")
             for ind in IndToRemove:
                 for mut in dico_IndAndMut.keys():
                     if ind in dico_IndAndMut[mut]:
                         dico_IndAndMut[mut].remove(ind)
+            if not(self.SaveAll):
+                messagebox.showwarning("Echantillons non trouvés", f"Les échantillons suivants n'ont pas d'expressions de gène associées :\n{IndToRemove}")
 
         dico_IndAndMut = filterDicoIndAndMut(dico_IndAndMut)
 
@@ -412,13 +464,19 @@ class GUI:
             group2 = Tableau[Tableau["TypeMutation"] == "NonMut"]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
-        else:
+            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+        elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de types de mutations", "Il n'y a pas assez de types de mutations pour effectuer un test statistique")
+            stats_res_test = ""
+        else:
+            p_val = 1
+            stats_res_test = ""
 
         if p_val < 0.05:
+            SaveSignificant = True
             self.significance_label.config(text="La différence est significative")
         else:
+            SaveSignificant = False
             self.significance_label.config(text="La différence n'est pas significative")
 
         self.p_value_label.config(text=f"Test {stats_res_test}")
@@ -429,34 +487,37 @@ class GUI:
         sns.stripplot(x="TypeMutation", y="ExpressionGene", data=Tableau, color='black', alpha=0.5, jitter=True, ax=self.ax)
         self.ax.set_title(f"Expression du gène {gene} en fonction des types de mutations")
         self.ax.set_ylabel("Expression du gène")
+        if p_val < 0.05:
+            if p_val < 0.0001:
+                stars = "****"
+            elif p_val < 0.001:
+                stars = "***"
+            elif p_val < 0.01:
+                stars = "**"
+            else:
+                stars = "*"
+
+            x1, x2 = 0, len(Tableau["TypeMutation"].unique()) - 1
+            y, h, col = Tableau["ExpressionGene"].max() + 1, 1, "black"
+            self.ax.plot([x1, x1, x2, x2], [y, y + h, y + h, y], lw=1.5, c=col)
+            self.ax.text((x1 + x2) * 0.5, y + h, stars, ha="center", va="bottom", color=col)
 
         self.fig.tight_layout()
         self.canvas.draw()
 
-        if self.SaveBool.get():
+        if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction des types de mutations\n"
             fileName = f"4_MutOnly_{gene}"
-            CreateFileRes(self.fig, Tableau, stats_res_test, premiereLigne, fileName)
+            CreateFileRes(self.fig, Tableau, stats_res_test, premiereLigne, fileName, self.SaveAll)
         
         return
     
 
     ##### 5. Expression de cette mutation selon la feature #####
 
-    def generate_plot_feat_and_mut(self):
-        Mutation = self.mut_var.get()
-        if Mutation == "Toutes les mutations":
-            messagebox.showwarning("Attention", "Veuillez sélectionner une seule mutation")
-        Mutation = Mutation.split(":")[0]
+    def generate_plot_feat_and_mut(self, gene, Mutation, feature):
 
         PatientsRelatedToMut = self.dico_IndAndMut[Mutation]
-        gene = self.gene_var.get()
-        feature = self.feature_var.get()
-
-        if gene not in self.Genes:
-            messagebox.showwarning("Veuillez entrer un gène valide", f"Le gène \"{gene}\" n'est pas valide")
-        if feature not in self.usable_cat:
-            messagebox.showwarning("Veuillez entrer une feature valide", f"La feature \"{feature}\" n'est pas valide")
 
         featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
         featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]]
@@ -474,6 +535,12 @@ class GUI:
 
         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True)
 
+        if len(inter_ind_pd["Feature"].unique()) == 1 and not(self.SaveAll):
+            messagebox.showwarning("Pas assez de features", "Il n'y a pas assez de valeurs de features pour effectuer un test statistique")
+            return
+        if len(inter_ind_pd["Feature"].unique()) == 1 and self.SaveAll:
+            return
+
         if len(inter_ind_pd["Feature"].unique()) > 2:
             # ANOVA
             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
@@ -486,13 +553,19 @@ class GUI:
             group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney U : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
-        else:
+            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+        elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de features", "Il n'y a pas assez de valeurs de features pour effectuer un test statistique")
+            stats_res_test = ""
+        else:
+            p_val = 1
+            stats_res_test = ""
 
         if p_val < 0.05:
+            SaveSignificant = True
             self.significance_label.config(text="La différence est significative")
         else:
+            SaveSignificant = False
             self.significance_label.config(text="La différence n'est pas significative")
 
         self.p_value_label.config(text=f"Test {stats_res_test}")
@@ -504,13 +577,52 @@ class GUI:
         self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature} pour la mutation {Mutation}")
         self.ax.set_ylabel("Expression du gène")
         self.ax.tick_params(axis='x', rotation=45)
+        if p_val < 0.05:
+            if p_val < 0.0001:
+                stars = "****"
+            elif p_val < 0.001:
+                stars = "***"
+            elif p_val < 0.01:
+                stars = "**"
+            else:
+                stars = "*"
+
+            x1, x2 = 0, len(inter_ind_pd["Feature"].unique()) - 1
+            y, h, col = inter_ind_pd["ExpressionGene"].max() + 1, 1, "black"
+            self.ax.plot([x1, x1, x2, x2], [y, y + h, y + h, y], lw=1.5, c=col)
+            self.ax.text((x1 + x2) * 0.5, y + h, stars, ha="center", va="bottom", color=col)
         self.fig.tight_layout()
         self.canvas.draw()
 
-        if self.SaveBool.get():
+        if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions de la mutation {Mutation} ({self.dico_mut[Mutation][1]}>{self.dico_mut[Mutation][2]} aux positions {self.dico_mut[Mutation][0]}) du gène {gene}, en fonction de la feature {feature}\n"
             fileName = f"5_MutAndFeat_{gene}_{Mutation}_{feature}"
-            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName)
+            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
+
+        return
+    
+
+    ##### Génération de tous les résultats significatifs #####
+
+    def generate_all_results(self):
+
+        self.SaveAll = True
+
+        for gene in tqdm(self.Genes):
+            # print(gene)
+            self.generate_plot_mutations(gene)
+            for feature in self.usable_cat:
+                # print(feature)
+                self.generate_plot_feature(gene, feature)
+                self.generate_plot_with_abundance(gene, feature)
+                self.generate_plot_without_abundance(gene, feature)
+                for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
+                    if Mutation != "Toutes les mutations":
+                        Mutation = Mutation.split(":")[0]
+                        # print(Mutation)
+                        self.generate_plot_feat_and_mut(gene, Mutation, feature)
+
+        self.SaveAll = False
 
         return
 

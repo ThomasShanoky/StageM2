@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène TP53, en fonction de la feature analysisExomeSeq
+#Résultat du test statistique Mann-Whitney : U = 18.000, p-value = 0.03636
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751       n        7.226253
+BA2357       y        5.739350
+BA3178       n        7.168761
+BA2600       y        5.113281
+BA2455       y        6.169505
+BA2053       y        5.625303
+BA2276       y        6.232564
+BA2440       y        2.381950
+BA3010       y        6.407852
+BA3167       y        6.130771
+BA3229       y        6.734673

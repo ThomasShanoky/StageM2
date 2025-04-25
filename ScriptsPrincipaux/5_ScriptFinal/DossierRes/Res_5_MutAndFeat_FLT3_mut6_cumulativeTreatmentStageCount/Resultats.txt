@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène FLT3, en fonction de la feature cumulativeTreatmentStageCount
+#Résultat du test statistique ANOVA : F = 11.804, p-value = 0.03786
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2688     3.0        5.689486
+BA2844     3.0        7.074868
+BA2174     4.0        8.486566
+BA2746     4.0        8.245096
+BA3297     2.0       10.095873
+BA3353     2.0        9.210928

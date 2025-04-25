@@ -1,5 +1,5 @@
 #Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène ASXL1, en fonction de la feature manuscript_inhibitor
-#Résultat du test statistique Mann-Whitney U : U = 25.000, p-value = 0.04242
+#Résultat du test statistique Mann-Whitney : U = 25.000, p-value = 0.04242
 #Tableau des résultats :
 Sample Feature  ExpressionGene
 BA2751     yes        6.057766

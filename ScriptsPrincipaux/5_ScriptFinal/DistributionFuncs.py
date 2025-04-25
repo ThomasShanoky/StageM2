@@ -25,7 +25,7 @@ def Chi2Test(number_for_plot, number_for_plot_nonMut):
     table = np.array([number_for_plot, number_for_plot_nonMut]) #Table de contingence
 
     if 0 in np.sum(table, axis=1): #si une ligne est remplie de 0, on ne peut pas faire le test du chi2, on fixe la p-value à 1 (non-significatif)
-        return 1, 0
+        return 1
 
     _, p, _, expected = stats.chi2_contingency(table)
     # residus = (table - expected) / np.sqrt(expected)
@@ -45,7 +45,7 @@ def rearrangeZeros(number_for_plot, number_for_plot_nonMut):
     return L_ind
 
 
-def CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut, fig):
+def CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut, fig, SaveAll):
     """Créer le dossier résultats (avec le graphe + les résultats bruts)"""
 
     if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
@@ -81,12 +81,13 @@ def CreateFileResFeat(data_beat_aml, ind_beataml, gene, feature, gene_cat, numbe
 
     fig.savefig(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}/Barplot_plot.png")
 
-    print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_plot.png")
+    if not(SaveAll):
+        print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_plot.png")
 
     return
 
 
-def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_for_plot_nonMut, gene, feature):
+def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_for_plot_nonMut, gene, feature, p_value):
     """Trace le graphe de la distribution des échantillons selon la mutation (ou non) du gène"""
     bar_width = 0.35
 
@@ -103,6 +104,25 @@ def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_
     ax.set_ylabel("Nombre d'échantillons")
     ax.legend()
     ax.set_title(f"Distribution de {feature} selon la mutation (ou non) de {gene}")
+
+    if p_value < 0.05:
+        if p_value < 0.0001:
+            stars = "****"
+        elif p_value < 0.001:
+            stars = "***"
+        elif p_value < 0.01:
+            stars = "**"
+        else:
+            stars = "*"
+
+        max_height = max(max(number_for_plot), max(number_for_plot_nonMut))
+        y = max_height + 1
+        x1 = r1[0]
+        x2 = r2[-1]
+
+        ax.plot([x1, x1, x2, x2], [y, y + 0.5, y + 0.5, y], color="black", lw=1.5) # Ligne en forme de crochet
+        ax.text((x1 + x2) / 2, y + 0.7, stars, ha="center", va="bottom", color="black", fontsize=12) #étoiles
+
 
     fig.tight_layout()
     canvas.draw()

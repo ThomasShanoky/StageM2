@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène ASXL1, en fonction de la feature cumulativeTreatmentStageCount
+#Résultat du test statistique ANOVA : F = 7.791, p-value = 0.02089
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751     0.0        6.057766
+BA2357     5.0        6.536955
+BA3178     3.0        5.513457
+BA2600     2.0        5.608414
+BA2455     1.0        5.555868
+BA2053     2.0        5.989179
+BA2276     2.0        5.936111
+BA2440     0.0        6.271580
+BA3010     2.0        5.823924
+BA3167     2.0        5.847102
+BA3229     4.0        5.787742

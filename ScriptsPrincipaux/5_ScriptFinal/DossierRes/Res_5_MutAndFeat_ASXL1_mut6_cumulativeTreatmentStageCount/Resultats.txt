@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène ASXL1, en fonction de la feature cumulativeTreatmentStageCount
+#Résultat du test statistique ANOVA : F = 10.286, p-value = 0.04540
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2688     3.0        6.839193
+BA2844     3.0        6.362275
+BA2174     4.0        5.692956
+BA2746     4.0        5.576753
+BA3297     2.0        6.048565
+BA3353     2.0        6.225453

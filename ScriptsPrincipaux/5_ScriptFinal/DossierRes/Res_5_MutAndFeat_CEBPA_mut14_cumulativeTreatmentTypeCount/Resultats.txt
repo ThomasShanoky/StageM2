@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène CEBPA, en fonction de la feature cumulativeTreatmentTypeCount
+#Résultat du test statistique ANOVA : F = 10.041, p-value = 0.00626
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751     0.0        2.585065
+BA2357     3.0        2.544774
+BA3178     1.0        4.101167
+BA2600     2.0        2.358629
+BA2455     1.0        3.997503
+BA2053     1.0        3.439006
+BA2276     1.0        3.006071
+BA2440     0.0        2.295730
+BA3010     1.0        3.480832
+BA3167     1.0        4.138243
+BA3229     2.0        1.722045
