@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène CBL, en fonction de la feature ELN2017
+#Résultat du test statistique ANOVA : F = 16.231, p-value = 0.02461
+#Tableau des résultats :
+Sample      Feature  ExpressionGene
+BA2688 Intermediate        5.402224
+BA2844 Intermediate        5.447902
+BA2174      Adverse        6.329599
+BA2746    Favorable        6.859630
+BA3297    Favorable        6.705313
+BA3353      Adverse        5.767987

@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène STAG2, en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 9.649, p-value = 0.01323
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751       1        7.451671
+BA2357       2        6.501525
+BA3178       3        6.776057
+BA2600       4        6.593112
+BA2455       4        6.602650
+BA2053       2        7.085982
+BA2276       2        7.143838
+BA2440       5        6.997190
+BA3010       6        5.233931
+BA3167       2        7.238057
+BA3229       1        7.278057

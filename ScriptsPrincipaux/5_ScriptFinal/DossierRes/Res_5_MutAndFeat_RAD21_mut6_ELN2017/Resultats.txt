@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène RAD21, en fonction de la feature ELN2017
+#Résultat du test statistique ANOVA : F = 13.286, p-value = 0.03231
+#Tableau des résultats :
+Sample      Feature  ExpressionGene
+BA2688 Intermediate        7.884947
+BA2844 Intermediate        7.672338
+BA2174      Adverse        7.503289
+BA2746    Favorable        7.262382
+BA3297    Favorable        7.327795
+BA3353      Adverse        7.560949

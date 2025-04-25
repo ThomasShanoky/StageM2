@@ -1,0 +1,29 @@
+#Résultats bruts de l'abondance de mutation du gène PTPN11 selon la feature FLT3-ITD, normalisée par le gène de ménage TBP.
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.035652 avec le test Mann-Whitney
+ Abundance   TotalKmers  NormalizedExpression FLT3-ITD
+ 10.689655 1.098682e+10              0.972953 positive
+ 74.413793 6.907665e+09             10.772641 negative
+ 19.655172 5.670167e+09              3.466418 negative
+116.068966 6.960387e+09             16.675649 negative
+105.586207 8.864156e+09             11.911591 negative
+ 43.448276 7.882991e+09              5.511648 negative
+ 14.965517 7.373008e+09              2.029771 negative
+ 30.206897 1.185453e+10              2.548131 negative
+ 48.862069 1.227116e+10              3.981862 negative
+ 23.827586 6.152350e+09              3.872925 positive
+ 14.965517 7.451200e+09              2.008471 negative
+ 10.689655 8.063055e+09              1.325757 positive
+ 20.310345 7.726760e+09              2.628572 negative
+ 29.620690 1.137375e+10              2.604303 negative
+ 31.379310 9.682106e+09              3.240959 negative
+ 45.965517 5.835413e+09              7.876994 negative
+ 37.689655 7.145735e+09              5.274427 negative
+ 36.103448 7.820031e+09              4.616791 negative
+222.103448 1.130116e+10             19.653158 negative
+229.862069 1.285754e+10             17.877605 negative
+ 90.965517 7.489154e+09             12.146301 negative
+ 94.827586 6.832622e+09             13.878652 negative
+112.379310 8.919518e+09             12.599258 negative
+100.655172 6.590222e+09             15.273412 negative
+ 10.689655 6.421663e+09              1.664624 negative

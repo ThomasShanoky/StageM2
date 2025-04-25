@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène SRSF2, en fonction de la feature cumulativeTreatmentTypeCount
+#Résultat du test statistique ANOVA : F = 7.740, p-value = 0.01261
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751     0.0        9.502934
+BA2357     3.0        9.267456
+BA3178     1.0        8.875016
+BA2600     2.0        9.048609
+BA2455     1.0        8.858967
+BA2053     1.0        8.715624
+BA2276     1.0        9.141008
+BA2440     0.0        9.838928
+BA3010     1.0        8.878246
+BA3167     1.0        8.476631
+BA3229     2.0        8.704016

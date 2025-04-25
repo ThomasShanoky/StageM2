@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène TP53, en fonction de la feature vitalStatus
+#Résultat du test statistique Mann-Whitney : U = 27.000, p-value = 0.01212
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751    Dead        7.226253
+BA2357    Dead        5.739350
+BA3178    Dead        7.168761
+BA2600   Alive        5.113281
+BA2455    Dead        6.169505
+BA2053   Alive        5.625303
+BA2276    Dead        6.232564
+BA2440   Alive        2.381950
+BA3010    Dead        6.407852
+BA3167   Alive        6.130771
+BA3229    Dead        6.734673

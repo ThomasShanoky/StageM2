@@ -17,7 +17,7 @@ def getSamplesAndFeatures(data_beat_aml, feature, featureValues):
     return SamplesAndFeatures
 
 
-def CreateFileRes(fig, Tableau, stats_res_test, premiereLigne, fileName):
+def CreateFileRes(fig, Tableau, stats_res_test, premiereLigne, fileName, SaveAll):
     if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
         os.mkdir("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes")
 
@@ -34,6 +34,7 @@ def CreateFileRes(fig, Tableau, stats_res_test, premiereLigne, fileName):
     output_graph_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/Res_{fileName}/Plot.png"
     fig.savefig(output_graph_file)
 
-    print(f"Les résultats bruts et le graphique ont été sauvegardés respectivement dans le fichier {output_brut_file} et dans le fichier {output_graph_file}")
+    if not(SaveAll):
+        print(f"Les résultats bruts et le graphique ont été sauvegardés respectivement dans le fichier {output_brut_file} et dans le fichier {output_graph_file}")
 
     return

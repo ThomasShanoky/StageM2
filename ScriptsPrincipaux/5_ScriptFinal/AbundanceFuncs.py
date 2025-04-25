@@ -65,7 +65,7 @@ def ANOVATest(Df, feature):
     return p
 
 
-def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, feature):
+def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, feature, p_value):
     """Trace le graphe de l'abondance normalisée selon la feature"""
 
     fig.clear()
@@ -80,13 +80,29 @@ def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, fe
     ax.set_xlabel(feature)
     ax.set_ylabel("Expression normalisée par TBP")
 
+    if p_value < 0.05:
+        if p_value < 0.0001:
+            stars = "****"
+        elif p_value < 0.001:
+            stars = "***"
+        elif p_value < 0.01:
+            stars = "**"
+        else:
+            stars = "*"
+
+        x1, x2 = 0, 1
+        y, h, col = NormalizedExpressionAndFeat['NormalizedExpression'].max() + 1, 1, "black"
+        ax.plot([x1, x1, x2, x2], [y, y + h, y + h, y], lw=1.5, c=col)
+        ax.text((x1 + x2) * 0.5, y + h, stars, ha="center", va="bottom", color=col)
+
+
     fig.tight_layout()
     canvas.draw()
 
     return canvas, fig, ax
 
 
-def CreateFileResAbund(fig, NormalizedExpressionAndFeat, p, gene, feature):
+def CreateFileResAbund(fig, NormalizedExpressionAndFeat, Test, p, gene, feature, SaveAll):
     """Créer le dossier résultats (avec le graphe + les résultats bruts)"""
 
     if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
@@ -96,11 +112,6 @@ def CreateFileResAbund(fig, NormalizedExpressionAndFeat, p, gene, feature):
 
     if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}"):
         os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}")
-
-    if len(np.unique(NormalizedExpressionAndFeat[feature])) == 2:
-        Test = "Mann-Whitney U"
-    elif len(np.unique(NormalizedExpressionAndFeat[feature])) > 2:
-        Test = "ANOVA"
     
     with open(output_file, 'w') as f:
         f.write(f"#Résultats bruts de l'abondance de mutation du gène {gene} selon la feature {feature}, normalisée par le gène de ménage TBP.\n")
@@ -109,6 +120,7 @@ def CreateFileResAbund(fig, NormalizedExpressionAndFeat, p, gene, feature):
 
     fig.savefig(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}/Abundance_plot.png")
 
-    print(f"Les résultats bruts ont été sauvegardés dans le fichier {output_file}")
+    if not(SaveAll):
+        print(f"Les résultats bruts ont été sauvegardés dans le fichier {output_file}")
 
     return
