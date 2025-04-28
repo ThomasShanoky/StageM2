@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène ASXL1, en fonction de la feature causeOfDeath
+#Résultat du test statistique ANOVA : F = 38.202, p-value = 0.02562
+#Tableau des résultats :
+Sample        Feature  ExpressionGene
+BA2688 Dead-Treatment        0.003924
+BA2844          Alive        0.002044
+BA2174   Dead-Disease        0.001888
+BA2746   Dead-Disease        0.001695
+BA3297          Alive        0.002315
+BA3353     Dead-Other        0.002243

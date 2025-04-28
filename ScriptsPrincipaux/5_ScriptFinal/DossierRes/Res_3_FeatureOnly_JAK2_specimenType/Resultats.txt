@@ -1,454 +1,462 @@
 #Boxplots d'expressions du gène JAK2 en fonction de la feature specimenType
-#Résultat du test statistique ANOVA : F = 5.067, p-value = 0.00667
+#Résultat du test statistique ANOVA : F = 7.866, p-value = 0.00044
 #Tableau des résultats :
 Sample              Feature  ExpressionGene
-BA2409 Bone Marrow Aspirate        6.774860
-BA2496 Bone Marrow Aspirate        6.853942
-BA3037 Bone Marrow Aspirate        5.103158
-BA2865 Bone Marrow Aspirate        5.638599
-BA2751        Leukapheresis        6.878473
-BA2286 Bone Marrow Aspirate        5.892036
-BA2488 Bone Marrow Aspirate        6.410316
-BA3379 Bone Marrow Aspirate        5.995613
-BA2887 Bone Marrow Aspirate        5.774512
-BA2712     Peripheral Blood        6.638618
-BA2068 Bone Marrow Aspirate        5.806516
-BA2104     Peripheral Blood        7.624378
-BA3124 Bone Marrow Aspirate        5.531302
-BA2449 Bone Marrow Aspirate        5.130881
-BA2235 Bone Marrow Aspirate        6.502972
-BA3038 Bone Marrow Aspirate        7.619497
-BA3006     Peripheral Blood        6.236208
-BA2667 Bone Marrow Aspirate        7.127388
-BA2239 Bone Marrow Aspirate        7.669884
-BA2782 Bone Marrow Aspirate        7.345477
-BA2649 Bone Marrow Aspirate        5.210079
-BA2861 Bone Marrow Aspirate        6.391212
-BA2134     Peripheral Blood        7.359579
-BA2909 Bone Marrow Aspirate        6.792869
-BA2653     Peripheral Blood        5.936111
-BA2947     Peripheral Blood        5.769945
-BA2162     Peripheral Blood        6.836615
-BA2564     Peripheral Blood        7.027681
-BA2597     Peripheral Blood        6.044017
-BA3243 Bone Marrow Aspirate        7.082976
-BA2446 Bone Marrow Aspirate        6.574076
-BA2525     Peripheral Blood        4.840049
-BA2876     Peripheral Blood        5.684943
-BA2357 Bone Marrow Aspirate        6.017047
-BA2546 Bone Marrow Aspirate        6.435427
-BA2742        Leukapheresis        6.591485
-BA2316 Bone Marrow Aspirate        6.522709
-BA2087     Peripheral Blood        6.634863
-BA2148     Peripheral Blood        5.135852
-BA3178     Peripheral Blood        6.732801
-BA2072 Bone Marrow Aspirate        7.192258
-BA2733     Peripheral Blood        6.661774
-BA2995 Bone Marrow Aspirate        6.830290
-BA2069 Bone Marrow Aspirate        6.769580
-BA2681 Bone Marrow Aspirate        6.270640
-BA2832     Peripheral Blood        6.118865
-BA2600     Peripheral Blood        6.441288
-BA3230     Peripheral Blood        6.455999
-BA2731     Peripheral Blood        6.804251
-BA2294 Bone Marrow Aspirate        6.265616
-BA2816 Bone Marrow Aspirate        6.840988
-BA2814     Peripheral Blood        6.514024
-BA2631 Bone Marrow Aspirate        6.459458
-BA2023 Bone Marrow Aspirate        7.275551
-BA2375     Peripheral Blood        7.503289
-BA2485 Bone Marrow Aspirate        5.880456
-BA2455     Peripheral Blood        6.774860
-BA2636     Peripheral Blood        6.388883
-BA2325     Peripheral Blood        6.635379
-BA2156 Bone Marrow Aspirate        5.692177
-BA2511     Peripheral Blood        6.696349
-BA2505     Peripheral Blood        6.973186
-BA2871     Peripheral Blood        6.501039
-BA2227 Bone Marrow Aspirate        5.416813
-BA2812     Peripheral Blood        5.976485
-BA2125 Bone Marrow Aspirate        6.483172
-BA2603 Bone Marrow Aspirate        6.415106
-BA2808     Peripheral Blood        5.903960
-BA2482 Bone Marrow Aspirate        6.877187
-BA2594 Bone Marrow Aspirate        6.591485
-BA2747     Peripheral Blood        5.963052
-BA2561 Bone Marrow Aspirate        6.181193
-BA2567     Peripheral Blood        6.124323
-BA2906     Peripheral Blood        6.568400
-BA2956     Peripheral Blood        6.335555
-BA2474 Bone Marrow Aspirate        6.351173
-BA2737     Peripheral Blood        7.323095
-BA2110 Bone Marrow Aspirate        7.582904
-BA2992 Bone Marrow Aspirate        6.847765
-BA2220 Bone Marrow Aspirate        5.641664
-BA2063     Peripheral Blood        4.896968
-BA2772     Peripheral Blood        6.123860
-BA2935     Peripheral Blood        6.904231
-BA2260     Peripheral Blood        7.131215
-BA2948     Peripheral Blood        6.706390
-BA3296 Bone Marrow Aspirate        6.641315
-BA2524     Peripheral Blood        6.148463
-BA2811 Bone Marrow Aspirate        6.019124
-BA2540 Bone Marrow Aspirate        6.431470
-BA2928     Peripheral Blood        6.557640
-BA2302     Peripheral Blood        5.775713
-BA2651 Bone Marrow Aspirate        5.665513
-BA2619     Peripheral Blood        6.340999
-BA3013 Bone Marrow Aspirate        5.728668
-BA2405     Peripheral Blood        5.877330
-BA2856     Peripheral Blood        5.750622
-BA2377 Bone Marrow Aspirate        6.529389
-BA2499     Peripheral Blood        6.156981
-BA3023     Peripheral Blood        5.268871
-BA2095     Peripheral Blood        5.388036
-BA2275 Bone Marrow Aspirate        6.575608
-BA2901 Bone Marrow Aspirate        6.200505
-BA2387 Bone Marrow Aspirate        6.424314
-BA2962 Bone Marrow Aspirate        5.680395
-BA2195     Peripheral Blood        6.380231
-BA2688     Peripheral Blood        6.016644
-BA2420 Bone Marrow Aspirate        6.735277
-BA2053     Peripheral Blood        5.572279
-BA2081 Bone Marrow Aspirate        6.656814
-BA2354 Bone Marrow Aspirate        6.277841
-BA3273     Peripheral Blood        5.092870
-BA2893 Bone Marrow Aspirate        5.379659
-BA2044 Bone Marrow Aspirate        6.825509
-BA2489 Bone Marrow Aspirate        5.841504
-BA2908 Bone Marrow Aspirate        5.769945
-BA2054 Bone Marrow Aspirate        7.019176
-BA2872 Bone Marrow Aspirate        6.804251
-BA2041 Bone Marrow Aspirate        5.254197
-BA2464 Bone Marrow Aspirate        5.360357
-BA2902 Bone Marrow Aspirate        5.758322
-BA2541 Bone Marrow Aspirate        6.215848
-BA2843 Bone Marrow Aspirate        5.896033
-BA2497 Bone Marrow Aspirate        6.222847
-BA2718 Bone Marrow Aspirate        6.262036
-BA2575 Bone Marrow Aspirate        7.375774
-BA2593        Leukapheresis        6.196901
-BA2791 Bone Marrow Aspirate        5.757935
-BA2620 Bone Marrow Aspirate        6.926250
-BA2629 Bone Marrow Aspirate        6.024562
-BA2870 Bone Marrow Aspirate        5.455988
-BA2682     Peripheral Blood        6.239692
-BA2276 Bone Marrow Aspirate        6.029371
-BA2709 Bone Marrow Aspirate        6.869035
-BA2789 Bone Marrow Aspirate        5.990727
-BA2538     Peripheral Blood        5.793212
-BA2583 Bone Marrow Aspirate        6.642471
-BA2806     Peripheral Blood        5.722134
-BA2441     Peripheral Blood        5.938167
-BA2514 Bone Marrow Aspirate        6.084907
-BA2520     Peripheral Blood        5.564778
-BA2479     Peripheral Blood        5.305974
-BA2281 Bone Marrow Aspirate        5.421251
-BA2932 Bone Marrow Aspirate        5.530586
-BA2123 Bone Marrow Aspirate        5.565961
-BA2844 Bone Marrow Aspirate        6.239692
-BA2660 Bone Marrow Aspirate        6.650696
-BA2836     Peripheral Blood        6.245927
-BA2714     Peripheral Blood        6.711551
-BA2440 Bone Marrow Aspirate        6.352110
-BA2036     Peripheral Blood        6.278728
-BA2828     Peripheral Blood        6.990302
-BA2952 Bone Marrow Aspirate        6.740391
-BA2410 Bone Marrow Aspirate        5.654484
-BA2139     Peripheral Blood        7.484907
-BA2051 Bone Marrow Aspirate        6.425754
-BA2532 Bone Marrow Aspirate        5.667789
-BA2494     Peripheral Blood        5.701824
-BA2748 Bone Marrow Aspirate        6.103672
-BA2622 Bone Marrow Aspirate        6.794046
-BA2970 Bone Marrow Aspirate        5.711006
-BA2839 Bone Marrow Aspirate        5.663611
-BA2868     Peripheral Blood        6.225036
-BA3011 Bone Marrow Aspirate        4.845625
-BA2052 Bone Marrow Aspirate        6.083622
-BA2510     Peripheral Blood        6.052379
-BA2691     Peripheral Blood        6.882993
-BA2374 Bone Marrow Aspirate        5.797580
-BA2804 Bone Marrow Aspirate        5.928330
-BA2675     Peripheral Blood        5.836022
-BA2031 Bone Marrow Aspirate        6.625214
-BA2198 Bone Marrow Aspirate        6.204815
-BA2066 Bone Marrow Aspirate        7.100070
-BA2344     Peripheral Blood        6.016644
-BA2459 Bone Marrow Aspirate        5.033583
-BA2229     Peripheral Blood        5.680793
-BA2559 Bone Marrow Aspirate        5.762180
-BA2093 Bone Marrow Aspirate        5.282162
-BA2000        Leukapheresis        6.367924
-BA2425     Peripheral Blood        6.802399
-BA2905     Peripheral Blood        5.659007
-BA2304 Bone Marrow Aspirate        6.829709
-BA2976 Bone Marrow Aspirate        7.057960
-BA2386     Peripheral Blood        5.845090
-BA2035     Peripheral Blood        5.573386
-BA2760 Bone Marrow Aspirate        6.549289
-BA2201 Bone Marrow Aspirate        6.974502
-BA2355 Bone Marrow Aspirate        5.398549
-BA2113 Bone Marrow Aspirate        6.462861
-BA2955 Bone Marrow Aspirate        7.871208
-BA2322 Bone Marrow Aspirate        6.597852
-BA2020 Bone Marrow Aspirate        6.244572
-BA2226 Bone Marrow Aspirate        6.678943
-BA2376 Bone Marrow Aspirate        7.550843
-BA2121 Bone Marrow Aspirate        6.052796
-BA2944     Peripheral Blood        6.184638
-BA2033     Peripheral Blood        6.935583
-BA2867 Bone Marrow Aspirate        5.833319
-BA2089        Leukapheresis        6.758872
-BA2224 Bone Marrow Aspirate        6.327298
-BA2046 Bone Marrow Aspirate        5.398549
-BA2972 Bone Marrow Aspirate        6.196901
-BA2978     Peripheral Blood        7.115177
-BA2851 Bone Marrow Aspirate        5.917986
-BA2587 Bone Marrow Aspirate        6.999254
-BA2024 Bone Marrow Aspirate        7.142213
-BA2426 Bone Marrow Aspirate        6.825509
-BA2271     Peripheral Blood        5.980544
-BA3004 Bone Marrow Aspirate        5.660141
-BA3010     Peripheral Blood        6.715012
-BA2662 Bone Marrow Aspirate        6.689745
-BA2658     Peripheral Blood        6.921747
-BA2512     Peripheral Blood        7.016879
-BA2109     Peripheral Blood        6.452499
-BA2242     Peripheral Blood        6.296062
-BA2132     Peripheral Blood        6.486558
-BA2846 Bone Marrow Aspirate        6.185493
-BA2521 Bone Marrow Aspirate        6.436391
-BA2885 Bone Marrow Aspirate        6.878473
-BA2639     Peripheral Blood        6.606345
-BA2775     Peripheral Blood        6.266526
-BA2402     Peripheral Blood        6.199666
-BA2097     Peripheral Blood        6.006805
-BA2399 Bone Marrow Aspirate        5.375649
-BA2174 Bone Marrow Aspirate        7.428253
-BA3001 Bone Marrow Aspirate        5.929598
-BA2911        Leukapheresis        6.148005
-BA2311     Peripheral Blood        7.712154
-BA3040 Bone Marrow Aspirate        6.216309
-BA2724 Bone Marrow Aspirate        6.426720
-BA2821 Bone Marrow Aspirate        5.986275
-BA2233 Bone Marrow Aspirate        5.924325
-BA2744        Leukapheresis        5.778083
-BA2501     Peripheral Blood        5.837165
-BA2301 Bone Marrow Aspirate        6.768984
-BA2880 Bone Marrow Aspirate        6.607431
-BA2621     Peripheral Blood        7.316655
-BA2866 Bone Marrow Aspirate        6.107475
-BA2212 Bone Marrow Aspirate        5.904364
-BA2477 Bone Marrow Aspirate        6.126379
-BA2685 Bone Marrow Aspirate        5.421982
-BA2273 Bone Marrow Aspirate        5.974408
-BA2124 Bone Marrow Aspirate        5.765687
-BA2400 Bone Marrow Aspirate        6.448021
-BA2762     Peripheral Blood        5.941398
-BA2312     Peripheral Blood        6.765949
-BA2813 Bone Marrow Aspirate        5.326294
-BA2211 Bone Marrow Aspirate        5.411349
-BA2171 Bone Marrow Aspirate        5.693709
-BA2746 Bone Marrow Aspirate        7.106127
-BA2798 Bone Marrow Aspirate        6.391212
-BA2588 Bone Marrow Aspirate        6.301424
-BA2296 Bone Marrow Aspirate        6.146309
-BA2300 Bone Marrow Aspirate        5.652590
-BA2545 Bone Marrow Aspirate        6.727570
-BA2840 Bone Marrow Aspirate        6.347830
-BA2528 Bone Marrow Aspirate        6.117172
-BA2646 Bone Marrow Aspirate        5.686855
-BA2926 Bone Marrow Aspirate        6.218877
-BA2272        Leukapheresis        7.557548
-BA2306     Peripheral Blood        6.534958
-BA2726     Peripheral Blood        6.167393
-BA2234 Bone Marrow Aspirate        6.558633
-BA2022     Peripheral Blood        5.467341
-BA2037 Bone Marrow Aspirate        5.953169
-BA2184 Bone Marrow Aspirate        5.983435
-BA3009 Bone Marrow Aspirate        5.978121
-BA2442     Peripheral Blood        6.015817
-BA2882     Peripheral Blood        7.492562
-BA2570     Peripheral Blood        5.697580
-BA2721     Peripheral Blood        6.682986
-BA2728 Bone Marrow Aspirate        7.207129
-BA2098 Bone Marrow Aspirate        6.224620
-BA2951     Peripheral Blood        6.376443
-BA2778 Bone Marrow Aspirate        6.913264
-BA3153     Peripheral Blood        5.820762
-BA2820 Bone Marrow Aspirate        6.921747
-BA2704 Bone Marrow Aspirate        5.337920
-BA2584     Peripheral Blood        7.168761
-BA3079     Peripheral Blood        6.944215
-BA2361 Bone Marrow Aspirate        6.494548
-BA2472 Bone Marrow Aspirate        5.632437
-BA2047     Peripheral Blood        6.046479
-BA2101     Peripheral Blood        6.494067
-BA2082 Bone Marrow Aspirate        6.344577
-BA2456     Peripheral Blood        5.880852
-BA2175     Peripheral Blood        6.576701
-BA2507     Peripheral Blood        6.092197
-BA2563 Bone Marrow Aspirate        5.316825
-BA2984     Peripheral Blood        6.176860
-BA2414 Bone Marrow Aspirate        5.879657
-BA2697     Peripheral Blood        7.511916
-BA2644 Bone Marrow Aspirate        7.447414
-BA2011     Peripheral Blood        6.900967
-BA2217 Bone Marrow Aspirate        5.802996
-BA2454     Peripheral Blood        6.441760
-BA2776     Peripheral Blood        4.993541
-BA2135 Bone Marrow Aspirate        6.116748
-BA2914 Bone Marrow Aspirate        6.781949
-BA2500 Bone Marrow Aspirate        5.937356
-BA3108 Bone Marrow Aspirate        5.579355
-BA2303     Peripheral Blood        7.256113
-BA2160     Peripheral Blood        6.501525
-BA2590 Bone Marrow Aspirate        5.237469
-BA3195 Bone Marrow Aspirate        6.540966
-BA3036     Peripheral Blood        6.037320
-BA2971 Bone Marrow Aspirate        6.981380
-BA3410 Bone Marrow Aspirate        6.713255
-BA3118     Peripheral Blood        6.582538
-BA3206 Bone Marrow Aspirate        6.106623
-BA3217 Bone Marrow Aspirate        6.007221
-BA3405     Peripheral Blood        7.628062
-BA3306     Peripheral Blood        5.220658
-BA3413 Bone Marrow Aspirate        5.965860
-BA3411 Bone Marrow Aspirate        6.131657
-BA3133 Bone Marrow Aspirate        6.171214
-BA3451 Bone Marrow Aspirate        7.199030
-BA3286 Bone Marrow Aspirate        6.686990
-BA3212     Peripheral Blood        6.059123
-BA3103 Bone Marrow Aspirate        5.709864
-BA3271 Bone Marrow Aspirate        6.708095
-BA3152 Bone Marrow Aspirate        7.008532
-BA3095 Bone Marrow Aspirate        5.509424
-BA3251 Bone Marrow Aspirate        6.093454
-BA3362 Bone Marrow Aspirate        6.123860
-BA3135     Peripheral Blood        5.723287
-BA3408     Peripheral Blood        6.151875
-BA3098     Peripheral Blood        7.345477
-BA3435 Bone Marrow Aspirate        6.327298
-BA3261 Bone Marrow Aspirate        6.161411
-BA3203     Peripheral Blood        6.565325
-BA3299 Bone Marrow Aspirate        6.016235
-BA3347 Bone Marrow Aspirate        6.291374
-BA3126 Bone Marrow Aspirate        6.516571
-BA3418     Peripheral Blood        5.871393
-BA3245     Peripheral Blood        5.670892
-BA3085     Peripheral Blood        6.005138
-BA3171     Peripheral Blood        7.233106
-BA3277 Bone Marrow Aspirate        5.732076
-BA3157 Bone Marrow Aspirate        5.503538
-BA3433 Bone Marrow Aspirate        5.534269
-BA3374 Bone Marrow Aspirate        6.981380
-BA3450 Bone Marrow Aspirate        5.633990
-BA3167 Bone Marrow Aspirate        6.405499
-BA3269 Bone Marrow Aspirate        6.227197
-BA3110 Bone Marrow Aspirate        5.836404
-BA3156     Peripheral Blood        5.736271
-BA3226 Bone Marrow Aspirate        5.811221
-BA3421 Bone Marrow Aspirate        6.339640
-BA3232 Bone Marrow Aspirate        6.118865
-BA3289 Bone Marrow Aspirate        5.800284
-BA3430 Bone Marrow Aspirate        6.150599
-BA3384     Peripheral Blood        6.269725
-BA3427     Peripheral Blood        6.652423
-BA3449     Peripheral Blood        6.132490
-BA3163 Bone Marrow Aspirate        6.801789
-BA3158     Peripheral Blood        6.370320
-BA3436 Bone Marrow Aspirate        6.375959
-BA3154 Bone Marrow Aspirate        4.790684
-BA3162 Bone Marrow Aspirate        6.433861
-BA3352 Bone Marrow Aspirate        5.156329
-BA3084 Bone Marrow Aspirate        5.907207
-BA3149 Bone Marrow Aspirate        5.791607
-BA3169     Peripheral Blood        6.558633
-BA3180 Bone Marrow Aspirate        5.586828
-BA3255 Bone Marrow Aspirate        6.192998
-BA3438 Bone Marrow Aspirate        5.774883
-BA3345     Peripheral Blood        7.429288
-BA3431     Peripheral Blood        6.430469
-BA3181     Peripheral Blood        6.950854
-BA3341 Bone Marrow Aspirate        5.524613
-BA3191     Peripheral Blood        7.172753
-BA3197     Peripheral Blood        5.907999
-BA3448 Bone Marrow Aspirate        5.939830
-BA3453 Bone Marrow Aspirate        5.519507
-BA3406     Peripheral Blood        6.506492
-BA3334 Bone Marrow Aspirate        6.142351
-BA3447 Bone Marrow Aspirate        6.521206
-BA3116 Bone Marrow Aspirate        5.695660
-BA3280 Bone Marrow Aspirate        5.525761
-BA3185     Peripheral Blood        6.704230
-BA3094     Peripheral Blood        7.258878
-BA3318 Bone Marrow Aspirate        5.463373
-BA3216     Peripheral Blood        6.217164
-BA3332 Bone Marrow Aspirate        5.916772
-BA3373 Bone Marrow Aspirate        5.435855
-BA3319 Bone Marrow Aspirate        7.674935
-BA3328     Peripheral Blood        6.411285
-BA3240 Bone Marrow Aspirate        6.676127
-BA3142     Peripheral Blood        6.228075
-BA3333     Peripheral Blood        6.105806
-BA3381 Bone Marrow Aspirate        6.798135
-BA3290 Bone Marrow Aspirate        6.643584
-BA3207        Leukapheresis        7.250085
-BA3305 Bone Marrow Aspirate        6.393591
-BA3434 Bone Marrow Aspirate        6.576136
-BA3189     Peripheral Blood        6.382610
-BA3264 Bone Marrow Aspirate        6.108724
-BA3329     Peripheral Blood        5.745488
-BA3225        Leukapheresis        7.325831
-BA3397 Bone Marrow Aspirate        6.041137
-BA3311     Peripheral Blood        7.116614
-BA3422 Bone Marrow Aspirate        5.376388
-BA3213 Bone Marrow Aspirate        6.974502
-BA3415 Bone Marrow Aspirate        6.400255
-BA3270 Bone Marrow Aspirate        6.921747
-BA3324 Bone Marrow Aspirate        6.111615
-BA3335     Peripheral Blood        5.660904
-BA3199     Peripheral Blood        5.745108
-BA3326 Bone Marrow Aspirate        6.471822
-BA3297 Bone Marrow Aspirate        6.703702
-BA3227 Bone Marrow Aspirate        5.389846
-BA3412 Bone Marrow Aspirate        6.543071
-BA3250 Bone Marrow Aspirate        7.547334
-BA3177        Leukapheresis        6.754835
-BA3315     Peripheral Blood        5.499811
-BA3182     Peripheral Blood        7.417952
-BA3369     Peripheral Blood        7.430379
-BA3078        Leukapheresis        7.106127
-BA3386        Leukapheresis        5.624909
-BA3176 Bone Marrow Aspirate        5.994370
-BA3258 Bone Marrow Aspirate        7.538678
-BA3295 Bone Marrow Aspirate        7.055705
-BA3136 Bone Marrow Aspirate        6.289971
-BA3234 Bone Marrow Aspirate        7.710886
-BA3087 Bone Marrow Aspirate        6.115498
-BA3454     Peripheral Blood        5.629804
-BA3302 Bone Marrow Aspirate        6.071388
-BA3117 Bone Marrow Aspirate        5.512762
-BA3266 Bone Marrow Aspirate        6.472289
-BA3268 Bone Marrow Aspirate        5.927537
-BA3229     Peripheral Blood        6.956154
-BA3353 Bone Marrow Aspirate        5.760666
-BA3312 Bone Marrow Aspirate        5.938574
-BA3119 Bone Marrow Aspirate        5.884446
-BA3219        Leukapheresis        7.755101
-BA3351     Peripheral Blood        5.672794
-BA3357     Peripheral Blood        6.114218
-BA3208 Bone Marrow Aspirate        6.338264
-BA3310 Bone Marrow Aspirate        5.952758
-BA3200     Peripheral Blood        6.418506
-BA3146     Peripheral Blood        6.475238
-BA3211 Bone Marrow Aspirate        6.682426
-BA3130 Bone Marrow Aspirate        6.245468
-BA3376 Bone Marrow Aspirate        5.691816
-BA3137 Bone Marrow Aspirate        7.065207
-BA3300     Peripheral Blood        5.533140
-BA3375     Peripheral Blood        5.571909
-BA3385 Bone Marrow Aspirate        6.408778
-BA3416 Bone Marrow Aspirate        5.845901
-BA3123 Bone Marrow Aspirate        6.738011
+BA2409 Bone Marrow Aspirate        0.004815
+BA2496 Bone Marrow Aspirate        0.003652
+BA3037 Bone Marrow Aspirate        0.000884
+BA2865 Bone Marrow Aspirate        0.001721
+BA2751        Leukapheresis        0.005491
+BA2055     Peripheral Blood        0.003003
+BA2286 Bone Marrow Aspirate        0.002445
+BA2488 Bone Marrow Aspirate        0.003320
+BA3379 Bone Marrow Aspirate        0.002938
+BA2887 Bone Marrow Aspirate        0.002861
+BA2712     Peripheral Blood        0.002779
+BA2068 Bone Marrow Aspirate        0.001212
+BA2104     Peripheral Blood        0.006167
+BA3124 Bone Marrow Aspirate        0.001254
+BA2449 Bone Marrow Aspirate        0.000958
+BA2235 Bone Marrow Aspirate        0.004277
+BA3038 Bone Marrow Aspirate        0.009084
+BA3006     Peripheral Blood        0.002763
+BA2667 Bone Marrow Aspirate        0.005078
+BA2239 Bone Marrow Aspirate        0.007815
+BA2782 Bone Marrow Aspirate        0.006229
+BA2649 Bone Marrow Aspirate        0.001278
+BA2861 Bone Marrow Aspirate        0.003029
+BA2134     Peripheral Blood        0.005824
+BA2909 Bone Marrow Aspirate        0.003680
+BA2653     Peripheral Blood        0.002231
+BA2947     Peripheral Blood        0.001872
+BA2162     Peripheral Blood        0.005170
+BA2564     Peripheral Blood        0.005135
+BA3043     Peripheral Blood        0.005592
+BA2597     Peripheral Blood        0.001863
+BA3243 Bone Marrow Aspirate        0.005596
+BA2446 Bone Marrow Aspirate        0.003445
+BA2525     Peripheral Blood        0.000799
+BA2876     Peripheral Blood        0.001350
+BA2357 Bone Marrow Aspirate        0.001323
+BA2546 Bone Marrow Aspirate        0.003600
+BA2742        Leukapheresis        0.003772
+BA2316 Bone Marrow Aspirate        0.003527
+BA2087     Peripheral Blood        0.003066
+BA2148     Peripheral Blood        0.000563
+BA3178     Peripheral Blood        0.002633
+BA2072 Bone Marrow Aspirate        0.005770
+BA2733     Peripheral Blood        0.002193
+BA2995 Bone Marrow Aspirate        0.002829
+BA2069 Bone Marrow Aspirate        0.004485
+BA2681 Bone Marrow Aspirate        0.002170
+BA2832     Peripheral Blood        0.002048
+BA2600     Peripheral Blood        0.002466
+BA3230     Peripheral Blood        0.003838
+BA2731     Peripheral Blood        0.003039
+BA2294 Bone Marrow Aspirate        0.002391
+BA2816 Bone Marrow Aspirate        0.003835
+BA2814     Peripheral Blood        0.003135
+BA2631 Bone Marrow Aspirate        0.003515
+BA2023 Bone Marrow Aspirate        0.005635
+BA2375     Peripheral Blood        0.007981
+BA2485 Bone Marrow Aspirate        0.002172
+BA2455     Peripheral Blood        0.003109
+BA2636     Peripheral Blood        0.002307
+BA2325     Peripheral Blood        0.003414
+BA2156 Bone Marrow Aspirate        0.002418
+BA2511     Peripheral Blood        0.002264
+BA2505     Peripheral Blood        0.002958
+BA2871     Peripheral Blood        0.003547
+BA2227 Bone Marrow Aspirate        0.002155
+BA2812     Peripheral Blood        0.001602
+BA2125 Bone Marrow Aspirate        0.003253
+BA2603 Bone Marrow Aspirate        0.003822
+BA2808     Peripheral Blood        0.001367
+BA2482 Bone Marrow Aspirate        0.004994
+BA2594 Bone Marrow Aspirate        0.003664
+BA2747     Peripheral Blood        0.001734
+BA2561 Bone Marrow Aspirate        0.002317
+BA2567     Peripheral Blood        0.001582
+BA2906     Peripheral Blood        0.004013
+BA2956     Peripheral Blood        0.001740
+BA2474 Bone Marrow Aspirate        0.002409
+BA2737     Peripheral Blood        0.004104
+BA2006     Peripheral Blood        0.001703
+BA2110 Bone Marrow Aspirate        0.005071
+BA2915     Peripheral Blood        0.001662
+BA2992 Bone Marrow Aspirate        0.002999
+BA2220 Bone Marrow Aspirate        0.002779
+BA2063     Peripheral Blood        0.000736
+BA2772     Peripheral Blood        0.001709
+BA2935     Peripheral Blood        0.003378
+BA2260     Peripheral Blood        0.004027
+BA2948     Peripheral Blood        0.004359
+BA3296 Bone Marrow Aspirate        0.003908
+BA2524     Peripheral Blood        0.001601
+BA2811 Bone Marrow Aspirate        0.002222
+BA2540 Bone Marrow Aspirate        0.002633
+BA2928     Peripheral Blood        0.003002
+BA2302     Peripheral Blood        0.001673
+BA2651 Bone Marrow Aspirate        0.000970
+BA2619     Peripheral Blood        0.003331
+BA3013 Bone Marrow Aspirate        0.001128
+BA2405     Peripheral Blood        0.002184
+BA2856     Peripheral Blood        0.001070
+BA2377 Bone Marrow Aspirate        0.002514
+BA2499     Peripheral Blood        0.001811
+BA2350     Peripheral Blood        0.002182
+BA3023     Peripheral Blood        0.000939
+BA2095     Peripheral Blood        0.001704
+BA2275 Bone Marrow Aspirate        0.006296
+BA2901 Bone Marrow Aspirate        0.001647
+BA2387 Bone Marrow Aspirate        0.003661
+BA2962 Bone Marrow Aspirate        0.001965
+BA2195     Peripheral Blood        0.002517
+BA2688     Peripheral Blood        0.002160
+BA2420 Bone Marrow Aspirate        0.003953
+BA2053     Peripheral Blood        0.001029
+BA2081 Bone Marrow Aspirate        0.003067
+BA2354 Bone Marrow Aspirate        0.003414
+BA3273     Peripheral Blood        0.000743
+BA2893 Bone Marrow Aspirate        0.001164
+BA2044 Bone Marrow Aspirate        0.005614
+BA2489 Bone Marrow Aspirate        0.001471
+BA2908 Bone Marrow Aspirate        0.003502
+BA2054 Bone Marrow Aspirate        0.004221
+BA2872 Bone Marrow Aspirate        0.004368
+BA2041 Bone Marrow Aspirate        0.000930
+BA2464 Bone Marrow Aspirate        0.001196
+BA2902 Bone Marrow Aspirate        0.001229
+BA2541 Bone Marrow Aspirate        0.002760
+BA2843 Bone Marrow Aspirate        0.002184
+BA2497 Bone Marrow Aspirate        0.001971
+BA2718 Bone Marrow Aspirate        0.003592
+BA2575 Bone Marrow Aspirate        0.007840
+BA2593        Leukapheresis        0.001611
+BA2791 Bone Marrow Aspirate        0.001301
+BA2620 Bone Marrow Aspirate        0.004717
+BA2629 Bone Marrow Aspirate        0.004354
+BA2870 Bone Marrow Aspirate        0.001740
+BA2682     Peripheral Blood        0.001963
+BA2276 Bone Marrow Aspirate        0.001835
+BA2709 Bone Marrow Aspirate        0.003994
+BA2789 Bone Marrow Aspirate        0.002356
+BA2538     Peripheral Blood        0.001723
+BA2583 Bone Marrow Aspirate        0.003043
+BA2806     Peripheral Blood        0.001201
+BA2441     Peripheral Blood        0.004641
+BA2514 Bone Marrow Aspirate        0.001159
+BA2520     Peripheral Blood        0.002767
+BA2479     Peripheral Blood        0.001105
+BA2281 Bone Marrow Aspirate        0.001361
+BA2932 Bone Marrow Aspirate        0.001608
+BA2123 Bone Marrow Aspirate        0.001174
+BA2844 Bone Marrow Aspirate        0.001727
+BA2660 Bone Marrow Aspirate        0.003486
+BA2836     Peripheral Blood        0.001823
+BA2714     Peripheral Blood        0.003989
+BA2440 Bone Marrow Aspirate        0.002313
+BA2036     Peripheral Blood        0.002763
+BA2828     Peripheral Blood        0.003844
+BA2952 Bone Marrow Aspirate        0.004089
+BA2410 Bone Marrow Aspirate        0.001007
+BA2139     Peripheral Blood        0.006882
+BA2051 Bone Marrow Aspirate        0.001754
+BA2532 Bone Marrow Aspirate        0.001519
+BA2494     Peripheral Blood        0.001252
+BA2748 Bone Marrow Aspirate        0.002681
+BA2622 Bone Marrow Aspirate        0.003917
+BA2970 Bone Marrow Aspirate        0.001078
+BA2839 Bone Marrow Aspirate        0.001594
+BA2868     Peripheral Blood        0.003317
+BA3011 Bone Marrow Aspirate        0.000590
+BA2052 Bone Marrow Aspirate        0.001415
+BA2510     Peripheral Blood        0.001341
+BA2691     Peripheral Blood        0.003878
+BA2374 Bone Marrow Aspirate        0.002210
+BA2804 Bone Marrow Aspirate        0.001851
+BA2675     Peripheral Blood        0.002124
+BA2031 Bone Marrow Aspirate        0.003507
+BA2198 Bone Marrow Aspirate        0.003585
+BA2066 Bone Marrow Aspirate        0.007603
+BA2344     Peripheral Blood        0.002405
+BA2459 Bone Marrow Aspirate        0.000499
+BA2229     Peripheral Blood        0.001682
+BA2559 Bone Marrow Aspirate        0.001386
+BA2093 Bone Marrow Aspirate        0.001557
+BA2000        Leukapheresis        0.004022
+BA2425     Peripheral Blood        0.004090
+BA2905     Peripheral Blood        0.002252
+BA2304 Bone Marrow Aspirate        0.003490
+BA2976 Bone Marrow Aspirate        0.006452
+BA2386     Peripheral Blood        0.001946
+BA2035     Peripheral Blood        0.002191
+BA2760 Bone Marrow Aspirate        0.003698
+BA2201 Bone Marrow Aspirate        0.004169
+BA2355 Bone Marrow Aspirate        0.001021
+BA2113 Bone Marrow Aspirate        0.004200
+BA2955 Bone Marrow Aspirate        0.008341
+BA2322 Bone Marrow Aspirate        0.005050
+BA2020 Bone Marrow Aspirate        0.005030
+BA2226 Bone Marrow Aspirate        0.005780
+BA2376 Bone Marrow Aspirate        0.007707
+BA2889 Bone Marrow Aspirate        0.000000
+BA2121 Bone Marrow Aspirate        0.004094
+BA2944     Peripheral Blood        0.004064
+BA2033     Peripheral Blood        0.004395
+BA2867 Bone Marrow Aspirate        0.002514
+BA2089        Leukapheresis        0.008170
+BA2224 Bone Marrow Aspirate        0.002795
+BA2046 Bone Marrow Aspirate        0.001971
+BA2972 Bone Marrow Aspirate        0.004573
+BA2978     Peripheral Blood        0.008881
+BA2851 Bone Marrow Aspirate        0.005845
+BA2587 Bone Marrow Aspirate        0.008004
+BA2024 Bone Marrow Aspirate        0.008574
+BA2426 Bone Marrow Aspirate        0.004312
+BA2271     Peripheral Blood        0.003702
+BA3004 Bone Marrow Aspirate        0.002144
+BA3010     Peripheral Blood        0.004812
+BA2662 Bone Marrow Aspirate        0.005307
+BA2658     Peripheral Blood        0.007083
+BA2512     Peripheral Blood        0.008189
+BA2109     Peripheral Blood        0.002408
+BA2242     Peripheral Blood        0.003355
+BA2132     Peripheral Blood        0.002479
+BA2846 Bone Marrow Aspirate        0.003203
+BA2521 Bone Marrow Aspirate        0.003157
+BA2885 Bone Marrow Aspirate        0.005487
+BA2639     Peripheral Blood        0.004737
+BA2775     Peripheral Blood        0.002740
+BA2402     Peripheral Blood        0.002805
+BA2097     Peripheral Blood        0.002152
+BA2399 Bone Marrow Aspirate        0.001967
+BA2174 Bone Marrow Aspirate        0.006396
+BA3001 Bone Marrow Aspirate        0.002238
+BA2911        Leukapheresis        0.003359
+BA2311     Peripheral Blood        0.006933
+BA3040 Bone Marrow Aspirate        0.002676
+BA2724 Bone Marrow Aspirate        0.002008
+BA2821 Bone Marrow Aspirate        0.002693
+BA2233 Bone Marrow Aspirate        0.002497
+BA2744        Leukapheresis        0.001282
+BA2501     Peripheral Blood        0.001900
+BA2301 Bone Marrow Aspirate        0.002625
+BA2880 Bone Marrow Aspirate        0.002938
+BA2621     Peripheral Blood        0.005404
+BA2866 Bone Marrow Aspirate        0.001906
+BA2212 Bone Marrow Aspirate        0.001525
+BA2477 Bone Marrow Aspirate        0.003284
+BA2685 Bone Marrow Aspirate        0.001102
+BA2273 Bone Marrow Aspirate        0.001399
+BA2124 Bone Marrow Aspirate        0.001834
+BA2400 Bone Marrow Aspirate        0.003653
+BA2762     Peripheral Blood        0.001441
+BA2312     Peripheral Blood        0.004049
+BA2813 Bone Marrow Aspirate        0.000997
+BA2211 Bone Marrow Aspirate        0.001493
+BA2171 Bone Marrow Aspirate        0.002282
+BA2746 Bone Marrow Aspirate        0.004433
+BA2798 Bone Marrow Aspirate        0.002800
+BA2588 Bone Marrow Aspirate        0.002373
+BA2296 Bone Marrow Aspirate        0.002649
+BA2300 Bone Marrow Aspirate        0.002082
+BA2545 Bone Marrow Aspirate        0.004167
+BA2840 Bone Marrow Aspirate        0.003852
+BA2528 Bone Marrow Aspirate        0.002416
+BA2646 Bone Marrow Aspirate        0.001789
+BA3067     Peripheral Blood        0.002624
+BA2926 Bone Marrow Aspirate        0.002517
+BA2272        Leukapheresis        0.006908
+BA2306     Peripheral Blood        0.003046
+BA2726     Peripheral Blood        0.002129
+BA2234 Bone Marrow Aspirate        0.004443
+BA2022     Peripheral Blood        0.001912
+BA2037 Bone Marrow Aspirate        0.002773
+BA2184 Bone Marrow Aspirate        0.003227
+BA3009 Bone Marrow Aspirate        0.002100
+BA2442     Peripheral Blood        0.002219
+BA2882     Peripheral Blood        0.005672
+BA2347     Peripheral Blood        0.003137
+BA2570     Peripheral Blood        0.001297
+BA2721     Peripheral Blood        0.003204
+BA2728 Bone Marrow Aspirate        0.005580
+BA2098 Bone Marrow Aspirate        0.003560
+BA2951     Peripheral Blood        0.002881
+BA2778 Bone Marrow Aspirate        0.003463
+BA3153     Peripheral Blood        0.002262
+BA2820 Bone Marrow Aspirate        0.004025
+BA2704 Bone Marrow Aspirate        0.001786
+BA2584     Peripheral Blood        0.005453
+BA3079     Peripheral Blood        0.003919
+BA2361 Bone Marrow Aspirate        0.002612
+BA2472 Bone Marrow Aspirate        0.001671
+BA2047     Peripheral Blood        0.002519
+BA2101     Peripheral Blood        0.003722
+BA2082 Bone Marrow Aspirate        0.002222
+BA2456     Peripheral Blood        0.001251
+BA2175     Peripheral Blood        0.003086
+BA2507     Peripheral Blood        0.002335
+BA2563 Bone Marrow Aspirate        0.002491
+BA2984     Peripheral Blood        0.003397
+BA2414 Bone Marrow Aspirate        0.002944
+BA2697     Peripheral Blood        0.007119
+BA2644 Bone Marrow Aspirate        0.007858
+BA2011     Peripheral Blood        0.004122
+BA2217 Bone Marrow Aspirate        0.002979
+BA2454     Peripheral Blood        0.004630
+BA2776     Peripheral Blood        0.002293
+BA2135 Bone Marrow Aspirate        0.002005
+BA2914 Bone Marrow Aspirate        0.004476
+BA2500 Bone Marrow Aspirate        0.003751
+BA3108 Bone Marrow Aspirate        0.001837
+BA2303     Peripheral Blood        0.005020
+BA2160     Peripheral Blood        0.004095
+BA2590 Bone Marrow Aspirate        0.001010
+BA3195 Bone Marrow Aspirate        0.003283
+BA3036     Peripheral Blood        0.001793
+BA2971 Bone Marrow Aspirate        0.004038
+BA3410 Bone Marrow Aspirate        0.003217
+BA3118     Peripheral Blood        0.002702
+BA3206 Bone Marrow Aspirate        0.002257
+BA3217 Bone Marrow Aspirate        0.002076
+BA3405     Peripheral Blood        0.008026
+BA3306     Peripheral Blood        0.000907
+BA3413 Bone Marrow Aspirate        0.002100
+BA3411 Bone Marrow Aspirate        0.002657
+BA3133 Bone Marrow Aspirate        0.004140
+BA3451 Bone Marrow Aspirate        0.005734
+BA3286 Bone Marrow Aspirate        0.004342
+BA3212     Peripheral Blood        0.002594
+BA3103 Bone Marrow Aspirate        0.001298
+BA3271 Bone Marrow Aspirate        0.004267
+BA3152 Bone Marrow Aspirate        0.005032
+BA3095 Bone Marrow Aspirate        0.001235
+BA3251 Bone Marrow Aspirate        0.001792
+BA3362 Bone Marrow Aspirate        0.002671
+BA3135     Peripheral Blood        0.001904
+BA3408     Peripheral Blood        0.002052
+BA3098     Peripheral Blood        0.007191
+BA3435 Bone Marrow Aspirate        0.003604
+BA3261 Bone Marrow Aspirate        0.002814
+BA3203     Peripheral Blood        0.002280
+BA3299 Bone Marrow Aspirate        0.001388
+BA3347 Bone Marrow Aspirate        0.001674
+BA3126 Bone Marrow Aspirate        0.003513
+BA3418     Peripheral Blood        0.001668
+BA3245     Peripheral Blood        0.001614
+BA3085     Peripheral Blood        0.002143
+BA3171     Peripheral Blood        0.006991
+BA3277 Bone Marrow Aspirate        0.001531
+BA3157 Bone Marrow Aspirate        0.001518
+BA3433 Bone Marrow Aspirate        0.001163
+BA3374 Bone Marrow Aspirate        0.003969
+BA3450 Bone Marrow Aspirate        0.001481
+BA3167 Bone Marrow Aspirate        0.002441
+BA3269 Bone Marrow Aspirate        0.002097
+BA3110 Bone Marrow Aspirate        0.001491
+BA3156     Peripheral Blood        0.001234
+BA3226 Bone Marrow Aspirate        0.001954
+BA3421 Bone Marrow Aspirate        0.001146
+BA3232 Bone Marrow Aspirate        0.002983
+BA3289 Bone Marrow Aspirate        0.000804
+BA3430 Bone Marrow Aspirate        0.001185
+BA3384     Peripheral Blood        0.002933
+BA3427     Peripheral Blood        0.003607
+BA3449     Peripheral Blood        0.002636
+BA3163 Bone Marrow Aspirate        0.003222
+BA3158     Peripheral Blood        0.002272
+BA3436 Bone Marrow Aspirate        0.003195
+BA3154 Bone Marrow Aspirate        0.000753
+BA3162 Bone Marrow Aspirate        0.003209
+BA3352 Bone Marrow Aspirate        0.001093
+BA3084 Bone Marrow Aspirate        0.002096
+BA3149 Bone Marrow Aspirate        0.001221
+BA3169     Peripheral Blood        0.002772
+BA3180 Bone Marrow Aspirate        0.002270
+BA3255 Bone Marrow Aspirate        0.002721
+BA3438 Bone Marrow Aspirate        0.001860
+BA3345     Peripheral Blood        0.004532
+BA3431     Peripheral Blood        0.002134
+BA3181     Peripheral Blood        0.004997
+BA3341 Bone Marrow Aspirate        0.001446
+BA3191     Peripheral Blood        0.005848
+BA3197     Peripheral Blood        0.002468
+BA3448 Bone Marrow Aspirate        0.002129
+BA3453 Bone Marrow Aspirate        0.001113
+BA3406     Peripheral Blood        0.003155
+BA3334 Bone Marrow Aspirate        0.001360
+BA3447 Bone Marrow Aspirate        0.001672
+BA3116 Bone Marrow Aspirate        0.001179
+BA3280 Bone Marrow Aspirate        0.001082
+BA3185     Peripheral Blood        0.003937
+BA3094     Peripheral Blood        0.004060
+BA3318 Bone Marrow Aspirate        0.002213
+BA3216     Peripheral Blood        0.001960
+BA3332 Bone Marrow Aspirate        0.001952
+BA3373 Bone Marrow Aspirate        0.002510
+BA3319 Bone Marrow Aspirate        0.008458
+BA3328     Peripheral Blood        0.003697
+BA3240 Bone Marrow Aspirate        0.004550
+BA3142     Peripheral Blood        0.003590
+BA3333     Peripheral Blood        0.002715
+BA3381 Bone Marrow Aspirate        0.005321
+BA3290 Bone Marrow Aspirate        0.003982
+BA3207        Leukapheresis        0.007219
+BA3305 Bone Marrow Aspirate        0.002861
+BA3434 Bone Marrow Aspirate        0.003294
+BA3189     Peripheral Blood        0.003874
+BA3264 Bone Marrow Aspirate        0.003159
+BA3329     Peripheral Blood        0.001544
+BA3225        Leukapheresis        0.005629
+BA3397 Bone Marrow Aspirate        0.002891
+BA3311     Peripheral Blood        0.005267
+BA3422 Bone Marrow Aspirate        0.001189
+BA3213 Bone Marrow Aspirate        0.004730
+BA3415 Bone Marrow Aspirate        0.004509
+BA3270 Bone Marrow Aspirate        0.004208
+BA3324 Bone Marrow Aspirate        0.002848
+BA3335     Peripheral Blood        0.001778
+BA3199     Peripheral Blood        0.002258
+BA3326 Bone Marrow Aspirate        0.002558
+BA3297 Bone Marrow Aspirate        0.005064
+BA3227 Bone Marrow Aspirate        0.002826
+BA3412 Bone Marrow Aspirate        0.003448
+BA3250 Bone Marrow Aspirate        0.007376
+BA3177        Leukapheresis        0.005541
+BA3315     Peripheral Blood        0.002022
+BA3182     Peripheral Blood        0.007655
+BA3369     Peripheral Blood        0.007316
+BA3078        Leukapheresis        0.005889
+BA3386        Leukapheresis        0.002106
+BA3176 Bone Marrow Aspirate        0.001908
+BA3258 Bone Marrow Aspirate        0.006688
+BA3295 Bone Marrow Aspirate        0.005813
+BA3136 Bone Marrow Aspirate        0.002991
+BA3234 Bone Marrow Aspirate        0.007285
+BA3087 Bone Marrow Aspirate        0.004043
+BA3454     Peripheral Blood        0.002838
+BA3302 Bone Marrow Aspirate        0.003394
+BA3117 Bone Marrow Aspirate        0.002130
+BA3266 Bone Marrow Aspirate        0.004400
+BA3268 Bone Marrow Aspirate        0.003839
+BA3229     Peripheral Blood        0.005456
+BA3353 Bone Marrow Aspirate        0.002038
+BA3312 Bone Marrow Aspirate        0.002527
+BA3119 Bone Marrow Aspirate        0.002861
+BA3219        Leukapheresis        0.008590
+BA3351     Peripheral Blood        0.002064
+BA3357     Peripheral Blood        0.003700
+BA3208 Bone Marrow Aspirate        0.003239
+BA3310 Bone Marrow Aspirate        0.002163
+BA3200     Peripheral Blood        0.004503
+BA3146     Peripheral Blood        0.003574
+BA3211 Bone Marrow Aspirate        0.003989
+BA3130 Bone Marrow Aspirate        0.003144
+BA3376 Bone Marrow Aspirate        0.002242
+BA3137 Bone Marrow Aspirate        0.005410
+BA3300     Peripheral Blood        0.002258
+BA3375     Peripheral Blood        0.002187
+BA3385 Bone Marrow Aspirate        0.003604
+BA3416 Bone Marrow Aspirate        0.003427
+BA3123 Bone Marrow Aspirate        0.003914

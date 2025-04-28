@@ -1,0 +1,10 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène EZH2, en fonction de la feature ELN2017
+#Résultat du test statistique ANOVA : F = 54.685, p-value = 0.00436
+#Tableau des résultats :
+Sample      Feature  ExpressionGene
+BA2688 Intermediate        0.211254
+BA2844 Intermediate        0.183278
+BA2174      Adverse        0.139267
+BA2746    Favorable        0.070314
+BA3297    Favorable        0.076034
+BA3353      Adverse        0.145001

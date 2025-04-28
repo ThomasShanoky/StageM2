@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+import shutil
 from tqdm import tqdm
 from DistributionFuncs import *
 from AbundanceFuncs import *
@@ -66,6 +67,13 @@ class GUI:
         self.window.config(bg='#87CEEB')
         self.window.title("Fenêtre")
 
+        # MEnu
+        self.menu = tk.Menu(self.window)
+        self.window.config(menu=self.menu)
+        self.options_menu = tk.Menu(self.window, tearoff=0)
+        self.menu.add_cascade(label="Options", menu=self.options_menu)
+        self.options_menu.add_command(label="Vider le dossier des résultats", command=self.clear_res_folder)
+
         # Variables pour les listes déroulantes
         self.gene_var = tk.StringVar(value=self.Genes[0])
         self.feature_var = tk.StringVar(value=self.usable_cat[0])
@@ -77,7 +85,9 @@ class GUI:
         # Listes déroulantes pour le gène, la mutation et la feature
         self.gene_label = tk.Label(self.window, text="Sélectionnez un gène:")
         self.gene_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.gene_label.place(x=30, y=30)  
+        self.gene_label.place(x=30, y=30)
+        self.gene_exponent_label = tk.Label(self.window, text="(1 à 5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
+        self.gene_exponent_label.place(x=225, y=30) 
         self.gene_dropdown = ttk.Combobox(self.window, textvariable=self.gene_var, values=self.Genes)
         self.gene_dropdown.place(x=30, y=70)
         self.gene_dropdown.bind("<<ComboboxSelected>>", self.update_mutations) #permet d'associer l'événement "Sélection d'un gène" et la fonction update_mutations
@@ -85,12 +95,16 @@ class GUI:
         self.mut_label = tk.Label(self.window, text="Sélectionnez une mutation :")
         self.mut_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
         self.mut_label.place(x=30, y=110)
+        self.mut_exponent_label = tk.Label(self.window, text="(5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
+        self.mut_exponent_label.place(x=277, y=110)
         self.mut_dropdown = ttk.Combobox(self.window, textvariable=self.mut_var, values=format_mutations(self.dico_mut, self.dico_IndAndMut), width=45)
         self.mut_dropdown.place(x=30, y=150)
 
         self.feature_label = tk.Label(self.window, text="Sélectionnez une feature:")
         self.feature_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.feature_label.place(x=30, y=190)  
+        self.feature_label.place(x=30, y=190)
+        self.feature_exponent_label = tk.Label(self.window, text="(1, 2, 3 et 5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
+        self.feature_exponent_label.place(x=255, y=190)
         self.feature_dropdown = ttk.Combobox(self.window, textvariable=self.feature_var, values=self.usable_cat)
         self.feature_dropdown.place(x=30, y=230)
 
@@ -103,7 +117,7 @@ class GUI:
         self.DistributionVar = tk.BooleanVar(value=False)
         self.distribution_button = tk.Checkbutton(self.window, text="1. Montrer les distributions", variable=self.DistributionVar, command=lambda: self.toggle_checkbuttons(self.DistributionVar))
         self.distribution_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.distribution_button.place(x=30, y=350)  
+        self.distribution_button.place(x=30, y=350)
 
         self.AbondanceVar = tk.BooleanVar(value=False)
         self.abondance_button = tk.Checkbutton(self.window, text="2. Montrer l'abondance des mutations", variable=self.AbondanceVar, command=lambda: self.toggle_checkbuttons(self.AbondanceVar))
@@ -171,6 +185,17 @@ class GUI:
         for var in checkbuttons:
             if var != selected_var:
                 var.set(False)
+        return
+    
+
+    def clear_res_folder(self):
+        """Vide le contenu du dossier de résultats DossierRes"""
+        res_folder = "Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"
+        if os.path.exists(res_folder):
+            all_sub_folders = os.listdir(res_folder)
+            for fold in all_sub_folders:
+                fold_path = f"{res_folder}/{fold}"
+                shutil.rmtree(fold_path)
         return
     
 
