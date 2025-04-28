@@ -4,7 +4,6 @@ from tkinter import messagebox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import shutil
-from tqdm import tqdm
 from DistributionFuncs import *
 from AbundanceFuncs import *
 from FeaturesFuncs import *
@@ -153,7 +152,7 @@ class GUI:
         self.SaveBool = tk.BooleanVar()
         self.save_button = tk.Checkbutton(self.window, text="Sauvegarder les résultats", variable=self.SaveBool)
         self.save_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.save_button.place(x=30, y=580)  
+        self.save_button.place(x=30, y=580)
 
         # Labels pour afficher la p-value et la significativité
         self.p_value_label = tk.Label(self.window, text="")
@@ -196,6 +195,7 @@ class GUI:
             for fold in all_sub_folders:
                 fold_path = f"{res_folder}/{fold}"
                 shutil.rmtree(fold_path)
+            messagebox.showinfo("Dossier vidé", "Le dossier de résultats a été vidé")
         return
     
 
@@ -245,10 +245,10 @@ class GUI:
             self.generate_plot_with_abundance(gene, feature)
             return
         if self.FeatureVar.get():
-            self.generate_plot_feature(gene, feature)
+            self.generate_plot_feature(gene, feature, self.data_expressions)
             return
         if self.MutationVar.get():
-            self.generate_plot_mutations(gene)
+            self.generate_plot_mutations(gene, self.data_expressions)
             return
         if self.FeatAndMutVar.get():
             if Mutation == "Toutes les mutations":
@@ -258,7 +258,7 @@ class GUI:
             if Mutation not in self.mut_dropdown['values']:
                 messagebox.showwarning("Attention", "Veuillez sélectionner une mutation valide")
             Mutation = Mutation.split(":")[0]
-            self.generate_plot_feat_and_mut(gene, Mutation, feature)
+            self.generate_plot_feat_and_mut(gene, Mutation, feature, self.data_expressions)
             return
 
 
@@ -364,14 +364,14 @@ class GUI:
 
     ##### 3. Expression selon les features #####
 
-    def generate_plot_feature(self, gene, feature):
+    def generate_plot_feature(self, gene, feature, expressions):
 
         featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
         featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]] #valeurs uniques de la feature sélectionnée (on enlève les NaN et les Unknown)
 
         SamplesAndFeatures = getSamplesAndFeatures(self.data_beat_aml, feature, featureValues) #échantillons et features associées 
 
-        ind_expr = list(self.data_expressions.columns)[1:] #échantillons qui ont une expression de gène
+        ind_expr = list(expressions.columns)[1:] #échantillons qui ont une expression de gène
 
         inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0]) 
 
@@ -379,7 +379,7 @@ class GUI:
             Id = row["Sample"]
             featureVal = row["Feature"]
             if Id in ind_expr:
-                Expression = self.data_expressions.loc[self.data_expressions['Gene'] == gene, Id].values[0] #expression du gène pour l'échantillon
+                Expression = expressions.loc[expressions['Gene'] == gene, Id].values[0] #expression du gène pour l'échantillon
                 inter_ind_pd = inter_ind_pd._append({"Sample": Id, "Feature": featureVal, "ExpressionGene": Expression}, ignore_index=True)
 
         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True) #suppression de la première ligne vide
@@ -449,14 +449,14 @@ class GUI:
 
     ##### 4. Expressions des différents types de mutations #####
 
-    def generate_plot_mutations(self, gene):
+    def generate_plot_mutations(self, gene, expressions):
 
         dico_IndAndMut, _ = getTypesOfMutationsAndInd(self.Genes, gene, self.data_mutation)
 
         AllIndMutated = list(dico_IndAndMut.values())
         AllIndMutated = [item for sublist in AllIndMutated for item in sublist] #à utiliser pour avoir les échantillons NON mutés
 
-        IndToRemove = checkIfPatientsAreInExpressions(self.data_expressions, dico_IndAndMut)
+        IndToRemove = checkIfPatientsAreInExpressions(expressions, dico_IndAndMut)
 
         if len(IndToRemove) > 0:
             for ind in IndToRemove:
@@ -468,12 +468,12 @@ class GUI:
 
         dico_IndAndMut = filterDicoIndAndMut(dico_IndAndMut)
 
-        Tableau = getTable(self.data_expressions, gene, dico_IndAndMut)
+        Tableau = getTable(expressions, gene, dico_IndAndMut)
 
-        NonMutatedInd = getNonMutatedInd(self.data_expressions, AllIndMutated)
+        NonMutatedInd = getNonMutatedInd(expressions, AllIndMutated)
         NonMutatedInd = checkIfIndExpressionAreInIndex(self.index_list, NonMutatedInd)
 
-        Tableau = addNonMutatedIndExpression(self.data_expressions, Tableau, gene, NonMutatedInd)
+        Tableau = addNonMutatedIndExpression(expressions, Tableau, gene, NonMutatedInd)
         
         if len(dico_IndAndMut) > 1:
             # ANOVA
@@ -540,7 +540,7 @@ class GUI:
 
     ##### 5. Expression de cette mutation selon la feature #####
 
-    def generate_plot_feat_and_mut(self, gene, Mutation, feature):
+    def generate_plot_feat_and_mut(self, gene, Mutation, feature, expressions):
 
         PatientsRelatedToMut = self.dico_IndAndMut[Mutation]
 
@@ -554,8 +554,8 @@ class GUI:
         for _, row in SamplesAndFeatures.iterrows():
             Id = row["Sample"]
             featureVal = row["Feature"]
-            if Id in PatientsRelatedToMut and Id in self.data_expressions.columns:
-                Expression = self.data_expressions.loc[self.data_expressions['Gene'] == gene, Id].values[0]
+            if Id in PatientsRelatedToMut and Id in expressions.columns:
+                Expression = expressions.loc[expressions['Gene'] == gene, Id].values[0]
                 inter_ind_pd = inter_ind_pd._append({"Sample": Id, "Feature": featureVal, "ExpressionGene": Expression}, ignore_index=True)
 
         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True)
@@ -632,20 +632,38 @@ class GUI:
     def generate_all_results(self):
 
         self.SaveAll = True
+        
+        progress_window = tk.Toplevel(self.window)
+        progress_window.title("Progression")
+        progress_window.geometry("400x100")
+        progress_window.resizable(False, False)
 
-        for gene in tqdm(self.Genes):
+        progress_label = tk.Label(progress_window, text="Génération des résultats significatifs...")
+        progress_label.place(x=10, y=10)
+
+        progress_bar = ttk.Progressbar(progress_window, orient="horizontal", length=300, mode="determinate")
+        progress_bar.place(x=10, y=40)
+
+        tot_tasks = 2*len(self.Genes)*len(self.usable_cat)
+        progress_bar["maximum"] = tot_tasks
+        progress_bar["value"] = 0
+
+        for gene in self.Genes:
             # print(gene)
-            self.generate_plot_mutations(gene)
-            for feature in self.usable_cat:
-                # print(feature)
-                self.generate_plot_feature(gene, feature)
-                self.generate_plot_with_abundance(gene, feature)
-                self.generate_plot_without_abundance(gene, feature)
-                for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
-                    if Mutation != "Toutes les mutations":
-                        Mutation = Mutation.split(":")[0]
-                        # print(Mutation)
-                        self.generate_plot_feat_and_mut(gene, Mutation, feature)
+            for expressions in [data_expressions_kmers, data_expressions_beataml]:
+                self.generate_plot_mutations(gene, expressions)
+                for feature in self.usable_cat:
+                    progress_bar["value"] += 1
+                    progress_window.update_idletasks()
+                    # print(feature)
+                    self.generate_plot_feature(gene, feature, expressions)
+                    self.generate_plot_with_abundance(gene, feature)
+                    self.generate_plot_without_abundance(gene, feature)
+                    for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
+                        if Mutation != "Toutes les mutations":
+                            Mutation = Mutation.split(":")[0]
+                            # print(Mutation)
+                            self.generate_plot_feat_and_mut(gene, Mutation, feature, expressions)
 
         self.SaveAll = False
 
