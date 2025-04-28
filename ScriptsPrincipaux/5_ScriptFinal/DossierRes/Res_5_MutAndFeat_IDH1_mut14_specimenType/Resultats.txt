@@ -1,15 +1,15 @@
 #Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène IDH1, en fonction de la feature specimenType
-#Résultat du test statistique ANOVA : F = 6.340, p-value = 0.02240
+#Résultat du test statistique ANOVA : F = 8.410, p-value = 0.01079
 #Tableau des résultats :
 Sample              Feature  ExpressionGene
-BA2751        Leukapheresis        7.152467
-BA2357 Bone Marrow Aspirate        3.693922
-BA3178     Peripheral Blood        6.289081
-BA2600     Peripheral Blood        5.225006
-BA2455     Peripheral Blood        6.614843
-BA2053     Peripheral Blood        5.258927
-BA2276 Bone Marrow Aspirate        4.910223
-BA2440 Bone Marrow Aspirate        5.275766
-BA3010     Peripheral Blood        5.439913
-BA3167 Bone Marrow Aspirate        5.246115
-BA3229     Peripheral Blood        5.899190
+BA2751        Leukapheresis        0.702307
+BA2357 Bone Marrow Aspirate        0.047439
+BA3178     Peripheral Blood        0.449968
+BA2600     Peripheral Blood        0.154847
+BA2455     Peripheral Blood        0.442433
+BA2053     Peripheral Blood        0.144782
+BA2276 Bone Marrow Aspirate        0.146114
+BA2440 Bone Marrow Aspirate        0.183384
+BA3010     Peripheral Blood        0.182150
+BA3167 Bone Marrow Aspirate        0.212383
+BA3229     Peripheral Blood        0.344466

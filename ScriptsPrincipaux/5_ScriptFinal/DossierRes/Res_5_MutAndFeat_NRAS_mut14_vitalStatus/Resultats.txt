@@ -1,15 +1,15 @@
 #Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène NRAS, en fonction de la feature vitalStatus
-#Résultat du test statistique Mann-Whitney : U = 2.000, p-value = 0.02424
+#Résultat du test statistique Mann-Whitney : U = 1.000, p-value = 0.01212
 #Tableau des résultats :
 Sample Feature  ExpressionGene
-BA2751    Dead        6.772460
-BA2357    Dead        7.079949
-BA3178    Dead        6.923699
-BA2600   Alive        7.656323
-BA2455    Dead        7.793848
-BA2053   Alive        7.995737
-BA2276    Dead        7.275551
-BA2440   Alive        7.700647
-BA3010    Dead        7.213008
-BA3167   Alive        8.019656
-BA3229    Dead        6.692479
+BA2751    Dead        0.606607
+BA2357    Dead        0.714991
+BA3178    Dead        0.625349
+BA2600   Alive        0.917109
+BA2455    Dead        1.000948
+BA2053   Alive        1.284719
+BA2276    Dead        0.781547
+BA2440   Alive        1.563292
+BA3010    Dead        0.710664
+BA3167   Alive        1.545514
+BA3229    Dead        0.655368

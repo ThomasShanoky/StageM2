@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène DNMT3A, en fonction de la feature isDenovo
+#Résultat du test statistique Mann-Whitney : U = 0.000, p-value = 0.03636
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751    TRUE        0.048026
+BA2357    TRUE        0.011972
+BA3178    TRUE        0.022846
+BA2600    TRUE        0.035484
+BA2455    TRUE        0.054776
+BA2053    TRUE        0.033532
+BA2276    TRUE        0.028921
+BA2440    TRUE        0.018313
+BA3010   FALSE        0.055849
+BA3167    TRUE        0.022791
+BA3229   FALSE        0.109928

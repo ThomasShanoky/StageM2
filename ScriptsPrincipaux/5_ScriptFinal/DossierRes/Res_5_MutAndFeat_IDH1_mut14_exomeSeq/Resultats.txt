@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène IDH1, en fonction de la feature exomeSeq
+#Résultat du test statistique Mann-Whitney : U = 18.000, p-value = 0.03636
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751       n        0.702307
+BA2357       y        0.047439
+BA3178       n        0.449968
+BA2600       y        0.154847
+BA2455       y        0.442433
+BA2053       y        0.144782
+BA2276       y        0.146114
+BA2440       y        0.183384
+BA3010       y        0.182150
+BA3167       y        0.212383
+BA3229       y        0.344466

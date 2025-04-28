@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène DNMT3A, en fonction de la feature specimenGroups
+#Résultat du test statistique Mann-Whitney : U = 0.000, p-value = 0.03636
+#Tableau des résultats :
+Sample                                            Feature  ExpressionGene
+BA2751                   Initial Acute Leukemia Diagnosis        0.048026
+BA2357                   Initial Acute Leukemia Diagnosis        0.011972
+BA3178                   Initial Acute Leukemia Diagnosis        0.022846
+BA2600                   Initial Acute Leukemia Diagnosis        0.035484
+BA2455                   Initial Acute Leukemia Diagnosis        0.054776
+BA2053                   Initial Acute Leukemia Diagnosis        0.033532
+BA2276                   Initial Acute Leukemia Diagnosis        0.028921
+BA2440                   Initial Acute Leukemia Diagnosis        0.018313
+BA3010 Initial Acute Leukemia Diagnosis|Post-Chemotherapy        0.055849
+BA3167                   Initial Acute Leukemia Diagnosis        0.022791
+BA3229 Initial Acute Leukemia Diagnosis|Post-Chemotherapy        0.109928

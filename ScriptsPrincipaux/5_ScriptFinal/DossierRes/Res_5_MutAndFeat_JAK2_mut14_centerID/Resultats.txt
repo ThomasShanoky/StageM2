@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène JAK2, en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 17.244, p-value = 0.00360
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751       1        0.005491
+BA2357       2        0.001323
+BA3178       3        0.002633
+BA2600       4        0.002466
+BA2455       4        0.003109
+BA2053       2        0.001029
+BA2276       2        0.001835
+BA2440       5        0.002313
+BA3010       6        0.004812
+BA3167       2        0.002441
+BA3229       1        0.005456

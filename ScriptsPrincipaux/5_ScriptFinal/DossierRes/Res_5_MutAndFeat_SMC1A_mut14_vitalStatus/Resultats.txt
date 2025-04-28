@@ -1,0 +1,15 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène SMC1A, en fonction de la feature vitalStatus
+#Résultat du test statistique Mann-Whitney : U = 27.000, p-value = 0.01212
+#Tableau des résultats :
+Sample Feature  ExpressionGene
+BA2751    Dead        0.031931
+BA2357    Dead        0.030547
+BA3178    Dead        0.039152
+BA2600   Alive        0.022352
+BA2455    Dead        0.025099
+BA2053   Alive        0.011366
+BA2276    Dead        0.030508
+BA2440   Alive        0.028088
+BA3010    Dead        0.036167
+BA3167   Alive        0.022065
+BA3229    Dead        0.031238
