@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène FLT3 en fonction de la feature isDenovo
+#Résultat du test statistique ANOVA : F = 5.176, p-value = 0.00599

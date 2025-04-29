@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SRSF2 en fonction de la feature analysisRnaSeq
+#Résultat du test statistique Mann-Whitney : U = 3061.000, p-value = 0.00025

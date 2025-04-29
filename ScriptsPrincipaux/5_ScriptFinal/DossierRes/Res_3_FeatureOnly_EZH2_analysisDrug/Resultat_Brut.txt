@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène EZH2 en fonction de la feature analysisDrug
+#Résultat du test statistique Mann-Whitney : U = 15081.000, p-value = 0.01232

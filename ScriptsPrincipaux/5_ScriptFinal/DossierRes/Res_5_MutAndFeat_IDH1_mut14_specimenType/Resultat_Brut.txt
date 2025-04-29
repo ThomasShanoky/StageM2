@@ -1,0 +1,2 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène IDH1, en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 8.410, p-value = 0.01079

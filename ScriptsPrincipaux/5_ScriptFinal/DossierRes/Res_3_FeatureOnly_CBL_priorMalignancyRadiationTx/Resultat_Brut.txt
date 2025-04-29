@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CBL en fonction de la feature priorMalignancyRadiationTx
+#Résultat du test statistique Mann-Whitney : U = 1201.500, p-value = 0.00443

@@ -1,0 +1,2 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène TP53, en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 17.790, p-value = 0.00335

@@ -51,12 +51,12 @@ def CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, number_for_plot, n
     if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
         os.mkdir("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes")
 
-    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}/Resultats_Barplot.txt"
+    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}"
 
     if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}"):
         os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}")
 
-    with open(output_file, 'w') as f:
+    with open(f"{output_file}/Resultat_Brut.txt", 'w') as f:
         f.write(f"Résultats de barplot pour {gene} et {feature}\n")
         f.write(f"p-value = {p:.5f} selon le test du χ²\n")
         f.write(f"Résultats bruts : \n")
@@ -79,10 +79,10 @@ def CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, number_for_plot, n
             ids = [ind for ind in ind_geneNonMut if data_beat_aml.loc[ind, feature] == cat]
             f.write(f"{cat} : {', '.join(ids)}\n")
 
-    fig.savefig(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}/Barplot_plot.png")
+    fig.savefig(f"{output_file}/Resultat_Plot.png")
 
     if not(SaveAll):
-        print(f"Les résultats bruts et la figure ont été sauvegardés dans les fichiers {output_file} et Barplot_plot.png")
+        print(f"Les résultats ont été sauvegardés dans le dossier {output_file}")
 
     return
 

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NPM1 en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 8.216, p-value = 0.00031

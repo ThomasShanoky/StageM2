@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène WT1 en fonction de la feature isDenovo
+#Résultat du test statistique ANOVA : F = 5.586, p-value = 0.00402

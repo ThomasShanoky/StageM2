@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 17.173, p-value = 0.00000

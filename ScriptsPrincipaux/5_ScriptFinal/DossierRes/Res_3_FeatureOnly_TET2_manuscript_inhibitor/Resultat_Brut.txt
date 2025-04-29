@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène TET2 en fonction de la feature manuscript_inhibitor
+#Résultat du test statistique Mann-Whitney : U = 23094.000, p-value = 0.01862

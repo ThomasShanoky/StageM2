@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène IDH1 en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 23.501, p-value = 0.00000

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SRSF2 en fonction des types de mutations
+#Résultat du test statistique ANOVA : F = 4.155, p-value = 0.00248

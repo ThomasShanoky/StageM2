@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature priorMPN
+#Résultat du test statistique Mann-Whitney : U = 1987.500, p-value = 0.00015

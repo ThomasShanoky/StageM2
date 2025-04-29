@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SMC1A en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 14.937, p-value = 0.00000

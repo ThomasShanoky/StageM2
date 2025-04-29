@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène FLT3 en fonction de la feature FLT3-ITD
+#Résultat du test statistique Mann-Whitney : U = 12822.000, p-value = 0.00000

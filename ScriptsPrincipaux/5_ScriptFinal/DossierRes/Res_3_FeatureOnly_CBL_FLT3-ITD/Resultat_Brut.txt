@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CBL en fonction de la feature FLT3-ITD
+#Résultat du test statistique Mann-Whitney : U = 21503.500, p-value = 0.00727

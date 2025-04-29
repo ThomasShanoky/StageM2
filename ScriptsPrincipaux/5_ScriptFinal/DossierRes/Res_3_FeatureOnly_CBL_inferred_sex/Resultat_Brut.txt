@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CBL en fonction de la feature inferred_sex
+#Résultat du test statistique ANOVA : F = 5.397, p-value = 0.00483

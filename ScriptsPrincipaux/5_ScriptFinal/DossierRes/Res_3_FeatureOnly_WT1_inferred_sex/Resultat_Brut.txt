@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène WT1 en fonction de la feature inferred_sex
+#Résultat du test statistique ANOVA : F = 6.301, p-value = 0.00200

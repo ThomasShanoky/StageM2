@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature ELN2017
+#Résultat du test statistique ANOVA : F = 3.111, p-value = 0.00538

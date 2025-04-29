@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CEBPA en fonction de la feature analysisDrug
+#Résultat du test statistique Mann-Whitney : U = 22142.000, p-value = 0.00353

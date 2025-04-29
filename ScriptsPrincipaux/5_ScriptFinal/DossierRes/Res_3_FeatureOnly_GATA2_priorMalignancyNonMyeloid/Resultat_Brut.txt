@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature priorMalignancyNonMyeloid
+#Résultat du test statistique Mann-Whitney : U = 17205.000, p-value = 0.00128

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène BCOR en fonction de la feature ELN2017
+#Résultat du test statistique ANOVA : F = 2.713, p-value = 0.01344
