@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène WT1 en fonction de la feature FLT3-ITD
+#Résultat du test statistique Mann-Whitney : U = 12048.500, p-value = 0.00000

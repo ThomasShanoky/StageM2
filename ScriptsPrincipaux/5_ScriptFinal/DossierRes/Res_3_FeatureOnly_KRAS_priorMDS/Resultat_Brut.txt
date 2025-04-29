@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature priorMDS
+#Résultat du test statistique Mann-Whitney : U = 4121.500, p-value = 0.00030

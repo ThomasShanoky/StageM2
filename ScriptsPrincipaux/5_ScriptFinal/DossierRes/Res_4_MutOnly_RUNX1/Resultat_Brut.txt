@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RUNX1 en fonction des types de mutations
+#Résultat du test statistique ANOVA : F = 2.964, p-value = 0.00289

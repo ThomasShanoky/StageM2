@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SMC1A en fonction de la feature consensus_sex
+#Résultat du test statistique Mann-Whitney : U = 33829.000, p-value = 0.00000

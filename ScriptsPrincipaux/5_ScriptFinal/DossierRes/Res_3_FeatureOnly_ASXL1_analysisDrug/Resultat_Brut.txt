@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène ASXL1 en fonction de la feature analysisDrug
+#Résultat du test statistique Mann-Whitney : U = 14518.000, p-value = 0.00282

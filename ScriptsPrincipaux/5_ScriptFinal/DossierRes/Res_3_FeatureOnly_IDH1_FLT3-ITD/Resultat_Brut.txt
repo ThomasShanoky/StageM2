@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène IDH1 en fonction de la feature FLT3-ITD
+#Résultat du test statistique Mann-Whitney : U = 13523.000, p-value = 0.00004

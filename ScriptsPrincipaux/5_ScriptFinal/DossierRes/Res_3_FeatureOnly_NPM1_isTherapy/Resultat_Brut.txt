@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NPM1 en fonction de la feature isTherapy
+#Résultat du test statistique ANOVA : F = 5.445, p-value = 0.00461

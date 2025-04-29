@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature specimenGroups
+#Résultat du test statistique ANOVA : F = 3.482, p-value = 0.00224

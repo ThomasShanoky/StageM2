@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SRSF2 en fonction de la feature FLT3-ITD
+#Résultat du test statistique Mann-Whitney : U = 14972.500, p-value = 0.00403

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène TP53 en fonction de la feature cumulativeChemo
+#Résultat du test statistique Mann-Whitney : U = 10906.000, p-value = 0.01602

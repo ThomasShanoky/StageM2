@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KIT en fonction des types de mutations
+#Résultat du test statistique ANOVA : F = 11.738, p-value = 0.00000

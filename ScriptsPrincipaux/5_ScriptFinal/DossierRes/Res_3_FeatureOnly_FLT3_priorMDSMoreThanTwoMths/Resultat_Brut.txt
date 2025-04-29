@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène FLT3 en fonction de la feature priorMDSMoreThanTwoMths
+#Résultat du test statistique Mann-Whitney : U = 8850.500, p-value = 0.00021

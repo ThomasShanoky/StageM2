@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène PTPN11 en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 3.573, p-value = 0.00094

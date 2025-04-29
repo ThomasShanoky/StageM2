@@ -1,0 +1,2 @@
+#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène TET2, en fonction de la feature cumulativeTreatmentStageCount
+#Résultat du test statistique ANOVA : F = 19.825, p-value = 0.01865

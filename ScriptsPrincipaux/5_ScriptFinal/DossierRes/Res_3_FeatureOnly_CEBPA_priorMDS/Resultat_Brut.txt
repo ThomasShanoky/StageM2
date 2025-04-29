@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CEBPA en fonction de la feature priorMDS
+#Résultat du test statistique Mann-Whitney : U = 9104.500, p-value = 0.00066

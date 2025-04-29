@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène JAK2 en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 5.490, p-value = 0.00000

@@ -110,62 +110,94 @@ class GUI:
         # Choix de la provenance des données d'expression
         self.switch_state = False
         self.mut_button_expr = tk.Button(self.window, text="Expressions de BEAT AML", command=self.toggle_switch, font=("DejaVu Serif", 13), bg="#FF6347", fg="#FFFFFF", width=20)
-        self.mut_button_expr.place(x=30, y=280)
+        self.mut_button_expr.place(x=30, y=260)
 
         # Les 5 cases cochables pour les différentes fonctionnalités
         self.DistributionVar = tk.BooleanVar(value=False)
         self.distribution_button = tk.Checkbutton(self.window, text="1. Montrer les distributions", variable=self.DistributionVar, command=lambda: self.toggle_checkbuttons(self.DistributionVar))
         self.distribution_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.distribution_button.place(x=30, y=350)
+        self.distribution_button.place(x=30, y=320)
 
         self.AbondanceVar = tk.BooleanVar(value=False)
         self.abondance_button = tk.Checkbutton(self.window, text="2. Montrer l'abondance des mutations", variable=self.AbondanceVar, command=lambda: self.toggle_checkbuttons(self.AbondanceVar))
         self.abondance_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.abondance_button.place(x=30, y=380)
+        self.abondance_button.place(x=30, y=350)
 
         self.FeatureVar = tk.BooleanVar(value=False)
         self.feat_button = tk.Checkbutton(self.window, text="3. Expression selon les features", variable=self.FeatureVar, command=lambda: self.toggle_checkbuttons(self.FeatureVar))
         self.feat_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.feat_button.place(x=30, y=410)
+        self.feat_button.place(x=30, y=380)
 
         self.MutationVar  = tk.BooleanVar(value=False)
         self.mut_button = tk.Checkbutton(self.window, text="4. Expression selon les mutations", variable=self.MutationVar, command=lambda: self.toggle_checkbuttons(self.MutationVar))
         self.mut_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.mut_button.place(x=30, y=440)
+        self.mut_button.place(x=30, y=410)
 
         self.FeatAndMutVar = tk.BooleanVar(value=False)
         self.mut_feat_button = tk.Checkbutton(self.window, text="5. Expression de cette mutation selon\nla feature", variable=self.FeatAndMutVar, command=lambda: self.toggle_checkbuttons(self.FeatAndMutVar))
         self.mut_feat_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.mut_feat_button.place(x=30, y=470)
+        self.mut_feat_button.place(x=30, y=440)
 
         # Bouton pour générer le graphe
         self.generate_button = tk.Button(self.window, text="Générer le graphe", command=self.generate_plot)
         self.generate_button.config(width=15, font=("DejaVu Serif", 20, "bold"), highlightbackground="#370028", bg="#87CEEB", fg="#000000")
-        self.generate_button.place(x=30, y=530)  
+        self.generate_button.place(x=30, y=500)  
 
         # Canvas pour afficher le graphe
         self.fig, self.ax = plt.subplots()
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
-        self.canvas.get_tk_widget().place(x=500, y=30, width=850, height=700)
+        self.canvas.get_tk_widget().place(x=530, y=30, width=850, height=700)
 
         # Choix de sauvegarder les résultats ou non
         self.SaveBool = tk.BooleanVar()
-        self.save_button = tk.Checkbutton(self.window, text="Sauvegarder les résultats", variable=self.SaveBool)
+        self.save_button = tk.Checkbutton(self.window, text="Sauvegarder le prochain résultat", variable=self.SaveBool)
         self.save_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.save_button.place(x=30, y=580)
+        self.save_button.place(x=30, y=550)
 
         # Labels pour afficher la p-value et la significativité
         self.p_value_label = tk.Label(self.window, text="")
         self.p_value_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.p_value_label.place(x=30, y=620)
-        self.significance_label = tk.Label(self.window, text="")
-        self.significance_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.significance_label.place(x=30, y=650)  
+        self.p_value_label.place(x=30, y=580)
+
+        # Ligne séparatrice
+        self.ligne = tk.Label(self.window, text="_______________________________________________________")
+        self.ligne.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.ligne.place(x=15, y=600)
+
+        # Choix du seuil de la p-value (alpha)
+        self.label_alpha = tk.Label(self.window, text="Sélectionnez le seuil de la p-value (\u03B1):")
+        self.label_alpha.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.label_alpha.place(x=30, y=650)
+        self.alpha_var = tk.StringVar(value=0.05)
+        self.alpha_entry = tk.Entry(self.window, textvariable=self.alpha_var)
+        self.alpha_entry.config(font=("DejaVu Serif", 13), bg="#ffffff", fg="#000000", width=10)
+        self.alpha_entry.place(x=375, y=650)
+
+        # Optionnel : choix d'une feature/gène dont on veut sauvegarder les résultats significatifs
+        self.choice_label = tk.Label(self.window, text="(Optionnel) Choix d'une feature ou un gène :")
+        self.choice_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.choice_label.place(x=30, y=690)
+
+        self.feat_choice = tk.Label(self.window, text="Feature :")
+        self.feat_choice.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.feat_choice.place(x=30, y=725)
+        self.choice_feat_save = ["Toutes"] + self.usable_cat
+        self.feat_choice_var = tk.StringVar(value=self.choice_feat_save[0])
+        self.feat_choice_combobox = ttk.Combobox(self.window, textvariable=self.feat_choice_var, values=self.choice_feat_save, width=15)
+        self.feat_choice_combobox.place(x=120, y=730)
+
+        self.gene_choice = tk.Label(self.window, text="Gène :")
+        self.gene_choice.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.gene_choice.place(x=270, y=725)
+        self.choice_gene_save = ["Tous"] + self.Genes
+        self.gene_choice_var = tk.StringVar(value=self.choice_gene_save[0])
+        self.gene_choice_combobox = ttk.Combobox(self.window, textvariable=self.gene_choice_var, values=self.choice_gene_save, width=10)
+        self.gene_choice_combobox.place(x=335, y=730)
 
         # Bouton pour sauvegarder tous les résultats significatifs
         self.generate_all_button = tk.Button(self.window, text="Générer les résultats significatifs", command=self.generate_all_results)
         self.generate_all_button.config(width=26, font=("DejaVu Serif", 14, "bold"), highlightbackground="#370028", bg="#87CEEB", fg="#000000")
-        self.generate_all_button.place(x=30, y=720)
+        self.generate_all_button.place(x=30, y=760)
 
         # Lancement de la boucle principale
         self.window.protocol("WM_DELETE_WINDOW", self.on_closing)
@@ -228,6 +260,16 @@ class GUI:
         if sum([self.DistributionVar.get(), self.AbondanceVar.get(), self.FeatureVar.get(), self.MutationVar.get(), self.FeatAndMutVar.get()]) != 1:
             messagebox.showwarning("Attention", "Veuillez choisir une fonctionnalité")
             return 
+        
+        try:
+            self.alpha = float(self.alpha_var.get())
+        except ValueError:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre")
+            return
+        
+        if self.alpha <= 0 or self.alpha >= 1:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
+            return
         
         gene = self.gene_var.get()
         feature = self.feature_var.get()
@@ -296,13 +338,10 @@ class GUI:
         if len(CatSupprimees) > 0 and not(self.SaveAll): #on n'affiche pas le message si on a demandé de sauvegarder tous les résultats significatifs
             messagebox.showwarning("Attention", f"Les catégories suivantes ont été supprimées car elles étaient vides: {', '.join(CatSupprimees)}")
 
-        alpha = 0.05
-        if p < alpha:
+        if p < self.alpha:
             SaveSignificant = True
-            self.significance_label.config(text="La différence est significative")
         else:
             SaveSignificant = False
-            self.significance_label.config(text="La différence n'est pas significative")
 
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll)
@@ -348,13 +387,10 @@ class GUI:
             
         self.p_value_label.config(text=f"Test {test} : p-value = {p:.5f}")
 
-        alpha = 0.05
-        if p < alpha:
+        if p < self.alpha:
             SaveSignificant = True
-            self.significance_label.config(text="La différence est significative")
         else:
             SaveSignificant = False
-            self.significance_label.config(text="La différence n'est pas significative")
 
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             CreateFileResAbund(self.fig, NormalizedExpressionAndFeat, test, p, gene, feature, self.SaveAll)   
@@ -404,14 +440,12 @@ class GUI:
             p_val = 1
             stats_res_test = ""
 
-        if p_val < 0.05:
+        if p_val < self.alpha:
             SaveSignificant = True
-            significance = "La différence est significative"
         else:
             SaveSignificant = False
-            significance = "La différence n'est pas significative"
 
-        self.significance_label.config(text=stats_res_test+"\n"+significance)
+        self.p_value_label.config(text=stats_res_test)
 
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
@@ -421,7 +455,7 @@ class GUI:
         self.ax.set_ylabel("Expression du gène")
         self.ax.tick_params(axis='x', rotation=45)
 
-        if p_val < 0.05:
+        if p_val < self.alpha:
             if p_val < 0.0001:
                 stars = "****"
             elif p_val < 0.001:
@@ -497,12 +531,10 @@ class GUI:
             p_val = 1
             stats_res_test = ""
 
-        if p_val < 0.05:
+        if p_val < self.alpha:
             SaveSignificant = True
-            self.significance_label.config(text="La différence est significative")
         else:
             SaveSignificant = False
-            self.significance_label.config(text="La différence n'est pas significative")
 
         self.p_value_label.config(text=f"Test {stats_res_test}")
 
@@ -512,7 +544,7 @@ class GUI:
         sns.stripplot(x="TypeMutation", y="ExpressionGene", data=Tableau, color='black', alpha=0.5, jitter=True, ax=self.ax)
         self.ax.set_title(f"Expression du gène {gene} en fonction des types de mutations")
         self.ax.set_ylabel("Expression du gène")
-        if p_val < 0.05:
+        if p_val < self.alpha:
             if p_val < 0.0001:
                 stars = "****"
             elif p_val < 0.001:
@@ -586,12 +618,10 @@ class GUI:
             p_val = 1
             stats_res_test = ""
 
-        if p_val < 0.05:
+        if p_val < self.alpha:
             SaveSignificant = True
-            self.significance_label.config(text="La différence est significative")
         else:
             SaveSignificant = False
-            self.significance_label.config(text="La différence n'est pas significative")
 
         self.p_value_label.config(text=f"Test {stats_res_test}")
 
@@ -602,7 +632,7 @@ class GUI:
         self.ax.set_title(f"Expression du gène {gene} en fonction de la feature {feature} pour la mutation {Mutation}")
         self.ax.set_ylabel("Expression du gène")
         self.ax.tick_params(axis='x', rotation=45)
-        if p_val < 0.05:
+        if p_val < self.alpha:
             if p_val < 0.0001:
                 stars = "****"
             elif p_val < 0.001:
@@ -632,6 +662,16 @@ class GUI:
     def generate_all_results(self):
 
         self.SaveAll = True
+
+        try:
+            self.alpha = float(self.alpha_var.get())
+        except ValueError:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre")
+            return
+        
+        if self.alpha <= 0 or self.alpha >= 1:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
+            return
         
         progress_window = tk.Toplevel(self.window)
         progress_window.title("Progression")
@@ -647,6 +687,9 @@ class GUI:
         tot_tasks = 2*len(self.Genes)*len(self.usable_cat)
         progress_bar["maximum"] = tot_tasks
         progress_bar["value"] = 0
+
+        # print(self.feat_choice_var.get())
+        # print(self.gene_choice_var.get())
 
         for gene in self.Genes:
             # print(gene)

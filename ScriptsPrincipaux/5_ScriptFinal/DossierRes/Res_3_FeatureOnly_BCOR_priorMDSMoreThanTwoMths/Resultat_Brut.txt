@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène BCOR en fonction de la feature priorMDSMoreThanTwoMths
+#Résultat du test statistique Mann-Whitney : U = 4251.500, p-value = 0.00292

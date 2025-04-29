@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène GATA2 en fonction de la feature isTherapy
+#Résultat du test statistique ANOVA : F = 5.091, p-value = 0.00652

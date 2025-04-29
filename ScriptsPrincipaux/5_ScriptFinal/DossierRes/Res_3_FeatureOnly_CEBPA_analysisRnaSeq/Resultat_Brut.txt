@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CEBPA en fonction de la feature analysisRnaSeq
+#Résultat du test statistique Mann-Whitney : U = 2853.000, p-value = 0.00319

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 14.809, p-value = 0.00000

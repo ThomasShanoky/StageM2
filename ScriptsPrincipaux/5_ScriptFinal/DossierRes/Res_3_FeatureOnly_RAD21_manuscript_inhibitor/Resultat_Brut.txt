@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RAD21 en fonction de la feature manuscript_inhibitor
+#Résultat du test statistique Mann-Whitney : U = 16416.500, p-value = 0.01135

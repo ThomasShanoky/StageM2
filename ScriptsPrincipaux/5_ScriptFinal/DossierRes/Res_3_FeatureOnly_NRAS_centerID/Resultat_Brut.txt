@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NRAS en fonction de la feature centerID
+#Résultat du test statistique ANOVA : F = 65.664, p-value = 0.00000

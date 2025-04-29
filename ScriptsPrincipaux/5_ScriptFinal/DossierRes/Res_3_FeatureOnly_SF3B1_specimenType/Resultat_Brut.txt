@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SF3B1 en fonction de la feature specimenType
+#Résultat du test statistique ANOVA : F = 10.619, p-value = 0.00003

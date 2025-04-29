@@ -1,0 +1,3 @@
+#Résultats bruts de l'abondance de mutation du gène SF3B1 selon la feature analysisDrug, normalisée par le nombre total de kmers par échantillon
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.007988 avec le test Mann-Whitney

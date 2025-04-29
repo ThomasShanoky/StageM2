@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène WT1 en fonction de la feature NPM1
+#Résultat du test statistique Mann-Whitney : U = 13861.000, p-value = 0.00000
