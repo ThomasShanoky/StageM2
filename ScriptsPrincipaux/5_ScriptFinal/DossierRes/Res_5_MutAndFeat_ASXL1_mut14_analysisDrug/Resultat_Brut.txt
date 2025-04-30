@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène ASXL1, en fonction de la feature analysisDrug
-#Résultat du test statistique Mann-Whitney : U = 27.000, p-value = 0.01212

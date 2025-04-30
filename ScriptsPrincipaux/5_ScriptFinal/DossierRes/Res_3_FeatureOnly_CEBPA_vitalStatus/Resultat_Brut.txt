@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène CEBPA en fonction de la feature vitalStatus
-#Résultat du test statistique ANOVA : F = 4.312, p-value = 0.01397

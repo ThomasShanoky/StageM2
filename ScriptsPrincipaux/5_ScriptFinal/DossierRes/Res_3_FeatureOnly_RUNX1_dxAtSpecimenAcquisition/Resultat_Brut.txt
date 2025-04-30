@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène RUNX1 en fonction de la feature dxAtSpecimenAcquisition
-#Résultat du test statistique Mann-Whitney : U = 1787.500, p-value = 0.01967
