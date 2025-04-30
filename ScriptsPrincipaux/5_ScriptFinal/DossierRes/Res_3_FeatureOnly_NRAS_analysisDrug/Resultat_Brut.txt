@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène NRAS en fonction de la feature analysisDrug
-#Résultat du test statistique Mann-Whitney : U = 15277.000, p-value = 0.01959

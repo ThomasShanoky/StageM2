@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène FLT3 en fonction de la feature manuscript_inhibitor
-#Résultat du test statistique Mann-Whitney : U = 23062.000, p-value = 0.01995

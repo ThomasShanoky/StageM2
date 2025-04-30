@@ -102,16 +102,16 @@ def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, fe
     return canvas, fig, ax
 
 
-def CreateFileResAbund(fig, NormalizedExpressionAndFeat, Test, p, gene, feature, SaveAll):
+def CreateFileResAbund(fig, NormalizedExpressionAndFeat, Test, p, gene, feature, SaveAll, directory):
     """Créer le dossier résultats (avec le graphe + les résultats bruts)"""
 
-    if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
-        os.mkdir("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes")
+    if not os.path.exists(f"{directory}/DossierRes"):
+        os.mkdir(f"{directory}/DossierRes")
 
-    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}/"
+    output_file = f"{directory}/DossierRes/2_ResAbundance_{gene}_{feature}/"
 
-    if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}"):
-        os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/2_ResAbundance_{gene}_{feature}")
+    if not os.path.exists(f"{directory}/DossierRes/2_ResAbundance_{gene}_{feature}"):
+        os.mkdir(f"{directory}/DossierRes/2_ResAbundance_{gene}_{feature}")
     
     with open(f"{output_file}/Resultat_Bruts.txt", 'w') as f:
         f.write(f"#Résultats bruts de l'abondance de mutation du gène {gene} selon la feature {feature}, normalisée par le nombre total de kmers par échantillon\n")

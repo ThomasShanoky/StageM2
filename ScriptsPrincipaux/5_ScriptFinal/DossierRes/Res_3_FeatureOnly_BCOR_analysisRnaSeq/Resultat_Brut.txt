@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène BCOR en fonction de la feature analysisRnaSeq
-#Résultat du test statistique Mann-Whitney : U = 2722.000, p-value = 0.01104

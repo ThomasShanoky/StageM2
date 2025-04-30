@@ -45,16 +45,16 @@ def rearrangeZeros(number_for_plot, number_for_plot_nonMut):
     return L_ind
 
 
-def CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut, fig, SaveAll):
+def CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, number_for_plot, number_for_plot_nonMut, p, ind_geneMut, ind_geneNonMut, fig, SaveAll, directory):
     """Créer le dossier résultats (avec le graphe + les résultats bruts)"""
 
-    if not os.path.exists("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes"):
-        os.mkdir("Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes")
+    if not os.path.exists(f"{directory}/DossierRes"):
+        os.mkdir(f"{directory}/DossierRes")
 
-    output_file = f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}"
+    output_file = f"{directory}/DossierRes/1_ResBarplots_{gene}_{feature}"
 
-    if not os.path.exists(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}"):
-        os.mkdir(f"Documents/ScriptsPrincipaux/5_ScriptFinal/DossierRes/1_ResBarplots_{gene}_{feature}")
+    if not os.path.exists(f"{directory}/DossierRes/1_ResBarplots_{gene}_{feature}"):
+        os.mkdir(f"{directory}/DossierRes/1_ResBarplots_{gene}_{feature}")
 
     with open(f"{output_file}/Resultat_Brut.txt", 'w') as f:
         f.write(f"Résultats de barplot pour {gene} et {feature}\n")

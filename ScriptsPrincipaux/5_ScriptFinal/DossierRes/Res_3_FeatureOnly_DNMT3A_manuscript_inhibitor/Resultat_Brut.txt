@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène DNMT3A en fonction de la feature manuscript_inhibitor
-#Résultat du test statistique Mann-Whitney : U = 22404.500, p-value = 0.01569

@@ -11,9 +11,33 @@ from MutationsFuncs import *
 
 
 
+directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
+
+##### Demander le chemin du fichier des métadonnées #####
+
+def get_metadata_path(directory):
+    """Demande à l'utilisateur de sélectionner le fichier des métadonnées lorsqu'il utilise le script pour la première fois"""
+
+    if os.path.exists(f"{directory}/config.txt"):
+        with open(f"{directory}/config.txt", 'r') as f:
+            path = f.read().strip()
+    else:
+        path = tk.filedialog.askopenfilename(title="Sélectionner le fichier des métadonnées Beat-AML", filetypes=[("Fichiers CSV", "*.csv")])
+        if not path:
+            messagebox.showerror("Erreur", "Aucun fichier sélectionné")
+            exit()
+        with open(f"{directory}/config.txt" 'w') as f:
+            f.write(path)
+
+    path_to_metadata = path
+
+    return path_to_metadata
+
+
 ##### Chargement des données #####
 
-data_beat_aml = pd.read_csv("Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv", comment="#")
+data_beat_aml_file = get_metadata_path(directory)
+data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#") #données cliniques de Beat-AML (métadonnées)
 data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] #on ne prend que les patients ayant un diagnostic initial
 
 usable_cat = []
@@ -46,7 +70,7 @@ tot_kmers_file = "Documents/ScriptsPrincipaux/TotalKmersPerSample.csv" #nombre t
 
 class GUI:
 
-    def __init__(self, data_beat_aml=data_beat_aml, index_list=index_list, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_beataml=data_expressions_beataml, data_expressions_kmers=data_expressions_kmers, tot_kmers_file=tot_kmers_file):
+    def __init__(self, data_beat_aml=data_beat_aml, index_list=index_list, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_beataml=data_expressions_beataml, data_expressions_kmers=data_expressions_kmers, tot_kmers_file=tot_kmers_file, directory=directory):
         self.data_beat_aml = data_beat_aml
         self.data_beat_aml.set_index("ID Sample", inplace=True)
         self.index_list = index_list
@@ -57,6 +81,7 @@ class GUI:
         self.data_expressions = data_expressions_beataml #Expressions par défaut
         self.data_expressions_kmers = data_expressions_kmers
         self.tot_kmers_file = tot_kmers_file
+        self.directory = directory
 
         self.SaveAll = False #Booléen pour sauvegarder tous les résultats significatifs
 
@@ -344,7 +369,7 @@ class GUI:
             SaveSignificant = False
 
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
-            CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll)
+            CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll, self.directory)
 
         return
     
@@ -393,7 +418,7 @@ class GUI:
             SaveSignificant = False
 
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
-            CreateFileResAbund(self.fig, NormalizedExpressionAndFeat, test, p, gene, feature, self.SaveAll)   
+            CreateFileResAbund(self.fig, NormalizedExpressionAndFeat, test, p, gene, feature, self.SaveAll, self.directory)   
 
         return
     
@@ -476,7 +501,7 @@ class GUI:
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction de la feature {feature}\n"
             fileName = f"3_FeatureOnly_{gene}_{feature}"
-            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
+            CreateFileRes(self.directory, self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
 
         return
     
@@ -565,7 +590,7 @@ class GUI:
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions du gène {gene} en fonction des types de mutations\n"
             fileName = f"4_MutOnly_{gene}"
-            CreateFileRes(self.fig, Tableau, stats_res_test, premiereLigne, fileName, self.SaveAll)
+            CreateFileRes(self.directory, self.fig, Tableau, stats_res_test, premiereLigne, fileName, self.SaveAll)
         
         return
     
@@ -652,7 +677,7 @@ class GUI:
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
             premiereLigne = f"#Boxplots d'expressions de la mutation {Mutation} ({self.dico_mut[Mutation][1]}>{self.dico_mut[Mutation][2]} aux positions {self.dico_mut[Mutation][0]}) du gène {gene}, en fonction de la feature {feature}\n"
             fileName = f"5_MutAndFeat_{gene}_{Mutation}_{feature}"
-            CreateFileRes(self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
+            CreateFileRes(self.directory, self.fig, inter_ind_pd, stats_res_test, premiereLigne, fileName, self.SaveAll)
 
         return
     
@@ -673,6 +698,17 @@ class GUI:
             messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
             return
         
+        if self.feat_choice_var.get() == "Toutes":
+            list_features = self.usable_cat
+        else:
+            list_features = [self.feat_choice_var.get()]
+
+        if self.gene_choice_var.get() == "Tous":
+            list_genes = self.Genes
+        else:
+            list_genes = [self.gene_choice_var.get()]
+        
+
         progress_window = tk.Toplevel(self.window)
         progress_window.title("Progression")
         progress_window.geometry("400x100")
@@ -684,29 +720,25 @@ class GUI:
         progress_bar = ttk.Progressbar(progress_window, orient="horizontal", length=300, mode="determinate")
         progress_bar.place(x=10, y=40)
 
-        tot_tasks = 2*len(self.Genes)*len(self.usable_cat)
+        tot_tasks = 2*len(list_genes)*len(list_features)
         progress_bar["maximum"] = tot_tasks
         progress_bar["value"] = 0
 
-        # print(self.feat_choice_var.get())
-        # print(self.gene_choice_var.get())
-
-        for gene in self.Genes:
-            # print(gene)
+        for gene in list_genes:
             for expressions in [data_expressions_kmers, data_expressions_beataml]:
                 self.generate_plot_mutations(gene, expressions)
-                for feature in self.usable_cat:
+                for feature in list_features:
                     progress_bar["value"] += 1
                     progress_window.update_idletasks()
-                    # print(feature)
                     self.generate_plot_feature(gene, feature, expressions)
                     self.generate_plot_with_abundance(gene, feature)
                     self.generate_plot_without_abundance(gene, feature)
                     for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
                         if Mutation != "Toutes les mutations":
                             Mutation = Mutation.split(":")[0]
-                            # print(Mutation)
                             self.generate_plot_feat_and_mut(gene, Mutation, feature, expressions)
+        progress_window.destroy()
+        messagebox.showinfo("Résultats générés", "Tous les résultats significatifs ont été générés et sauvegardés dans le dossier DossierRes")
 
         self.SaveAll = False
 

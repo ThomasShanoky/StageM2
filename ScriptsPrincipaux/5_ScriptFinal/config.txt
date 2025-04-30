@@ -1,0 +1,1 @@
+/home/thomas.louvet/Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv
