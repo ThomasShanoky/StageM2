@@ -1,0 +1,59 @@
+# kmerator report
+*date: 2025-04-13 11:52*  
+*login: tlouvet*
+
+**kmerator version:** 2.3.1
+
+**Command:**
+
+```
+kmerator \
+  --fasta-file Scripts/RecreateData/KmerToSearch/kmer_to_search_WT1_var5.fasta \
+  --datadir /scratch/indexes/kmerator/ \
+  --genome /scratch/indexes/jellyfish/human/GRCh38_with_MT_canonical.jf \
+  --specie homo_sapiens \
+  --kmer-length 31 \
+  --release 113 \
+  --output Scripts/RecreateData/KmerToSearchOutput/kmer_to_search_WT1_var5_output \
+  --thread 1 \
+  --tmpdir /tmp/kmerator_xp480pg9 \
+  --assembly GRCh38
+```
+
+**Working directory:** `/scratch/users/tlouvet`
+
+**Specie:** `homo_sapiens`
+
+**Assembly:** `GRCh38`
+
+**Transcriptome release:** `113`
+
+**Genes/transcripts succesfully done (22)**
+
+- WT1_var5_kmer1 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer2 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer3 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer4 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer5 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer6 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer7 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer8 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer9 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer10 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer11 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer12 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer13 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer14 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer15 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer16 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer17 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer18 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer19 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer20 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer21 - kmers/contigs: 1/1 (level: transcript)
+- WT1_var5_kmer22 - kmers/contigs: 1/1 (level: transcript)
+
+
+**Genes/transcripts missing (1)**
+
+- WT1_var5_kmer0: no specific kmers found
