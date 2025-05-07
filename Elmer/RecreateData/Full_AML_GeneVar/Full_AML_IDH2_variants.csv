@@ -1,0 +1,15 @@
+chr,start,end,ref,alt,variant_classification,gene,sift,polyphen,amino_acids,protein_position,total_freq,exac_freq,normal_freq,in_dbsnp,in_cosmic
+15,90627553,90627553,G,A,missense_variant,IDH2,tolerated_low_confidence(0.15),benign(0.153),T/M,435/452,0.014030612244898,0.00374,0.0145348837209302,1,0
+15,90630370,90630370,T,A,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),D/V,314/452,0.0012755102040816,0,0,0,0
+15,90630398,90630398,C,G,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(0.99),V/L,305/452,0.0012755102040816,0,0,0,0
+15,90630704,90630704,C,G,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(0.99),R/P,261/452,0.0012755102040816,0,0,0,0
+15,90630704,90630704,C,T,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(0.98),R/H,261/452,0.0063775510204081,0.00199,0.005813953488372,1,0
+15,90631594,90631594,G,C,missense_variant,IDH2,deleterious_low_confidence(0.03),probably_damaging(0.998),D/E,225/452,0.0012755102040816,0,0,0,0
+15,90631701,90631701,C,T,missense_variant,IDH2,deleterious_low_confidence(0.02),probably_damaging(1),G/S,190/452,0.0012755102040816,0,0,0,0
+15,90631733,90631733,T,C,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),Y/C,179/452,0.0012755102040816,0,0.002906976744186,0,0
+15,90631838,90631838,C,T,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),R/K,172/452,0.0216836734693878,0,0.002906976744186,1,1
+15,90631934,90631934,C,A,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),R/L,140/452,0.0038265306122449,0,0.002906976744186,0,1
+15,90631934,90631934,C,T,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),R/Q,140/452,0.102040816326531,0.000107,0.061046511627907,1,1
+15,90631935,90631935,G,A,missense_variant,IDH2,deleterious_low_confidence(0),probably_damaging(1),R/W,140/452,0.0012755102040816,0,0,1,1
+15,90645610,90645610,G,C,missense_variant,IDH2,deleterious_low_confidence(0.01),probably_damaging(0.978),L/V,5/452,0.0012755102040816,0,0,0,0
+15,90645618,90645618,G,A,missense_variant,IDH2,tolerated_low_confidence(0.12),benign(0.083),A/V,2/452,0.0012755102040816,0,0,0,0

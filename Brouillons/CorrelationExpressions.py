@@ -7,17 +7,13 @@ import matplotlib.pyplot as plt
 
 
 
-expression_kmers_file = "Documents/ScriptsPrincipaux/ExpressionsWithKmers.csv"
-expression_beataml_file = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_NormalizedExpression.csv"
-
-# tot_kmers_file = "Documents/ScriptsPrincipaux/TotalKmersPerSample.csv"
+expression_kmers_file = "ScriptsPrincipaux/ScriptFinal/ExpressionsWithKmers.csv"
+expression_beataml_file = "ScriptsPrincipaux/ScriptFinal/BEATAML_Expressions.csv"
 
 expression_kmers = pd.read_csv(expression_kmers_file, sep=",")
 expression_kmers.set_index("Gene", inplace=True)
 expression_beataml = pd.read_csv(expression_beataml_file, sep=",")
 expression_beataml.set_index("Gene", inplace=True)
-
-# tot_kmers = pd.read_csv(tot_kmers_file, sep=",")
 
 
 ##### Intersection des deux listes d'échantillons #####

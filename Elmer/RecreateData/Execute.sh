@@ -1,2 +1,0 @@
-python3 Scripts/RecreateData/ExecuteKmerator.py
-python3 Scripts/RecreateData/ExecuteRdeer.py
