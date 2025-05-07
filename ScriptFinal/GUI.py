@@ -33,6 +33,7 @@ index_list = [ind[:6] for ind in index_list] #Liste des ID Sample de tous les é
 
 Genes = ["NPM1", "DNMT3A", "FLT3", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"] #provenant de Leucegene : on prend les plus abondants pour travailler sur un nombre limité de gènes (Sample count >= 10). Seul KMT2D, présent dans Leucegene, n'est pas dans la liste des 140 gènes donné par Stéphane/Sandra
 Genes.sort()
+print(len(Genes))
 
 data_mutation_files = [f"{directory}/MUTdata/{gene}_alt_perso.csv" for gene in Genes]
 data_mutation = [pd.read_csv(file, sep=",", comment="#")[["sampleID", "localisation", "ref", "alt", "mean_count_kmer_alt"]] for file in data_mutation_files] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée

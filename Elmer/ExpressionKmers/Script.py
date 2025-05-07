@@ -2,17 +2,21 @@ import os
 import pandas as pd
 from pprint import pprint
 
-
+# Ce qui a été fait avant l'execution de ce script :
 # 1. Création d'un fichier Genes.tsv 
-# 2. Kmerator pour générer les kmers de tous nos gènes
-# 3. Rdeer sur les fichiers contigs.fa (sur les deux index de Beat-AML)
+# 2. Un Kmerator pour générer les kmers de tous nos gènes (Elmer)
+# 3. Rdeer sur les fichiers contigs.fa (sur les deux index de Beat-AML) (Elmer)
 # 4. Merge les deux fichiers en un seul : CountKmers.tsv
-# 5. Normalisation par le longueur des contigs + par le nombre total de kmers par échantillon
 
-all_genes = "Scripts/ExpressionKmers/Genes.tsv"
-contigs_sequence_file = "Scripts/ExpressionKmers/GenesKmers/contigs.fa"
-contigs_count_file = "Scripts/ExpressionKmers/CountKmers.tsv"
-kmers_per_sample = "Scripts/ExpressionKmers/TotalKmersPerSample.csv"
+# Ce que permet de faire ce script :
+# 5. Normalisation par le longueur des contigs (la normalisation par le nb de kmers sera faite dans l'outil principal)
+
+directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
+
+all_genes = f"{directory}/Genes.tsv"
+contigs_sequence_file = f"{directory}/GenesKmers/contigs.fa"
+contigs_count_file = f"{directory}/CountKmers.tsv"
+kmers_per_sample = f"{directory}/TotalKmersPerSample.csv"
 
 k = 31 #longueurs des kmers
 
@@ -22,9 +26,6 @@ def get_list_of_genes(file):
         lines = f.readlines()
         genes = lines[0].split('\t')[:-1]
     return genes
-
-Genes = get_list_of_genes(all_genes)
-# print(Genes)
 
 
 def contigs_lengths(file):
@@ -40,9 +41,6 @@ def contigs_lengths(file):
 
     return length_dico
 
-lengths_dico = contigs_lengths(contigs_sequence_file)
-# pprint(lengths_dico)
-
 
 def get_sample_list(file):
 
@@ -54,31 +52,21 @@ def get_sample_list(file):
 
     return samples
 
+
+
+# Lectures des fichiers
+
+Genes = get_list_of_genes(all_genes)
+
+lengths_dico = contigs_lengths(contigs_sequence_file)
+
 SamplesList = get_sample_list(contigs_count_file)
-
-
-def get_total_kmers_per_sample(file):
-    kmers_per_sample = {}
-
-    with open(file, 'r') as f:
-        for l, line in enumerate(f.readlines()):
-            if l != 0: #on enlève l'en-tête
-                line_list = line.split(',')
-                sample = line_list[0]
-                val = float(line_list[1][:-1])
-                kmers_per_sample[sample] = val
-
-    return kmers_per_sample
-
-TotKmers = get_total_kmers_per_sample(kmers_per_sample)
-# pprint(TotKmers)
-
 
 
 contigsCount = pd.read_csv(contigs_count_file, sep="\t")
 contigsCount.set_index("seq_na", inplace=True)
 contigsCount.index.name = None
-
+contigsCount = contigsCount.astype(float)
 
 ##### Normalisation par le nombre de kmers dans chaque contig #####
 
@@ -90,10 +78,9 @@ for index, row in contigsCount.iterrows():
 
 ##### Comptage moyen des contigs
 
-new_contigsCount = pd.DataFrame(0, index=Genes, columns=contigsCount.columns)
+new_contigsCount = pd.DataFrame(0.0, index=Genes, columns=contigsCount.columns)
 
 genesComptabilises = []
-# nb_contigs = 0
 for index, row in contigsCount.iterrows():
     gene = index.split(':')[0]
     if gene not in genesComptabilises:
@@ -109,12 +96,6 @@ for index, row in contigsCount.iterrows():
         
 # print(new_contigsCount)
 
-##### Normalisation par le nombre total de kmers dans chaque échantillon #####
-
-# for sample in new_contigsCount:
-#     expressions = new_contigsCount[sample]
-#     for index, value in expressions.items():
-#         new_contigsCount.at[index, sample] = (10**9) * new_contigsCount.at[index, sample] / TotKmers[sample] # 2ème normalisation
 
 ##### Enlever les ID samples qui ne sont pas indexés #####
 
@@ -125,7 +106,7 @@ def get_indexed_samples(file):
             if l != 0:
                 line_list = line.split(',')
                 sample = line_list[0]
-                print(sample)
+                # print(sample)
                 indexed.append(sample)
     return indexed
 
