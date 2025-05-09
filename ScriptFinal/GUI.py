@@ -33,7 +33,6 @@ index_list = [ind[:6] for ind in index_list] #Liste des ID Sample de tous les é
 
 Genes = ["NPM1", "DNMT3A", "FLT3", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"] #provenant de Leucegene : on prend les plus abondants pour travailler sur un nombre limité de gènes (Sample count >= 10). Seul KMT2D, présent dans Leucegene, n'est pas dans la liste des 140 gènes donné par Stéphane/Sandra
 Genes.sort()
-print(len(Genes))
 
 data_mutation_files = [f"{directory}/MUTdata/{gene}_alt_perso.csv" for gene in Genes]
 data_mutation = [pd.read_csv(file, sep=",", comment="#")[["sampleID", "localisation", "ref", "alt", "mean_count_kmer_alt"]] for file in data_mutation_files] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée
@@ -334,8 +333,8 @@ class GUI:
         geneMutAndCat = [geneMutAndCat[i] for i in range(len(geneMutAndCat)) if i not in L_ind]
         geneNonMutAndCat = [geneNonMutAndCat[i] for i in range(len(geneNonMutAndCat)) if i not in L_ind]
 
-        p = Chi2Test(geneMutAndCat, geneNonMutAndCat)
-        self.p_value_label.config(text=f"Test \u03C72 : p-value = {p:.5f}")
+        chi2stat, p = Chi2Test(geneMutAndCat, geneNonMutAndCat)
+        self.p_value_label.config(text=f"Test \u03C72 : \u03C72 = {chi2stat:.2f} et p-value = {p:.5f}")
 
         self.canvas, self.fig, self.ax = plot_graph_without_abundance(self.fig, self.canvas, gene_cat, geneMutAndCat, geneNonMutAndCat, gene, feature, p)
 
@@ -379,18 +378,20 @@ class GUI:
             return
 
         if len(NormalizedExpressionAndFeat[feature].unique()) == 2: #Comparaison de 2 moyennes
+            u_stat, p = MannWhitneyUTest(NormalizedExpressionAndFeat, feature)
+            self.p_value_label.config(text=f"Test Mann-Whitney : U = {u_stat:.2f} et p-value = {p:.5f}")
             test = "Mann-Whitney"
-            p = MannWhitneyUTest(NormalizedExpressionAndFeat, feature)
         elif len(NormalizedExpressionAndFeat[feature].unique()) > 2: # Comparaison de plusieurs moyennes
+            f_stat, p = ANOVATest(NormalizedExpressionAndFeat, feature)
+            self.p_value_label.config(text=f"Test ANOVA : F = {f_stat:.2f} et p-value = {p:.5f}")
             test = "ANOVA"
-            p = ANOVATest(NormalizedExpressionAndFeat, feature)
         else:
-            test = "Pas assez de features"
+            self.p_value_label.config(text="Pas assez de valeurs de features")
             p = 1
+            test = "Pas assez de valeurs de features"
 
         self.canvas, self.fig, self.ax = plot_graph_with_abundance(self.canvas, self.fig, NormalizedExpressionAndFeat, gene, feature, p)
             
-        self.p_value_label.config(text=f"Test {test} : p-value = {p:.5f}")
 
         if p < self.alpha:
             SaveSignificant = True
@@ -430,14 +431,14 @@ class GUI:
             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
             anova_result = stats.f_oneway(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(inter_ind_pd["Feature"].unique()) == 2:
             #Mann-Whitney U 
             group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]
             group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test Mann-Whitney : U = {mannwhitney_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de features", "Il n'y a pas assez de valeurs de features pour effectuer un test statistique")
             stats_res_test = ""
@@ -519,7 +520,7 @@ class GUI:
             groups = [Tableau[Tableau["TypeMutation"] == mut]["ExpressionGene"] for mut in Tableau["TypeMutation"].unique()]
             anova_result = stats.f_oneway(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(dico_IndAndMut) == 1: #une seule mutation : on ne compare qu'avec les non mutés
             # Mann-Whitney U test
             #mutés
@@ -528,7 +529,7 @@ class GUI:
             group2 = Tableau[Tableau["TypeMutation"] == "NonMut"]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test Mann-Whitney : U = {mannwhitney_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de types de mutations", "Il n'y a pas assez de types de mutations pour effectuer un test statistique")
             stats_res_test = ""
@@ -608,14 +609,14 @@ class GUI:
             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
             anova_result = stats.f_oneway(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"ANOVA : F = {anova_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(inter_ind_pd["Feature"].unique()) == 2:
             # Mann-Whitney U test
             group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]
             group2 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[1]]["ExpressionGene"]
             mannwhitney_result = stats.mannwhitneyu(group1, group2, alternative='two-sided')
             p_val = mannwhitney_result.pvalue
-            stats_res_test = f"Mann-Whitney : U = {mannwhitney_result.statistic:.3f}, p-value = {p_val:.5f}"
+            stats_res_test = f"Test Mann-Whitney : U = {mannwhitney_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif not(self.SaveAll):
             messagebox.showwarning("Pas assez de features", "Il n'y a pas assez de valeurs de features pour effectuer un test statistique")
             stats_res_test = ""
