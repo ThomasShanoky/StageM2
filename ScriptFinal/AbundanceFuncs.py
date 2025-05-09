@@ -44,10 +44,10 @@ def MannWhitneyUTest(Df, feature):
     group2 = Df[Df[feature] == cat_name[1]]["NormalizedExpression"].values
 
     if len(group1) > 2 and len(group2) > 2: #si on a strictement plus de 2 échantillons dans chaque groupe
-        _, p = stats.mannwhitneyu(group1, group2)
-        return p
+        u_stat, p = stats.mannwhitneyu(group1, group2)
+        return u_stat, p
     else:
-        return 1
+        return 1, 1
 
 
 def ANOVATest(Df, feature):
@@ -59,10 +59,10 @@ def ANOVATest(Df, feature):
         long.append(len(group))
 
     if 0 in long or 1 in long or 2 in long: #s'il existe un groupe avec seulement 0, 1 ou 2 échantillons, on ne peut pas faire le test ANOVA
-        return 1
+        return 1, 1
     
-    _, p = stats.f_oneway(*groups)
-    return p
+    f_stat, p = stats.f_oneway(*groups)
+    return f_stat, p
 
 
 def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, feature, p_value):

@@ -27,10 +27,10 @@ def Chi2Test(number_for_plot, number_for_plot_nonMut):
     if 0 in np.sum(table, axis=1): #si une ligne est remplie de 0, on ne peut pas faire le test du chi2, on fixe la p-value à 1 (non-significatif)
         return 1
 
-    _, p, _, expected = stats.chi2_contingency(table)
+    chi2stat, p, _, expected = stats.chi2_contingency(table)
     # residus = (table - expected) / np.sqrt(expected)
 
-    return p
+    return chi2stat, p
 
 
 def rearrangeZeros(number_for_plot, number_for_plot_nonMut):
