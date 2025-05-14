@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RUNX1 en fonction de la feature centerID
+#Résultat du test statistique Test ANOVA : F = 3.09 et p-value = 0.00346

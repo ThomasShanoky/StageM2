@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène KIT en fonction de la feature analysisRnaSeq
-#Résultat du test statistique Mann-Whitney : U = 2905.000, p-value = 0.00292
+#Résultat du test statistique Test Mann-Whitney : U = 2982.00 et p-value = 0.00145

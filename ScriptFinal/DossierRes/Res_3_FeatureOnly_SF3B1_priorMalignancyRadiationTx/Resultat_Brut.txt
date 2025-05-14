@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SF3B1 en fonction de la feature priorMalignancyRadiationTx
+#Résultat du test statistique Test Mann-Whitney : U = 1498.00 et p-value = 0.02685

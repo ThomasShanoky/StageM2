@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène KRAS en fonction de la feature priorMDSMoreThanTwoMths
-#Résultat du test statistique Mann-Whitney : U = 3875.500, p-value = 0.00043
+#Résultat du test statistique Test Mann-Whitney : U = 3875.50 et p-value = 0.00043

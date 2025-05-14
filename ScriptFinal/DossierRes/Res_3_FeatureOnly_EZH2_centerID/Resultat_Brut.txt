@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène EZH2 en fonction de la feature centerID
-#Résultat du test statistique ANOVA : F = 6.378, p-value = 0.00000
+#Résultat du test statistique Test ANOVA : F = 6.38 et p-value = 0.00000

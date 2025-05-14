@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène FLT3 en fonction de la feature NPM1
-#Résultat du test statistique Mann-Whitney : U = 14439.000, p-value = 0.00000
+#Résultat du test statistique Test Mann-Whitney : U = 14439.00 et p-value = 0.00000

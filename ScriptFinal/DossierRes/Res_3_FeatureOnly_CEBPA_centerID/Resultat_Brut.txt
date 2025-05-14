@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène CEBPA en fonction de la feature centerID
-#Résultat du test statistique ANOVA : F = 3.064, p-value = 0.00368
+#Résultat du test statistique Test ANOVA : F = 3.06 et p-value = 0.00368

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène IDH2 en fonction de la feature consensus_sex
-#Résultat du test statistique Mann-Whitney : U = 21034.500, p-value = 0.00329
+#Résultat du test statistique Test Mann-Whitney : U = 21034.50 et p-value = 0.00329

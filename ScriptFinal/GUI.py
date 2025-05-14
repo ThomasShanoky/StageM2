@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from scipy.stats import linregress
 import shutil
 from DistributionFuncs import *
 from AbundanceFuncs import *
@@ -78,6 +79,7 @@ class GUI:
 
         # Variables pour les listes déroulantes
         self.gene_var = tk.StringVar(value=self.Genes[0])
+        self.gene_var2 = tk.StringVar(value=self.Genes[0])
         self.feature_var = tk.StringVar(value=self.usable_cat[0])
         self.dico_IndAndMut, self.dico_mut = getTypesOfMutationsAndInd(self.Genes, self.Genes[0], self.data_mutation)
         self.mut_var = tk.StringVar(value=format_mutations(self.dico_mut, self.dico_IndAndMut)[0])
@@ -88,58 +90,71 @@ class GUI:
         self.gene_label = tk.Label(self.window, text="Sélectionnez un gène:")
         self.gene_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
         self.gene_label.place(x=30, y=30)
-        self.gene_exponent_label = tk.Label(self.window, text="(1 à 5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
+        self.gene_exponent_label = tk.Label(self.window, text="(1 à 6)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
         self.gene_exponent_label.place(x=225, y=30) 
         self.gene_dropdown = ttk.Combobox(self.window, textvariable=self.gene_var, values=self.Genes, width=11)
-        self.gene_dropdown.place(x=30, y=70)
+        self.gene_dropdown.place(x=30, y=55)
         self.gene_dropdown.bind("<<ComboboxSelected>>", self.update_mutations) #permet d'associer l'événement "Sélection d'un gène" et la fonction update_mutations
+
+        self.gene_label2 = tk.Label(self.window, text="Deuxième gène :")
+        self.gene_label2.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.gene_label2.place(x=300, y=30)
+        self.gene_exponent_label2 = tk.Label(self.window, text="(6)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
+        self.gene_exponent_label2.place(x=450, y=30)
+        self.gene_dropdown2 = ttk.Combobox(self.window, textvariable=self.gene_var2, values=self.Genes, width=11)
+        self.gene_dropdown2.place(x=300, y=55)
 
         self.mut_label = tk.Label(self.window, text="Sélectionnez une mutation :")
         self.mut_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.mut_label.place(x=30, y=110)
+        self.mut_label.place(x=30, y=90)
         self.mut_exponent_label = tk.Label(self.window, text="(5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
-        self.mut_exponent_label.place(x=277, y=110)
+        self.mut_exponent_label.place(x=277, y=90)
         self.mut_dropdown = ttk.Combobox(self.window, textvariable=self.mut_var, values=format_mutations(self.dico_mut, self.dico_IndAndMut), width=45)
-        self.mut_dropdown.place(x=30, y=150)
+        self.mut_dropdown.place(x=30, y=115)
 
         self.feature_label = tk.Label(self.window, text="Sélectionnez une métadonnée:")
         self.feature_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.feature_label.place(x=30, y=190)
+        self.feature_label.place(x=30, y=150)
         self.feature_exponent_label = tk.Label(self.window, text="(1, 2, 3 et 5)", font=("DejaVu Serif", 8), bg="#87CEEB", fg="#000000")
-        self.feature_exponent_label.place(x=300, y=190)
+        self.feature_exponent_label.place(x=300, y=150)
         self.feature_dropdown = ttk.Combobox(self.window, textvariable=self.feature_var, values=self.usable_cat, width=30)
-        self.feature_dropdown.place(x=30, y=230)
+        self.feature_dropdown.place(x=30, y=175)
 
         # Choix de la provenance des données d'expression
         self.switch_state = False
         self.mut_button_expr = tk.Button(self.window, text="Expressions de BEAT AML", command=self.toggle_switch, font=("DejaVu Serif", 13), bg="#FF6347", fg="#FFFFFF", width=20)
-        self.mut_button_expr.place(x=30, y=260)
+        self.mut_button_expr.place(x=30, y=220)
 
-        # Les 5 cases cochables pour les différentes fonctionnalités
+        # Les 6 cases cochables pour les différentes fonctionnalités
         self.DistributionVar = tk.BooleanVar(value=False)
         self.distribution_button = tk.Checkbutton(self.window, text="1. Montrer les distributions", variable=self.DistributionVar, command=lambda: self.toggle_checkbuttons(self.DistributionVar))
         self.distribution_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.distribution_button.place(x=30, y=320)
+        self.distribution_button.place(x=30, y=280)
 
         self.AbondanceVar = tk.BooleanVar(value=False)
         self.abondance_button = tk.Checkbutton(self.window, text="2. Montrer l'abondance des mutations", variable=self.AbondanceVar, command=lambda: self.toggle_checkbuttons(self.AbondanceVar))
         self.abondance_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.abondance_button.place(x=30, y=350)
+        self.abondance_button.place(x=30, y=310)
 
         self.FeatureVar = tk.BooleanVar(value=False)
         self.feat_button = tk.Checkbutton(self.window, text="3. Expression selon la métadonnée", variable=self.FeatureVar, command=lambda: self.toggle_checkbuttons(self.FeatureVar))
         self.feat_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.feat_button.place(x=30, y=380)
+        self.feat_button.place(x=30, y=340)
 
         self.MutationVar  = tk.BooleanVar(value=False)
         self.mut_button = tk.Checkbutton(self.window, text="4. Expression selon les mutations", variable=self.MutationVar, command=lambda: self.toggle_checkbuttons(self.MutationVar))
         self.mut_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.mut_button.place(x=30, y=410)
+        self.mut_button.place(x=30, y=370)
 
         self.FeatAndMutVar = tk.BooleanVar(value=False)
-        self.mut_feat_button = tk.Checkbutton(self.window, text="5. Expression de cette mutation selon\nla métadonnée", variable=self.FeatAndMutVar, command=lambda: self.toggle_checkbuttons(self.FeatAndMutVar))
+        self.mut_feat_button = tk.Checkbutton(self.window, text="5. Expression de cette mutation selon la métadonnée", variable=self.FeatAndMutVar, command=lambda: self.toggle_checkbuttons(self.FeatAndMutVar))
         self.mut_feat_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.mut_feat_button.place(x=30, y=440)
+        self.mut_feat_button.place(x=30, y=400)
+
+        self.CorrelationVar = tk.BooleanVar(value=False)
+        self.corr_button = tk.Checkbutton(self.window, text="6. Corrélation entre les expressions de deux gènes", variable=self.CorrelationVar, command=lambda: self.toggle_checkbuttons(self.CorrelationVar))
+        self.corr_button.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.corr_button.place(x=30, y=430)
 
         # Bouton pour générer le graphe
         self.generate_button = tk.Button(self.window, text="Générer le graphe", command=self.generate_plot)
@@ -149,7 +164,7 @@ class GUI:
         # Canvas pour afficher le graphe
         self.fig, self.ax = plt.subplots()
         self.canvas = FigureCanvasTkAgg(self.fig, master=self.window)
-        self.canvas.get_tk_widget().place(x=530, y=30, width=850, height=700)
+        self.canvas.get_tk_widget().place(x=540, y=30, width=850, height=700)
 
         # Choix de sauvegarder les résultats ou non
         self.SaveBool = tk.BooleanVar()
@@ -215,7 +230,7 @@ class GUI:
     
     def toggle_checkbuttons(self, selected_var):
         """Permet de décocher les autres cases lorsqu'on en coche une"""
-        checkbuttons = [self.DistributionVar, self.AbondanceVar, self.FeatureVar, self.MutationVar, self.FeatAndMutVar]
+        checkbuttons = [self.DistributionVar, self.AbondanceVar, self.FeatureVar, self.MutationVar, self.FeatAndMutVar, self.CorrelationVar]
         for var in checkbuttons:
             if var != selected_var:
                 var.set(False)
@@ -260,7 +275,7 @@ class GUI:
     def generate_plot(self):
         """Génère le graphe et le résultat statistique en fonction de la fonctionnalité sélectionnée"""
 
-        if sum([self.DistributionVar.get(), self.AbondanceVar.get(), self.FeatureVar.get(), self.MutationVar.get(), self.FeatAndMutVar.get()]) != 1:
+        if sum([self.DistributionVar.get(), self.AbondanceVar.get(), self.FeatureVar.get(), self.MutationVar.get(), self.FeatAndMutVar.get(), self.CorrelationVar.get()]) != 1:
             messagebox.showwarning("Attention", "Veuillez choisir une fonctionnalité")
             return 
         
@@ -304,6 +319,14 @@ class GUI:
                 messagebox.showwarning("Attention", "Veuillez sélectionner une mutation valide")
             Mutation = Mutation.split(":")[0]
             self.generate_plot_feat_and_mut(gene, Mutation, feature, self.data_expressions)
+            return
+        if self.CorrelationVar.get():
+            gene1 = self.gene_var.get()
+            gene2 = self.gene_var2.get()
+            if gene1 == gene2:
+                messagebox.showwarning("Attention", "Veuillez sélectionner deux gènes différents")
+                return
+            self.generate_plot_correlation(gene1, gene2, self.data_expressions)
             return
 
 
@@ -663,6 +686,58 @@ class GUI:
         return
     
 
+    ##### 6. Corrélation entre les expressions de deux gènes #####
+
+    def generate_plot_correlation(self, gene1, gene2, expressions):
+
+        ind1 = expressions["Gene"].tolist().index(gene1)
+        ind2 = expressions["Gene"].tolist().index(gene2)
+
+        expressions_gene1 = expressions.loc[expressions['Gene'] == gene1]
+        expressions_gene1 = expressions_gene1.transpose()
+        expressions_gene2 = expressions.loc[expressions['Gene'] == gene2]
+        expressions_gene2 = expressions_gene2.transpose()
+
+        expressions_genes = pd.DataFrame()
+        for index, row in expressions_gene1.iterrows():
+            if row[ind1] != gene1:
+                expressions_genes.at[index, gene1] = float(row[ind1])
+
+        for index, row in expressions_gene2.iterrows():
+            if row[ind2] != gene2:
+                expressions_genes.at[index, gene2] = float(row[ind2])
+
+        expressions_genes = expressions_genes.sort_values(by=gene1, ascending=True)
+
+        pente, ord_origine, r, p, std_err = stats.linregress(expressions_genes[gene1], expressions_genes[gene2])
+        regression = pente * expressions_genes[gene1] + ord_origine
+
+        self.fig.clear()
+        self.ax = self.fig.add_subplot(111)
+        sns.scatterplot(data=expressions_genes, x=gene1, y=gene2, ax=self.ax)
+        self.ax.plot(expressions_genes[gene1], regression, color='red', label=f"y = {pente:.2f}x + {ord_origine:.2f}\nR² = {r**2:.2f}")
+        self.ax.set_title(f"Corrélation entre les expressions de {gene1} et {gene2}")
+        self.ax.set_xlabel(gene1)
+        self.ax.set_ylabel(gene2)
+        self.ax.tick_params(axis='x', rotation=45)
+        self.ax.set_xlim(left=0)
+        self.ax.set_ylim(bottom=0)
+        self.ax.legend(loc='upper left')
+        self.fig.tight_layout()
+        self.canvas.draw()
+
+        stats_res_test = f"Test de Corrélation : r^2 = {r**2:.2f}"
+        self.p_value_label.config(text=stats_res_test)
+
+
+        if self.SaveBool.get() or (self.SaveAll and r**2 > 0.3):
+            premiereLigne = f"#Corrélation entre les expressions de {gene1} et {gene2}\n"
+            fileName = f"6_Correlation_{gene1}_{gene2}"
+            CreateFileRes(self.directory, self.fig, expressions_genes, stats_res_test, premiereLigne, fileName, self.SaveAll)
+
+        return
+    
+
     ##### Génération de tous les résultats significatifs #####
 
     def generate_all_results(self):
@@ -705,8 +780,11 @@ class GUI:
         progress_bar["maximum"] = tot_tasks
         progress_bar["value"] = 0
 
-        for gene in list_genes:
+        for gene in list_genes:                
             for expressions in [data_expressions_kmers, data_expressions_beataml]:
+                for gene2 in self.Genes:
+                    if gene != gene2:
+                        self.generate_plot_correlation(gene, gene2, expressions)
                 self.generate_plot_mutations(gene, expressions)
                 for feature in list_features:
                     progress_bar["value"] += 1

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène TP53 en fonction de la feature priorMDS
-#Résultat du test statistique Mann-Whitney : U = 8660.500, p-value = 0.00541
+#Résultat du test statistique Test Mann-Whitney : U = 8660.50 et p-value = 0.00541

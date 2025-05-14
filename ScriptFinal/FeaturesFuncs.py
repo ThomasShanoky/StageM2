@@ -29,7 +29,7 @@ def CreateFileRes(directory, fig, Tableau, stats_res_test, premiereLigne, fileNa
         f.write(premiereLigne)
         f.write(f"#Résultat du test statistique {stats_res_test}\n")
 
-    Tableau.to_csv(f"{output_file}/Resultat_Table.tsv", sep="\t", index=False)
+    Tableau.to_csv(f"{output_file}/Resultat_Table.tsv", sep="\t", index=True)
     fig.savefig(f"{output_file}/Resultat_Plot.png")
 
     if not(SaveAll):

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène RAD21 en fonction de la feature totalDrug
-#Résultat du test statistique Mann-Whitney : U = 14343.000, p-value = 0.00170
+#Résultat du test statistique Test Mann-Whitney : U = 14343.00 et p-value = 0.00170

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène DNMT3A en fonction de la feature specimenGroups
-#Résultat du test statistique ANOVA : F = 6.433, p-value = 0.00000
+#Résultat du test statistique Test ANOVA : F = 4.46 et p-value = 0.00021

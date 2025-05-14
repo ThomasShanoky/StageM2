@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène GATA2 en fonction de la feature isTransformed
-#Résultat du test statistique ANOVA : F = 4.828, p-value = 0.00842
+#Résultat du test statistique Test ANOVA : F = 4.27 et p-value = 0.01453

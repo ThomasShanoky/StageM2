@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de KIT et GATA2
+#Résultat du test statistique Test de Corrélation : r^2 = 0.32

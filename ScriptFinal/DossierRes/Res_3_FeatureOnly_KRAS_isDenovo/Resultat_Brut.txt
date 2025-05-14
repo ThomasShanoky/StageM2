@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène KRAS en fonction de la feature isDenovo
-#Résultat du test statistique ANOVA : F = 5.965, p-value = 0.00278
+#Résultat du test statistique Test ANOVA : F = 5.96 et p-value = 0.00278

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NRAS en fonction de la feature dxAtInclusion
+#Résultat du test statistique Test ANOVA : F = 3.46 et p-value = 0.01626

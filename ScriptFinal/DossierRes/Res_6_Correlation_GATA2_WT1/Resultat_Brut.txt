@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de GATA2 et WT1
+#Résultat du test statistique Test de Corrélation : r^2 = 0.40

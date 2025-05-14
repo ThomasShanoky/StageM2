@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène CEBPA en fonction de la feature ELN2017
-#Résultat du test statistique ANOVA : F = 7.073, p-value = 0.00000
+#Résultat du test statistique Test ANOVA : F = 7.07 et p-value = 0.00000

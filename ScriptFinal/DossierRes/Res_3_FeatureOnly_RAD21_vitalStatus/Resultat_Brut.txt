@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène RAD21 en fonction de la feature vitalStatus
-#Résultat du test statistique ANOVA : F = 8.133, p-value = 0.00034
+#Résultat du test statistique Test ANOVA : F = 8.13 et p-value = 0.00034

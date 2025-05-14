@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène BCOR en fonction de la feature NPM1
-#Résultat du test statistique Mann-Whitney : U = 16516.500, p-value = 0.00213
+#Résultat du test statistique Test Mann-Whitney : U = 16516.50 et p-value = 0.00213

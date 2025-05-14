@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène IDH2 en fonction de la feature ELN2017
+#Résultat du test statistique Test ANOVA : F = 2.53 et p-value = 0.02029

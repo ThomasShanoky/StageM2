@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène IDH1 en fonction de la feature priorMDS
-#Résultat du test statistique Mann-Whitney : U = 9519.500, p-value = 0.00007
+#Résultat du test statistique Test Mann-Whitney : U = 9519.50 et p-value = 0.00007
