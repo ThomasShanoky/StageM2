@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène NF1 en fonction de la feature totalDrug
-#Résultat du test statistique Mann-Whitney : U = 22673.000, p-value = 0.00077
+#Résultat du test statistique Test Mann-Whitney : U = 23685.00 et p-value = 0.00003

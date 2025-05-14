@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène TET2 en fonction de la feature priorMalignancyRadiationTx
-#Résultat du test statistique Mann-Whitney : U = 1137.000, p-value = 0.00232
+#Résultat du test statistique Test Mann-Whitney : U = 1076.00 et p-value = 0.00144

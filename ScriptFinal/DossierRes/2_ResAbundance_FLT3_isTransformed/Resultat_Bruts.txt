@@ -1,0 +1,3 @@
+#Résultats bruts de l'abondance de mutation du gène FLT3 selon la feature isTransformed, normalisée par le nombre total de kmers par échantillon
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.017605 avec le test Mann-Whitney

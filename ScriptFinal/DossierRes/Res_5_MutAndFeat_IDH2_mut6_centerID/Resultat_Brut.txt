@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut6 (A>G aux positions chr20:31022469-31022469) du gène IDH2, en fonction de la feature centerID
-#Résultat du test statistique ANOVA : F = 37.033, p-value = 0.00768

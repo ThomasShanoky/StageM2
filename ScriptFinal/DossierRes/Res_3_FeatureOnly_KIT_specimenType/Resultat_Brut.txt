@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène KIT en fonction de la feature specimenType
-#Résultat du test statistique ANOVA : F = 6.422, p-value = 0.00178
+#Résultat du test statistique Test ANOVA : F = 6.42 et p-value = 0.00178

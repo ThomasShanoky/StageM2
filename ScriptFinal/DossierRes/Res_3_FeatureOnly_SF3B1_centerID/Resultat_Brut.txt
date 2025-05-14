@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène SF3B1 en fonction de la feature centerID
-#Résultat du test statistique ANOVA : F = 6.346, p-value = 0.00000
+#Résultat du test statistique Test ANOVA : F = 6.35 et p-value = 0.00000

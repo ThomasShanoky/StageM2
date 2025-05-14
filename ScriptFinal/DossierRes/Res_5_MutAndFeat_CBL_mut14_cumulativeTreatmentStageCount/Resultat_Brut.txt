@@ -1,2 +1,2 @@
 #Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène CBL, en fonction de la feature cumulativeTreatmentStageCount
-#Résultat du test statistique ANOVA : F = 29.254, p-value = 0.00104
+#Résultat du test statistique Test ANOVA : F = 29.25 et p-value = 0.00104

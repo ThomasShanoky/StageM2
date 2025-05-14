@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène CBL en fonction de la feature priorMalignancyNonMyeloid
-#Résultat du test statistique Mann-Whitney : U = 10994.500, p-value = 0.00434
+#Résultat du test statistique Test Mann-Whitney : U = 10994.50 et p-value = 0.00434

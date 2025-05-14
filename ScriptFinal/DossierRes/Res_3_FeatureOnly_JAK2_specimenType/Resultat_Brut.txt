@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène JAK2 en fonction de la feature specimenType
-#Résultat du test statistique ANOVA : F = 5.067, p-value = 0.00667
+#Résultat du test statistique Test ANOVA : F = 5.07 et p-value = 0.00667

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène FLT3 en fonction de la feature specimenType
-#Résultat du test statistique ANOVA : F = 6.313, p-value = 0.00198
+#Résultat du test statistique Test ANOVA : F = 6.31 et p-value = 0.00198

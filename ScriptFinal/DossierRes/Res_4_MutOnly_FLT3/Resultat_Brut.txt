@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène FLT3 en fonction des types de mutations
-#Résultat du test statistique ANOVA : F = 7.853, p-value = 0.00000
+#Résultat du test statistique Test ANOVA : F = 7.85 et p-value = 0.00000

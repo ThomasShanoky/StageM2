@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène KRAS en fonction de la feature isTransformed
-#Résultat du test statistique ANOVA : F = 5.378, p-value = 0.00492
+#Résultat du test statistique Test ANOVA : F = 5.38 et p-value = 0.00492

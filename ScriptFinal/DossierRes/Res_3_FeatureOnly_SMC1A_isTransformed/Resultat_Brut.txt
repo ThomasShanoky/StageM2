@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SMC1A en fonction de la feature isTransformed
+#Résultat du test statistique Test ANOVA : F = 3.55 et p-value = 0.02951
