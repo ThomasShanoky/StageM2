@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène IDH1 en fonction de la feature NPM1
-#Résultat du test statistique Test Mann-Whitney : U = 17070.50 et p-value = 0.00871

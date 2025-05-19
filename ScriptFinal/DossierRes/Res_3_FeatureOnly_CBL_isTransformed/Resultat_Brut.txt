@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène CBL en fonction de la feature isTransformed
-#Résultat du test statistique Test ANOVA : F = 3.82 et p-value = 0.02272

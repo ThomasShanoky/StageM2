@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène DNMT3A en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 5.13 et p-value = 0.00001

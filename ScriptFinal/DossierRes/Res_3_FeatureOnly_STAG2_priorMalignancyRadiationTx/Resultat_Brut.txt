@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène STAG2 en fonction de la feature priorMalignancyRadiationTx
-#Résultat du test statistique Test Mann-Whitney : U = 1431.00 et p-value = 0.01788

@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène SMC1A en fonction de la feature analysisRnaSeq
-#Résultat du test statistique Test Mann-Whitney : U = 3087.00 et p-value = 0.00017

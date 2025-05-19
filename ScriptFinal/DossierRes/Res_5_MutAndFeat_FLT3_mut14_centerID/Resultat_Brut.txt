@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène FLT3, en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 7.56 et p-value = 0.02225

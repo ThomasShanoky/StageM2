@@ -1,2 +1,0 @@
-#Corrélation entre les expressions de STAG2 et PTPN11
-#Résultat du test statistique Test de Corrélation : r^2 = 0.43

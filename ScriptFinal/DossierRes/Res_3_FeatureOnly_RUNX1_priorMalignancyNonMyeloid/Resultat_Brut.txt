@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène RUNX1 en fonction de la feature priorMalignancyNonMyeloid
-#Résultat du test statistique Test Mann-Whitney : U = 16212.50 et p-value = 0.02450

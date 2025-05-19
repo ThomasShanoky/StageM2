@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RAD21 en fonction de la feature overallSurvivalDiscretized
+#Résultat du test statistique Test Mann-Whitney : U = 21228.00 et p-value = 0.00835

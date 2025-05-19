@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène CEBPA en fonction des types de mutations
-#Résultat du test statistique Test Mann-Whitney : U = 11293.50 et p-value = 0.00000

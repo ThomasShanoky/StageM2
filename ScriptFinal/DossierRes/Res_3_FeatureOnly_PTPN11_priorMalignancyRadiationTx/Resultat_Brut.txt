@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène PTPN11 en fonction de la feature priorMalignancyRadiationTx
-#Résultat du test statistique Test Mann-Whitney : U = 1364.00 et p-value = 0.01165

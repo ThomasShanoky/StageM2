@@ -438,7 +438,7 @@ class GUI:
 
         ind_expr = list(expressions.columns)[1:] #échantillons qui ont une expression de gène
 
-        inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0]) 
+        inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0])
 
         for _, row in SamplesAndFeatures.iterrows():
             Id = row["Sample"]
@@ -448,6 +448,8 @@ class GUI:
                 inter_ind_pd = inter_ind_pd._append({"Sample": Id, "Feature": featureVal, "ExpressionGene": Expression}, ignore_index=True)
 
         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True) #suppression de la première ligne vide
+
+        # filtered_groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique() if len(inter_ind_pd[inter_ind_pd["Feature"] == featureVal]) >= 5]
 
         if len(inter_ind_pd["Feature"].unique()) > 2:
             #ANOVA
@@ -784,8 +786,10 @@ class GUI:
             for expressions in [data_expressions_kmers, data_expressions_beataml]:
                 for gene2 in self.Genes:
                     if gene != gene2:
-                        self.generate_plot_correlation(gene, gene2, expressions)
-                self.generate_plot_mutations(gene, expressions)
+                        if list_features == ["Toutes"]:
+                            self.generate_plot_correlation(gene, gene2, expressions)
+                if list_features == ["Toutes"]:
+                    self.generate_plot_mutations(gene, expressions)
                 for feature in list_features:
                     progress_bar["value"] += 1
                     progress_window.update_idletasks()

@@ -1,2 +1,0 @@
-#Corrélation entre les expressions de PTPN11 et RAD21
-#Résultat du test statistique Test de Corrélation : r^2 = 0.38

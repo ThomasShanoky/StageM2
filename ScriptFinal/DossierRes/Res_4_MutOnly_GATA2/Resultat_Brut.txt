@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène GATA2 en fonction des types de mutations
-#Résultat du test statistique Test ANOVA : F = 18.26 et p-value = 0.00000

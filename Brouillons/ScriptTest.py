@@ -1,11 +1,15 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
+from scipy.stats import chi2_contingency
 from pprint import pprint
 
 
 
-##### Mettre l'ID sample directement dans le fichier BEATAML_Clinique.csv
+###############################################################################
+##### Mettre l'ID sample directement dans le fichier BEATAML_Clinique.csv #####
+################################################################################
 
 # file = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv"
 # output_file = "Documents/ScriptsPrincipaux/BEATAMLdata/new_BEATAML_Cliniques.csv"
@@ -29,7 +33,9 @@ from pprint import pprint
 # data.to_csv(output_file, sep=",", index=False)
 
 
-##### Reformater les métadonnées de Leucegene
+###################################################
+##### Reformater les métadonnées de Leucegene #####
+###################################################
 
 # file = "Documents/ScriptsPrincipaux/Brouillons/GSE67040_series_matrix.txt"
 # output_file = "Documents/ScriptsPrincipaux/Brouillons/Leucegene_data.csv"
@@ -62,84 +68,149 @@ from pprint import pprint
 # data.to_csv(output_file, sep=",", index=False)
 
 
-##### Combiner les tables cliniques de Beat-AML 
+#####################################################
+##### Combiner les tables cliniques de Beat-AML #####
+#####################################################
+
 #Dans un second temps, rajouter les features non présentes dans le premier fichier
 
-file1 = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv"
-file2 = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_CliniquesShort.csv"
+# file1 = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_Cliniques.csv"
+# file2 = "Documents/ScriptsPrincipaux/BEATAMLdata/BEATAML_CliniquesShort.csv"
 
-df1 = pd.read_csv(file1, sep=",")
-df2 = pd.read_csv(file2, sep=",", comment='#')
-df1.set_index("ID Sample", inplace=True)
-df2.set_index("ID Sample", inplace=True)
+# df1 = pd.read_csv(file1, sep=",")
+# df2 = pd.read_csv(file2, sep=",", comment='#')
+# df1.set_index("ID Sample", inplace=True)
+# df2.set_index("ID Sample", inplace=True)
 
 
-common_features = list(set(df1.columns) & set(df2.columns))
-common_features.sort()
-print(f"Common features: {common_features}") #Mettre les deux features d'âge (ageAtDiagnosis et AgeCategory)
-print(len(common_features))
+# common_features = list(set(df1.columns) & set(df2.columns))
+# common_features.sort()
+# print(f"Common features: {common_features}") #Mettre les deux features d'âge (ageAtDiagnosis et AgeCategory)
+# print(len(common_features))
 
-data_comp = pd.DataFrame()
+# data_comp = pd.DataFrame()
 
-data_comp["ID Sample"] = df1.index
+# data_comp["ID Sample"] = df1.index
+# # data_comp.set_index("ID Sample", inplace=True)
+# # print(data_comp)
+
+# for feat in common_features:
+#     col1 = df1[feat]
+#     col2 = df2[feat]
+#     data_comp[f"{feat}_1"] = data_comp["ID Sample"].map(col1)
+#     data_comp[f"{feat}_2"] = data_comp["ID Sample"].map(col2)
+
 # data_comp.set_index("ID Sample", inplace=True)
-# print(data_comp)
+# # print(data_comp)
+# # print(len(data_comp.columns))
+# # data_comp.to_csv("Documents/ScriptsPrincipaux/Brouillons/BEATAML_Compare.csv", sep=",", index=True)
 
-for feat in common_features:
-    col1 = df1[feat]
-    col2 = df2[feat]
-    data_comp[f"{feat}_1"] = data_comp["ID Sample"].map(col1)
-    data_comp[f"{feat}_2"] = data_comp["ID Sample"].map(col2)
+# CompMismatches = {}
+# for i in range(int(len(data_comp.columns)/2)):
+#     c = 0
+#     Diff = []
+#     feat1 = data_comp.columns[2*i]
+#     feat2 = data_comp.columns[2*i+1]
+#     for index, row in data_comp.iterrows():
+#         val1 = row[feat1]
+#         val2 = row[feat2]
+#         if val1 != val2:
+#             c += 1
+#             Diff.append((index, val1, val2))
+#     CompMismatches[common_features[i]] = [c, Diff]
 
-data_comp.set_index("ID Sample", inplace=True)
-# print(data_comp)
-# print(len(data_comp.columns))
-# data_comp.to_csv("Documents/ScriptsPrincipaux/Brouillons/BEATAML_Compare.csv", sep=",", index=True)
+# # pprint(CompMismatches)
 
-CompMismatches = {}
-for i in range(int(len(data_comp.columns)/2)):
-    c = 0
-    Diff = []
-    feat1 = data_comp.columns[2*i]
-    feat2 = data_comp.columns[2*i+1]
-    for index, row in data_comp.iterrows():
-        val1 = row[feat1]
-        val2 = row[feat2]
-        if val1 != val2:
-            c += 1
-            Diff.append((index, val1, val2))
-    CompMismatches[common_features[i]] = [c, Diff]
-
-# pprint(CompMismatches)
-
-for feat, (c, Diff) in CompMismatches.items():
-    if not("nan" in str(Diff)):
-        print(f"{feat} : {Diff}")
-        #Rien => Les différences ne sont que des valeurs manquantes entre deux versions des fichiers
+# for feat, (c, Diff) in CompMismatches.items():
+#     if not("nan" in str(Diff)):
+#         print(f"{feat} : {Diff}")
+#         #Rien => Les différences ne sont que des valeurs manquantes entre deux versions des fichiers
 
 
-#Ajouter : isTherapy
+# #Ajouter : isTherapy
 
-df1.insert(20, "isTherapy", "")
+# df1.insert(20, "isTherapy", "")
 
-df1["isTherapy"] = df1.index.map(df2["isTherapy"])
+# df1["isTherapy"] = df1.index.map(df2["isTherapy"])
 
 
-#Ajouter : Categoriser les âges
+# #Ajouter : Categoriser les âges
 
-df1.insert(17, "AgeCategory", "")
-# print(df1.columns)
+# df1.insert(17, "AgeCategory", "")
+# # print(df1.columns)
 
-for index, row in df1.iterrows():
-    age = row["ageAtDiagnosis"]
-    if age <= 45:
-        df1.at[index, "AgeCategory"] = "young"
-    elif age <= 60:
-        df1.at[index, "AgeCategory"] = "middle"
-    elif age <= 75:
-        df1.at[index, "AgeCategory"] = "older"
-    elif age <= 120:
-        df1.at[index, "AgeCategory"] = "oldest"
+# for index, row in df1.iterrows():
+#     age = row["ageAtDiagnosis"]
+#     if age <= 45:
+#         df1.at[index, "AgeCategory"] = "young"
+#     elif age <= 60:
+#         df1.at[index, "AgeCategory"] = "middle"
+#     elif age <= 75:
+#         df1.at[index, "AgeCategory"] = "older"
+#     elif age <= 120:
+#         df1.at[index, "AgeCategory"] = "oldest"
 
-print(df1)
+# print(df1)
 # df1.to_csv("Documents/ScriptsPrincipaux/BEATAMLdata/test.csv", sep=",", index=True)
+
+
+#################################################################
+##### Refaire la distribution de CEBPA avec CEBPA_Biallelic #####
+#################################################################
+
+# file = "ScriptsPrincipaux/ScriptFinal/BEATAML_Cliniques.csv"
+# df = pd.read_csv(file, sep=",", comment='#')[["ID Sample", "CEBPA_Biallelic"]]
+
+
+# file_mut = "ScriptsPrincipaux/ScriptFinal/MUTdata/CEBPA_alt_perso.csv"
+# df_mut = pd.read_csv(file_mut, sep=",", comment='#')[["sampleID"]]
+# sampleMutated = df_mut["sampleID"].tolist()
+
+# for index, row in df.iterrows():
+#     samp = row["ID Sample"]
+#     if samp in sampleMutated:
+#         df.at[index, "CEBPAmut"] = 1
+#     else:
+#         df.at[index, "CEBPAmut"] = 0
+
+# df["CEBPA_Biallelic"] = df["CEBPA_Biallelic"].fillna("NaN")
+# print(df)
+
+# plt.figure(figsize=(10,6))
+# sns.countplot(
+#     data=df,
+#     x="CEBPA_Biallelic",
+#     hue="CEBPAmut",
+#     palette={0:"green", 1:"blue"}
+# )
+
+# plt.tight_layout()
+# plt.show()
+
+# contingency_table = pd.crosstab(df["CEBPA_Biallelic"], df["CEBPAmut"])
+# chi2, p, dof, expected = chi2_contingency(contingency_table)
+# print(f"Chi2: {chi2}, p-value: {p}, dof: {dof}")
+
+
+#########################################
+##### Discrétiser la survie globale #####
+#########################################
+
+file = "ScriptsPrincipaux/ScriptFinal/BEATAML_Cliniques.csv"
+df = pd.read_csv(file, sep=",", comment='#')
+
+overall_survival = list(df["overallSurvival"])
+# print(overall_survival)
+
+# plt.hist(overall_survival, bins=80)
+# plt.show()
+
+for index, row in df.iterrows():
+    surv = row["overallSurvival"]
+    if surv <= 365:
+        df.at[index, "overallSurvivalDiscretized"] = "LessThanAYear"
+    else:
+        df.at[index, "overallSurvivalDiscretized"] = "MoreThanAYear"
+
+# print(df)
+df.to_csv("ScriptsPrincipaux/Brouillons/BEATAML_Cliniques.csv", sep=",", index=False)

@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène NF1 en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 3.16 et p-value = 0.00288

@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène NPM1, en fonction de la feature cumulativeTreatmentStageCount
-#Résultat du test statistique Test ANOVA : F = 9.38 et p-value = 0.01407

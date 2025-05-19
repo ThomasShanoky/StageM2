@@ -61,20 +61,20 @@ Genes = list(expression_beataml.index)
 Genes.sort()
 
 
-R_carres = []
+R = []
 p_values = []
 stds = []
 
 for gene in Genes:
-    R, p, std = plot_expressions(gene, expression_beataml, expression_kmers, True)
-    R_carres.append(R)
+    r, p, std = plot_expressions(gene, expression_beataml, expression_kmers, True)
+    R.append(r)
     p_values.append(p)
     stds.append(std)
 
-print(Genes)
-print("r")
-print([f"{r:.5f}" for r in R_carres])
-print("p")
-print([f"{p:.5e}" for p in p_values])
+# print(Genes)
+# print("r")
+# print([f"{r:.5f}" for r in R_carres])
+# print("p")
+# print([f"{p:.5e}" for p in p_values])
 
-print(f"Moyenne des coefficients de corrélation : {np.mean(R_carres):.5f}")
+print(f"Moyenne des coefficients de corrélation : {np.mean(R):.5f}")

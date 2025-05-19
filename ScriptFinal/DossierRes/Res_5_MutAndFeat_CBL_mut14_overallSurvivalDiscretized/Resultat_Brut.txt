@@ -1,0 +1,2 @@
+#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène CBL, en fonction de la feature overallSurvivalDiscretized
+#Résultat du test statistique Test Mann-Whitney : U = 22.00 et p-value = 0.04848

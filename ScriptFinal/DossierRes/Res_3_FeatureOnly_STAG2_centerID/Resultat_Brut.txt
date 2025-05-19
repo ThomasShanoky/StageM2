@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène STAG2 en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 2.92 et p-value = 0.00534

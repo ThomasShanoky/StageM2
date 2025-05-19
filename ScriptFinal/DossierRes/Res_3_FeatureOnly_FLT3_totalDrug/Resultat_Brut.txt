@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène FLT3 en fonction de la feature totalDrug
-#Résultat du test statistique Test Mann-Whitney : U = 21059.00 et p-value = 0.00837
