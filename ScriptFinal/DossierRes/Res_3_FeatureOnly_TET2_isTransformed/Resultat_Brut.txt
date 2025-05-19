@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène TET2 en fonction de la feature isTransformed
-#Résultat du test statistique Test ANOVA : F = 6.58 et p-value = 0.00152

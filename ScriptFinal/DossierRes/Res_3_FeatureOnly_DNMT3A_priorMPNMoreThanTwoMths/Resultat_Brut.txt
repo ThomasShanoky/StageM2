@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène DNMT3A en fonction de la feature priorMPNMoreThanTwoMths
-#Résultat du test statistique Test Mann-Whitney : U = 2664.00 et p-value = 0.02362

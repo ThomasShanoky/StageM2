@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène DNMT3A, en fonction de la feature cumulativeTreatmentStageCount
-#Résultat du test statistique Test ANOVA : F = 25.73 et p-value = 0.00141

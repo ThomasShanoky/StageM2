@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène WT1 en fonction de la feature overallSurvivalDiscretized
+#Résultat du test statistique Test Mann-Whitney : U = 27993.00 et p-value = 0.02070

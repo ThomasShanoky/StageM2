@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène KIT en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 2.35 et p-value = 0.02285

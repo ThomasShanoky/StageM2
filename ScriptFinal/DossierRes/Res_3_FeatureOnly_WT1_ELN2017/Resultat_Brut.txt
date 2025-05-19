@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène WT1 en fonction de la feature ELN2017
-#Résultat du test statistique Test ANOVA : F = 10.18 et p-value = 0.00000

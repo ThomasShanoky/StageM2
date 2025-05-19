@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène RAD21 en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 4.15 et p-value = 0.00020

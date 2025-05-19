@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène RAD21 en fonction de la feature specimenType
-#Résultat du test statistique Test ANOVA : F = 5.08 et p-value = 0.00659

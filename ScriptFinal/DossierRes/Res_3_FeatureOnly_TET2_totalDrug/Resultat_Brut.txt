@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène TET2 en fonction de la feature totalDrug
-#Résultat du test statistique Test Mann-Whitney : U = 21792.50 et p-value = 0.00866

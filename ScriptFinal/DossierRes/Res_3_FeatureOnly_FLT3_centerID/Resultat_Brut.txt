@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène FLT3 en fonction de la feature centerID
-#Résultat du test statistique Test ANOVA : F = 3.80 et p-value = 0.00051

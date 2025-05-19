@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène KIT en fonction de la feature priorMalignancyNonMyeloid
-#Résultat du test statistique Test Mann-Whitney : U = 16743.50 et p-value = 0.00563

@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène TP53 en fonction de la feature specimenType
-#Résultat du test statistique Test ANOVA : F = 8.87 et p-value = 0.00017

@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène EZH2 en fonction de la feature specimenType
-#Résultat du test statistique Test ANOVA : F = 9.49 et p-value = 0.00009
