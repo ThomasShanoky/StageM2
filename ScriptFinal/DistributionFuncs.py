@@ -104,6 +104,7 @@ def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_
     ax.set_ylabel("Nombre d'échantillons")
     ax.legend()
     ax.set_title(f"Distribution de {feature} selon la mutation (ou non) de {gene}")
+    ax.set_title(f"Répartition des échantillons {gene} mutés et non {gene} mutés selon la catégorie \"{feature}\"")
 
     if p_value < 0.05:
         if p_value < 0.0001:

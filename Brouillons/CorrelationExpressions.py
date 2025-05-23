@@ -39,7 +39,7 @@ def plot_expressions(gene, expr_ba, expr_km, plot=True):
     gene_expr_ba = gene_expr_ba.sort_values(ascending=True)
     gene_expr_km = gene_expr_km.reindex(gene_expr_ba.index)
 
-    gene_expr_ba = np.exp(gene_expr_ba)
+    # gene_expr_ba = np.exp(gene_expr_ba)
 
     pente, origine, r, pval, std = linregress(gene_expr_ba, gene_expr_km)
     regre_line = pente*gene_expr_ba + origine

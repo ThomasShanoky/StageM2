@@ -196,21 +196,64 @@ from pprint import pprint
 ##### Discrétiser la survie globale #####
 #########################################
 
-file = "ScriptsPrincipaux/ScriptFinal/BEATAML_Cliniques.csv"
-df = pd.read_csv(file, sep=",", comment='#')
+# file = "ScriptsPrincipaux/ScriptFinal/BEATAML_Cliniques.csv"
+# df = pd.read_csv(file, sep=",", comment='#')
 
-overall_survival = list(df["overallSurvival"])
-# print(overall_survival)
+# overall_survival = list(df["overallSurvival"])
+# # print(overall_survival)
 
-# plt.hist(overall_survival, bins=80)
-# plt.show()
+# # plt.hist(overall_survival, bins=80)
+# # plt.show()
 
-for index, row in df.iterrows():
-    surv = row["overallSurvival"]
-    if surv <= 365:
-        df.at[index, "overallSurvivalDiscretized"] = "LessThanAYear"
-    else:
-        df.at[index, "overallSurvivalDiscretized"] = "MoreThanAYear"
+# for index, row in df.iterrows():
+#     surv = row["overallSurvival"]
+#     if surv <= 365:
+#         df.at[index, "overallSurvivalDiscretized"] = "LessThanAYear"
+#     else:
+#         df.at[index, "overallSurvivalDiscretized"] = "MoreThanAYear"
+
+# # print(df)
+# df.to_csv("ScriptsPrincipaux/Brouillons/BEATAML_Cliniques.csv", sep=",", index=False)
+
+
+############################################################
+##### Trouver une ligne décrivant un échantillon donné #####
+############################################################
+
+# file = "ScriptFinal/BEATAML_Cliniques.csv"
+# df = pd.read_csv(file, sep=",", comment='#')
+
+# sample_id = "BA3216"
+
+# pd.set_option('display.max_columns', None)
+# print(df[df["ID Sample"] == sample_id])
+
+
+#################################################################
+##### Taux d'annotation pour les gènes ASXL1, RUNX1 et TP53 #####
+#################################################################
+
+file = "ScriptFinal/BEATAML_Cliniques.csv"
+df = pd.read_csv(file, sep=",", comment='#')[["ID Sample", "ASXL1", "RUNX1", "TP53"]]
 
 # print(df)
-df.to_csv("ScriptsPrincipaux/Brouillons/BEATAML_Cliniques.csv", sep=",", index=False)
+
+nb_ech = 0
+nb_asxl1_annoted = 0
+nb_runx1_annoted = 0
+nb_tp53_annoted = 0
+
+for index, row in df.iterrows():
+    if pd.isna(row["ASXL1"]):
+        nb_asxl1_annoted += 1
+    if pd.isna(row["RUNX1"]):
+        nb_runx1_annoted += 1
+    if pd.isna(row["TP53"]):
+        nb_tp53_annoted += 1
+    nb_ech += 1
+
+print(100*(nb_ech-nb_asxl1_annoted)/nb_ech)
+print(100*(nb_ech-nb_runx1_annoted)/nb_ech)
+print(100*(nb_ech-nb_tp53_annoted)/nb_ech)
+
+print(f"{0.3+0.5:.20f}")

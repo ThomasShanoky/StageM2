@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène BCOR en fonction de la feature totalDrug
+#Résultat du test statistique Test Mann-Whitney : U = 21461.50 et p-value = 0.01888

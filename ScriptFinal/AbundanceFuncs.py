@@ -76,9 +76,9 @@ def plot_graph_with_abundance(canvas, fig, NormalizedExpressionAndFeat, gene, fe
     sns.boxplot(x=feature, y='NormalizedExpression', data=NormalizedExpressionAndFeat, ax=ax)
     sns.stripplot(x=feature, y='NormalizedExpression', data=NormalizedExpressionAndFeat, color='black', alpha=0.5, jitter=True, ax=ax)
 
-    ax.set_title(f"Distribution de l'expression normalisée selon {feature} pour le gène {gene}")
+    ax.set_title(f"Boxplots des abondances de mutation selon \"{feature}\" pour le gène {gene}")
     ax.set_xlabel(feature)
-    ax.set_ylabel("Expression normalisée par TBP")
+    ax.set_ylabel("Abondance de mutation normalisée par le nombre total de kmers")
 
     if p_value < 0.05:
         if p_value < 0.0001:
