@@ -15,7 +15,7 @@ from MutationsFuncs import *
 directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
 
-data_beat_aml_file = f"{directory}/BEATAML_Cliniques.csv"
+data_beat_aml_file = f"{directory}/BEATAML_Cliniques2.csv"
 data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#") #données cliniques de Beat-AML (métadonnées)
 data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] #on ne prend que les patients ayant un diagnostic initial
 data_beat_aml.set_index("ID Sample", inplace=True)
@@ -23,7 +23,7 @@ data_beat_aml.set_index("ID Sample", inplace=True)
 usable_cat = []
 cats = list(data_beat_aml.columns)
 for i, cat in enumerate(cats):
-    if 1 < len(np.unique(data_beat_aml[cat].astype(str))) < 10 and i not in list(range(8)): #on prend les catégories ayant entre 2 et 9 valeurs uniques + on ne prend pas les 7 premières features 
+    if 1 < len(np.unique(data_beat_aml[cat].astype(str))) < 8 and i not in list(range(8)): #on prend les catégories ayant entre 2 et 9 valeurs uniques + on ne prend pas les 7 premières features 
         usable_cat.append(cat)
 
 index_file = f"{directory}/BEATAML_index.tsv"
@@ -178,23 +178,32 @@ class GUI:
         self.p_value_label.place(x=30, y=580)
 
         # Ligne séparatrice
-        self.ligne = tk.Label(self.window, text="_______________________________________________________")
+        self.ligne = tk.Label(self.window, text="-------------------------------------------------------------------------------------")
         self.ligne.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.ligne.place(x=15, y=620)
+        self.ligne.place(x=15, y=600)
 
-        # Choix du seuil de la p-value (alpha)
-        self.label_alpha = tk.Label(self.window, text="Sélectionnez le seuil de la p-value (\u03B1):")
+        # Choix du seuil de la p-value (alpha) (fonct. 1 à 5) 
+        self.label_alpha = tk.Label(self.window, text="Seuil de la p-value (\u03B1):")
         self.label_alpha.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.label_alpha.place(x=30, y=650)
+        self.label_alpha.place(x=30, y=630)
         self.alpha_var = tk.StringVar(value=0.05)
         self.alpha_entry = tk.Entry(self.window, textvariable=self.alpha_var)
         self.alpha_entry.config(font=("DejaVu Serif", 13), bg="#ffffff", fg="#000000", width=10)
-        self.alpha_entry.place(x=375, y=650)
+        self.alpha_entry.place(x=240, y=630)
+
+        # Choix du seuil du coefficient de corrélation (fonct. 6)
+        self.label_r = tk.Label(self.window, text="Seuil du coefficient de corrélation (|r|):")
+        self.label_r.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
+        self.label_r.place(x=30, y=660)
+        self.r_var = tk.StringVar(value=0.6)
+        self.r_entry = tk.Entry(self.window, textvariable=self.r_var)
+        self.r_entry.config(font=("DejaVu Serif", 13), bg="#ffffff", fg="#000000", width=5)
+        self.r_entry.place(x=380, y=660)
 
         # Optionnel : choix d'une feature/gène dont on veut sauvegarder les résultats significatifs
         self.choice_label = tk.Label(self.window, text="Choix d'une feature ou un gène :")
         self.choice_label.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
-        self.choice_label.place(x=30, y=690)
+        self.choice_label.place(x=30, y=700)
 
         self.feat_choice = tk.Label(self.window, text="Feature :")
         self.feat_choice.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
@@ -285,7 +294,17 @@ class GUI:
             messagebox.showwarning("Attention", "Veuillez entrer un nombre")
             return
         
+        try:
+            self.r_threshold = float(self.r_var.get())
+        except ValueError:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre")
+            return
+        
         if self.alpha <= 0 or self.alpha >= 1:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
+            return
+        
+        if self.r_threshold <= 0 or self.r_threshold >= 1:
             messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
             return
         
@@ -449,7 +468,7 @@ class GUI:
 
         inter_ind_pd = inter_ind_pd.drop(0).reset_index(drop=True) #suppression de la première ligne vide
 
-        # filtered_groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique() if len(inter_ind_pd[inter_ind_pd["Feature"] == featureVal]) >= 5]
+        # filtered_groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featu/reVal in inter_ind_pd["Feature"].unique() if len(inter_ind_pd[inter_ind_pd["Feature"] == featureVal]) >= 5]
 
         if len(inter_ind_pd["Feature"].unique()) > 2:
             #ANOVA
@@ -519,7 +538,7 @@ class GUI:
         dico_IndAndMut, _ = getTypesOfMutationsAndInd(self.Genes, gene, self.data_mutation)
 
         AllIndMutated = list(dico_IndAndMut.values())
-        AllIndMutated = [item for sublist in AllIndMutated for item in sublist] #à utiliser pour avoir les échantillons NON mutés
+        AllIndMutated = [item for sublist in AllIndMutated for item in sublist]
 
         IndToRemove = checkIfPatientsAreInExpressions(expressions, dico_IndAndMut)
 
@@ -709,15 +728,13 @@ class GUI:
             if row[ind2] != gene2:
                 expressions_genes.at[index, gene2] = float(row[ind2])
 
-        expressions_genes = expressions_genes.sort_values(by=gene1, ascending=True)
-
         pente, ord_origine, r, p, std_err = stats.linregress(expressions_genes[gene1], expressions_genes[gene2])
         regression = pente * expressions_genes[gene1] + ord_origine
 
         self.fig.clear()
         self.ax = self.fig.add_subplot(111)
         sns.scatterplot(data=expressions_genes, x=gene1, y=gene2, ax=self.ax)
-        self.ax.plot(expressions_genes[gene1], regression, color='red', label=f"y = {pente:.2f}x + {ord_origine:.2f}\nR² = {r**2:.2f}")
+        self.ax.plot(expressions_genes[gene1], regression, color='red', label=f"y = {pente:.2f}x + {ord_origine:.2f}\nr = {r:.2f}")
         self.ax.set_title(f"Corrélation entre les expressions de {gene1} et {gene2}")
         self.ax.set_xlabel(gene1)
         self.ax.set_ylabel(gene2)
@@ -728,11 +745,11 @@ class GUI:
         self.fig.tight_layout()
         self.canvas.draw()
 
-        stats_res_test = f"Test de Corrélation : r^2 = {r**2:.2f}"
+        stats_res_test = f"Test de Corrélation : r = {r:.2f}"
         self.p_value_label.config(text=stats_res_test)
 
 
-        if self.SaveBool.get() or (self.SaveAll and r**2 > 0.3):
+        if self.SaveBool.get() or (self.SaveAll and (r > self.r_threshold or r < -self.r_threshold)):
             premiereLigne = f"#Corrélation entre les expressions de {gene1} et {gene2}\n"
             fileName = f"6_Correlation_{gene1}_{gene2}"
             CreateFileRes(self.directory, self.fig, expressions_genes, stats_res_test, premiereLigne, fileName, self.SaveAll)
@@ -752,7 +769,17 @@ class GUI:
             messagebox.showwarning("Attention", "Veuillez entrer un nombre")
             return
         
+        try:
+            self.r_threshold = float(self.r_var.get())
+        except ValueError:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre")
+            return
+        
         if self.alpha <= 0 or self.alpha >= 1:
+            messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
+            return
+        
+        if self.r_threshold <= 0 or self.r_threshold >= 1:
             messagebox.showwarning("Attention", "Veuillez entrer un nombre entre 0 et 1 exclus")
             return
         
@@ -786,9 +813,9 @@ class GUI:
             for expressions in [data_expressions_kmers, data_expressions_beataml]:
                 for gene2 in self.Genes:
                     if gene != gene2:
-                        if list_features == ["Toutes"]:
+                        if self.feat_choice_var.get() == "Toutes":
                             self.generate_plot_correlation(gene, gene2, expressions)
-                if list_features == ["Toutes"]:
+                if self.feat_choice_var.get() == "Toutes":
                     self.generate_plot_mutations(gene, expressions)
                 for feature in list_features:
                     progress_bar["value"] += 1
