@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène JAK2 en fonction des types de mutations
+#Résultat du test statistique Test ANOVA : F = 3.57 et p-value = 0.02855

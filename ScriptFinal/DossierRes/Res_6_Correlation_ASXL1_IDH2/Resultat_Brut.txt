@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de ASXL1 et IDH2
+#Résultat du test statistique Test de Corrélation : r = 0.41

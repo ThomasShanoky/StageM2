@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NRAS en fonction de la feature specimenType
+#Résultat du test statistique Test ANOVA : F = 12.36 et p-value = 0.00001

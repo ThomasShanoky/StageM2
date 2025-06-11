@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RUNX1 en fonction de la feature analysisRnaSeq
+#Résultat du test statistique Test Mann-Whitney : U = 3064.00 et p-value = 0.00024

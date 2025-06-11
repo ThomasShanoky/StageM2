@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de GATA2 et KIT
+#Résultat du test statistique Test de Corrélation : r = 0.56

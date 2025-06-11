@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RAD21 en fonction de la feature priorMDS
+#Résultat du test statistique Test Mann-Whitney : U = 5001.00 et p-value = 0.00604

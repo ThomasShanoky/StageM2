@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de JAK2 et STAG2
+#Résultat du test statistique Test de Corrélation : r = 0.48

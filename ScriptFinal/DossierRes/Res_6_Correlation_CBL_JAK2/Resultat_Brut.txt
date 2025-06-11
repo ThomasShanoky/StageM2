@@ -1,2 +1,2 @@
 #Corrélation entre les expressions de CBL et JAK2
-#Résultat du test statistique Test de Corrélation : r = 0.63
+#Résultat du test statistique Test de Corrélation : r = 0.48

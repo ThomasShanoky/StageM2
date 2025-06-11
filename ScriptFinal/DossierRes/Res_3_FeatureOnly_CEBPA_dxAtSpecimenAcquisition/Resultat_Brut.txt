@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène CEBPA en fonction de la feature dxAtSpecimenAcquisition
+#Résultat du test statistique Test Mann-Whitney : U = 1876.00 et p-value = 0.01159

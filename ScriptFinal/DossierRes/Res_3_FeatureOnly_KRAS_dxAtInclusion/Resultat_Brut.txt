@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature dxAtInclusion
+#Résultat du test statistique Test ANOVA : F = 4.33 et p-value = 0.00503

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SMC1A en fonction de la feature inferred_sex
+#Résultat du test statistique Test ANOVA : F = 24.96 et p-value = 0.00000

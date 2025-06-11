@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de STAG2 et CBL
+#Résultat du test statistique Test de Corrélation : r = 0.49

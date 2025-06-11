@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RAD21 en fonction de la feature ELN2017
+#Résultat du test statistique Test ANOVA : F = 6.04 et p-value = 0.00000

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène NRAS en fonction de la feature priorMDSMoreThanTwoMths
+#Résultat du test statistique Test Mann-Whitney : U = 4779.50 et p-value = 0.02719
