@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de NPM1 et PTPN11
+#Résultat du test statistique Test de Corrélation : r = 0.50

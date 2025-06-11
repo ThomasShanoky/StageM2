@@ -195,7 +195,7 @@ class GUI:
         self.label_r = tk.Label(self.window, text="Seuil du coefficient de corrélation (|r|):")
         self.label_r.config(font=("DejaVu Serif", 13), bg="#87CEEB", fg="#000000")
         self.label_r.place(x=30, y=660)
-        self.r_var = tk.StringVar(value=0.6)
+        self.r_var = tk.StringVar(value=0.5)
         self.r_entry = tk.Entry(self.window, textvariable=self.r_var)
         self.r_entry.config(font=("DejaVu Serif", 13), bg="#ffffff", fg="#000000", width=5)
         self.r_entry.place(x=380, y=660)
@@ -424,9 +424,9 @@ class GUI:
             self.p_value_label.config(text=f"Test Mann-Whitney : U = {u_stat:.2f} et p-value = {p:.5f}")
             test = "Mann-Whitney"
         elif len(NormalizedExpressionAndFeat[feature].unique()) > 2: # Comparaison de plusieurs moyennes
-            f_stat, p = ANOVATest(NormalizedExpressionAndFeat, feature)
-            self.p_value_label.config(text=f"Test ANOVA : F = {f_stat:.2f} et p-value = {p:.5f}")
-            test = "ANOVA"
+            f_stat, p = KWTest(NormalizedExpressionAndFeat, feature)
+            self.p_value_label.config(text=f"Test K : F = {f_stat:.2f} et p-value = {p:.5f}")
+            test = "Kruskal-Wallis"
         else:
             self.p_value_label.config(text="Pas assez de valeurs de features")
             p = 1
@@ -471,11 +471,12 @@ class GUI:
         # filtered_groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featu/reVal in inter_ind_pd["Feature"].unique() if len(inter_ind_pd[inter_ind_pd["Feature"] == featureVal]) >= 5]
 
         if len(inter_ind_pd["Feature"].unique()) > 2:
-            #ANOVA
+            #Kruskal-Wallis
             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
-            anova_result = stats.f_oneway(*groups)
+            groups = [group for group in groups if not group.empty]
+            anova_result = stats.kruskal(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
+            stats_res_test = f"Test Kruskal-Wallis : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(inter_ind_pd["Feature"].unique()) == 2:
             #Mann-Whitney U 
             group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]
@@ -560,11 +561,12 @@ class GUI:
         Tableau = addNonMutatedIndExpression(expressions, Tableau, gene, NonMutatedInd)
         
         if len(dico_IndAndMut) > 1:
-            # ANOVA
+            # Kruskal-Wallis
             groups = [Tableau[Tableau["TypeMutation"] == mut]["ExpressionGene"] for mut in Tableau["TypeMutation"].unique()]
-            anova_result = stats.f_oneway(*groups)
+            groups = [group for group in groups if not group.empty]
+            anova_result = stats.kruskal(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
+            stats_res_test = f"Test Kruskal-Wallis : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(dico_IndAndMut) == 1: #une seule mutation : on ne compare qu'avec les non mutés
             # Mann-Whitney U test
             #mutés
@@ -649,11 +651,12 @@ class GUI:
             return
 
         if len(inter_ind_pd["Feature"].unique()) > 2:
-            # ANOVA
+            # Kruskal-Wallis
             groups = [inter_ind_pd[inter_ind_pd["Feature"] == featureVal]["ExpressionGene"] for featureVal in inter_ind_pd["Feature"].unique()]
-            anova_result = stats.f_oneway(*groups)
+            groups = [group for group in groups if not group.empty]
+            anova_result = stats.kruskal(*groups)
             p_val = anova_result.pvalue
-            stats_res_test = f"Test ANOVA : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
+            stats_res_test = f"Test Kruskal-Wallis : F = {anova_result.statistic:.2f} et p-value = {p_val:.5f}"
         elif len(inter_ind_pd["Feature"].unique()) == 2:
             # Mann-Whitney U test
             group1 = inter_ind_pd[inter_ind_pd["Feature"] == list(inter_ind_pd["Feature"].unique())[0]]["ExpressionGene"]

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène DNMT3A en fonction de la feature totalDrug
+#Résultat du test statistique Test Mann-Whitney : U = 20739.00 et p-value = 0.01819

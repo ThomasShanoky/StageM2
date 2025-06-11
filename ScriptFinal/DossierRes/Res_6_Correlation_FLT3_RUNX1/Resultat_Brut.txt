@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de FLT3 et RUNX1
+#Résultat du test statistique Test de Corrélation : r = 0.47

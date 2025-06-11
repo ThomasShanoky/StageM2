@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène SF3B1 en fonction de la feature FLT3-ITD
+#Résultat du test statistique Test Mann-Whitney : U = 15177.00 et p-value = 0.00690

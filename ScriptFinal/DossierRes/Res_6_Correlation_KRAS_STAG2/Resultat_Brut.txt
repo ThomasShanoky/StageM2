@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de KRAS et STAG2
+#Résultat du test statistique Test de Corrélation : r = 0.43

@@ -106,23 +106,23 @@ def plot_graph_without_abundance(fig, canvas, cat_name, number_for_plot, number_
     ax.set_title(f"Distribution de {feature} selon la mutation (ou non) de {gene}")
     ax.set_title(f"Répartition des échantillons {gene} mutés et non {gene} mutés selon la catégorie \"{feature}\"")
 
-    if p_value < 0.05:
-        if p_value < 0.0001:
-            stars = "****"
-        elif p_value < 0.001:
-            stars = "***"
-        elif p_value < 0.01:
-            stars = "**"
-        else:
-            stars = "*"
+    # if p_value < 0.05:
+    #     if p_value < 0.0001:
+    #         stars = "****"
+    #     elif p_value < 0.001:
+    #         stars = "***"
+    #     elif p_value < 0.01:
+    #         stars = "**"
+    #     else:
+    #         stars = "*"
 
-        max_height = max(max(number_for_plot), max(number_for_plot_nonMut))
-        y = max_height + 1
-        x1 = r1[0]
-        x2 = r2[-1]
+        # max_height = max(max(number_for_plot), max(number_for_plot_nonMut))
+        # y = max_height + 1
+        # x1 = r1[0]
+        # x2 = r2[-1]
 
-        ax.plot([x1, x1, x2, x2], [y, y + 0.5, y + 0.5, y], color="black", lw=1.5) # Ligne en forme de crochet
-        ax.text((x1 + x2) / 2, y + 0.7, stars, ha="center", va="bottom", color="black", fontsize=12) #étoiles
+        # ax.plot([x1, x1, x2, x2], [y, y + 0.5, y + 0.5, y], color="black", lw=1.5) # Ligne en forme de crochet
+        # ax.text((x1 + x2) / 2, y + 0.7, stars, ha="center", va="bottom", color="black", fontsize=12) #étoiles
 
 
     fig.tight_layout()

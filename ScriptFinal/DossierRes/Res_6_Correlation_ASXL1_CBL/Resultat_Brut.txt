@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de ASXL1 et CBL
+#Résultat du test statistique Test de Corrélation : r = -0.48

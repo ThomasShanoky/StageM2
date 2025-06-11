@@ -1,0 +1,3 @@
+#Résultats bruts de l'abondance de mutation du gène GATA2 selon la feature exomeSeq, normalisée par le nombre total de kmers par échantillon
+#Test d'hypothèse de différence significative entre les moyennes des groupes
+#p-value = 0.019989 avec le test Mann-Whitney

@@ -1,0 +1,13 @@
+Résultats de barplot pour CEBPA et CEBPA_Biallelic
+p-value = 0.00012 selon le test du χ²
+Résultats bruts : 
+  CEBPA_Biallelic  CEBPA muté  CEBPA non muté
+0              bi          21               1
+1            mono           5              11
+Liste des ID Sample par catégorie :
+CEBPA muté :
+bi : BA2217, BA2915, BA2972, BA2184, BA2718, BA3312, BA2748, BA2156, BA2296, BA3261, BA3117, BA2156, BA2184, BA2718, BA3117, BA3312, BA3413, BA2296, BA2217, BA2868, BA2217
+mono : BA3153, BA3153, BA3199, BA2312, BA3199
+CEBPA non muté :
+bi : BA2731
+mono : BA2861, BA2653, BA2804, BA2675, BA2000, BA2867, BA3436, BA3216, BA3329, BA3357, BA3416

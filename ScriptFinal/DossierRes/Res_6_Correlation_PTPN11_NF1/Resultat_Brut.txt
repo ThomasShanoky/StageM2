@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de PTPN11 et NF1
+#Résultat du test statistique Test de Corrélation : r = 0.55

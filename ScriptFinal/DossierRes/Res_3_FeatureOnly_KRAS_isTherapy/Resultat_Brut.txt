@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KRAS en fonction de la feature isTherapy
+#Résultat du test statistique Test ANOVA : F = 3.54 et p-value = 0.02988

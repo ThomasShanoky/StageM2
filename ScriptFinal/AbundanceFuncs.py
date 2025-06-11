@@ -50,18 +50,19 @@ def MannWhitneyUTest(Df, feature):
         return 1, 1
 
 
-def ANOVATest(Df, feature):
-    """Effectue un test ANOVA pour plus de deux groupes"""
+def KWTest(Df, feature):
+    """Effectue un test Kruskal-Wallis pour plus de deux groupes"""
     groups = [Df[Df[feature] == cat]["NormalizedExpression"].values for cat in Df[feature].unique()] #liste de listes de valeurs d'abondance (normalisées) pour chaque groupe
 
     long = []
     for group in groups:
         long.append(len(group))
 
-    if 0 in long or 1 in long or 2 in long: #s'il existe un groupe avec seulement 0, 1 ou 2 échantillons, on ne peut pas faire le test ANOVA
+    if 0 in long or 1 in long or 2 in long: #s'il existe un groupe avec seulement 0, 1 ou 2 échantillons, on ne peut pas faire le test Kruskal-Wallis
         return 1, 1
     
-    f_stat, p = stats.f_oneway(*groups)
+    groups = [group for group in groups if not group.empty]
+    f_stat, p = stats.kruskal(*groups)
     return f_stat, p
 
 

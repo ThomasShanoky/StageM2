@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène RAD21 en fonction de la feature NPM1
+#Résultat du test statistique Test Mann-Whitney : U = 24364.00 et p-value = 0.00104

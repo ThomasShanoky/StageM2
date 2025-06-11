@@ -1,0 +1,2 @@
+#Corrélation entre les expressions de NRAS et SMC1A
+#Résultat du test statistique Test de Corrélation : r = -0.46

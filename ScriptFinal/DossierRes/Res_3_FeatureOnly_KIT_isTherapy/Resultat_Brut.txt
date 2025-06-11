@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène KIT en fonction de la feature isTherapy
+#Résultat du test statistique Test ANOVA : F = 5.31 et p-value = 0.00527
