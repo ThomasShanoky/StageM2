@@ -233,27 +233,56 @@ from pprint import pprint
 ##### Taux d'annotation pour les gènes ASXL1, RUNX1 et TP53 #####
 #################################################################
 
-file = "ScriptFinal/BEATAML_Cliniques.csv"
-df = pd.read_csv(file, sep=",", comment='#')[["ID Sample", "ASXL1", "RUNX1", "TP53"]]
+# file = "ScriptFinal/BEATAML_Cliniques.csv"
+# df = pd.read_csv(file, sep=",", comment='#')[["ID Sample", "ASXL1", "RUNX1", "TP53"]]
 
-# print(df)
+# # print(df)
 
-nb_ech = 0
-nb_asxl1_annoted = 0
-nb_runx1_annoted = 0
-nb_tp53_annoted = 0
+# nb_ech = 0
+# nb_asxl1_annoted = 0
+# nb_runx1_annoted = 0
+# nb_tp53_annoted = 0
 
-for index, row in df.iterrows():
-    if pd.isna(row["ASXL1"]):
-        nb_asxl1_annoted += 1
-    if pd.isna(row["RUNX1"]):
-        nb_runx1_annoted += 1
-    if pd.isna(row["TP53"]):
-        nb_tp53_annoted += 1
-    nb_ech += 1
+# for index, row in df.iterrows():
+#     if pd.isna(row["ASXL1"]):
+#         nb_asxl1_annoted += 1
+#     if pd.isna(row["RUNX1"]):
+#         nb_runx1_annoted += 1
+#     if pd.isna(row["TP53"]):
+#         nb_tp53_annoted += 1
+#     nb_ech += 1
 
-print(100*(nb_ech-nb_asxl1_annoted)/nb_ech)
-print(100*(nb_ech-nb_runx1_annoted)/nb_ech)
-print(100*(nb_ech-nb_tp53_annoted)/nb_ech)
+# print(100*(nb_ech-nb_asxl1_annoted)/nb_ech)
+# print(100*(nb_ech-nb_runx1_annoted)/nb_ech)
+# print(100*(nb_ech-nb_tp53_annoted)/nb_ech)
 
-print(f"{0.3+0.5:.20f}")
+# print(f"{0.3+0.5:.20f}")
+
+
+######################################################################################################################
+##### Vérifier que la liste des échantillons indexé et celle des échantillons possédant un RNAseq sont les mêmes #####
+######################################################################################################################
+
+file_index = "ScriptFinal/BEATAML_index.tsv"
+
+ech_index = list(pd.read_csv(file_index, sep="\t", comment='#'))
+ech_index = [ech[:6] for ech in ech_index]
+
+file_metadata = "ScriptFinal/BEATAML_Cliniques2.csv"
+data = pd.read_csv(file_metadata, sep=",", comment='#')
+ech_rnaseq = list(data["dbgap_rnaseq_sample"])
+ech_rnaseq = [ech[:6] for ech in ech_rnaseq if not pd.isna(ech)]
+
+
+c = 0
+for ech in ech_index:
+    if ech not in ech_rnaseq:
+        c += 1
+
+print(c) # c = 0 + les deux listes sont de même longueurs => Les deux listes sont les mêmes
+
+
+data = data.dropna(subset=["dbgap_rnaseq_sample"])
+print(data)
+print(len(data)) 
+data.to_csv("ScriptFinal/BEATAML_Cliniques.csv", sep=",", index=False)
