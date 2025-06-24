@@ -263,26 +263,54 @@ from pprint import pprint
 ##### Vérifier que la liste des échantillons indexé et celle des échantillons possédant un RNAseq sont les mêmes #####
 ######################################################################################################################
 
-file_index = "ScriptFinal/BEATAML_index.tsv"
+# file_index = "ScriptFinal/BEATAML_index.tsv"
 
-ech_index = list(pd.read_csv(file_index, sep="\t", comment='#'))
-ech_index = [ech[:6] for ech in ech_index]
+# ech_index = list(pd.read_csv(file_index, sep="\t", comment='#'))
+# ech_index = [ech[:6] for ech in ech_index]
 
-file_metadata = "ScriptFinal/BEATAML_Cliniques2.csv"
-data = pd.read_csv(file_metadata, sep=",", comment='#')
-ech_rnaseq = list(data["dbgap_rnaseq_sample"])
-ech_rnaseq = [ech[:6] for ech in ech_rnaseq if not pd.isna(ech)]
-
-
-c = 0
-for ech in ech_index:
-    if ech not in ech_rnaseq:
-        c += 1
-
-print(c) # c = 0 + les deux listes sont de même longueurs => Les deux listes sont les mêmes
+# file_metadata = "ScriptFinal/BEATAML_Cliniques2.csv"
+# data = pd.read_csv(file_metadata, sep=",", comment='#')
+# ech_rnaseq = list(data["dbgap_rnaseq_sample"])
+# ech_rnaseq = [ech[:6] for ech in ech_rnaseq if not pd.isna(ech)]
 
 
-data = data.dropna(subset=["dbgap_rnaseq_sample"])
-print(data)
-print(len(data)) 
-data.to_csv("ScriptFinal/BEATAML_Cliniques.csv", sep=",", index=False)
+# c = 0
+# for ech in ech_index:
+#     if ech not in ech_rnaseq:
+#         c += 1
+
+# print(c) # c = 0 + les deux listes sont de même longueurs => Les deux listes sont les mêmes
+
+
+# data = data.dropna(subset=["dbgap_rnaseq_sample"])
+# print(data)
+# print(len(data)) 
+# data.to_csv("ScriptFinal/BEATAML_Cliniques.csv", sep=",", index=False)
+
+
+############################################################################
+##### Normaliser les données d'expression obtenues par approches k-mer #####
+############################################################################
+
+file_totkmer = "ScriptFinal/TotalKmersPerSample.csv"
+file_expr = "ScriptFinal/ExpressionsWithKmers.csv"
+
+totkmers_dict = {}
+with open(file_totkmer, 'r') as f:
+    for i, line in enumerate(f.readlines()):
+        if i != 0:
+            line_list = line.strip().split(",")
+            samp = line_list[0]
+            tot_kmers = int(line_list[1])
+            totkmers_dict[samp] = tot_kmers
+
+# print(totkmers_dict)
+
+data = pd.read_csv(file_expr, sep=",", comment='#')
+
+for col in data.columns:
+    if col in totkmers_dict:
+        data[col] = (data[col] * 10**9) / totkmers_dict[col]
+
+
+data.to_csv("ScriptFinal/ExpressionsWithKmers2.csv", sep=",", index=False)

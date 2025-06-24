@@ -6,26 +6,6 @@ import seaborn as sns
 
 
 
-def NormalizationByTotKmers(ind_list, data_abundance, tot_kmers_file):
-        """Normalise les valeurs d'abondance par le nombre total de kmers"""
-
-        tot_kmers = pd.read_csv(tot_kmers_file, sep=",")
-        tot_kmers.set_index("Sample", inplace=True) 
-
-        NormalizedExpression = pd.DataFrame({
-            'ID Sample':ind_list,
-            'Abundance': data_abundance,
-        })
-
-        for index, row in NormalizedExpression.iterrows():
-            sample = row["ID Sample"]
-            tot_kmers_value = tot_kmers.loc[sample]["TotalKmers"]
-            NormalizedExpression.at[index, "TotalKmers"] = tot_kmers_value
-            NormalizedExpression.at[index, "NormalizedExpression"] = row["Abundance"] * 10**(9) / tot_kmers_value #multiplication par 10^9 pour avoir des valeurs aux ordres de grandeur de 10 à 100
-        
-        return NormalizedExpression
-
-
 def getFeatForPlotAbundance(data_beat_aml, NormalizedExpression, feature):
     """Récupère la valeur de la feature pour chaque échantillon dans le tableau d'expression normalisée"""
     NormalizedExpression[feature] = "" #création d'une nouvelle colonne vide

@@ -86,18 +86,6 @@ def getNonMutatedInd(data_expressions, AllIndMutated):
     return NonMutatedInd
 
 
-def checkIfIndExpressionAreInIndex(IndIndex, NonMutatedInd):
-    IndToDel = []
-
-    for ind in NonMutatedInd:
-        if ind not in IndIndex:
-            IndToDel.append(ind)
-
-    new_NonMutatedInd = [ind for ind in NonMutatedInd if ind not in IndToDel]
-
-    return new_NonMutatedInd
-
-
 def addNonMutatedIndExpression(data_expressions, Tableau, gene, nonMutatedInd):
 
     for ind in nonMutatedInd:
