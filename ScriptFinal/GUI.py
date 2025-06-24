@@ -15,7 +15,7 @@ from MutationsFuncs import *
 directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
 
-data_beat_aml_file = f"{directory}/BEATAML_Cliniques2.csv"
+data_beat_aml_file = f"{directory}/BEATAML_Cliniques.csv"
 data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#") #données cliniques de Beat-AML (métadonnées)
 data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] #on ne prend que les patients ayant un diagnostic initial
 data_beat_aml.set_index("ID Sample", inplace=True)
@@ -25,12 +25,6 @@ cats = list(data_beat_aml.columns)
 for i, cat in enumerate(cats):
     if 1 < len(np.unique(data_beat_aml[cat].astype(str))) < 8 and i not in list(range(8)): #on prend les catégories ayant entre 2 et 9 valeurs uniques + on ne prend pas les 7 premières features 
         usable_cat.append(cat)
-
-index_file = f"{directory}/BEATAML_index.tsv"
-with open(index_file) as f:
-    index = f.readlines()[0]
-index_list = index.split("\t")
-index_list = [ind[:6] for ind in index_list] #Liste des ID Sample de tous les échantillons indexés (sur Transipedia)
 
 Genes = ["NPM1", "DNMT3A", "FLT3", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"] #provenant de Leucegene : on prend les plus abondants pour travailler sur un nombre limité de gènes (Sample count >= 10). Seul KMT2D, présent dans Leucegene, n'est pas dans la liste des 140 gènes donné par Stéphane/Sandra
 Genes.sort()
@@ -43,23 +37,19 @@ data_expressions_beataml = pd.read_csv(expressions_beataml_file, sep=",", commen
 expressions_kmers_file = f"{directory}/ExpressionsWithKmers.csv"
 data_expressions_kmers = pd.read_csv(expressions_kmers_file, sep=",", comment="#") #données d'expressions construites avec les kmers uniques aux gènes
 
-tot_kmers_file = f"{directory}/TotalKmersPerSample.csv" #nombre total de kmers par échantillon
-
 
 ##### Interface graphique #####
 
 class GUI:
 
-    def __init__(self, data_beat_aml=data_beat_aml, index_list=index_list, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_beataml=data_expressions_beataml, data_expressions_kmers=data_expressions_kmers, tot_kmers_file=tot_kmers_file, directory=directory):
+    def __init__(self, data_beat_aml=data_beat_aml, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_beataml=data_expressions_beataml, data_expressions_kmers=data_expressions_kmers, directory=directory):
         self.data_beat_aml = data_beat_aml
-        self.index_list = index_list
         self.usable_cat = usable_cat
         self.Genes = Genes
         self.data_mutation = data_mutation
         self.data_expressions_beataml = data_expressions_beataml
         self.data_expressions = data_expressions_beataml #Expressions par défaut
         self.data_expressions_kmers = data_expressions_kmers
-        self.tot_kmers_file = tot_kmers_file
         self.directory = directory
 
         self.SaveAll = False #Booléen pour sauvegarder tous les résultats significatifs
@@ -358,10 +348,10 @@ class GUI:
 
         data_gene_mut = data_mutation[Genes.index(gene)] #données de mutations du gène sélectionné (contenant les ID samples, la position de l'altération, la séquence référente et la séquence altérée)
         ind_geneMut = data_gene_mut["sampleID"].values
-        ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml and name[:6] in self.index_list] #échantillons porteurs de la mutation
+        ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml] #échantillons porteurs de la mutation
 
         for ind in ind_beataml:
-            if ind not in ind_geneMut and ind in ind_beataml and ind in self.index_list:
+            if ind not in ind_geneMut and ind in ind_beataml:
                 ind_geneNonMut.append(ind) #échantillons non porteurs de la mutation
 
         gene_cat = np.unique(list((self.data_beat_aml[feature])))
@@ -404,10 +394,13 @@ class GUI:
         data_gene_mut = data_mutation[self.Genes.index(gene)]
         data_gene_mut = data_gene_mut[data_gene_mut["sampleID"].isin(ind_beataml)] #filtration des échantillons non présent dans les échantillons Beat-AML déjà filtrés au début (qui sont donc qu'au diagnostic initial)
         ind_geneMut = data_gene_mut["sampleID"].values #échantillons porteurs de la mutation
-        ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml and name[:6] in self.index_list]
+        ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml]
         data_abundance = data_gene_mut["mean_count_kmer_alt"].values #abondance des mutations
 
-        NormalizedExpression = NormalizationByTotKmers(ind_geneMut, data_abundance, self.tot_kmers_file)
+        NormalizedExpression = pd.DataFrame({
+            'ID Sample': ind_geneMut,
+            'NormalizedExpression': data_abundance,
+        })
 
         NormalizedExpression.set_index("ID Sample", inplace=True)
         NormalizedExpressionAndFeat = getFeatForPlotAbundance(data_beat_aml, NormalizedExpression, feature)
@@ -556,7 +549,6 @@ class GUI:
         Tableau = getTable(expressions, gene, dico_IndAndMut)
 
         NonMutatedInd = getNonMutatedInd(expressions, AllIndMutated)
-        NonMutatedInd = checkIfIndExpressionAreInIndex(self.index_list, NonMutatedInd)
 
         Tableau = addNonMutatedIndExpression(expressions, Tableau, gene, NonMutatedInd)
         
