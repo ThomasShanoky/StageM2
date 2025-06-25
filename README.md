@@ -16,10 +16,8 @@ Ce projet de stage a abouti au développement d'un outil possédant une interfac
         ├── FeaturesFuncs.py
         ├── MutationsFuncs.py 
         ├── BEATAML_Cliniques2.csv
-        ├── BEATAML_index.tsv          *
         ├── BEATAML_Expressions.csv
         ├── ExpressionsWithKmers.csv
-        ├── TotalKmersPerSample.csv    *
         ├── MUTdata/ #données de mutations 
         |       ├── GENE_alt_perso.csv *
         |       ├── ...
