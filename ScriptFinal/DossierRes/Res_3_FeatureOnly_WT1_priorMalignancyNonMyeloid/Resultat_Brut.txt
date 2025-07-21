@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène WT1 en fonction de la feature priorMalignancyNonMyeloid
-#Résultat du test statistique Test Mann-Whitney : U = 17016.50 et p-value = 0.00240

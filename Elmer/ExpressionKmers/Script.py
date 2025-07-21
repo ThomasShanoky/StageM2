@@ -16,7 +16,7 @@ directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 all_genes = f"{directory}/Genes.tsv"
 contigs_sequence_file = f"{directory}/GenesKmers/contigs.fa"
 contigs_count_file = f"{directory}/CountKmers.tsv"
-kmers_per_sample = f"{directory}/TotalKmersPerSample.csv"
+kmers_per_sample = f"{directory}/SampleID.csv"
 
 k = 31 #longueurs des kmers
 
@@ -34,7 +34,7 @@ def contigs_lengths(file):
     with open(file, 'r') as f:
         for l, line in enumerate(f.readlines()):
             if l%2 == 0: #ligne paire => en-tête de la séquence
-                seq_name = line[1:][:-1][:49] #rdeer coupe le nom à 50 caractères
+                seq_name = line[1:][:-1].split(" ")[0][:49] #rdeer coupe le nom à 50 caractères
             else:
                 seq = line[:-1]
                 length_dico[seq_name] = len(seq)
@@ -59,14 +59,16 @@ def get_sample_list(file):
 Genes = get_list_of_genes(all_genes)
 
 lengths_dico = contigs_lengths(contigs_sequence_file)
+# print(lengths_dico)
 
 SamplesList = get_sample_list(contigs_count_file)
 
 
 contigsCount = pd.read_csv(contigs_count_file, sep="\t")
-contigsCount.set_index("seq_na", inplace=True)
+contigsCount.set_index("query", inplace=True)
 contigsCount.index.name = None
 contigsCount = contigsCount.astype(float)
+# print(contigsCount)
 
 ##### Normalisation par le nombre de kmers dans chaque contig #####
 
@@ -105,8 +107,7 @@ def get_indexed_samples(file):
         for l, line in enumerate(f.readlines()):
             if l != 0:
                 line_list = line.split(',')
-                sample = line_list[0]
-                # print(sample)
+                sample = line_list[0].strip()
                 indexed.append(sample)
     return indexed
 
@@ -117,6 +118,7 @@ for sample in new_contigsCount:
         new_contigsCount.drop(sample, axis=1, inplace=True)
 
 
+new_contigsCount.index.name = "Gene"
 print(new_contigsCount)
-new_contigsCount.to_csv("Scripts/ExpressionKmers/ExpressionsWithKmers.csv", sep=",", index=True, header=True)
+new_contigsCount.to_csv("Elmer/ExpressionKmers/ExpressionsWithKmers.csv", sep=",", index=True, header=True)
 

@@ -9,10 +9,10 @@ def getTypesOfMutationsAndInd(Genes, gene, data_mutation):
     dico_mut = {}
     dico_IndAndMut = {}
     for _, row in geneMutations.iterrows():
-        Id = row["sampleID"]
-        local = row["localisation"]
-        alt = row["alt"]
-        ref = row["ref"]
+        Id = row["ID"]
+        local = row["CHROM"] + ":" + str(row["POS"]) 
+        alt = row["ALT"]
+        ref = row["REF"]
 
         if [local, alt, ref] not in dico_mut.values():
             type_mut = "mut" + str(len(dico_mut)+1)

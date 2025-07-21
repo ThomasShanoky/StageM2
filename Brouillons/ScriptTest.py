@@ -292,25 +292,122 @@ from pprint import pprint
 ##### Normaliser les données d'expression obtenues par approches k-mer #####
 ############################################################################
 
-file_totkmer = "ScriptFinal/TotalKmersPerSample.csv"
-file_expr = "ScriptFinal/ExpressionsWithKmers.csv"
+# file_totkmer = "ScriptFinal/TotalKmersPerSample.csv"
+# file_expr = "ScriptFinal/ExpressionsWithKmers.csv"
 
-totkmers_dict = {}
-with open(file_totkmer, 'r') as f:
-    for i, line in enumerate(f.readlines()):
-        if i != 0:
-            line_list = line.strip().split(",")
-            samp = line_list[0]
-            tot_kmers = int(line_list[1])
-            totkmers_dict[samp] = tot_kmers
+# totkmers_dict = {}
+# with open(file_totkmer, 'r') as f:
+#     for i, line in enumerate(f.readlines()):
+#         if i != 0:
+#             line_list = line.strip().split(",")
+#             samp = line_list[0]
+#             tot_kmers = int(line_list[1])
+#             totkmers_dict[samp] = tot_kmers
 
-# print(totkmers_dict)
+# # print(totkmers_dict)
 
-data = pd.read_csv(file_expr, sep=",", comment='#')
+# data = pd.read_csv(file_expr, sep=",", comment='#')
 
-for col in data.columns:
-    if col in totkmers_dict:
-        data[col] = (data[col] * 10**9) / totkmers_dict[col]
+# for col in data.columns:
+#     if col in totkmers_dict:
+#         data[col] = (data[col] * 10**9) / totkmers_dict[col]
 
 
-data.to_csv("ScriptFinal/ExpressionsWithKmers2.csv", sep=",", index=False)
+# data.to_csv("ScriptFinal/ExpressionsWithKmers2.csv", sep=",", index=False)
+
+
+##############################################################
+##### Avoir la liste des 141 gènes impliquées dans l'AML #####
+##############################################################
+
+# file = "ScriptFinal/data_mutations.vcf"
+# df = pd.read_csv(file, sep="\t", comment='#')
+
+# genes_list = list(np.unique(df["GENE"]))
+# print(len(genes_list)) #125
+# print(genes_list)
+
+
+# import pandas as pd
+
+
+# df[['CHROM', 'POS']] = df['localisation'].str.extract(r'(Chr[\w]+):(\d+)', expand=True)
+# df['POS'] = df['POS'].astype(int)
+# df['ID'] = df['ID_sample'].astype(str).str[:6]
+# df['GENE'] = df['Gene']
+# df['REF'] = df['seq_ref']
+# df['ALT'] = df['seq_alt']
+# df['ABUNDANCE'] = df['count_alt'].astype(str)
+# df['RATIO'] = df['% ratio'].str.replace('%', '', regex=False).astype(float)
+# df['QUAL'] = '.'
+# df['FILTER'] = 'PASS'
+
+# df['INFO'] = (
+#     'Gene=' + df['Gene'] +
+#     ';Ensembl_ID=' + df['Ensembl_ID'] +
+#     ';type_alt=' + df['type_alt'] +
+#     ';abundance=' + df['ABUNDANCE'].astype(str) +
+#     ';ratio=' + df['RATIO'].astype(str) +
+#     ';count_ref=' + df['count_ref'].astype(str) +
+#     ';count_alt=' + df['count_alt'].astype(str)
+# )
+
+# vcf_df = df[['CHROM', 'POS', 'ID', 'GENE', 'REF', 'ALT', 'ABUNDANCE', 'RATIO', 'QUAL', 'FILTER', 'INFO']]
+# vcf_df.columns = ['CHROM', 'POS', 'ID', 'GENE', 'REF', 'ALT', 'ABUNDANCE', 'RATIO', 'QUAL', 'FILTER', 'INFO']
+# vcf_df.to_csv("output.vcf", sep="\t", index=False)
+
+
+#######################################
+##### Formatage table expressions #####
+#######################################
+
+# import pandas as pd
+
+
+# file = "beataml_waves1to4_norm_exp_dbgap.txt"
+# df = pd.read_csv(file, sep="\t", comment='#')
+
+# df = df.drop(["stable_id", "description", "biotype"], axis=1)
+# df.columns = [col[:6] for col in df.columns]
+
+# df.to_csv("Expressions.csv", sep=",", index=False)
+
+
+
+############################################################
+##### Formatage nombre total de k-mers par échantillon #####
+############################################################
+
+# import pandas as pd
+
+
+# file = "kmerstot_per_sample.txt"
+# df = pd.DataFrame(columns=["Sample", "TotalKmers"])
+
+# with open(file, 'r') as f:
+#     for line in f.readlines():
+#         line_list = line.split(":")
+#         sample = line_list[0][:6]
+#         tot_kmers = line_list[1].strip()
+#         df = df._append({"Sample": sample, "TotalKmers": tot_kmers}, ignore_index=True)
+
+# df.to_csv("TotalKmersPerSample.csv", sep=",", index=False)
+
+
+
+import pandas as pd
+import os
+
+# file = "Elmer/ExpressionKmers/CountKmers.tsv"
+# df = pd.read_csv(file, sep="\t", comment='#')
+
+# df.columns = [col[:6] for col in df.columns]
+
+# df.to_csv("Elmer/ExpressionKmers/CountKmersFibn.tsv", sep="\t", index=False)
+
+
+
+data_beat_aml_file = f"ScriptFinal/Metadata.csv"
+data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#")
+data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] 
+data_beat_aml.to_csv(f"ScriptFinal/MetadataInitialDiagnosis.csv", sep=",", index=False)

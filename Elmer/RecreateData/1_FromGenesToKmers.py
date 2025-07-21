@@ -1,12 +1,11 @@
 import os
 import gzip
 import pandas as pd
-from pprint import pprint
 import shutil
 
 
 
-Genes = ["NPM1", "FLT3", "DNMT3A", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"]
+Genes = ['ABL1', 'ADA', 'ANKRD26', 'ASXL1', 'ASXL2', 'ATM', 'ATRX', 'BCL6', 'BCOR', 'BCORL1', 'BCR', 'BIRC3', 'BLM', 'BRAF', 'BRCA1', 'BRCA2', 'CALR', 'CARD11', 'CBL', 'CBLB', 'CDKN2A', 'CEBPA', 'CHEK2', 'CREBBP', 'CRLF2', 'CSF1R', 'CSF3R', 'CTCF', 'CUX1', 'DAXX', 'DDX41', 'DNM2', 'DNMT1', 'DNMT3A', 'EED', 'EP300', 'ETNK1', 'ETV6', 'EZH2', 'FAS', 'FBXW7', 'FLRT2', 'FLT3', 'GATA1', 'GATA2', 'GNAS', 'HNRNPK', 'HRAS', 'IDH1', 'IDH2', 'IKZF1', 'IKZF3', 'IL7R', 'JAK1', 'JAK2', 'JAK3', 'KAT6A', 'KDM6A', 'KDR', 'KIT', 'KLHDC8B', 'KLHL6', 'KMT2A', 'KMT2C', 'KRAS', 'LRRC4', 'LUC7L2', 'MAP2K1', 'MLH1', 'MPL', 'MSH2', 'MSH6', 'MYC', 'MYD88', 'NBN', 'NF1', 'NOTCH1', 'NPAT', 'NPM1', 'NRAS', 'NSD1', 'NTRK3', 'P2RY2', 'PAX5', 'PDGFRA', 'PHF6', 'PML', 'PMS2', 'PRF1', 'PRPF40B', 'PRPF8', 'PTPN11', 'RAD21', 'RB1', 'RELN', 'RUNX1', 'SETBP1', 'SF1', 'SF3A1', 'SF3B1', 'SH2B3', 'SH2D1A', 'SMARCB1', 'SMC1A', 'SMC3', 'SRP72', 'SRSF2', 'STAG2', 'STAT3', 'STXBP2', 'SUZ12', 'TAL1', 'TERT', 'TET2', 'TNFRSF13B', 'TP53', 'TPMT', 'TUBA3C', 'U2AF1', 'U2AF2', 'WAS', 'WRN', 'WT1', 'XPO1', 'ZRSR2']
 Genes.sort()
 
 directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
@@ -95,7 +94,7 @@ for gene in Genes:
     for file in output_files:
         shutil.copy(file, "Elmer/scratch/users/tlouvet/Scripts/RecreateData/KmerToSearch/")
         # directement sauvegardés dans le dossier sur le serveur Elmer, pour executer kmerator et rdeer
-        # Avant, j'executais ce script localement et je copiais les fichiers dans le dossier du serveur Elmer, car Elmer était lent à executer ce script (localement, ce script prend 20-30min)
+        # Avant, j'executais ce script localement et je copiais les fichiers dans le dossier du serveur Elmer, car Elmer était lent à executer ce script
 
 
     output_files = [f"{directory}/KmerToSearch/kmer_to_search_{gene}_ref{i}.fasta" for i in range(len(kmer_non_mutated))]
@@ -108,5 +107,7 @@ for gene in Genes:
     for file in output_files:
         shutil.copy(file, "Elmer/scratch/users/tlouvet/Scripts/RecreateData/KmerToSearchRef/")
         # directement sauvegardés dans le dossier sur le serveur Elmer, pour executer kmerator et rdeer
+
+    print(f"Génération des kmers pour {gene} terminée.")
 
 

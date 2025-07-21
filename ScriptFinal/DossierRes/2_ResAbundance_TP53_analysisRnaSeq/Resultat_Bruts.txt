@@ -1,3 +1,0 @@
-#Résultats bruts de l'abondance de mutation du gène TP53 selon la feature analysisRnaSeq, normalisée par le nombre total de kmers par échantillon
-#Test d'hypothèse de différence significative entre les moyennes des groupes
-#p-value = 0.022031 avec le test Mann-Whitney

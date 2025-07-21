@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène PTPN11, en fonction de la feature analysisDrug
-#Résultat du test statistique Test Mann-Whitney : U = 26.00 et p-value = 0.02424

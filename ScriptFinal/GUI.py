@@ -15,25 +15,51 @@ from MutationsFuncs import *
 directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
 
 
-data_beat_aml_file = f"{directory}/BEATAML_Cliniques.csv"
-data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#") #données cliniques de Beat-AML (métadonnées)
-data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] #on ne prend que les patients ayant un diagnostic initial
-data_beat_aml.set_index("ID Sample", inplace=True)
+metadata_file = f"{directory}/Metadata.csv"
+metadata = pd.read_csv(metadata_file, sep=",", comment="#") #données cliniques de Beat-AML (métadonnées)
+metadata = metadata[metadata["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] #on ne prend que les patients ayant un diagnostic initial
+metadata.set_index("ID Sample", inplace=True)
 
 usable_cat = []
-cats = list(data_beat_aml.columns)
+cats = list(metadata.columns)
 for i, cat in enumerate(cats):
-    if 1 < len(np.unique(data_beat_aml[cat].astype(str))) < 8 and i not in list(range(8)): #on prend les catégories ayant entre 2 et 9 valeurs uniques + on ne prend pas les 7 premières features 
+    if 1 < len(np.unique(metadata[cat].astype(str))) < 8 and i not in list(range(8)): #on prend les catégories ayant entre 2 et 9 valeurs uniques + on ne prend pas les 7 premières features 
         usable_cat.append(cat)
 
-Genes = ["NPM1", "DNMT3A", "FLT3", "TET2", "NRAS", "TP53", "RUNX1", "IDH2", "ASXL1", "WT1", "KRAS", "IDH1", "PTPN11", "SRSF2", "CEBPA", "KIT", "NF1", "STAG2", "GATA2", "EZH2", "BCOR", "JAK2", "SMC1A", "RAD21", "SF3B1", "CBL"] #provenant de Leucegene : on prend les plus abondants pour travailler sur un nombre limité de gènes (Sample count >= 10). Seul KMT2D, présent dans Leucegene, n'est pas dans la liste des 140 gènes donné par Stéphane/Sandra
-Genes.sort()
 
-data_mutation_files = [f"{directory}/MUTdata/{gene}_alt_perso.csv" for gene in Genes]
-data_mutation = [pd.read_csv(file, sep=",", comment="#")[["sampleID", "localisation", "ref", "alt", "mean_count_kmer_alt"]] for file in data_mutation_files] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée
+vcf_file = f"{directory}/data_mutations.vcf"
+vcf_df = pd.read_csv(vcf_file, sep="\t", comment="#") #données de mutations
 
-expressions_beataml_file = f"{directory}/BEATAML_Expressions.csv"
-data_expressions_beataml = pd.read_csv(expressions_beataml_file, sep=",", comment="#") #données d'expressions directement prélevées de Beat-AML
+#Tri : si un gène a moins de 10 occurences de mutations, on le filtre
+gene_a = vcf_df["GENE"][0]
+occurence = 0
+for gene in vcf_df["GENE"]:
+    if gene == gene_a:
+        occurence += 1
+    else:
+        if occurence < 10:
+            vcf_df = vcf_df[vcf_df["GENE"] != gene_a]
+        gene_a = gene
+        occurence = 1
+
+if occurence < 10:
+    vcf_df = vcf_df[vcf_df["GENE"] != gene_a] 
+
+Genes = list(np.unique(vcf_df["GENE"]))
+
+data_mutation = [df for _, df in vcf_df.groupby("GENE")] #données de mutations par gène
+if "ABUNDANCE" in data_mutation[0].columns:
+    data_mutation = [df[["ID", "CHROM", "POS", "REF", "ALT", "ABUNDANCE"]] for df in data_mutation] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée
+else:
+    data_mutation = [df[["ID", "CHROM", "POS", "REF", "ALT"]] for df in data_mutation]
+
+
+if os.path.exists(f"{directory}/ExpressionsDonnees.csv"):
+    expressions_beataml_file = f"{directory}/ExpressionsDonnees.csv"
+    data_expressions_given = pd.read_csv(expressions_beataml_file, sep=",", comment="#") #données d'expressions directement prélevées de Beat-AML
+else:
+    data_expressions_given = None
+
 expressions_kmers_file = f"{directory}/ExpressionsWithKmers.csv"
 data_expressions_kmers = pd.read_csv(expressions_kmers_file, sep=",", comment="#") #données d'expressions construites avec les kmers uniques aux gènes
 
@@ -42,13 +68,13 @@ data_expressions_kmers = pd.read_csv(expressions_kmers_file, sep=",", comment="#
 
 class GUI:
 
-    def __init__(self, data_beat_aml=data_beat_aml, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_beataml=data_expressions_beataml, data_expressions_kmers=data_expressions_kmers, directory=directory):
-        self.data_beat_aml = data_beat_aml
+    def __init__(self, metadata=metadata, usable_cat=usable_cat, Genes=Genes, data_mutation=data_mutation, data_expressions_given=data_expressions_given, data_expressions_kmers=data_expressions_kmers, directory=directory):
+        self.metadata = metadata
         self.usable_cat = usable_cat
         self.Genes = Genes
         self.data_mutation = data_mutation
-        self.data_expressions_beataml = data_expressions_beataml
-        self.data_expressions = data_expressions_beataml #Expressions par défaut
+        self.data_expressions_given = data_expressions_given
+        self.data_expressions = data_expressions_given #Expressions par défaut
         self.data_expressions_kmers = data_expressions_kmers
         self.directory = directory
 
@@ -112,7 +138,7 @@ class GUI:
 
         # Choix de la provenance des données d'expression
         self.switch_state = False
-        self.mut_button_expr = tk.Button(self.window, text="Expressions de BEAT AML", command=self.toggle_switch, font=("DejaVu Serif", 13), bg="#FF6347", fg="#FFFFFF", width=20)
+        self.mut_button_expr = tk.Button(self.window, text="Expressions données", command=self.toggle_switch, font=("DejaVu Serif", 13), bg="#FF6347", fg="#FFFFFF", width=20)
         self.mut_button_expr.place(x=30, y=220)
 
         # Les 6 cases cochables pour les différentes fonctionnalités
@@ -262,11 +288,11 @@ class GUI:
 
         self.switch_state = not self.switch_state
         if self.switch_state:
-            self.mut_button_expr.config(text="Expression kmers", bg="#32CD32")
+            self.mut_button_expr.config(text="Expressions kmers", bg="#32CD32")
             self.data_expressions = data_expressions_kmers
         else:
-            self.mut_button_expr.config(text="Expressions de BEAT AML", bg="#FF6347")
-            self.data_expressions = data_expressions_beataml
+            self.mut_button_expr.config(text="Expressions données", bg="#FF6347")
+            self.data_expressions = data_expressions_given
 
         return 
 
@@ -306,6 +332,10 @@ class GUI:
             messagebox.showwarning("Veuillez entrez un gène valide", f"Le gène \"{gene}\" n'est pas valide")
         if feature not in self.usable_cat:
             messagebox.showwarning("Veuillez entrez une feature valide", f"La feature \"{feature}\" n'est pas valide")
+
+        if self.data_expressions is None:
+            messagebox.showwarning("Attention", "Les données d'expressions RPKM ne sont pas disponibles")
+            return
         
         if self.DistributionVar.get():
             self.generate_plot_without_abundance(gene, feature)
@@ -344,20 +374,20 @@ class GUI:
     def generate_plot_without_abundance(self, gene, feature):
 
         ind_geneNonMut = []
-        ind_beataml = self.data_beat_aml.index.tolist()
+        ind_beataml = self.metadata.index.tolist()
 
         data_gene_mut = data_mutation[Genes.index(gene)] #données de mutations du gène sélectionné (contenant les ID samples, la position de l'altération, la séquence référente et la séquence altérée)
-        ind_geneMut = data_gene_mut["sampleID"].values
+        ind_geneMut = data_gene_mut["ID"].values
         ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml] #échantillons porteurs de la mutation
 
         for ind in ind_beataml:
             if ind not in ind_geneMut and ind in ind_beataml:
                 ind_geneNonMut.append(ind) #échantillons non porteurs de la mutation
 
-        gene_cat = np.unique(list((self.data_beat_aml[feature])))
+        gene_cat = np.unique(list((self.metadata[feature])))
         gene_cat = [cat for cat in gene_cat if not (pd.isna(cat)) or cat != 'nan'] #Valeurs possibles de la feature sélectionnée (on enlève les NaN)
-        geneMutAndCat = get_number_for_bar(self.data_beat_aml, gene_cat, ind_beataml, ind_geneMut, feature)
-        geneNonMutAndCat = get_number_for_bar(self.data_beat_aml, gene_cat, ind_beataml, ind_geneNonMut, feature)
+        geneMutAndCat = get_number_for_bar(self.metadata, gene_cat, ind_beataml, ind_geneMut, feature)
+        geneNonMutAndCat = get_number_for_bar(self.metadata, gene_cat, ind_beataml, ind_geneNonMut, feature)
 
         L_ind = rearrangeZeros(geneMutAndCat, geneNonMutAndCat) #indices des colonnes (=catégories) dont la valeur est 0 pour les deux groupes (muté et non muté)
         CatSupprimees = [gene_cat[i] for i in L_ind]
@@ -379,7 +409,7 @@ class GUI:
             SaveSignificant = False
 
         if self.SaveBool.get() or (self.SaveAll and SaveSignificant):
-            CreateFileResFeat(data_beat_aml, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll, self.directory)
+            CreateFileResFeat(metadata, gene, feature, gene_cat, geneMutAndCat, geneNonMutAndCat, p, ind_geneMut, ind_geneNonMut, self.fig, self.SaveAll, self.directory)
 
         return
     
@@ -388,22 +418,33 @@ class GUI:
 
     def generate_plot_with_abundance(self, gene, feature):
 
-        ind_beataml = self.data_beat_aml.index.tolist()
+        if "ABUNDANCE" not in data_mutation[0].columns:
+            messagebox.showwarning("Attention", "Les données de mutations ne contiennent pas d'abondance")
+            return
+
+        ind_beataml = self.metadata.index.tolist()
 
         # data_gene_mut = pd.read_csv(f"{self.directory}/newMUTdata/{gene}_alt_perso.csv", sep=",")
         data_gene_mut = data_mutation[self.Genes.index(gene)]
-        data_gene_mut = data_gene_mut[data_gene_mut["sampleID"].isin(ind_beataml)] #filtration des échantillons non présent dans les échantillons Beat-AML déjà filtrés au début (qui sont donc qu'au diagnostic initial)
-        ind_geneMut = data_gene_mut["sampleID"].values #échantillons porteurs de la mutation
+        data_gene_mut = data_gene_mut[data_gene_mut["ID"].isin(ind_beataml)] #filtration des échantillons non présent dans les échantillons Beat-AML déjà filtrés au début (qui sont donc qu'au diagnostic initial)
+        ind_geneMut = data_gene_mut["ID"].values #échantillons porteurs de la mutation
         ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml]
-        data_abundance = data_gene_mut["mean_count_kmer_alt"].values #abondance des mutations
+        data_abundance = data_gene_mut["ABUNDANCE"].values #abondance des mutations
 
         NormalizedExpression = pd.DataFrame({
             'ID Sample': ind_geneMut,
             'NormalizedExpression': data_abundance,
         })
+        NormalizedExpression["NormalizedExpression"] = NormalizedExpression["NormalizedExpression"].astype(float)
+
+        if os.path.exists(f"{self.directory}/TotalKmersPerSample.csv"):
+            file = f"{self.directory}/TotalKmersPerSample.csv"
+            TotKmers = pd.read_csv(file, sep=",", comment="#") 
+            for ind, _ in NormalizedExpression.iterrows():
+                NormalizedExpression.loc[ind, "NormalizedExpression"] = (10**9) * NormalizedExpression.loc[ind, "NormalizedExpression"] / TotKmers.loc[TotKmers["ID"] == NormalizedExpression.loc[ind, "ID Sample"], "TotalKmers"].values[0] #normalisation de l'abondance par le nombre total de kmers pour chaque échantillon
 
         NormalizedExpression.set_index("ID Sample", inplace=True)
-        NormalizedExpressionAndFeat = getFeatForPlotAbundance(data_beat_aml, NormalizedExpression, feature)
+        NormalizedExpressionAndFeat = getFeatForPlotAbundance(metadata, NormalizedExpression, feature)
         NormalizedExpressionAndFeat = NormalizedExpressionAndFeat[~NormalizedExpressionAndFeat[feature].isin(["Unknown", "UNKNOWN", "unknown", "nan"])] # ~ = négation, on veut donc ici ENLEVER les valeurs de catégories de type "Unknown"
 
         if len(np.unique(list(NormalizedExpressionAndFeat[feature]))) == 1 and not(self.SaveAll): 
@@ -443,10 +484,10 @@ class GUI:
 
     def generate_plot_feature(self, gene, feature, expressions):
 
-        featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
+        featureValues = self.metadata[feature].dropna().unique().tolist()
         featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]] #valeurs uniques de la feature sélectionnée (on enlève les NaN et les Unknown)
 
-        SamplesAndFeatures = getSamplesAndFeatures(self.data_beat_aml, feature, featureValues) #échantillons et features associées 
+        SamplesAndFeatures = getSamplesAndFeatures(self.metadata, feature, featureValues) #échantillons et features associées 
 
         ind_expr = list(expressions.columns)[1:] #échantillons qui ont une expression de gène
 
@@ -620,10 +661,10 @@ class GUI:
 
         PatientsRelatedToMut = self.dico_IndAndMut[Mutation]
 
-        featureValues = self.data_beat_aml[feature].dropna().unique().tolist()
+        featureValues = self.metadata[feature].dropna().unique().tolist()
         featureValues = [val for val in featureValues if val not in [np.nan, "Unknown", "unknown", "UNKNOWN"]]
 
-        SamplesAndFeatures = getSamplesAndFeatures(self.data_beat_aml, feature, featureValues)
+        SamplesAndFeatures = getSamplesAndFeatures(self.metadata, feature, featureValues)
 
         inter_ind_pd = pd.DataFrame({"Sample": "", "Feature": "", "ExpressionGene": 0}, index=[0])
 
@@ -805,7 +846,7 @@ class GUI:
         progress_bar["value"] = 0
 
         for gene in list_genes:                
-            for expressions in [data_expressions_kmers, data_expressions_beataml]:
+            for expressions in [data_expressions_kmers, data_expressions_given]:
                 for gene2 in self.Genes:
                     if gene != gene2:
                         if self.feat_choice_var.get() == "Toutes":
@@ -816,7 +857,8 @@ class GUI:
                     progress_bar["value"] += 1
                     progress_window.update_idletasks()
                     self.generate_plot_feature(gene, feature, expressions)
-                    self.generate_plot_with_abundance(gene, feature)
+                    if "ABUNDANCE" in data_mutation[0].columns:
+                        self.generate_plot_with_abundance(gene, feature)
                     self.generate_plot_without_abundance(gene, feature)
                     for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
                         if Mutation != "Toutes les mutations":

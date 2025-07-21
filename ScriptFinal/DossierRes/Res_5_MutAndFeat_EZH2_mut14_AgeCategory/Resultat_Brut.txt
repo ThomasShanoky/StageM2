@@ -1,2 +1,0 @@
-#Boxplots d'expressions de la mutation mut14 (T>G aux positions chr20:31023821-31023821) du gène EZH2, en fonction de la feature AgeCategory
-#Résultat du test statistique Test ANOVA : F = 5.53 et p-value = 0.02908

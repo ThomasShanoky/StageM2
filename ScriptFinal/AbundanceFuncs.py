@@ -41,7 +41,7 @@ def KWTest(Df, feature):
     if 0 in long or 1 in long or 2 in long: #s'il existe un groupe avec seulement 0, 1 ou 2 échantillons, on ne peut pas faire le test Kruskal-Wallis
         return 1, 1
     
-    groups = [group for group in groups if not group.empty]
+    groups = [group for group in groups if len(group) > 0]
     f_stat, p = stats.kruskal(*groups)
     return f_stat, p
 
