@@ -131,4 +131,3 @@ thomaslouvet7@gmail.com
 
 Stage encadré par Chloé BESSIERE, Sandra DAILHAU et Stéphane PYRONNET. 
 
-
