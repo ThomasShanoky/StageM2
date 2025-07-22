@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène NPM1 en fonction de la feature specimenType
-#Résultat du test statistique Test Kruskal-Wallis : F = 6.51 et p-value = 0.03859
+#Résultat du test statistique Test Kruskal-Wallis : F = 19.83 et p-value = 0.00005

@@ -1,2 +1,2 @@
 #Boxplots d'expressions du gène NPM1 en fonction de la feature ELN2017
-#Résultat du test statistique Test Kruskal-Wallis : F = 13.63 et p-value = 0.03401
+#Résultat du test statistique Test Kruskal-Wallis : F = 16.07 et p-value = 0.01337

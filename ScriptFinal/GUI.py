@@ -333,9 +333,6 @@ class GUI:
         if feature not in self.usable_cat:
             messagebox.showwarning("Veuillez entrez une feature valide", f"La feature \"{feature}\" n'est pas valide")
 
-        if self.data_expressions is None:
-            messagebox.showwarning("Attention", "Les données d'expressions RPKM ne sont pas disponibles")
-            return
         
         if self.DistributionVar.get():
             self.generate_plot_without_abundance(gene, feature)
@@ -343,6 +340,11 @@ class GUI:
         if self.AbondanceVar.get():
             self.generate_plot_with_abundance(gene, feature)
             return
+        
+        if self.data_expressions is None:
+            messagebox.showwarning("Attention", "Les données d'expressions RPKM ne sont pas disponibles")
+            return
+        
         if self.FeatureVar.get():
             self.generate_plot_feature(gene, feature, self.data_expressions)
             return
@@ -845,8 +847,12 @@ class GUI:
         progress_bar["maximum"] = tot_tasks
         progress_bar["value"] = 0
 
+        expressions_list = [data_expressions_kmers, data_expressions_given]
+        if data_expressions_given is None:
+            expressions_list = [data_expressions_kmers]
+
         for gene in list_genes:                
-            for expressions in [data_expressions_kmers, data_expressions_given]:
+            for expressions in expressions_list:
                 for gene2 in self.Genes:
                     if gene != gene2:
                         if self.feat_choice_var.get() == "Toutes":

@@ -1,0 +1,2 @@
+#Boxplots d'expressions du gène ABL1 en fonction de la feature dxAtInclusion
+#Résultat du test statistique Test Kruskal-Wallis : F = 9.27 et p-value = 0.02594

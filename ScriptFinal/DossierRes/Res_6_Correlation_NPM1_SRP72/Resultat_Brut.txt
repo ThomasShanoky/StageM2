@@ -1,2 +1,2 @@
 #Corrélation entre les expressions de NPM1 et SRP72
-#Résultat du test statistique Test de Corrélation : r = 0.54
+#Résultat du test statistique Test de Corrélation : r = 0.64
