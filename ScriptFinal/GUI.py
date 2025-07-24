@@ -28,7 +28,55 @@ for i, cat in enumerate(cats):
 
 
 vcf_file = f"{directory}/data_mutations.vcf"
-vcf_df = pd.read_csv(vcf_file, sep="\t", comment="#") #données de mutations
+
+#Pré traitement VCF : lier les variants aux échantillons 
+with open(vcf_file, "r") as f:
+    for i, line in enumerate(f):
+        if line.startswith("#CHROM"):
+            header_line = i 
+            break
+
+vcf_df = pd.read_csv(vcf_file, sep="\t", skiprows=header_line)
+vcf_df.columns = vcf_df.columns.str.replace("#", "")  
+vcf_df["CHROM"] = vcf_df["CHROM"].astype(str)
+
+
+vcf_df["GENE"] = ""
+vcf_df["SAMPLE"] = ""
+vcf_df["ABUNDANCE"] = 0.0
+
+new_rows = []
+
+for index, row in vcf_df.iterrows():
+    gene = row["INFO"].split("GENE=")[1].split(";")[0]
+    nb_sample = int(row["INFO"].split("NUMBER_SAMPLES=")[1].split(";")[0])
+    all_samples = row["INFO"].split("SAMPLES=")[2]
+    for i in range(nb_sample):
+        sample = all_samples.split("(")[1+i].split(",")[0].strip("'\"")[:6] #limite de 6 caractères pour que tous aient la même longueur
+        abundance = float(all_samples.split("(")[1+i].split(",")[1].strip(")"))
+
+        if i == 0: #réécrire la ligne
+            vcf_df.at[index, "GENE"] = gene
+            vcf_df.at[index, "SAMPLE"] = sample
+            vcf_df.at[index, "ABUNDANCE"] = abundance
+
+        else: #ajouter une ligne
+            new_row = row.to_dict()
+            new_row["GENE"] = gene
+            new_row["SAMPLE"] = sample
+            new_row["ABUNDANCE"] = abundance
+            new_rows.append(new_row)
+
+if new_rows:
+    vcf_df = pd.concat([vcf_df, pd.DataFrame(new_rows)], ignore_index=True)
+
+
+pd.set_option('display.max_columns', None)  # Affiche toutes les colonnes
+pd.set_option('display.max_rows', None)     # Affiche toutes les lignes
+pd.set_option('display.width', None)        # Largeur illimitée
+pd.set_option('display.max_colwidth', None)
+
+
 
 #Tri : si un gène a moins de 10 occurences de mutations, on le filtre
 gene_a = vcf_df["GENE"][0]
@@ -45,13 +93,14 @@ for gene in vcf_df["GENE"]:
 if occurence < 10:
     vcf_df = vcf_df[vcf_df["GENE"] != gene_a] 
 
+
 Genes = list(np.unique(vcf_df["GENE"]))
 
 data_mutation = [df for _, df in vcf_df.groupby("GENE")] #données de mutations par gène
 if "ABUNDANCE" in data_mutation[0].columns:
-    data_mutation = [df[["ID", "CHROM", "POS", "REF", "ALT", "ABUNDANCE"]] for df in data_mutation] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée
+    data_mutation = [df[["SAMPLE", "CHROM", "POS", "REF", "ALT", "ABUNDANCE"]] for df in data_mutation] # données de mutations par gène : ID sample, la position de l'altération, la séquence référente et la séquence altérée
 else:
-    data_mutation = [df[["ID", "CHROM", "POS", "REF", "ALT"]] for df in data_mutation]
+    data_mutation = [df[["SAMPLE", "CHROM", "POS", "REF", "ALT"]] for df in data_mutation]
 
 
 if os.path.exists(f"{directory}/ExpressionsDonnees.csv"):
@@ -379,7 +428,7 @@ class GUI:
         ind_beataml = self.metadata.index.tolist()
 
         data_gene_mut = data_mutation[Genes.index(gene)] #données de mutations du gène sélectionné (contenant les ID samples, la position de l'altération, la séquence référente et la séquence altérée)
-        ind_geneMut = data_gene_mut["ID"].values
+        ind_geneMut = data_gene_mut["SAMPLE"].values
         ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml] #échantillons porteurs de la mutation
 
         for ind in ind_beataml:
@@ -428,8 +477,8 @@ class GUI:
 
         # data_gene_mut = pd.read_csv(f"{self.directory}/newMUTdata/{gene}_alt_perso.csv", sep=",")
         data_gene_mut = data_mutation[self.Genes.index(gene)]
-        data_gene_mut = data_gene_mut[data_gene_mut["ID"].isin(ind_beataml)] #filtration des échantillons non présent dans les échantillons Beat-AML déjà filtrés au début (qui sont donc qu'au diagnostic initial)
-        ind_geneMut = data_gene_mut["ID"].values #échantillons porteurs de la mutation
+        data_gene_mut = data_gene_mut[data_gene_mut["SAMPLE"].isin(ind_beataml)] #filtration des échantillons non présent dans les échantillons Beat-AML déjà filtrés au début (qui sont donc qu'au diagnostic initial)
+        ind_geneMut = data_gene_mut["SAMPLE"].values #échantillons porteurs de la mutation
         ind_geneMut = [name[:6] for name in ind_geneMut if name[:6] in ind_beataml]
         data_abundance = data_gene_mut["ABUNDANCE"].values #abondance des mutations
 

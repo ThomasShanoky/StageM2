@@ -9,12 +9,19 @@ def getTypesOfMutationsAndInd(Genes, gene, data_mutation):
     dico_mut = {}
     dico_IndAndMut = {}
     for _, row in geneMutations.iterrows():
-        Id = row["ID"]
+        Id = row["SAMPLE"]
         local = row["CHROM"] + ":" + str(row["POS"]) 
         alt = row["ALT"]
         ref = row["REF"]
 
-        if [local, alt, ref] not in dico_mut.values():
+        #cherche si la mutation existe déjà
+        found = False
+        for mut, details in dico_mut.items():
+            if details == [local, alt, ref]:
+                type_mut = mut
+                found = True
+                break
+        if not found:
             type_mut = "mut" + str(len(dico_mut)+1)
             dico_mut[type_mut] = [local, alt, ref]
             dico_IndAndMut[type_mut] = []

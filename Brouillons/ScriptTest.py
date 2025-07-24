@@ -407,7 +407,60 @@ import os
 
 
 
-data_beat_aml_file = f"ScriptFinal/Metadata.csv"
-data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#")
-data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] 
-data_beat_aml.to_csv(f"ScriptFinal/MetadataInitialDiagnosis.csv", sep=",", index=False)
+# data_beat_aml_file = f"ScriptFinal/Metadata.csv"
+# data_beat_aml = pd.read_csv(data_beat_aml_file, sep=",", comment="#")
+# data_beat_aml = data_beat_aml[data_beat_aml["diseaseStageAtSpecimenCollection"] == "Initial Diagnosis"] 
+# data_beat_aml.to_csv(f"ScriptFinal/MetadataInitialDiagnosis.csv", sep=",", index=False)
+
+
+
+directory = '/'.join(os.path.abspath(__file__).split('/')[:-1])
+
+
+# vcf_file = f"{directory}/data_mutations.vcf"
+vcf_file = f"ScriptFinal/gene_test_thomas.vcf"
+
+#Pré traitement VCF
+
+with open(vcf_file, "r") as f:
+    for i, line in enumerate(f):
+        if line.startswith("#CHROM"):
+            header_line = i 
+            break
+
+vcf_df = pd.read_csv(vcf_file, sep="\t", skiprows=header_line)
+vcf_df.columns = vcf_df.columns.str.replace("#", "")  
+# print(vcf_df.columns)
+
+
+vcf_df["GENE"] = ""
+vcf_df["SAMPLE"] = ""
+vcf_df["ABUNDANCE"] = 0.0
+
+new_rows = []
+
+for index, row in vcf_df.iterrows():
+    gene = row["INFO"].split("GENE=")[1].split(";")[0]
+    nb_sample = int(row["INFO"].split("NUMBER_SAMPLES=")[1].split(";")[0])
+    all_samples = row["INFO"].split("SAMPLES=")[2]
+    for i in range(nb_sample):
+        sample = all_samples.split("(")[1+i].split(",")[0].strip("'\"")[:6]
+        abundance = float(all_samples.split("(")[1+i].split(",")[1].strip(")"))
+
+        if i == 0: #réécrire la ligne
+            vcf_df.at[index, "GENE"] = gene
+            vcf_df.at[index, "SAMPLE"] = sample
+            vcf_df.at[index, "ABUNDANCE"] = abundance
+
+        else: #ajouter une ligne
+            new_row = row.to_dict()
+            new_row["GENE"] = gene
+            new_row["SAMPLE"] = sample
+            new_row["ABUNDANCE"] = abundance
+            new_rows.append(new_row)
+
+if new_rows:
+    vcf_df = pd.concat([vcf_df, pd.DataFrame(new_rows)], ignore_index=True)
+
+# print(vcf_df)
+vcf_df.to_csv(f"{directory}/data_mutations_processed.csv", sep=",", index=False)

@@ -83,27 +83,31 @@ De plus, s'il a un gène et/ou une métadonnée d'intérêt, il peut choisir de 
 
 ### Guide d'utilisation
 
-Par défaut, l'outil utilise les données de Beat-AML : les métadonnées, les expressions et les mutations. L'outil est déjà prêt à l'emploi pour ces données pour le tester. \
+L’outil écarte les gènes présentant trop peu de mutations : si un gène est muté chez moins de 10 individus, il n’est pas pris en compte dans le choix des gènes. \
+Par défaut, l'outil utilise les données de Beat-AML : les métadonnées, les expressions et les mutations. L'outil est déjà prêt à l'emploi pour ces données pour le tester. 
 Si l'utilisateur veut exécuter les différentes fonctionnalités, il doit remplacer les données de Beat-AML par les siennes. 
 
 
 - Données de mutation : 
-L'utilisateur doit posséder un fichier nommé `data_mutations.vcf` avec les colonnes suivantes au minimum : `CHROM` indiquant le chromosome de la mutation, `POS` donnant la position génomique du variant, `ID` qui est l'identifiant d'échantillon portant le variant, `GENE` qui est le gène où est présent le variant, et enfin `REF` et `ALT` qui sont les séquences de référence et altérée. Le fichier peut bénéficier d'une autre colonne, `ABUNDANCE`, qui contient les valeurs d'abondance en k-mers du variant pour l'échantillon. Cette colonne est optionnelle pour l'exécution de l'outil mais indispensable si l'utilisateur souhaite générer les résultats de la deuxième fonctionnalité. \
-Il est à noter que la colonne `ID` n'est pas une colonne d'identifiant pour les variants mais bien pour les **échantillons**, nous permettant de lier les échantillons aux variants qu'ils portent. 
+L'utilisateur doit posséder un fichier nommé `data_mutations.vcf` avec les colonnes suivantes au minimum : `CHROM` indiquant le chromosome de la mutation, `POS` donnant la position génomique du variant, `GENE` qui est le gène où est présent le variant, et enfin `REF` et `ALT` qui sont les séquences de référence et altérée. Le fichier doit contenir la colonne `INFO`, qui doit posséder les informations suivantes obligatoirement afin de lier les échantillons aux variants : 
+  - Le gène portant la variant, indiqué par `GENE=` 
+  - le nombre d'échantillon qui porte le variant, indiqué par `NUMBER_SAMPLES=`
+  - les échantillons et leur abondance de mutation par k-mers, indiqués par des tuples sous la forme `SAMPLES=('sample1', abundance1),('sample2', abundance2), ...`
+
 
 - Nombre total de k-mers par échantillons :
 Si l'utilisateur les possède, il peut fournir dans un fichier `TotalKmersPerSample.csv` le nombre total de k-mers présent dans chaque échantillon. La première colonne doit être les identifiants d'échantillon avec comme nom de colonne `ID` et la deuxième colonne doit être les nombres totaux de k-mers avec en nom de colonne `TotalKmers`. Ce fichier n'est pas nécessaire à l'exécution de l'outil principal (interface graphique), il permet de normaliser les données d'abondances précédemment.
 
-- Données d'expression en RPKM :
+- Données d'expression normalisées :
 L'utilisateur peut fournir des données d'expression déjà prêtes s'il en possède. Le nom du fichier doit être `ExpressionsDonnees.csv`, et il doit contenir : 
   - En colonne, les gènes. Le nom de la colonne doit obligatoirement être `Gene`
   - En ligne, les identifiants des échantillons. Ces derniers doivent faire la même taille de caractères (Par exemple pour Beat-AML, les identifiants sont composés de 6 caractères).
 
 - Données d'expression déduite via les k-mers : 
-L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il veut étudier. S'il ne les a pas, il doit posséder un environnement dans lequel un ou des index de ses données RNA-seq existent (obtenable par exemple, avec REINDEER), il peut ensuite suivre ces étapes : 
+L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il veut étudier. S'il ne les a pas, il doit posséder un environnement dans lequel un ou des index de ses données RNA-seq existent (obtenable par exemple, avec [REINDEER](https://github.com/kamimrcht/REINDEER)), il peut ensuite suivre ces étapes : 
   1. Créer un fichier `Genes.tsv` contenant l'ensemble de ses gènes.
-  2. Récupérer les contigs spécifiques de ces gènes (par exemple, à l'aide de l'outil Kmerator qui lui donnera l'ensemble des contigs spécifiques aux gènes).
-  3. Récupérer les abondances de ces contigs dans l'index dans un dossier nommé `GenesKmers`.
+  2. Récupérer les contigs spécifiques de ces gènes (par exemple, à l'aide de l'outil [Kmerator](https://github.com/Transipedia/kmerator) qui lui donnera l'ensemble des contigs spécifiques aux gènes). Avec cet outil, on peut executer la commande `kmerator -s Genes.tsv -o GenesKmers` pour obtenir le fichier `contigs.fa` contenant les contigs spécifiques de nos gènes.
+  3. Récupérer les abondances de ces contigs dans l'index dans un dossier nommé `GenesKmers` (précédemment créé avec Kmerator) avec REINDEER. 
   4. Si la requête s'est effectuée sur plusieurs index, il faut regrouper les comptages en un seul fichier, nommé `CountKmers.tsv`.
   5. Exécuter le script présent dans le dossier `Elmer/ExpressionKmers` avec le fichier `CountKmers.tsv` présent dans ce même dossier, avec `Genes.tsv`, le dossier `GenesKmers` et enfin un fichier `SampleID.csv` qui contient tous les identifiants d'échantillons avec comme nom de colonne `Sample`.
   6. L'utilisateur peut copier/coller ou déplacer le fichier final `ExpressionsWithKmers.csv` dans le dossier `ScriptFinal/`.
@@ -120,10 +124,11 @@ Le dossier `DossierRes` contient tous les résultats sauvegardés, de manière a
 
 
 
-## Cloner le dépôt
+## Installer l'outil
 
-git clone https://github.com/ThomasShanoky/StageM2.git
-
+Cloner le dépôt : 
+`git clone https://github.com/ThomasShanoky/StageM2.git` \
+Installer les packages nécessaires : `pip install -r requirements.txt`
 
 
 ## Auteurs
