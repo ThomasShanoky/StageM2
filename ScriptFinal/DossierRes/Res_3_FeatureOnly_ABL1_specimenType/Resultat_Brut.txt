@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène ABL1 en fonction de la feature specimenType
-#Résultat du test statistique Test Kruskal-Wallis : F = 21.21 et p-value = 0.00002

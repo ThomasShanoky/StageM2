@@ -13,10 +13,10 @@ L'outil propose six fonctionnalités analytiques, incluant des tests statistique
 ![Aperçu de l'interface](InterfaceGraphique.png)
 
 
-### Technologies utilisées
+### Langage et packages utilisés
 
-Langage : Python (version 3.10.12)
-packages associés : \
+Langage : Python (version 3.10.12) \
+Packages associés :
 - numpy (version 2.1.3)
 - pandas (version 2.2.3)
 - tkinter (version 8.6)
@@ -88,34 +88,68 @@ Par défaut, l'outil utilise les données de Beat-AML : les métadonnées, les e
 Si l'utilisateur veut exécuter les différentes fonctionnalités, il doit remplacer les données de Beat-AML par les siennes. 
 
 
-- Données de mutation : 
+<u>Données de mutation</u> : 
 L'utilisateur doit posséder un fichier nommé `data_mutations.vcf` avec les colonnes suivantes au minimum : `CHROM` indiquant le chromosome de la mutation, `POS` donnant la position génomique du variant, `GENE` qui est le gène où est présent le variant, et enfin `REF` et `ALT` qui sont les séquences de référence et altérée. Le fichier doit contenir la colonne `INFO`, qui doit posséder les informations suivantes obligatoirement afin de lier les échantillons aux variants : 
-  - Le gène portant la variant, indiqué par `GENE=` 
-  - le nombre d'échantillon qui porte le variant, indiqué par `NUMBER_SAMPLES=`
-  - les échantillons et leur abondance de mutation par k-mers, indiqués par des tuples sous la forme `SAMPLES=('sample1', abundance1),('sample2', abundance2), ...`
+- Le gène portant la variant, indiqué par `GENE=` 
+- le nombre d'échantillon qui porte le variant, indiqué par `NUMBER_SAMPLES=`
+- les échantillons et leur abondance de mutation par k-mers, indiqués par des tuples sous la forme `SAMPLES=('sample1', abundance1),('sample2', abundance2), ...`
+
+Exemple : 
+| CHROM  | POS       | REF | ALT    | INFO                                                                            |
+|--------|-----------|-----|--------|---------------------------------------------------------------------------------|
+| 5      | 170837547 | -   | TCTG   | GENE=NPM1;NUMBER_SAMPLES=2;SAMPLES=('BA2020R-BM',417.79),('BA2032R-PBMC',434.79)|
 
 
-- Nombre total de k-mers par échantillons :
+
+<u>Nombre total de k-mers par échantillons</u> :
 Si l'utilisateur les possède, il peut fournir dans un fichier `TotalKmersPerSample.csv` le nombre total de k-mers présent dans chaque échantillon. La première colonne doit être les identifiants d'échantillon avec comme nom de colonne `ID` et la deuxième colonne doit être les nombres totaux de k-mers avec en nom de colonne `TotalKmers`. Ce fichier n'est pas nécessaire à l'exécution de l'outil principal (interface graphique), il permet de normaliser les données d'abondances précédemment.
 
-- Données d'expression normalisées :
-L'utilisateur peut fournir des données d'expression déjà prêtes s'il en possède. Le nom du fichier doit être `ExpressionsDonnees.csv`, et il doit contenir : 
-  - En colonne, les gènes. Le nom de la colonne doit obligatoirement être `Gene`
-  - En ligne, les identifiants des échantillons. Ces derniers doivent faire la même taille de caractères (Par exemple pour Beat-AML, les identifiants sont composés de 6 caractères).
+Exemple : 
+|   ID   | TotalKmers |
+|--------|------------|
+| BA2000 | 7257825540 |
+| BA2003 | 7430744300 |
+|   ...  |    ...     |
 
-- Données d'expression déduite via les k-mers : 
-L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il veut étudier. S'il ne les a pas, il doit posséder un environnement dans lequel un ou des index de ses données RNA-seq existent (obtenable par exemple, avec [REINDEER](https://github.com/kamimrcht/REINDEER)), il peut ensuite suivre ces étapes : 
-  1. Créer un fichier `Genes.tsv` contenant l'ensemble de ses gènes.
-  2. Récupérer les contigs spécifiques de ces gènes (par exemple, à l'aide de l'outil [Kmerator](https://github.com/Transipedia/kmerator) qui lui donnera l'ensemble des contigs spécifiques aux gènes). Avec cet outil, on peut executer la commande `kmerator -s Genes.tsv -o GenesKmers` pour obtenir le fichier `contigs.fa` contenant les contigs spécifiques de nos gènes.
-  3. Récupérer les abondances de ces contigs dans l'index dans un dossier nommé `GenesKmers` (précédemment créé avec Kmerator) avec REINDEER. 
-  4. Si la requête s'est effectuée sur plusieurs index, il faut regrouper les comptages en un seul fichier, nommé `CountKmers.tsv`.
-  5. Exécuter le script présent dans le dossier `Elmer/ExpressionKmers` avec le fichier `CountKmers.tsv` présent dans ce même dossier, avec `Genes.tsv`, le dossier `GenesKmers` et enfin un fichier `SampleID.csv` qui contient tous les identifiants d'échantillons avec comme nom de colonne `Sample`.
-  6. L'utilisateur peut copier/coller ou déplacer le fichier final `ExpressionsWithKmers.csv` dans le dossier `ScriptFinal/`.
 
-  Attention, si les expressions d'un gène sont indisponibles dans un fichier d'expression, il doit être supprimé du fichier VCF.
-
-- Métadonnées : 
+<u>Métadonnées</u> : 
 Un fichier sous le nom de `Metadata.csv` contenant les métadonnées phénotypiques et cliniques des patients doit être présent. Il doit obligatoirement comporter la colonne `ID Sample` (avec ce même nom de colonne) contenant les identifiants d'échantillons. Il est à noté que les échantillons doivent être uniques aux patients (chaque patient doit posséder exactement un échantillon RNA-seq) afin d'assurer l'indépendance des échantillons lors des tests statistiques effectués en aval. 
+
+Exemple : 
+
+| ID Sample | AgeCategory | consensus_sex | ... |
+|-----------|-------------|---------------|-----|
+|  BA2409   |   older     |     Female    | ... |
+|  BA2496   |   older     |      Male     | ... |
+| ... | ... | ... | ... |
+
+
+<u>Données d'expression normalisées</u> :
+L'utilisateur peut fournir des données d'expression déjà prêtes s'il en possède. Le nom du fichier doit être `ExpressionsDonnees.csv`, et il doit contenir : 
+- En colonne, les gènes. Le nom de la colonne doit obligatoirement être `Gene`
+- En ligne, les identifiants des échantillons. Ces derniers doivent faire la même taille de caractères (Par exemple pour Beat-AML, les identifiants sont composés de 6 caractères).
+
+Exemple :
+| Gene  | BA2000 | BA2003| ... |
+|-------|--------|-------|-----|
+| IDH1  | 9.4622092916511 | 8.3482209830528 | ... |
+| DNMT1 | 6.22395465412271 | 7.133378282894852 | ... |
+|  ...  |...|...|...|
+
+
+<u>Données d'expression déduite via les k-mers</u> : 
+L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il veut étudier. S'il ne les a pas, il doit posséder un environnement dans lequel un ou des index de ses données RNA-seq existent (obtenable par exemple, avec [REINDEER](https://github.com/kamimrcht/REINDEER)), il peut ensuite suivre ces étapes : 
+1. Créer un fichier `Genes.tsv` contenant l'ensemble de ses gènes.
+2. Récupérer les contigs spécifiques de ces gènes (par exemple, à l'aide de l'outil [Kmerator](https://github.com/Transipedia/kmerator) qui lui donnera l'ensemble des contigs spécifiques aux gènes). Avec cet outil, on peut executer la commande `kmerator -s Genes.tsv -o GenesKmers` pour obtenir le fichier `contigs.fa` contenant les contigs spécifiques de nos gènes.
+3. Récupérer les abondances de ces contigs dans l'index dans un dossier nommé `GenesKmers` (précédemment créé avec Kmerator) avec REINDEER. 
+4. Avec REINDEER et son compagnon d'utilisation [rdeer-service](https://github.com/Bio2M/rdeer-service), on récupère les fichiers de comptages avec la commande `rdeer query INDEX -q GenesKmers/contigs/fa -o CountKmers.tsv`. Si la requête s'est effectuée sur plusieurs index, il faut regrouper les comptages en un seul fichier, nommé `CountKmers.tsv`.
+5. Exécuter le script présent dans le dossier `Elmer/ExpressionKmers` avec le fichier `CountKmers.tsv` présent dans ce même dossier, avec `Genes.tsv`, le dossier `GenesKmers` et enfin un fichier `SampleID.csv` qui contient tous les identifiants d'échantillons avec comme nom de colonne `Sample`.
+6. L'utilisateur peut copier/coller ou déplacer le fichier final `ExpressionsWithKmers.csv` dans le dossier `ScriptFinal/`.
+
+Ce fichier suit le même format que celui sur les expressions normalisées que l'utilisateur peut donner.
+
+Attention, si les expressions d'un gène sont indisponibles dans un fichier d'expression, il doit être supprimé du fichier VCF.
+
 
 
 Une fois ces fichiers présents dans le dossier `ScriptFinal/`, l'interface graphique est prête à être affichée en exécutant le script `GUI.py`. Ce dernier utilise les fonctions écrites dans les autres fichiers python : `DistributionFuncs.py`, `AbundanceFuncs.py`, `FeaturesFuncs.py` et `MutationsFuncs.py`.

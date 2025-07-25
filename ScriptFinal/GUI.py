@@ -71,12 +71,6 @@ if new_rows:
     vcf_df = pd.concat([vcf_df, pd.DataFrame(new_rows)], ignore_index=True)
 
 
-pd.set_option('display.max_columns', None)  # Affiche toutes les colonnes
-pd.set_option('display.max_rows', None)     # Affiche toutes les lignes
-pd.set_option('display.width', None)        # Largeur illimitée
-pd.set_option('display.max_colwidth', None)
-
-
 
 #Tri : si un gène a moins de 10 occurences de mutations, on le filtre
 gene_a = vcf_df["GENE"][0]
@@ -109,8 +103,11 @@ if os.path.exists(f"{directory}/ExpressionsDonnees.csv"):
 else:
     data_expressions_given = None
 
-expressions_kmers_file = f"{directory}/ExpressionsWithKmers.csv"
-data_expressions_kmers = pd.read_csv(expressions_kmers_file, sep=",", comment="#") #données d'expressions construites avec les kmers uniques aux gènes
+if os.path.exists(f"{directory}/ExpressionsWithKmers.csv"):
+    expressions_kmers_file = f"{directory}/ExpressionsWithKmers.csv"
+    data_expressions_kmers = pd.read_csv(expressions_kmers_file, sep=",", comment="#") #données d'expressions construites avec les kmers uniques aux gènes
+else:
+    data_expressions_kmers = None
 
 
 ##### Interface graphique #####
@@ -391,7 +388,7 @@ class GUI:
             return
         
         if self.data_expressions is None:
-            messagebox.showwarning("Attention", "Les données d'expressions RPKM ne sont pas disponibles")
+            messagebox.showwarning("Attention", "Les données d'expression choisies ne sont pas disponibles")
             return
         
         if self.FeatureVar.get():
@@ -899,27 +896,38 @@ class GUI:
         expressions_list = [data_expressions_kmers, data_expressions_given]
         if data_expressions_given is None:
             expressions_list = [data_expressions_kmers]
+        if data_expressions_kmers is None:
+            expressions_list = [data_expressions_given]
+        if data_expressions_kmers is None and data_expressions_given is None:
+            expressions_list = []
 
-        for gene in list_genes:                
-            for expressions in expressions_list:
-                for gene2 in self.Genes:
-                    if gene != gene2:
-                        if self.feat_choice_var.get() == "Toutes":
-                            self.generate_plot_correlation(gene, gene2, expressions)
-                if self.feat_choice_var.get() == "Toutes":
-                    self.generate_plot_mutations(gene, expressions)
+        for gene in list_genes:
+            if expressions_list != []:
+                for expressions in expressions_list:
+                    for gene2 in self.Genes:
+                        if gene != gene2:
+                            if self.feat_choice_var.get() == "Toutes":
+                                self.generate_plot_correlation(gene, gene2, expressions)
+                    if self.feat_choice_var.get() == "Toutes":
+                        self.generate_plot_mutations(gene, expressions)
+                    for feature in list_features:
+                        progress_bar["value"] += 1
+                        progress_window.update_idletasks()
+                        self.generate_plot_feature(gene, feature, expressions)
+                        self.generate_plot_with_abundance(gene, feature)
+                        self.generate_plot_without_abundance(gene, feature)
+                        for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
+                            if Mutation != "Toutes les mutations":
+                                Mutation = Mutation.split(":")[0]
+                                self.generate_plot_feat_and_mut(gene, Mutation, feature, expressions)
+            else:
                 for feature in list_features:
                     progress_bar["value"] += 1
                     progress_window.update_idletasks()
-                    self.generate_plot_feature(gene, feature, expressions)
-                    if "ABUNDANCE" in data_mutation[0].columns:
-                        self.generate_plot_with_abundance(gene, feature)
+                    self.generate_plot_with_abundance(gene, feature)
                     self.generate_plot_without_abundance(gene, feature)
-                    for Mutation in format_mutations(self.dico_mut, self.dico_IndAndMut):
-                        if Mutation != "Toutes les mutations":
-                            Mutation = Mutation.split(":")[0]
-                            self.generate_plot_feat_and_mut(gene, Mutation, feature, expressions)
-        progress_window.destroy()
+                    
+            progress_window.destroy()
         messagebox.showinfo("Résultats générés", "Tous les résultats significatifs ont été générés et sauvegardés dans le dossier DossierRes")
 
         self.SaveAll = False

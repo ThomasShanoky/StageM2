@@ -1,2 +1,0 @@
-#Corrélation entre les expressions de ABL1 et SF3A1
-#Résultat du test statistique Test de Corrélation : r = 0.56

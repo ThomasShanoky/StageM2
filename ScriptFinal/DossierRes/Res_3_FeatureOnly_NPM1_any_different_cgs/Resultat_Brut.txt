@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène NPM1 en fonction de la feature any_different_cgs
-#Résultat du test statistique Test Kruskal-Wallis : F = 7.56 et p-value = 0.00597

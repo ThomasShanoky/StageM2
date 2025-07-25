@@ -1,2 +1,0 @@
-#Boxplots d'expressions du gène NPM1 en fonction de la feature analysisRnaSeq
-#Résultat du test statistique Test Mann-Whitney : U = 3441.00 et p-value = 0.00000
