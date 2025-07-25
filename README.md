@@ -137,7 +137,7 @@ Exemple :
 |  ...  |...|...|...|
 
 
-<u>Données d'expression déduite via les k-mers</u> : 
+<u>Données d'expression déduite via les k-mers (utilisation avancée) </u> : 
 L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il veut étudier. S'il ne les a pas, il doit posséder un environnement dans lequel un ou des index de ses données RNA-seq existent (obtenable par exemple, avec [REINDEER](https://github.com/kamimrcht/REINDEER)), il peut ensuite suivre ces étapes : 
 1. Créer un fichier `Genes.tsv` contenant l'ensemble de ses gènes.
 2. Récupérer les contigs spécifiques de ces gènes (par exemple, à l'aide de l'outil [Kmerator](https://github.com/Transipedia/kmerator) qui lui donnera l'ensemble des contigs spécifiques aux gènes). Avec cet outil, on peut executer la commande `kmerator -s Genes.tsv -o GenesKmers` pour obtenir le fichier `contigs.fa` contenant les contigs spécifiques de nos gènes.
@@ -146,7 +146,7 @@ L'utilisateur doit avoir les données d'expression par k-mers des gènes qu'il v
 5. Exécuter le script présent dans le dossier `Elmer/ExpressionKmers` avec le fichier `CountKmers.tsv` présent dans ce même dossier, avec `Genes.tsv`, le dossier `GenesKmers` et enfin un fichier `SampleID.csv` qui contient tous les identifiants d'échantillons avec comme nom de colonne `Sample`.
 6. L'utilisateur peut copier/coller ou déplacer le fichier final `ExpressionsWithKmers.csv` dans le dossier `ScriptFinal/`.
 
-Ce fichier suit le même format que celui sur les expressions normalisées que l'utilisateur peut donner.
+Ce fichier suit le même format que celui sur les expressions normalisées que l'utilisateur peut donner. Ce fichier est optionnel mais pour que les fonctionnalités 3 à 6 soient disponibles, il faut au moins un fichier contenant des données d'expressions géniques pour les échantillons. 
 
 Attention, si les expressions d'un gène sont indisponibles dans un fichier d'expression, il doit être supprimé du fichier VCF.
 
